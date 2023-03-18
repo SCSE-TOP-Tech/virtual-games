@@ -1,5 +1,5 @@
 'use client'
-import { Input, Textarea, Container, Text } from '@chakra-ui/react'
+import { Input, Container, Text } from '@chakra-ui/react'
 
 import Image from 'next/image'
 import styles from './styles.module.css'
