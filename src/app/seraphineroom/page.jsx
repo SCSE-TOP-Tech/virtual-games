@@ -1,18 +1,16 @@
 'use client'
-import { Input, Textarea, Container, Text } from '@chakra-ui/react'
+import { Input, Container, Text } from '@chakra-ui/react'
 
 import Image from 'next/image'
-import styles from './styles.module.css'
+import styles from './components/styles.module.css'
 
-import background from '../../../../public/Rooms/SeraphineRoom/background.png'
-import camera from '../../../../public/Rooms/SeraphineRoom/camera.png'
-import lipstick from '../../../../public/Rooms/SeraphineRoom/lipstick.png'
-import teddybear from '../../../../public/Rooms/SeraphineRoom/teddybear.png'
-import jewelrybox from '../../../../public/Rooms/SeraphineRoom/jewelrybox.png'
-//import { useState } from 'react'
+import background from '../../../public/Rooms/SeraphineRoom/background.png'
+import camera from '../../../public/Rooms/SeraphineRoom/camera.png'
+import lipstick from '../../../public/Rooms/SeraphineRoom/lipstick.png'
+import teddybear from '../../../public/Rooms/SeraphineRoom/teddybear.png'
+import jewelrybox from '../../../public/Rooms/SeraphineRoom/jewelrybox.png'
 
 export default function SeraphineRoom() {
-  //const [text, setText] = useState('')
 
   return (
     <>
