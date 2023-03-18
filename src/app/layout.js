@@ -1,4 +1,8 @@
-import './globals.css'
+'use client'
+
+//chakra ui
+import { CacheProvider } from '@chakra-ui/next-js'
+import { ChakraProvider } from '@chakra-ui/react'
 
 export const metadata = {
   title: 'Create Next App',
@@ -7,8 +11,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang='en'>
+      <body>
+        <CacheProvider>
+          <ChakraProvider>{children}</ChakraProvider>
+        </CacheProvider>
+      </body>
     </html>
   )
 }
