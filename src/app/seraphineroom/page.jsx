@@ -63,6 +63,7 @@ export default function SeraphineRoom() {
               position: 'relative',
               top: '255px',
               right: '130px',
+
               width: '80px',
             }}
           />
