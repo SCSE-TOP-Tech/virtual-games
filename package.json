@@ -9,24 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "eslint": "8.36.0",
-    "eslint-config-next": "13.2.4",
-    "next": "13.2.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-=======
     "@chakra-ui/next-js": "^2.0.1",
     "@chakra-ui/react": "^2.5.2",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
-    "framer-motion": "^10.5.0",
-
-    "eslint": "8.36.0",
-    "eslint-config-next": "13.2.4",
-
->>>>>>> 99c7b3b987bdd5099e6089898eee341a2314166c
+    "framer-motion": "^10.5.0"
   }
 }
