@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import './globals.css'
 
 export const metadata = {
@@ -9,6 +10,33 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>{children}</body>
+=======
+'use client'
+import { CacheProvider } from '@chakra-ui/next-js'
+import { ChakraProvider, extendTheme, Box } from '@chakra-ui/react'
+
+export const metadata = {
+  title: 'Virtual Games',
+  description: 'The Tesseract'
+}
+
+const theme = extendTheme({
+
+})
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang='en'>
+      <body>
+        <CacheProvider>
+          <ChakraProvider theme={theme}>
+            <Box display='flex' bg='lightgreen' justifyContent='center' w='100%' h={800}>
+              {children}
+            </Box>
+          </ChakraProvider>
+        </CacheProvider>
+      </body>
+>>>>>>> 99c7b3b987bdd5099e6089898eee341a2314166c
     </html>
   )
 }
