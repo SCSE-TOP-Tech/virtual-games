@@ -1,5 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default function handler(req, res) {
-  res.status(200).json({ name: 'John Smith' })
+  res.status(200).json({
+      name: "Seraphine", 
+      image: "src.png",  
+      actions: {
+        walk: "src.svg",
+        talk: "src.svg"
+      }, 
+      // speech: {
+      //   murderscene:   
+      //       ["...","..."],
+      //   investigation: 
+      //       ["...","..."]
+      // } 
+  })
 }

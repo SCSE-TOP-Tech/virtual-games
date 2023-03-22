@@ -2,7 +2,7 @@
 
 export default function handler(req, res) {
   res.status(200).json({
-      name: "Knight", 
+      name: "Mann", 
       image: "src.png",  
       actions: {
         walk: "src.svg",
