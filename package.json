@@ -15,6 +15,14 @@
     "@emotion/styled": "^11.10.6",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+<<<<<<< HEAD
     "framer-motion": "^10.5.0"
+=======
+    "framer-motion": "^10.5.0",
+    "next": "13.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+
+>>>>>>> 557a4cb53b01968ea60bd8c6f8cda742dbee75f7
   }
 }
