@@ -4,13 +4,14 @@ import { Container, Box, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 
-import background from '../../../public/Rooms/SeraphineRoom/background.png'
-import camera from '../../../public/Rooms/SeraphineRoom/camera.png'
-import lipstick from '../../../public/Rooms/SeraphineRoom/lipstick.png'
-import teddybear from '../../../public/Rooms/SeraphineRoom/teddybear.png'
-import jewelrybox from '../../../public/Rooms/SeraphineRoom/jewelrybox.png'
+import background from '../../../public/Rooms/RomilyRoom/background.png'
+import basketball from '../../../public/Rooms/RomilyRoom/basketball.png'
+import towel from '../../../public/Rooms/RomilyRoom/towel.png'
+import clothes from '../../../public/Rooms/RomilyRoom/clothes.png'
+import punchingbag from '../../../public/Rooms/RomilyRoom/punching-bag.png'
+import dumbbell from '../../../public/Rooms/RomilyRoom/dumbbell.png'
 
-export default function SeraphineRoom() {
+export default function RomilyRoom() {
   return (
     //bound to mobile view
     <Box w={['100%', '30em']} h='100%' p={4}>
@@ -43,54 +44,61 @@ export default function SeraphineRoom() {
         <Box position='absolute' zIndex='1'>
           {/*all dimensions are calculated manually lol */}
           <Image
-            src={teddybear}
+            src={basketball}
+            alt='basketball'
             className={styles.item}
-            alt='teddybear'
             style={{
               position: 'relative',
-              top: '525px',
-              left: '40px',
-              width: '80px',
+              left: '120px',
+              top: '430px',
+              width: '60px',
+              filter: 'brightness(0.7)',
             }}
           />
 
-          {/*Jewelry box */}
           <Image
-            src={jewelrybox}
+            src={punchingbag}
+            alt='punchingbag'
             className={styles.item}
-            alt='jewelry box'
             style={{
               position: 'relative',
-              top: '255px',
-              right: '130px',
-
-              width: '80px',
+              left: '145px',
+              top: '400px',
+              width: '150px',
+              filter: 'brightness(0.75)',
             }}
           />
-
-          {/* Lipstick */}
           <Image
-            src={lipstick}
+            src={towel}
+            alt='towel'
             className={styles.item}
-            alt='lipstick'
             style={{
               position: 'relative',
-              top: '450px',
-              right: '120px',
-              width: '40px',
+              top: '350px',
+              width: '70px',
               filter: 'brightness(0.75)',
             }}
           />
 
-          {/* camera */}
           <Image
-            src={camera}
+            src={clothes}
+            alt='clothes'
             className={styles.item}
-            alt='camera'
             style={{
               position: 'relative',
-              left: '140px',
-              top: '215px',
+              right: '20px',
+              top: '90px',
+              width: '150px',
+            }}
+          />
+          <Image
+            src={dumbbell}
+            alt='dumbbell'
+            className={styles.item}
+            style={{
+              position: 'relative',
+              right: '140px',
+              top: '150px',
               width: '60px',
             }}
           />
