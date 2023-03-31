@@ -1,7 +1,7 @@
 export default function head() {
   return (
     <>
-      <title>Doyle's Room</title>
+      <title>Carmen's Room</title>
     </>
   )
 }
