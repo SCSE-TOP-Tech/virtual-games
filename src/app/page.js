@@ -1,10 +1,7 @@
-'use client'
-import { Box, Text } from '@chakra-ui/react'
+import Main from "./homeComp"
 
 export default function Home() {
   return (
-    <main>
-      <Text fontSize='6xl' color='darkblue'>PLEASE LEARN CHAKRA UI!</Text>
-    </main>
+    <Main />
   )
 }
