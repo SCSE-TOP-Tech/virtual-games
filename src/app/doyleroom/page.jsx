@@ -4,34 +4,17 @@ import Image from "next/image";
 import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
-import fetchData from "@/pages/fetchData/fetchData";
+import fetchRoom from "@/pages/api/rooms/fetchRoom";
 
 export default function DoyleRoom() {
   const [room, setRoom] = useState(false);
-
-  // const apiData = fetchData(`/api/characters/${'doyle'}`) // To add dynamic 
-  // const room = apiData.read();
-
-  // Fetch API data
-  async function loadRoomData(id, isCharacter) {
-    if (!room) {
-
-      const response = (isCharacter ? 
-        await fetch(`/api/characters/${id}`) :  
-        await fetch(`/api/rooms/${id}`) );
-
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-      response.json().then((data) => {
-        setRoom(data.room);
-      });
-    }
-  }
-
+  
   // Initial Load
   useEffect(() => {
-    loadRoomData("doyle", true);
+    fetchRoom("doyle", true)
+      .then(data => {
+        setRoom(data);
+      })
   }, []);
 
   return (
