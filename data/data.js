@@ -105,7 +105,7 @@ export const characters = [
             }
         }
     },
-    // Doyle (To Update)
+    // Doyle (Updated V1)
     {
         id: "doyle",
         name: "Doyle", 
@@ -188,6 +188,15 @@ export const characters = [
         actions: {
             walk: "src.svg",
             talk: "src.svg"
+        },
+        room:{
+            name: "Princess White Room",
+            background: {
+                name:"Doyle's Room Background",
+                height: 1024,
+                width: 1024,
+                src:`https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680258151/virtual_games/rooms/doyleroombg_zl4tz4.png`
+            }
         }
     },
     // Romily (To Update)
@@ -200,7 +209,7 @@ export const characters = [
             talk: "src.svg"
         }
     },
-    // Seraphine (To Update)
+    // Seraphine (V1)
     {
         id: "seraphine",
         name: "Seraphine", 
@@ -208,6 +217,43 @@ export const characters = [
         actions: {
             walk: "src.svg",
             talk: "src.svg"
+        },
+        room: {
+            name: "Seraphine Room",
+            background: {
+                name:"Seraphine's Room Background",
+                height: 1024,
+                width: 1024,
+                src:`https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527564/virtual_games/rooms/seraphine/background_s71lfy.png`
+            }, 
+            clues: {
+                lipstick: {
+                    name: "Seraphine's Lipstick",
+                    width: 225,
+                    height: 225,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527556/virtual_games/rooms/seraphine/lipstick_zhpyid.png'
+                },
+            },
+            dummy_objects:{
+                teddybear: {
+                    name: 'Teddy Bear',
+                    width: 360,
+                    height: 540,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/teddybear_owi8x6.png'
+                },
+                camera: {
+                    name: 'Camera',
+                    width: 500,
+                    height: 500,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/camera_tpymff.png'
+                },
+                jewelrybox: {
+                    name: 'Jewelry Box',
+                    width: 825,
+                    height: 590,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/jewelrybox_oi31xq.png'
+                }
+            }
         }
     },
     // Doctor (To Update)
