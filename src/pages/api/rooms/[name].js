@@ -1,4 +1,4 @@
-import { rooms } from "../../../../data/data"
+import { rooms } from "../../../../data/data.js"
 
 export default function handler(req, res) {
     const { name } = req.query

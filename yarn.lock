@@ -847,6 +847,19 @@
   "resolved" "https://registry.npmjs.org/@chakra-ui/visually-hidden/-/visually-hidden-2.0.15.tgz"
   "version" "2.0.15"
 
+"@cloudinary-util/url-loader@^3.0.1":
+  "integrity" "sha512-FIJhMv3IbOSim4Ll3Jk8utYxqQBekwsw36HZysXSllCin+5qach3PzeLadcbRwITK7epl+zZ+VoAKQlQFhPynA=="
+  "resolved" "https://registry.npmjs.org/@cloudinary-util/url-loader/-/url-loader-3.1.0.tgz"
+  "version" "3.1.0"
+  dependencies:
+    "@cloudinary-util/util" "2.0.1"
+    "@cloudinary/url-gen" "^1.8.7"
+
+"@cloudinary-util/util@^2.0.1", "@cloudinary-util/util@2.0.1":
+  "integrity" "sha512-d2imgUjYTLjv8ZhZPMAts/uPbMvIE71X4I/5hwdY/7vM4BuFQoJMSyq+h2pW1z1MyGG9BOWBm70vp082lSrbEQ=="
+  "resolved" "https://registry.npmjs.org/@cloudinary-util/util/-/util-2.0.1.tgz"
+  "version" "2.0.1"
+
 "@cloudinary/html@^1.11.2":
   "integrity" "sha512-IibBZliI7MOK3dxvz0WlsEyTIsqZhY3SiCBQM0CNwCKxn3N1TO8OgetfU26Now1lJbdoF5JQ8S7Cn6ZWNuU1KA=="
   "resolved" "https://registry.npmjs.org/@cloudinary/html/-/html-1.11.2.tgz"
@@ -873,7 +886,7 @@
   dependencies:
     "@cloudinary/url-gen" "^1.7.0"
 
-"@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@^1.9.2":
+"@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@^1.8.6", "@cloudinary/url-gen@^1.8.7", "@cloudinary/url-gen@^1.9.2":
   "integrity" "sha512-LFL79Galcj8WZaXW6QOOt5LQVkioQdH7DR7blYcU9Zi0ae1y0L4Ujmr69RsUNshCNy/EdVAg0aVG/jjqKDnJsg=="
   "resolved" "https://registry.npmjs.org/@cloudinary/url-gen/-/url-gen-1.9.2.tgz"
   "version" "1.9.2"
@@ -2794,7 +2807,16 @@
   "resolved" "https://registry.npmjs.org/netmask/-/netmask-2.0.2.tgz"
   "version" "2.0.2"
 
-"next@>=13", "next@13.2.4":
+"next-cloudinary@^4.1.1":
+  "integrity" "sha512-6yxIWLK0n9af8X9QkrCTqSCYzd2p5tpJkxMbQPsQwx/LcndjRp4qXSeHSa0eZZYBi2DtJR90haukSBfaqfnofg=="
+  "resolved" "https://registry.npmjs.org/next-cloudinary/-/next-cloudinary-4.1.1.tgz"
+  "version" "4.1.1"
+  dependencies:
+    "@cloudinary-util/url-loader" "^3.0.1"
+    "@cloudinary-util/util" "^2.0.1"
+    "@cloudinary/url-gen" "^1.8.6"
+
+"next@^12 || ^13", "next@>=13", "next@13.2.4":
   "integrity" "sha512-g1I30317cThkEpvzfXujf0O4wtaQHtDCLhlivwlTJ885Ld+eOgcz7r3TGQzeU+cSRoNHtD8tsJgzxVdYojFssw=="
   "resolved" "https://registry.npmjs.org/next/-/next-13.2.4.tgz"
   "version" "13.2.4"
@@ -3154,7 +3176,7 @@
     "invariant" "^2.2.4"
     "tslib" "^2.0.0"
 
-"react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0", "react@>=18", "react@18.2.0":
+"react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17 || ^18", "react@^18.0.0", "react@^18.2.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8.0", "react@>=18", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

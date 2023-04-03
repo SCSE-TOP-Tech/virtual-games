@@ -111,33 +111,60 @@ export const characters = [
         name: "Doyle", 
         image: "src.png",  
         actions: {
-            walk: "src.svg",
+            x: "src.svg",
             talk: "src.svg"
         },
         room: {
             name: "Doyle's Room",
-            background: "src.png",
-            objects: {
-                clues: {
-                    spaceID_card: {
-                        desc: 'Home Station: Andromeda',
-                        src: 'src.png'
-                    },
-                    music_albums: {
-                        desc: 'Albums of ',
-                        src: 'src.png'
-                    }
+            background: {
+                name:"Doyle's Room Background",
+                height: 1024,
+                width: 1024,
+                src:`https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680258151/virtual_games/rooms/doyleroombg_zl4tz4.png`
+            },
+            clues: {
+                spaceID_card: {
+                    name: 'Home Station: Andromeda',
+                    width: 485,
+                    height: 318,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/id_yzk534.png'
                 },
-                furnitures:{
-                    door: 'src.png',
-                    wardrobe: 'src.png',
-                    bed: 'src.png',
-                    table: 'src.png', 
+                music_albums: {
+                    name: 'Music Albums',
+                    width: 485,
+                    height: 318,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/album_pbr2bh.png'
                 },
-                dummy_objects:{
-                    rug: 'src.png',
-                    clothes: 'src.png',
-                    luggage: 'src.png'
+                bloodstained_towel: {
+                    name: 'Blood-stained Towel',
+                    width: 612,
+                    height: 408,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/towel_ysje7j.png'
+                }
+            },
+            furnitures:{
+                door: 'src.png',
+                wardrobe: 'src.png',
+                table: 'src.png', 
+            },
+            dummy_objects:{
+                rug: {
+                    name: 'Blood-stained Rug',
+                    width: 1632,
+                    height: 519,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/album_pbr2bh.png'
+                },
+                clothes: {
+                    name: 'Clothes',
+                    width: 637,
+                    height: 327,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/clothes_ybv5gf.png'
+                },
+                luggage: {
+                    name: 'Luggage',
+                    width: 398,
+                    height: 627,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/luggage_kwyefl.png'
                 }
             }
         }

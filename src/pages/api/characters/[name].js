@@ -1,4 +1,4 @@
-import { characters } from "../../../../data/data"
+import { characters } from "../../../../data/data.js"
 
 export default function handler(req, res) {
     const { name } = req.query

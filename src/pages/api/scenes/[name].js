@@ -1,4 +1,4 @@
-import { scenes } from "../../../../data/data"
+import { scenes } from "../../../../data/data.js"
 
 export default function handler(req, res) {
     const { name } = req.query

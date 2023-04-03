@@ -1,4 +1,4 @@
-import { transitions } from "../../../../data/data"
+import { transitions } from "../../../../data/data.js"
 
 export default function handler(req, res) {
     const { name } = req.query
