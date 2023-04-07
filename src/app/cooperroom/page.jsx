@@ -10,8 +10,21 @@ import Image from 'next/image'
 import styles from './components/styles.module.css'
 
 import { Container, Text, Box } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
+import fetchRoom from '@/pages/api/rooms/fetchRoom'
+import CldImage from '../components/CldImage'
 
 export default function CooperPage() {
+  const [room, setRoom] = useState(false);
+  
+  // Initial Load
+  useEffect(() => {
+    fetchRoom("cooper", true)
+      .then(data => {
+        setRoom(data);
+      })
+  }, []);
+
   return (
     <Box w={['100%', '30em']} h='100%' p={4}>
       {/* background image */}
@@ -36,12 +49,13 @@ export default function CooperPage() {
             Time placeholder
           </Text>
         </Container>
-        <Image src={background} alt='background' />
+        <CldImage
+          item={room.background}
+        />
         <Box position='absolute' zIndex='1'>
           {/* luggage  */}
-          <Image
-            src={luggage}
-            alt='luggage'
+          <CldImage
+            item={room.dummy_objects.luggage}
             className={styles.item}
             style={{
               position: 'relative',
@@ -52,9 +66,8 @@ export default function CooperPage() {
           />
 
           {/* id  */}
-          <Image
-            src={id}
-            alt='id'
+          <CldImage
+            item={room.dummy_objects.luggage}
             className={styles.item}
             style={{
               position: 'relative',
@@ -66,9 +79,8 @@ export default function CooperPage() {
           />
 
           {/* coffeemachine  */}
-          <Image
-            src={coffeemachine}
-            alt='coffeemachine'
+          <CldImage
+            item={room.dummy_objects.coffee_machine}
             className={styles.item}
             style={{
               position: 'relative',
@@ -80,9 +92,8 @@ export default function CooperPage() {
           />
 
           {/* newspaper  */}
-          <Image
-            src={newspaper}
-            alt='newspaper'
+          <CldImage
+            item={room.dummy_objects.newspaper}
             className={styles.item}
             style={{
               position: 'relative',

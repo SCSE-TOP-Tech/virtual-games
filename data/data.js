@@ -1,110 +1,6 @@
 // To add JWT Password Authentication 
 
 export const characters = [
-    // Brand
-    {
-        id: "brand",
-        name: "Brand", 
-        image: "src.png",  
-        actions: {
-            walk: "src.svg",
-            talk: "src.svg"
-        },
-        room: {
-            name: "Brand's Room",
-            background: "src.png",
-            objects: {
-                clues:{
-                    galaxy_phone: {
-                    desc: 'Brand Galaxy Phone', 
-                    time: '9:30pm',
-                    msg: 'Hey, I am feeling unwell but I can’t find you at your clinic. Where are you?',
-                    src:'src.png'
-                    }
-                },
-                furnitures: {
-                    pool_table: 'src.png',
-                    wardrobe: 'src.png',
-                    dressing_table: 'src.png',
-                    door: 'src.png',
-                    bed: 'src.png',
-                    trophy_rack: 'src.png',
-                    dressing_table: 'src.png',
-                },
-            }
-        }
-    }, 
-    // Carmen
-    {
-        id: "carmen",
-        name: "Carmen", 
-        image: "src.png",  
-        actions: {
-            walk: "src.svg",
-            talk: "src.svg"
-        },
-        room: {
-            name: "Carmen's Room",
-            background: "src.png",
-            objects: {
-                clues: {
-                    master_key: {
-                        desc: 'Seems like the key to the Master Room',
-                        src: 'src.png'
-                    },
-                    invitation_letter: {
-                        desc: 'Sent from Planet Earth',
-                        src: 'src.png'
-                    },
-                    clothespin: {
-                        desc: 'Oddly familiar clothespin',
-                        src: 'src.png'
-                    },
-                },
-                furnitures:{
-                    dressing_table: 'src.png',
-                    rack: 'src.png',
-                    bed: 'src.png',
-                    desk: 'src.png'
-                }
-            }
-        }
-    },
-    // Cooper (To Update)
-    {
-        id: "cooper",
-        name: "Cooper", 
-        image: "src.png",  
-        actions: {
-            walk: "src.svg",
-            talk: "src.svg"
-        },
-        room: {
-            name: "Cooper's Room",
-            background: "src.png",
-            objects: {
-                clues: {
-                    spaceID_card: {
-                        desc: 'Home Station: Earth',
-                        src: 'src.png'
-                    }
-                },
-                furnitures:{
-                    door: 'src.png',
-                    coffee_table: 'src.png',
-                    bed: 'src.png',
-                    piano: 'src.png',
-                    wardrobe: 'src.png',
-
-                },
-                dummy_objects:{
-                    newspaper: 'src.png',
-                    coffee_machine: 'src.png',
-                    luggage: 'src.png'
-                }
-            }
-        }
-    },
     // Doyle (Updated V1)
     {
         id: "doyle",
@@ -124,44 +20,45 @@ export const characters = [
             },
             clues: {
                 spaceID_card: {
-                    name: 'Home Station: Andromeda',
+                    name: 'Space ID Card',
+                    desc: 'Home Station: Andromeda',
                     width: 485,
                     height: 318,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/id_yzk534.png'
                 },
                 music_albums: {
                     name: 'Music Albums',
+                    desc: 'Music Albums belonging to...',
                     width: 485,
                     height: 318,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/album_pbr2bh.png'
                 },
                 bloodstained_towel: {
                     name: 'Blood-stained Towel',
+                    desc: 'Towel stained with blood',
                     width: 612,
                     height: 408,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/towel_ysje7j.png'
                 }
             },
-            furnitures:{
-                door: 'src.png',
-                wardrobe: 'src.png',
-                table: 'src.png', 
-            },
             dummy_objects:{
                 rug: {
                     name: 'Blood-stained Rug',
+                    desc: 'Music Albums belonging to...',
                     width: 1632,
                     height: 519,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/album_pbr2bh.png'
                 },
                 clothes: {
                     name: 'Clothes',
+                    desc: 'Music Albums belonging to...',
                     width: 637,
                     height: 327,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/clothes_ybv5gf.png'
                 },
                 luggage: {
                     name: 'Luggage',
+                    desc: 'Music Albums belonging to...',
                     width: 398,
                     height: 627,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/luggage_kwyefl.png'
@@ -169,47 +66,51 @@ export const characters = [
             }
         }
     },
-    // Mann (To Update)
+    // Carmen (Updated V1)
     {
-        id: "mann",
-        name: "Mann", 
-        role: "player",
+        id: "carmen",
+        name: "Carmen", 
         image: "src.png",  
         actions: {
-            walk: "src.svg",
-            talk: "src.svg"
-        }
-    },
-    // Princess White (To Update)
-    {
-        id: "princesswhite",
-        name: "Princess White", 
-        image: "src.png",  
-        actions: {
-            walk: "src.svg",
+            x: "src.svg",
             talk: "src.svg"
         },
-        room:{
-            name: "Princess White Room",
+        room: {
+            name:"Carmen's Room",
             background: {
-                name:"Doyle's Room Background",
+                name:"Carmen's Room Background",
                 height: 1024,
                 width: 1024,
-                src:`https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680258151/virtual_games/rooms/doyleroombg_zl4tz4.png`
+                src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853525/virtual_games/rooms/carmen/carmenbg_nk8x4n.png",
+            },
+            clues: {
+                master_key: {
+                    name: 'Master Key',
+                    desc: 'Seems like the key to the Master Room',
+                    width: 348,
+                    height: 306,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853516/virtual_games/rooms/carmen/master-key_uunebr.png'
+                },
+                mail: {
+                    name: 'Invitation Letter',
+                    desc: 'Sent from Planet Earth',
+                    width: 348,
+                    height: 306,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/album_pbr2bh.png'
+                },
+            },
+            dummy_objects:{
+                clothespin: {
+                    name: 'Clothespin',
+                    desc: 'Oddly familiar clothespin',
+                    width: 230,
+                    height: 219,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853516/virtual_games/rooms/carmen/clothspin_hzfkhg.png'
+                }
             }
         }
     },
-    // Romily (To Update)
-    {
-        id: "romily",
-        name: "Romily", 
-        image: "src.png",  
-        actions: {
-            walk: "src.svg",
-            talk: "src.svg"
-        }
-    },
-    // Seraphine (V1)
+    // Seraphine (Updated V1)
     {
         id: "seraphine",
         name: "Seraphine", 
@@ -229,6 +130,7 @@ export const characters = [
             clues: {
                 lipstick: {
                     name: "Seraphine's Lipstick",
+                    desc: '',
                     width: 225,
                     height: 225,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527556/virtual_games/rooms/seraphine/lipstick_zhpyid.png'
@@ -237,18 +139,21 @@ export const characters = [
             dummy_objects:{
                 teddybear: {
                     name: 'Teddy Bear',
+                    desc: '',
                     width: 360,
                     height: 540,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/teddybear_owi8x6.png'
                 },
                 camera: {
                     name: 'Camera',
+                    desc: '',
                     width: 500,
                     height: 500,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/camera_tpymff.png'
                 },
                 jewelrybox: {
                     name: 'Jewelry Box',
+                    desc: '',
                     width: 825,
                     height: 590,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/jewelrybox_oi31xq.png'
@@ -256,70 +161,54 @@ export const characters = [
             }
         }
     },
-    // Doctor (To Update)
+    // Cooper (Updated V1)
     {
-        id: "doctor",
-        name: "Doctor", 
-        role: "npc",
+        id: "cooper",
+        name: "Cooper", 
         image: "src.png",  
         actions: {
-            walk: "src.svg",
-            talk: "src.svg"
-        }
-    },
-    // Knight (To Update)
-    {
-        id: "knight",
-        name: "Knight", 
-        role: "npc",
-        image: "src.png",  
-        actions: {
-            walk: "src.svg",
+            x: "src.svg",
             talk: "src.svg"
         },
         room: {
-            name: "Knight's Room",
-            background: "src.png",
-            objects: {
-                clues: {
-                    lipstick: {
-                        desc: 'Lipstick found next to the dead body',
-                        src: 'src.png'
-                    },
-                    space_note: {
-                        desc: 'Princess White owes $1,000,000',
-                        src: 'src.png'
-                    },
-                    guest_book: {
-                        desc: 'Guest signed in as "Sibling"',
-                        src: 'src.png'
-                    },
-                    photo_albums: {
-                        desc: 'Photo albums of each hero (except Seraphine)',
-                        src: 'src.png'
-                    },
-                    broken_watch: {
-                        desc: 'Shows 25th Jan (1 day before d-day)',
-                        src: 'src.png'
-                    },
-                    space_guns: {
-                        desc: 'Space Guns tagged to each hero (except Seraphine)',
-                        src: 'src.png'
-                    },
-                    dead_knight_shirt: {
-                        desc: 'Contains female nail polish',
-                        src: 'src.png'
-                    },
-                    dead_knight: {
-                        desc: 'Blood on the floor writing “CW”',
-                        src: 'src.png'
-                    }
+            name: "Cooper's Room",
+            background: {
+                name:"Cooper's Room Background",
+                height: 1024,
+                width: 1024,
+                src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860699/virtual_games/rooms/cooper/background_iqjcqz.png'
+            },
+            clues: {
+
+            },
+            dummy_objects:{
+                newspaper: {
+                    name: 'Newspaper',
+                    desc: 'Pile of newspapers',
+                    width: 523,
+                    height: 228,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860694/virtual_games/rooms/cooper/newspaper_nikarg.png'
                 },
-                furnitures:{
-                    desk: 'src.png',
-                    bed: 'src.png',
-                    drawer: 'src.png',
-                    door: 'src.png', 
+                coffee_machine: {
+                    name: 'Coffee Machine',
+                    desc: 'Fine-looking coffee machine',
+                    width: 341,
+                    height: 218,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860694/virtual_games/rooms/cooper/coffeemachine_gcwlqv.png'
+                },
+                luggage: {
+                    name: 'Luggage',
+                    desc: "Cooper's Luggage",
+                    width: 551,
+                    height: 453,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860693/virtual_games/rooms/cooper/luggage_ek0ycq.png'
+                },
+                spaceID_card: {
+                    name: 'Space ID Card',
+                    desc: 'Home Station: Earth',
+                    width: 608,
+                    height: 254,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860693/virtual_games/rooms/cooper/id_ybs5kj.png'
                 }
             }
         }
