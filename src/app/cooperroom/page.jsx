@@ -15,27 +15,22 @@ export default function CooperRoom() {
   return (
     <Box w={['100%', '30em']} h='100%' p={4}>
       {/* background image */}
-      <Box
-        display='flex'
-        justifyContent='center'
-        zIndex='0'
-        h='90%'
-        width='100%'
-      >
-        <Container
-          position='absolute'
-          display='flex'
-          justifyContent='space-around'
-          mt='1%'
+      <Container display='flex' justifyContent='space-around'>
+        {/* placeholders for components  */}
+        <Box
+          color='red'
+          fontWeight='bold'
+          fontSize='2vh'
+          background='white'
+          p='10%'
         >
-          {/* placeholders for components  */}
-          <Text color='red' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
-          <Text color='red' fontWeight='bold' fontSize='2vh'>
-            Time placeholder
-          </Text>
-        </Container>
+          Map placeholder
+        </Box>
+        <Box color='red' fontWeight='bold' fontSize='2vh'>
+          Time placeholder
+        </Box>
+      </Container>
+      <Box display='flex' justifyContent='center' zIndex='0' width='100%'>
         <Image src={background} alt='background' />
         <Box position='absolute' zIndex='1'>
           {/* luggage  */}
@@ -45,12 +40,24 @@ export default function CooperRoom() {
             className={styles.item}
             style={{
               position: 'relative',
-              right: '70px',
-              top: '450px',
-              width: '200px',
+              right: '50px',
+              top: '320px',
+              width: '150px',
             }}
           />
-
+          {/* newspaper  */}
+          <Image
+            src={newspaper}
+            alt='newspaper'
+            className={styles.item}
+            style={{
+              position: 'relative',
+              right: '40px',
+              top: '70px',
+              width: '70px',
+              filter: 'brightness(0.75)',
+            }}
+          />
           {/* id  */}
           <Image
             src={id}
@@ -59,8 +66,8 @@ export default function CooperRoom() {
             style={{
               position: 'relative',
               right: '130px',
-              top: '420px',
-              width: '150px',
+              top: '250px',
+              width: '100px',
               filter: 'brightness(0.75)',
             }}
           />
@@ -72,23 +79,9 @@ export default function CooperRoom() {
             className={styles.item}
             style={{
               position: 'relative',
-              left: '200px',
-              top: '150px',
-              width: '100px',
-              filter: 'brightness(0.75)',
-            }}
-          />
-
-          {/* newspaper  */}
-          <Image
-            src={newspaper}
-            alt='newspaper'
-            className={styles.item}
-            style={{
-              position: 'relative',
-              right: '40px',
-              top: '11px',
-              width: '90px',
+              left: '190px',
+              top: '50px',
+              width: '70px',
               filter: 'brightness(0.75)',
             }}
           />
