@@ -17,6 +17,7 @@ export default function DoyleRoom() {
       })
   }, []);
 
+  // console.log(room.background.name)
   return (
     // To add loading page
     <Suspense fallback={<h1>Loading</h1>}> 
@@ -24,7 +25,6 @@ export default function DoyleRoom() {
         (<div>
           <Box w={["100%", "30em"]} h="100%" p={4}>
             {/* background image */}
-            
               <Box
                 display="flex"
                 justifyContent="center"

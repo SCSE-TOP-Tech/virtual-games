@@ -213,6 +213,62 @@ export const characters = [
             }
         }
     },
+    // Romily (Updated V1)
+    {
+        id: "romily",
+        name: "Romily", 
+        image: "src.png",  
+        actions: {
+            x: "src.svg",
+            talk: "src.svg"
+        },
+        room: {
+            name: "Romily's Room",
+            background: {
+                name:"Romily's Room Background",
+                height: 1024,
+                width: 1024,
+                src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861949/virtual_games/rooms/romily/background_zndzxj.png'
+            },
+            dummy_objects:{
+                basketball: {
+                    name: 'Basketball',
+                    desc: 'Galaxy Basketball',
+                    width: 501,
+                    height: 498,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861945/virtual_games/rooms/romily/basketball_yrwg4k.png'
+                },
+                clothes: {
+                    name: 'Clothes',
+                    desc: 'Pile of boring clothes',
+                    width: 637,
+                    height: 392,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861944/virtual_games/rooms/romily/clothes_kig0x8.png'
+                },
+                towel: {
+                    name: 'Blood-stained Towel',
+                    desc: "Blood stained towel",
+                    width: 612,
+                    height: 408,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861943/virtual_games/rooms/romily/towel_wkxqn4.png'
+                },
+                dumbbell: {
+                    name: 'Dumbbells',
+                    desc: '30kg dumbbells',
+                    width: 428,
+                    height: 584,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861944/virtual_games/rooms/romily/dumbbell_prijmb.png'
+                },
+                punchingbag: {
+                    name: 'Punching Bag',
+                    desc: '30kg dumbbells',
+                    width: 325,
+                    height: 483,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861944/virtual_games/rooms/romily/punching-bag_p2d8yl.png'
+                }
+            }
+        }
+    },
 ]
 
 export const rooms = [
