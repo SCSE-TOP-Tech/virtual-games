@@ -1,4 +1,5 @@
 'use client'
+import { Container, Box, Text } from '@chakra-ui/react'
 import fetchRoom from '@/pages/api/rooms/fetchRoom';
 import { Container, Box, Text, StylesProvider } from '@chakra-ui/react'
 
