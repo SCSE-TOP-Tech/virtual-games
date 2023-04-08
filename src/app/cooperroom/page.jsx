@@ -1,20 +1,20 @@
 'use client'
-import { Container, Box, Text } from '@chakra-ui/react'
+
+import background from '../../../public/Rooms/CooperRoom/background.png'
+import luggage from '../../../public/Rooms/CooperRoom/luggage.png'
+import coffeemachine from '../../../public/Rooms/CooperRoom/coffeemachine.png'
+import id from '../../../public/Rooms/CooperRoom/id.png'
+import newspaper from '../../../public/Rooms/CooperRoom/newspaper.png'
 
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 
-import background from '../../../public/Rooms/SeraphineRoom/background.png'
-import camera from '../../../public/Rooms/SeraphineRoom/camera.png'
-import lipstick from '../../../public/Rooms/SeraphineRoom/lipstick.png'
-import teddybear from '../../../public/Rooms/SeraphineRoom/teddybear.png'
-import jewelrybox from '../../../public/Rooms/SeraphineRoom/jewelrybox.png'
+import { Container, Text, Box } from '@chakra-ui/react'
 
-export default function SeraphineRoom() {
+export default function CooperRoom() {
   return (
-    //bound to mobile view
     <Box w={['100%', '30em']} h='100%' p={4}>
-      {/* container for background image and items*/}
+      {/* background image */}
       <Box
         display='flex'
         justifyContent='center'
@@ -22,7 +22,6 @@ export default function SeraphineRoom() {
         h='90%'
         width='100%'
       >
-        {/* map and time components */}
         <Container
           position='absolute'
           display='flex'
@@ -30,68 +29,67 @@ export default function SeraphineRoom() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='black' fontWeight='bold' fontSize='2vh'>
+          <Text color='red' fontWeight='bold' fontSize='2vh'>
             Map placeholder
           </Text>
-          <Text color='black' fontWeight='bold' fontSize='2vh'>
+          <Text color='red' fontWeight='bold' fontSize='2vh'>
             Time placeholder
           </Text>
         </Container>
-        {/* background image */}
         <Image src={background} alt='background' />
-        {/* items container */}
         <Box position='absolute' zIndex='1'>
-          {/*all dimensions are calculated manually lol */}
+          {/* luggage  */}
           <Image
-            src={teddybear}
+            src={luggage}
+            alt='luggage'
             className={styles.item}
-            alt='teddybear'
             style={{
               position: 'relative',
-              top: '525px',
-              left: '40px',
-              width: '80px',
-            }}
-          />
-
-          {/*Jewelry box */}
-          <Image
-            src={jewelrybox}
-            className={styles.item}
-            alt='jewelry box'
-            style={{
-              position: 'relative',
-              top: '255px',
-              right: '130px',
-
-              width: '80px',
-            }}
-          />
-
-          {/* Lipstick */}
-          <Image
-            src={lipstick}
-            className={styles.item}
-            alt='lipstick'
-            style={{
-              position: 'relative',
+              right: '70px',
               top: '450px',
-              right: '120px',
-              width: '40px',
+              width: '200px',
+            }}
+          />
+
+          {/* id  */}
+          <Image
+            src={id}
+            alt='id'
+            className={styles.item}
+            style={{
+              position: 'relative',
+              right: '130px',
+              top: '420px',
+              width: '150px',
               filter: 'brightness(0.75)',
             }}
           />
 
-          {/* camera */}
+          {/* coffeemachine  */}
           <Image
-            src={camera}
+            src={coffeemachine}
+            alt='coffeemachine'
             className={styles.item}
-            alt='camera'
             style={{
               position: 'relative',
-              left: '140px',
-              top: '215px',
-              width: '60px',
+              left: '200px',
+              top: '150px',
+              width: '100px',
+              filter: 'brightness(0.75)',
+            }}
+          />
+
+          {/* newspaper  */}
+          <Image
+            src={newspaper}
+            alt='newspaper'
+            className={styles.item}
+            style={{
+              position: 'relative',
+              right: '40px',
+              top: '11px',
+              width: '90px',
+              filter: 'brightness(0.75)',
             }}
           />
         </Box>
