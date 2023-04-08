@@ -5,14 +5,12 @@ import Image from 'next/image'
 import styles from './components/styles.module.css'
 
 import background from '../../../public/Rooms/Clinic/clinic.png'
-
+import doctor from '../../../public/Rooms/Clinic/doctor.png'
 
 export default function Clinic() {
-  return ( 
-    //bound to mobile view
+  return (
     <Box w={['100%', '30em']} h='100%' p={4}>
-
-      {/* container for background image and items*/}
+      {/* background image */}
       <Box
         display='flex'
         justifyContent='center'
@@ -20,7 +18,6 @@ export default function Clinic() {
         h='90%'
         width='100%'
       >
-        {/* map and time components */}
         <Container
           position='absolute'
           display='flex'
@@ -28,18 +25,32 @@ export default function Clinic() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='black' fontWeight='bold' fontSize='2vh'>
+          <Text color='red' fontWeight='bold' fontSize='2vh'>
             Map placeholder
           </Text>
-          <Text color='black' fontWeight='bold' fontSize='2vh'>
+          <Text color='red' fontWeight='bold' fontSize='2vh'>
             Time placeholder
           </Text>
         </Container>
-        {/* background image */}
         <Image src={background} alt='background' />
-        
-        {/* items container */}
+        <Box position='absolute' zIndex='1'>
 
+
+          {/* doctor */}
+          <Image
+            src={doctor}
+            className={styles.item}
+            alt='doctor'
+            style={{
+              position: 'relative',
+              right: '-80px',
+              top: '400px',
+              width: '200px',
+              margin: '0',
+            }}
+          />
+
+        </Box>
       </Box>
       <Box position='absolute' bottom='10%' mt='2%' w='28em' background='white'>
         Text Component Here
