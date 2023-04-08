@@ -2,10 +2,6 @@
 import { CacheProvider } from '@chakra-ui/next-js'
 import { ChakraProvider, extendTheme, Box } from '@chakra-ui/react'
 
-export const metadata = {
-  title: 'Virtual Games',
-  description: 'The Tesseract'
-}
 
 const theme = extendTheme({
 
