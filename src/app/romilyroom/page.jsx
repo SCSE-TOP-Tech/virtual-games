@@ -16,8 +16,6 @@ export default function RomilyRoom() {
       })
   }, []);
 
-  // console.log(room.background.name)
-
   return (
     // To add loading page
     <Suspense fallback={<h1>Loading</h1>}> 

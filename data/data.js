@@ -81,7 +81,7 @@ export const characters = [
                 name:"Carmen's Room Background",
                 height: 1024,
                 width: 1024,
-                src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853525/virtual_games/rooms/carmen/carmenbg_nk8x4n.png",
+                src:"https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853525/virtual_games/rooms/carmen/carmenbg_nk8x4n.png"
             },
             clues: {
                 master_key: {
@@ -97,7 +97,7 @@ export const characters = [
                     width: 348,
                     height: 306,
                     src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/album_pbr2bh.png'
-                },
+                }
             },
             dummy_objects:{
                 clothespin: {
