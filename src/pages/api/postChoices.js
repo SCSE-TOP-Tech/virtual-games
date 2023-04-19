@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+export default async function postChoices() {
     const response = await fetch("/api/choices", {
         method: "POST",
         body: JSON.stringify({
