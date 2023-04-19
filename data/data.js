@@ -269,134 +269,75 @@ export const characters = [
             }
         }
     },
+    // Maan (Updated V1)
+    {
+        id: "maan",
+        name: "Maan", 
+        image: "src.png",  
+        actions: {
+            x: "src.svg",
+            talk: "src.svg"
+        },
+        room: {
+            name: "Maan's Room",
+            background: {
+                name:"Maan's Room Background",
+                height: 1024,
+                width: 1024,
+                src:`https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870723/virtual_games/rooms/maan/background_sbrqpu.png`
+            },
+            clues: {
+                spaceID_card: {
+                    name: 'Space ID Card',
+                    desc: 'Home Station: Andromeda',
+                    width: 485,
+                    height: 318,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/id_yzk534.png'
+                },
+            },
+            dummy_objects:{
+                spacesword: {
+                    name: 'Space Sword',
+                    desc: 'Extra edgy sword',
+                    width: 459,
+                    height: 544,
+                    src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870716/virtual_games/rooms/maan/spacesword_bxyqiw.png'
+                }
+            }
+        }
+    },
 ]
 
 export const rooms = [
-    // Clinic (To Update)
+    // Hallway (To Update)
     {
-        id: "clinic",
-        name: "Clinic",
-        background: "src.png",
-        objects: {
-            clues:{
-                galaxy_phone: {
-                    desc: 'Brand Galaxy Phone', 
-                    time: '9:30pm',
-                    msg: 'Hey, I am feeling unwell but I can’t find you at your clinic. Where are you?',
-                    src:'src.png'
-                }
+        id: "hallway",
+        name: "Hallway",
+        background: {
+            name:"Hallway Background",
+            height: 1024,
+            width: 1024,
+            src:`https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681871724/virtual_games/rooms/hallway/hallway-spaceship_afeimt.png`
+        },
+        clues: {
+            portrait: {
+                name: 'Portrait of Siblings',
+                desc: 'Image of the White Siblings',
+                width: 449,
+                height: 444,
+                src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681871718/virtual_games/rooms/hallway/perspective-sibling-photo_qlwolu.png'
             },
-            furnitures: {
-                pool_table: 'src.png',
-                wardrobe: 'src.png',
-                dressing_table: 'src.png',
-                door: 'src.png',
-                bed: 'src.png',
-                trophy_rack: 'src.png',
-                dressing_table: 'src.png',
-            },
+        },
+        dummy_objects:{
+            spacesword: {
+                name: 'Space Sword',
+                desc: 'Extra edgy sword',
+                width: 459,
+                height: 544,
+                src: 'https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870716/virtual_games/rooms/maan/spacesword_bxyqiw.png'
+            }
         }
     },
-    // Control Room (To Update)
-    {
-        id: "control",
-        name: "Control Room",
-        background: "src.png",
-        objects: {
-            clues:{
-                galaxy_phone: {
-                    desc: 'Brand Galaxy Phone', 
-                    time: '9:30pm',
-                    msg: 'Hey, I am feeling unwell but I can’t find you at your clinic. Where are you?',
-                    src:'src.png'
-                }
-            },
-            furnitures: {
-                pool_table: 'src.png',
-                wardrobe: 'src.png',
-                dressing_table: 'src.png',
-                door: 'src.png',
-                bed: 'src.png',
-                trophy_rack: 'src.png',
-                dressing_table: 'src.png',
-            },
-        }
-    },
-    // Dressing Room (To Update)
-    {
-        id: "dressing",
-        name: "Dressing Room",
-        background: "src.png",
-        objects: {
-            clues:{
-                galaxy_phone: {
-                    desc: 'Brand Galaxy Phone', 
-                    time: '9:30pm',
-                    msg: 'Hey, I am feeling unwell but I can’t find you at your clinic. Where are you?',
-                    src:'src.png'
-                }
-            },
-            furnitures: {
-                pool_table: 'src.png',
-                wardrobe: 'src.png',
-                dressing_table: 'src.png',
-                door: 'src.png',
-                bed: 'src.png',
-                trophy_rack: 'src.png',
-                dressing_table: 'src.png',
-            },
-        }
-    },
-    // Kitchenette (To Update)
-    {
-        id: "kitchenette",
-        name: "Kitchenette",
-        background: "src.png",
-        objects: {
-            clues:{
-                galaxy_phone: {
-                    desc: 'Brand Galaxy Phone', 
-                    time: '9:30pm',
-                    msg: 'Hey, I am feeling unwell but I can’t find you at your clinic. Where are you?',
-                    src:'src.png'
-                }
-            },
-            furnitures: {
-                pool_table: 'src.png',
-                wardrobe: 'src.png',
-                dressing_table: 'src.png',
-                door: 'src.png',
-                bed: 'src.png',
-                trophy_rack: 'src.png',
-                dressing_table: 'src.png',
-            },
-        }
-    },
-    // Storage Room (To Update)
-    {
-        id: "storage",
-        name: "Storage Room",
-        background: "src.png",
-        objects: {
-            clues:{
-                galaxy_phone: {
-                    desc: 'Brand Galaxy Phone', 
-                    time: '9:30pm',
-                    msg: 'Hey, I am feeling unwell but I can’t find you at your clinic. Where are you?',
-                    src:'src.png'
-                }
-            },
-            furnitures: {
-                pool_table: 'src.png',
-                wardrobe: 'src.png',
-                dressing_table: 'src.png',
-                door: 'src.png',
-                bed: 'src.png',
-                trophy_rack: 'src.png',
-                dressing_table: 'src.png',
-            },
-        }
-    }
 ]
 
 export const scenes = [

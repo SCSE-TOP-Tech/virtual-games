@@ -77,7 +77,7 @@ export default function CarmenRoom() {
 
                 {/* clothspin */}
                 <CldImage
-                  item={room.dummy_objects.clothspin}
+                  item={room.dummy_objects.clothespin}
                   className={styles.item}
                   style={{
                     position: 'relative',

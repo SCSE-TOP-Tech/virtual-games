@@ -103,7 +103,7 @@ export default function RomilyRoom() {
                 />
                 {/* Dumbbell */}
                 <CldImage 
-                  item={room.dummy_objects.dumbbells}
+                  item={room.dummy_objects.dumbbell}
                   className={styles.item}
                   style={{
                     position: 'relative',
