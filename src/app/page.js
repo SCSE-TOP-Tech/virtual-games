@@ -1,10 +1,16 @@
-'use client'
-import { Box, Text } from '@chakra-ui/react'
+import Image from 'next/image'
+import { Inter } from 'next/font/google'
+import styles from './page.module.css'
+import CharacterMoving from './animation/characterModels/CharacterMoving'
+import CharacterKilling from './animation/killingAnimation/CharacterKilling'
+const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main>
-      <Text fontSize='6xl' color='darkblue'>PLEASE LEARN CHAKRA UI!</Text>
-    </main>
+    <>
+   
+    <CharacterKilling name="cooper"/>
+    {/* <CharacterMoving name="princess" height="200"/> */}
+    </>
   )
 }
