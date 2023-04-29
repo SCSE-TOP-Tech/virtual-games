@@ -1,5 +1,5 @@
 'use client'
-import { Container, Box, Text, StylesProvider } from '@chakra-ui/react'
+import { Container, Box, Text } from '@chakra-ui/react'
 
 import Image from 'next/image'
 import styles from './components/styles.module.css'
@@ -15,28 +15,17 @@ export default function SeraphineRoom() {
     //bound to mobile view
     <Box w={['100%', '30em']} h='100%' p={4}>
       {/* container for background image and items*/}
-      <Box
-        display='flex'
-        justifyContent='center'
-        zIndex='0'
-        h='90%'
-        width='100%'
-      >
-        {/* map and time components */}
-        <Container
-          position='absolute'
-          display='flex'
-          justifyContent='space-around'
-          mt='1%'
-        >
-          {/* placeholders for components  */}
-          <Text color='black' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
-          <Text color='black' fontWeight='bold' fontSize='2vh'>
-            Time placeholder
-          </Text>
-        </Container>
+      {/* map and time components */}
+      <Container display='flex' justifyContent='space-around'>
+        {/* placeholders for components  */}
+        <Box color='red' fontWeight='bold' fontSize='2vh' p='10%'>
+          Map placeholder
+        </Box>
+        <Box color='red' fontWeight='bold' fontSize='2vh' p='10%'>
+          Time placeholder
+        </Box>
+      </Container>
+      <Box display='flex' justifyContent='center' zIndex='0' width='100%'>
         {/* background image */}
         <Image src={background} alt='background' />
         {/* items container */}
@@ -48,9 +37,9 @@ export default function SeraphineRoom() {
             alt='teddybear'
             style={{
               position: 'relative',
-              top: '525px',
+              top: '325px',
               left: '40px',
-              width: '80px',
+              width: '55px',
             }}
           />
 
@@ -61,10 +50,9 @@ export default function SeraphineRoom() {
             alt='jewelry box'
             style={{
               position: 'relative',
-              top: '255px',
-              right: '130px',
-
-              width: '80px',
+              top: '150px',
+              right: '135px',
+              width: '70px',
             }}
           />
 
@@ -75,9 +63,9 @@ export default function SeraphineRoom() {
             alt='lipstick'
             style={{
               position: 'relative',
-              top: '450px',
-              right: '120px',
-              width: '40px',
+              top: '260px',
+              right: '150px',
+              width: '30px',
               filter: 'brightness(0.75)',
             }}
           />
@@ -89,9 +77,9 @@ export default function SeraphineRoom() {
             alt='camera'
             style={{
               position: 'relative',
-              left: '140px',
-              top: '215px',
-              width: '60px',
+              left: '145px',
+              top: '120px',
+              width: '40px',
             }}
           />
         </Box>
