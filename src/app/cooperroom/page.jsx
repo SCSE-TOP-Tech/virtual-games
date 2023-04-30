@@ -40,9 +40,9 @@ export default function CooperRoom() {
             className={styles.item}
             style={{
               position: 'relative',
-              right: '50px',
-              top: '320px',
-              width: '150px',
+              right: '50%',
+              top: '80%',
+              width: '10vh',
             }}
           />
           {/* newspaper  */}
