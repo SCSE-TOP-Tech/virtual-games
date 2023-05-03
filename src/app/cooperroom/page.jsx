@@ -13,7 +13,7 @@ import styles from './components/styles.module.css'
 
 import { Container, Text, Box } from '@chakra-ui/react'
 
-export default function cooperroom() {
+export default function CooperRoom() {
   return (
     <Box w={['100%', '30em']} h='100%' p={4}>
       {/* background image */}
@@ -30,6 +30,7 @@ export default function cooperroom() {
         <Image src={background} alt='background' />
         <Box position='absolute' zIndex='1' height='100%'>
           {/* luggage  */}
+          {/* custom image is used */}
           <CustomImage
             src={luggage}
             alt='luggage'
