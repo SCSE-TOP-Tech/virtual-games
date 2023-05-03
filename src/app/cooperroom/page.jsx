@@ -48,7 +48,7 @@ export default function CooperRoom() {
             position='relative'
             top={{ base: '28%', sm: '35%' }}
             right='35%'
-            width={{ base: '60px', sm: '80px' }}
+            width={{ base: '50px', sm: '60px' }}
             filter='auto'
             brightness='75%'
           />
@@ -72,15 +72,15 @@ export default function CooperRoom() {
             alt='coffeemachine'
             className={styles.item}
             position='relative'
-            top={{ base: '5%', sm: '5%' }}
-            left={{ base: '130%', sm: '120%' }}
+            top={{ base: '3%', sm: '4%' }}
+            left={{ base: '130%', sm: '131%' }}
             width={{ base: '60px', sm: '75px' }}
             filter='auto'
             brightness='75%'
           />
         </Box>
       </Box>
-      <Box position='absolute' mt='2%' w={['100%', '28em']} background='white'>
+      <Box mt='2%' w={['100%', '28em']} background='white'>
         Text Component Here
       </Box>
     </Box>
