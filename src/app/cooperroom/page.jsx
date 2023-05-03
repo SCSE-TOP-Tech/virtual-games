@@ -13,7 +13,7 @@ import styles from './components/styles.module.css'
 
 import { Container, Text, Box } from '@chakra-ui/react'
 
-export default function Test() {
+export default function cooperroom() {
   return (
     <Box w={['100%', '30em']} h='100%' p={4}>
       {/* background image */}
