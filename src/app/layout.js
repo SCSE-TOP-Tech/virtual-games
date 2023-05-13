@@ -4,11 +4,21 @@ import { ChakraProvider, extendTheme, Box } from '@chakra-ui/react'
 
 export const metadata = {
   title: 'Virtual Games',
-  description: 'The Tesseract'
+  description: 'The Tesseract',
 }
 
 const theme = extendTheme({
-
+  colors: {},
+  fonts: {},
+  fontSizes: {},
+  breakpoints: {
+    iphone_se: '375px',
+    iphone_xr: '414px',
+    iphone_12pro: '390px',
+    pixel_5: '393px',
+    galaxy_s8plus: '360px',
+    galaxy_s20ultra: '412px',
+  },
 })
 
 export default function RootLayout({ children }) {
@@ -17,7 +27,13 @@ export default function RootLayout({ children }) {
       <body>
         <CacheProvider>
           <ChakraProvider theme={theme}>
-            <Box display='flex' bg='lightgreen' justifyContent='center' w='100%' h={800}>
+            <Box
+              display='flex'
+              bg='lightgreen'
+              justifyContent='center'
+              w='100%'
+              h={800}
+            >
               {children}
             </Box>
           </ChakraProvider>
