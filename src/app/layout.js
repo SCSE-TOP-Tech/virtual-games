@@ -13,11 +13,9 @@ const theme = extendTheme({
   fontSizes: {},
   breakpoints: {
     iphone_se: '375px',
-    iphone_xr: '414px',
-    iphone_12pro: '390px',
-    pixel_5: '393px',
+    iphone_xr: '414px', //same as galaxy s20ultra
+    iphone_12pro: '390px', //same as pixel 5
     galaxy_s8plus: '360px',
-    galaxy_s20ultra: '412px',
   },
 })
 

@@ -11,7 +11,7 @@ import newspaper from '../../../public/Rooms/CooperRoom/newspaper.png'
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 
-import { Container, Text, Box } from '@chakra-ui/react'
+import { Container, Box } from '@chakra-ui/react'
 
 export default function CooperRoom() {
   return (
@@ -36,8 +36,19 @@ export default function CooperRoom() {
             alt='luggage'
             className={styles.item}
             position='relative'
-            top={{ base: '32%', sm: '40%' }}
-            width={{ base: '110px', sm: '135px', md: '150px' }}
+            top={{
+              iphone_se: '32%',
+              iphone_xr: '35%',
+              iphone_12pro: '32%',
+              galaxy_s8plus: '28%',
+            }}
+            left={{ galaxy_s8plus: '30%' }}
+            width={{
+              iphone_se: '110px',
+              iphone_xr: '115px',
+              iphone_12pro: '115px',
+              galaxy_s8plus: '110px',
+            }}
           />
 
           {/* newspaper  */}
@@ -46,9 +57,24 @@ export default function CooperRoom() {
             alt='newspaper'
             className={styles.item}
             position='relative'
-            top={{ base: '28%', sm: '35%' }}
-            right='35%'
-            width={{ base: '50px', sm: '60px' }}
+            top={{
+              iphone_se: '26%',
+              iphone_xr: '30%',
+              iphone_12pro: '26%',
+              galaxy_s8plus: '24%',
+            }}
+            right={{
+              iphone_se: '35%',
+              iphone_xr: '35%',
+              iphone_12pro: '35%',
+              galaxy_s8plus: '30%',
+            }}
+            width={{
+              iphone_se: '50px',
+              iphone_xr: '55px',
+              iphone_12pro: '50px',
+              galaxy_s8plus: '50px',
+            }}
             filter='auto'
             brightness='75%'
           />
@@ -59,9 +85,19 @@ export default function CooperRoom() {
             alt='id'
             className={styles.item}
             position='relative'
-            top={{ base: '25%', sm: '30%' }}
-            right='90%'
-            width={{ base: '90px', sm: '100px' }}
+            top={{
+              iphone_se: '2.5%',
+              iphone_xr: '3.5%',
+              iphone_12pro: '2.5%',
+              galaxy_s8plus: '1%',
+            }}
+            right='87%'
+            width={{
+              iphone_se: '100px',
+              iphone_xr: '105px',
+              iphone_12pro: '100px',
+              galaxy_s8plus: '100px',
+            }}
             filter='auto'
             brightness='70%'
           />
@@ -72,9 +108,24 @@ export default function CooperRoom() {
             alt='coffeemachine'
             className={styles.item}
             position='relative'
-            top={{ base: '3%', sm: '4%' }}
-            left={{ base: '130%', sm: '131%' }}
-            width={{ base: '60px', sm: '75px' }}
+            top={{
+              iphone_se: '2%',
+              iphone_xr: '3.5%',
+              iphone_12pro: '2%',
+              galaxy_s8plus: '1%',
+            }}
+            left={{
+              iphone_se: '129%',
+              iphone_xr: '131%',
+              iphone_12pro: '129%',
+              galaxy_s8plus: '128%',
+            }}
+            width={{
+              iphone_se: '55px',
+              iphone_xr: '60px',
+              iphone_12pro: '55px',
+              galaxy_s8plus: '55px',
+            }}
             filter='auto'
             brightness='75%'
           />
