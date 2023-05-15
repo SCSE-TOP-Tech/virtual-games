@@ -332,10 +332,91 @@ export const characters = [
       }
     },
   },
+  // Maan (Updated V1)
+  {
+    id: "maan",
+    name: "Maan",
+    image: "src.png",
+    actions: {
+      x: "src.svg",
+      talk: "src.svg",
+    },
+    room: {
+      name: "Maan's Room",
+      background: {
+        name: "Maan's Room Background",
+        height: 1024,
+        width: 1024,
+        src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870723/virtual_games/rooms/maan/background_sbrqpu.png`,
+      },
+      clues: {
+        spaceID_card: {
+          name: "Space ID Card",
+          desc: "Home Station: Andromeda",
+          width: 485,
+          height: 318,
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/id_yzk534.png",
+        },
+      },
+      dummy_objects: {
+        spacesword: {
+          name: "Space Sword",
+          desc: "Extra edgy sword",
+          width: 459,
+          height: 544,
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870716/virtual_games/rooms/maan/spacesword_bxyqiw.png",
+        },
+      },
+    },
+  },
+  // Princess White (Updated V1)
+  {
+    id: "princess_white",
+    name: "Princess White",
+    image: "src.png",
+    actions: {
+        x: "src.svg",
+        talk: "src.svg",
+    },
+    room: {
+        name: "Princess White's Room",
+        background: {
+        name: "Princess White's Room Background",
+        height: 952,
+        width: 952,
+        src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160197/virtual_games/rooms/princesswhite/background_ytuxli.png`,
+        },
+        clues: {
+        map: {
+            name: "Map of Infinity Stones",
+            desc: "Map of the Infinity Stones",
+            width: 605,
+            height: 575,
+            src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160196/virtual_games/rooms/princesswhite/infinity-stones-map_ho4saw.png",
+        },
+        safe: {
+            name: "Empty Safe",
+            desc: "Safe that had been stolen from!",
+            width: 276,
+            height: 210,
+            src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160196/virtual_games/rooms/princesswhite/empty-safe_zzcxjz.png",
+            },
+        },
+        dummy_objects: {
+            door: {
+                name: "Door",
+                desc: "Just an ordinary door",
+                width: 86,
+                height: 493,
+                src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160195/virtual_games/rooms/princesswhite/connecting-door_jjo8al.png",
+            },
+        },
+    },
+  },
 ];
 
 export const rooms = [
-  // Hallway (To Update)
+  // Hallway (Updated V1)
   {
     id: "hallway",
     name: "Hallway",
@@ -361,6 +442,109 @@ export const rooms = [
         width: 459,
         height: 544,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870716/virtual_games/rooms/maan/spacesword_bxyqiw.png",
+      },
+    },
+  },
+
+  // Captain Room (Updated V1)
+  {
+    id: "captain",
+    name: "Captain's Room",
+    background: {
+      name: "Captain Room's Background",
+      height: 952,
+      width: 952,
+      src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158382/virtual_games/rooms/captain/background_pvyaxb.png`,
+    },
+    clues: {
+      music_albums: {
+        name: "Music Albums",
+        desc: "Music Albums",
+        width: 618,
+        height: 404,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158381/virtual_games/rooms/captain/musicalbums_rc95qi.png",
+      },
+      guestbook: {
+        name: "Guest Book",
+        desc: "Guest Book of the Event", 
+        width: 690,
+        height: 361, 
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/guestbook_l1nqfu.png"
+      },
+      note: {
+        name: "Debt Note",
+        desc: "Debt Note of Princess White oweing 500,000 gold", 
+        width: 771,
+        height: 324, 
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158381/virtual_games/rooms/captain/note_zjinls.png"
+      },
+      lipstick: {
+        name: "Lipstick",
+        desc: "Lipstick", 
+        width: 225,
+        height: 225, 
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/lipstick_upwiwx.png"
+      },
+      blood_letter: {
+        name: "Bloody Letters",
+        desc: "C and W written in blood", 
+        width: 332,
+        height: 208, 
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/bloodletter_ykqiff.png"
+      },
+      broken_watch: {
+        name: "Broken Watch",
+        desc: "Broken Watch stopped at xx.xxpm", 
+        width: 500,
+        height: 500, 
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/brokenwatch_qm3oec.png"
+      },
+      spaceguns: {
+        name: "Space Guns",
+        desc: "Space Guns", 
+        width: 600,
+        height: 416, 
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158381/virtual_games/rooms/captain/spaceguns_doavma.png"
+      }
+    }
+  },
+  // Clinic (Updated V1)
+  {
+    id: "clinic",
+    name: "Clinic",
+    background: {
+      name: "Clinic Background",
+      height: 1024,
+      width: 1024,
+      src: ""
+    },
+    npc: {
+      doctor: {
+        name: "Doctor",
+        desc: "The doctor of the ship",
+        width: 493,
+        height: 506,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684159430/virtual_games/rooms/clinic/doctor_gtqzu6.png",
+      },
+    },
+  },
+  // Dressing Room (Updated V1)
+  {
+    id: "dressing_room",
+    name: "Dressing Room",
+    background: {
+      name: "Dressing Room Background",
+      height: 1024,
+      width: 1024,
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684159872/virtual_games/rooms/dressing/background_h2vgb5.png"
+    },
+    clues: {
+      lipstick: {
+        name: "Lipstick",
+        desc: "Lipstick",
+        width: 225,
+        height: 225,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684159870/virtual_games/rooms/dressing/lipstick_wx9myl.png",
       },
     },
   },

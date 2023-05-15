@@ -1,8 +1,4 @@
 "use client";
-import background from "../../../public/Rooms/BrandRoom/brandbg.png";
-import phone from "../../../public/Rooms/BrandRoom/galaxy-phone.png";
-
-import Image from "next/image";
 import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import CldImage from "../components/CldImage";
