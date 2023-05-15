@@ -22,86 +22,81 @@ export default function SeraphineRoom() {
     <Box w={['100%', '30em']} h='100%' p={4}>
       {/* container for background image and items*/}
       {room && (
-        <Box
-          display='flex'
-          justifyContent='center'
-          zIndex='0'
-          h='90%'
-          width='100%'
-        >
-          {/* map and time components */}
-          <Container
-            position='absolute'
-            display='flex'
-            justifyContent='space-around'
-            mt='1%'
-          >
-            {/* placeholders for components  */}
-            <Text color='black' fontWeight='bold' fontSize='2vh'>
-              Map placeholder
-            </Text>
-            <Text color='black' fontWeight='bold' fontSize='2vh'>
-              Time placeholder
-            </Text>
-          </Container>
-          {/* background image */}
-          <CldImage 
+      {/* map and time components */}
+      <Container display='flex' justifyContent='space-around'>
+        {/* placeholders for components  */}
+        <Box color='red' fontWeight='bold' fontSize='2vh' p='10%'>
+          Map placeholder
+        </Box>
+        <Box color='red' fontWeight='bold' fontSize='2vh' p='10%'>
+          Time placeholder
+        </Box>
+      </Container>
+      <Box display='flex' justifyContent='center' zIndex='0' width='100%'>
+        {/* background image */}
+        <CldImage 
             item={room.background}
              />
-          {/* items container */}
-          <Box position='absolute' zIndex='1'>
-            {/*all dimensions are calculated manually lol */}
-            <CldImage
+            {/* items container */}
+        <Box position='absolute' zIndex='1'>
+          {/*all dimensions are calculated manually lol */}
+          <CldImage
               item={room.dummy_objects.teddybear}
               className={styles.item}
-              style={{
-                position: 'relative',
-                top: '525px',
-                left: '40px',
-                width: '80px',
-              }}
-            />
+            alt='teddybear'
+            style={{
+              position: 'relative',
+              top: '325px',
+              left: '40px',
+              width: '55px',
+            }}
+          />
 
-            {/*Jewelry box */}
-            <CldImage
+          {/*Jewelry box */}
+          <CldImage
               item={room.dummy_objects.jewelrybox}
               className={styles.item}
-              style={{
-                position: 'relative',
-                top: '255px',
-                right: '130px',
-                width: '80px',
-              }}
-            />
+            alt='jewelry box'
+            style={{
+              position: 'relative',
+              top: '255px',
+              right: '130px',
 
-            {/* Lipstick */}
-            <CldImage
+              width: '80px',
+            }}
+          />
+
+          {/* Lipstick */}
+          <CldImage
               item={room.clues.lipstick}
-              style={{
-                position: 'relative',
-                top: '450px',
-                right: '120px',
-                width: '40px',
-                filter: 'brightness(0.75)',
-              }}
-            />
+            className={styles.item}
+            alt='lipstick'
+            style={{
+              position: 'relative',
+              top: '450px',
+              right: '120px',
+              width: '40px',
+              filter: 'brightness(0.75)',
+            }}
+          />
 
-            {/* camera */}
-            <CldImage
+          {/* camera */}
+          <CldImage
               item={room.dummy_objects.camera}
-              style={{
-                position: 'relative',
-                left: '140px',
-                top: '215px',
-                width: '60px',
-              }}
-            />
-          </Box>
+            className={styles.item}
+            alt='camera'
+            style={{
+              position: 'relative',
+              left: '140px',
+              top: '215px',
+              width: '60px',
+            }}
+          />
         </Box>
-      )}
-        <Box position='absolute' bottom='10%' mt='2%' w='28em' background='white'>
-          Text Component Here
-        </Box>
+      </Box>
+      <Box position='absolute' bottom='10%' mt='2%' w='28em' background='white'>
+        Text Component Here
+      </Box>
     </Box>
   )
 }
