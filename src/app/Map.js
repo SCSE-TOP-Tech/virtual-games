@@ -32,12 +32,12 @@ export default function Map() {
                 borderRadius='0'
                 _hover={{bg: 'teal.300'}}
             >
-                Map (temp display)
+                Map
             </Button>
             <Collapse in={isOpen}>
-                <List styleType='none' ml='0' spacing='1rem'>
+                <List styleType='none' ml='0'>
                     {rooms.map((location, index) => (
-                        <ListItem key={index}>
+                        <ListItem p={['0.5rem', '0.3rem']} key={index}>
                             <Link href={location.href}>{location.name}</Link>
                         </ListItem>
                     ))}

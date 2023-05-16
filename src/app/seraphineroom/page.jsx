@@ -16,14 +16,20 @@ export default function SeraphineRoom() {
     <Box w={['100%', '30em']} h='100%' p={4}>
       {/* container for background image and items*/}
       {/* map and time components */}
-      <Container display='flex' justifyContent='space-around'>
-        {/* placeholders for components  */}
-        <Map />
-        <Box color='red' fontWeight='bold' fontSize='2vh' p='10%'>
-          Time placeholder
-        </Box>
-      </Container>
-      <Box display='flex' justifyContent='center' zIndex='0' width='100%'>
+      <Box
+        display='flex'
+        justifyContent='center'
+        zIndex='0'
+        h='90%'
+        width='100%'
+      >
+        <Container position='absolute' display='flex' justifyContent='space-around' mt='1%'>
+          {/* placeholders for components  */}
+          <Map />
+          <Text color='red' fontWeight='bold' fontSize='2vh'>
+            Time placeholder
+          </Text>
+        </Container>
         {/* background image */}
         <Image src={background} alt='background' />
         {/* items container */}
@@ -35,7 +41,7 @@ export default function SeraphineRoom() {
             alt='teddybear'
             style={{
               position: 'relative',
-              top: '325px',
+              top: '35rem',
               left: '40px',
               width: '55px',
             }}
@@ -48,7 +54,7 @@ export default function SeraphineRoom() {
             alt='jewelry box'
             style={{
               position: 'relative',
-              top: '150px',
+              top: '18rem',
               right: '135px',
               width: '70px',
             }}
@@ -61,7 +67,7 @@ export default function SeraphineRoom() {
             alt='lipstick'
             style={{
               position: 'relative',
-              top: '260px',
+              top: '30rem',
               right: '150px',
               width: '30px',
               filter: 'brightness(0.75)',
@@ -76,7 +82,7 @@ export default function SeraphineRoom() {
             style={{
               position: 'relative',
               left: '145px',
-              top: '120px',
+              top: '20rem',
               width: '40px',
             }}
           />
