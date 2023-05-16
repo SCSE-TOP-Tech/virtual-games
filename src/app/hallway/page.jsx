@@ -5,6 +5,7 @@ import photo from '../../../public/Rooms/Hallway/perspective-sibling-photo.png'
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
+import Map from '../Map'
 
 export default function Hallway() {
   return (
@@ -24,9 +25,7 @@ export default function Hallway() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='red' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
+          <Map />
 
           <Text color='red' fontWeight='bold' fontSize='2vh'>
             Time placeholder

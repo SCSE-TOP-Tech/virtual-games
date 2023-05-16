@@ -9,7 +9,7 @@ import camera from '../../../public/Rooms/SeraphineRoom/camera.png'
 import lipstick from '../../../public/Rooms/SeraphineRoom/lipstick.png'
 import teddybear from '../../../public/Rooms/SeraphineRoom/teddybear.png'
 import jewelrybox from '../../../public/Rooms/SeraphineRoom/jewelrybox.png'
-
+import Map from '../Map'
 export default function SeraphineRoom() {
   return (
     //bound to mobile view
@@ -18,9 +18,7 @@ export default function SeraphineRoom() {
       {/* map and time components */}
       <Container display='flex' justifyContent='space-around'>
         {/* placeholders for components  */}
-        <Box color='red' fontWeight='bold' fontSize='2vh' p='10%'>
-          Map placeholder
-        </Box>
+        <Map />
         <Box color='red' fontWeight='bold' fontSize='2vh' p='10%'>
           Time placeholder
         </Box>

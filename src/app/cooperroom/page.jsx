@@ -8,7 +8,7 @@ import newspaper from '../../../public/Rooms/CooperRoom/newspaper.png'
 
 import Image from 'next/image'
 import styles from './components/styles.module.css'
-
+import Map from '../Map'
 import { Container, Text, Box } from '@chakra-ui/react'
 
 export default function CooperRoom() {
@@ -17,15 +17,7 @@ export default function CooperRoom() {
       {/* background image */}
       <Container display='flex' justifyContent='space-around'>
         {/* placeholders for components  */}
-        <Box
-          color='red'
-          fontWeight='bold'
-          fontSize='2vh'
-          background='white'
-          p='10%'
-        >
-          Map placeholder
-        </Box>
+        <Map />
         <Box color='red' fontWeight='bold' fontSize='2vh'>
           Time placeholder
         </Box>

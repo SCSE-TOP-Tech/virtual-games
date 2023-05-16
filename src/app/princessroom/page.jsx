@@ -4,7 +4,7 @@ import door from '../../../public/Rooms/PrincessRoom/connecting-door.png'
 import safe from '../../../public/Rooms/PrincessRoom/empty-safe.png'
 import map from '../../../public/Rooms/PrincessRoom/infinity-stones-map.png'
 
-
+import Map from '../Map'
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
@@ -27,9 +27,7 @@ export default function PrincessRoom() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='red' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
+          <Map />
           <Text color='red' fontWeight='bold' fontSize='2vh'>
             Time placeholder
           </Text>

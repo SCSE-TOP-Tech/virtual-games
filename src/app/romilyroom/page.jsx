@@ -10,7 +10,7 @@ import towel from '../../../public/Rooms/RomilyRoom/towel.png'
 import clothes from '../../../public/Rooms/RomilyRoom/clothes.png'
 import punchingbag from '../../../public/Rooms/RomilyRoom/punching-bag.png'
 import dumbbell from '../../../public/Rooms/RomilyRoom/dumbbell.png'
-
+import Map from '../Map'
 export default function RomilyRoom() {
   return (
     //bound to mobile view
@@ -31,9 +31,7 @@ export default function RomilyRoom() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='black' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
+          <Map />
           <Text color='black' fontWeight='bold' fontSize='2vh'>
             Time placeholder
           </Text>

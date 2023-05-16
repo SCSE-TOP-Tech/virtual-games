@@ -5,6 +5,7 @@ import phone from '../../../public/Rooms/BrandRoom/galaxy-phone.png'
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
+import Map from '../Map'
 
 export default function BrandRoom() {
   return (
@@ -24,9 +25,7 @@ export default function BrandRoom() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='red' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
+          <Map />
           <Text color='red' fontWeight='bold' fontSize='2vh'>
             Time placeholder
           </Text>

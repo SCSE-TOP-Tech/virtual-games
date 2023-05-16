@@ -9,6 +9,7 @@ import towel from '../../../public/Rooms/DoyleRoom/towel.png'
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
+import Map from '../Map'
 
 export default function DoyleRoom() {
   return (
@@ -28,9 +29,7 @@ export default function DoyleRoom() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='red' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
+          <Map />
           <Text color='red' fontWeight='bold' fontSize='2vh'>
             Time placeholder
           </Text>

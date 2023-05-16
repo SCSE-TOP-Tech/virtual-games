@@ -1,25 +1,48 @@
-import { Box, Link, Select, Stack } from '@chakra-ui/react'
+import { Box, Button, Collapse, Link, ListItem, List } from '@chakra-ui/react'
+import { useState } from 'react'
 
 export default function Map() {
-    return (
-        <Select placeholder='Map'>
-            <option><Link href='/clinic'>Clinic</Link></option>
-        </Select>
-    )
-    
-}
+    const [isOpen, setIsOpen] = useState(false)
+    const handleToggle = () => {
+        setIsOpen(!isOpen)
+    }
 
-        // <Box>
-        //     <Link href='/clinic'>Clinic</Link>
-        //     <Link href='/hallway'>Hallway</Link>
-        //     <Link href='/princessroom'>Princess' Room</Link>
-        //     <Link href='/dressingroom'>Dressing Room</Link>
-        //     <Link href='/caprainroom'>Captain's Room</Link>
-        //     <Link href='/brandroom'>Brand's Room</Link>
-        //     <Link href='/carmenroom'>Carmen's Room</Link>
-        //     <Link href='/cooperroom'>Cooper's Room</Link>
-        //     <Link href='/doyleroom'>Doyle's Room</Link>
-        //     <Link href='/maanroom'>Maan's Room</Link>
-        //     <Link href='/romilyroom'>Romily's Room</Link>
-        //     <Link href='/seraphineroom'>Seraphine's Room</Link>
-        // </Box>
+    const rooms = [
+        { name: 'Clinic', href: '/clinic' },
+        { name: 'Hallway', href: '/hallway' },
+        { name: "Princess' Room", href: '/princessroom' },
+        { name: "Dressing Room", href: '/dressingroom' },
+        { name: "Captain's Room", href: '/captainroom' },
+        { name: "Brand's Room", href: '/brandroom' },
+        { name: "Carmen's Room", href: '/carmenroom' },
+        { name: "Cooper's Room", href: '/cooperroom' },
+        { name: "Doyle's Room", href: '/doyleroom' },
+        { name: "Maan's Room", href: '/maanroom' },
+        { name: "Romily's Room", href: '/romilyroom' },
+        { name: "Seraphine's Room", href: '/seraphineroom' }
+    ]
+
+    return (
+        <Box bg='white' zIndex={100}>
+            <Button
+                onClick={handleToggle}
+                bg='teal.400'
+                w='10rem'
+                h='5rem'
+                borderRadius='0'
+                _hover={{bg: 'teal.300'}}
+            >
+                Map (temp display)
+            </Button>
+            <Collapse in={isOpen}>
+                <List styleType='none' ml='0' spacing='1rem'>
+                    {rooms.map((location, index) => (
+                        <ListItem key={index}>
+                            <Link href={location.href}>{location.name}</Link>
+                        </ListItem>
+                    ))}
+                </List>
+            </Collapse>
+        </Box>
+    )
+}

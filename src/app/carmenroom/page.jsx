@@ -7,7 +7,7 @@ import masterkey from '../../../public/Rooms/CarmenRoom/master-key.png'
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
-
+import Map from '../Map'
 export default function CarmenRoom() {
   return (
     <Box w={['100%', '30em']} h='100%' p={4}>
@@ -26,9 +26,7 @@ export default function CarmenRoom() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='red' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
+          <Map />
           <Text color='red' fontWeight='bold' fontSize='2vh'>
             Time placeholder
           </Text>

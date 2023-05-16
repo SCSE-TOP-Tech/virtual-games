@@ -6,6 +6,7 @@ import styles from './components/styles.module.css'
 
 import background from '../../../public/Rooms/Clinic/clinic.png'
 import doctor from '../../../public/Rooms/Clinic/doctor.png'
+import Map from '../Map'
 
 export default function Clinic() {
   return (
@@ -25,9 +26,7 @@ export default function Clinic() {
           mt='1%'
         >
           {/* placeholders for components  */}
-          <Text color='red' fontWeight='bold' fontSize='2vh'>
-            Map placeholder
-          </Text>
+          <Map />
           <Text color='red' fontWeight='bold' fontSize='2vh'>
             Time placeholder
           </Text>
