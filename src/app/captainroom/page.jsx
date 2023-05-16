@@ -9,10 +9,10 @@ import musicalbums from '../../../public/Rooms/CaptainRoom/musicalbums.png'
 import background from '../../../public/Rooms/CaptainRoom/background.png'
 
 
-
 import Image from 'next/image'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
+import Map from '../Map'
 
 export default function CaptainRoom() {
     return (
@@ -34,9 +34,8 @@ export default function CaptainRoom() {
             mt='1%'
           >
             {/* placeholders for components  */}
-            <Text color='white' fontWeight='bold' fontSize='2vh'>
-              Map placeholder
-            </Text>
+            <Map />
+            
             <Text color='white' fontWeight='bold' fontSize='2vh'>
               Time placeholder
             </Text>
