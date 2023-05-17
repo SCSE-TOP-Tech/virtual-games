@@ -16,7 +16,7 @@ export const characters = [
         name: "Doyle's Room Background",
         height: 1024,
         width: 1024,
-        src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680258151/virtual_games/rooms/doyleroombg_zl4tz4.png`,
+        src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516074/virtual_games/rooms/doyle/doyleroombg_eocjy8.png`,
       },
       clues: {
         spaceID_card: {
