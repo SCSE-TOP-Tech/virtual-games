@@ -8,6 +8,7 @@ import fetchRoom from '@/pages/api/rooms/fetchRoom'
 export default function CarmenRoom() {
 
   const [room, setRoom] = useState(false);
+  const [text, setText] = useState("");
   
   // Initial Load
   useEffect(() => {
@@ -17,6 +18,9 @@ export default function CarmenRoom() {
       })
   }, []);
 
+  const textHandler = (text) => { 
+    setText(text);
+  }
   return (
     <Suspense fallback={<h1>Loading</h1>}> 
     {room && 
@@ -49,8 +53,10 @@ export default function CarmenRoom() {
             />
             <Box position='absolute' zIndex='1'>
 
+
               {/* mail */}
               <CldImage
+                clickHandler={textHandler(room.clues.mail.desc)}
                 item={room.clues.mail}
                 className={styles.item}
                 style={{
@@ -91,7 +97,7 @@ export default function CarmenRoom() {
             </Box>
           </Box>
           <Box position='absolute' bottom='10%' mt='2%' w='28em' background='white'>
-            Text Component Here
+            {text}
           </Box>
         </Box>
       </div>)}
