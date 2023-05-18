@@ -1,5 +1,6 @@
 'use client'
 import styles from './components/styles.module.css'
+import Map from '../Map'
 import { Container, Text, Box } from '@chakra-ui/react'
 import CldImage from '../components/CldImage'
 import { Suspense, useEffect, useState } from 'react'
@@ -36,9 +37,7 @@ export default function MaanRoom() {
               mt='1%'
             >
               {/* placeholders for components  */}
-              <Text color='red' fontWeight='bold' fontSize='2vh'>
-                Map placeholder
-              </Text>
+              <Map />
               <Text color='red' fontWeight='bold' fontSize='2vh'>
                 Time placeholder
               </Text>

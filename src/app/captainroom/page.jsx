@@ -4,6 +4,7 @@ import { Container, Text, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import CldImage from "../components/CldImage";
+import Map from "../Map";
 
 export default function CaptainRoom() {
   const [room, setRoom] = useState(false);
@@ -36,9 +37,7 @@ export default function CaptainRoom() {
                 mt="1%"
               >
                 {/* placeholders for components  */}
-                <Text color="white" fontWeight="bold" fontSize="2vh">
-                  Map placeholder
-                </Text>
+                <Map />
                 <Text color="white" fontWeight="bold" fontSize="2vh">
                   Time placeholder
                 </Text>

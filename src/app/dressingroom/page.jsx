@@ -4,6 +4,7 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import CldImage from "../components/CldImage";
+import Map from "../Map";
 
 export default function DoyleRoom() {
   const [room, setRoom] = useState(false);
@@ -35,9 +36,7 @@ export default function DoyleRoom() {
                 mt="1%"
               >
                 {/* placeholders for components  */}
-                <Text color="red" fontWeight="bold" fontSize="2vh">
-                  Map placeholder
-                </Text>
+                <Map />
                 <Text color="red" fontWeight="bold" fontSize="2vh">
                   Time placeholder
                 </Text>
