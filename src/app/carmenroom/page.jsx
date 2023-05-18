@@ -25,7 +25,7 @@ export default function CarmenRoom() {
     <Suspense fallback={<h1>Loading</h1>}> 
     {room && 
       (<div>
-        <Box w={['100%', '30em']} h='100%' p={4}>
+        <Box w={['100%', '30rem']} h='100%' p={4}>
           {/* background image */}
           <Box
             display='flex'
@@ -56,7 +56,7 @@ export default function CarmenRoom() {
 
               {/* mail */}
               <CldImage
-                clickHandler={textHandler(room.clues.mail.desc)}
+                // onClick={()=>textHandler(room.clues.mail.desc)}
                 item={room.clues.mail}
                 className={styles.item}
                 style={{
