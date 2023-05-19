@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const CldImage = ({item, className, style, clickHandler}) => {
+const CldImage = ({item, className, style, onClick}) => {
   return (
     <Image
         alt={item.name}
@@ -10,7 +10,7 @@ const CldImage = ({item, className, style, clickHandler}) => {
         width={item.width}
         className={className}
         style={style}
-        onClick={clickHandler}
+        onClick={onClick}
     />
   )
 }

@@ -56,7 +56,7 @@ export default function CarmenRoom() {
 
               {/* mail */}
               <CldImage
-                clickHandler={()=>textHandler(room.clues.mail.desc)}
+                onClick={()=>textHandler(room.clues.mail.desc)}
                 item={room.clues.mail}
                 className={styles.item}
                 style={{
@@ -71,7 +71,7 @@ export default function CarmenRoom() {
 
               {/* master key */}
               <CldImage
-                clickHandler={()=>textHandler(room.clues.master_key.desc)}
+                onClick={()=>textHandler(room.clues.master_key.desc)}
                 item={room.clues.master_key}
                 className={styles.item}
                 style={{
@@ -86,7 +86,7 @@ export default function CarmenRoom() {
 
                 {/* clothspin */}
                 <CldImage
-                  clickHandler={()=>textHandler(room.dummy_objects.clothespin.desc)}
+                  onClick={()=>textHandler(room.dummy_objects.clothespin.desc)}
                   item={room.dummy_objects.clothespin}
                   className={styles.item}
                   style={{
