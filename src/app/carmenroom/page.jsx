@@ -8,7 +8,7 @@ import fetchRoom from '@/pages/api/rooms/fetchRoom'
 export default function CarmenRoom() {
 
   const [room, setRoom] = useState(false);
-  const [text, setText] = useState("");
+  const [text, setText] = useState("Carmen's Room");
   
   // Initial Load
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function CarmenRoom() {
 
               {/* mail */}
               <CldImage
-                // onClick={()=>textHandler(room.clues.mail.desc)}
+                clickHandler={()=>textHandler(room.clues.mail.desc)}
                 item={room.clues.mail}
                 className={styles.item}
                 style={{
@@ -65,11 +65,13 @@ export default function CarmenRoom() {
                   top: '318px',
                   width: '140px',
                   margin: '0',
+                  cursor: 'pointer'
                 }}
               />
 
               {/* master key */}
               <CldImage
+                clickHandler={()=>textHandler(room.clues.master_key.desc)}
                 item={room.clues.master_key}
                 className={styles.item}
                 style={{
@@ -78,11 +80,13 @@ export default function CarmenRoom() {
                   top: '490px',
                   width: '45px',
                   margin: '0',
+                  cursor: 'pointer'
                 }}
               />
 
                 {/* clothspin */}
                 <CldImage
+                  clickHandler={()=>textHandler(room.dummy_objects.clothespin.desc)}
                   item={room.dummy_objects.clothespin}
                   className={styles.item}
                   style={{
@@ -91,6 +95,7 @@ export default function CarmenRoom() {
                     top: '480px',
                     width: '30px',
                     margin: '0',
+                    cursor: 'pointer'
                   }}
                 />
             
