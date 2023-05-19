@@ -4,6 +4,7 @@ import { Container, Text, Box } from '@chakra-ui/react'
 import CldImage from '../components/CldImage'
 import { Suspense, useEffect, useState } from 'react'
 import fetchRoom from '@/pages/api/rooms/fetchRoom'
+import Map from "../Map";
 
 export default function CarmenRoom() {
 
@@ -41,9 +42,7 @@ export default function CarmenRoom() {
               mt='1%'
             >
               {/* placeholders for components  */}
-              <Text color='red' fontWeight='bold' fontSize='2vh'>
-                Map placeholder
-              </Text>
+              <Map />
               <Text color='red' fontWeight='bold' fontSize='2vh'>
                 Time placeholder
               </Text>

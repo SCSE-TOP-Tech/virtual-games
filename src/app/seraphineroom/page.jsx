@@ -5,6 +5,7 @@ import { Container, Box, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import CldImage from "../components/CldImage";
 import styles from "./components/styles.module.css";
+import Map from "../Map";
 
 export default function SeraphineRoom() {
   const [room, setRoom] = useState(false);
@@ -26,9 +27,7 @@ export default function SeraphineRoom() {
             {/* map and time components */}
             <Container display="flex" justifyContent="space-around">
               {/* placeholders for components  */}
-              <Box color="red" fontWeight="bold" fontSize="2vh" p="10%">
-                Map placeholder
-              </Box>
+              <Map />
               <Box color="red" fontWeight="bold" fontSize="2vh" p="10%">
                 Time placeholder
               </Box>
