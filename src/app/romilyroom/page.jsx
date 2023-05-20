@@ -3,7 +3,7 @@ import styles from './components/styles.module.css'
 import { Container, Box, Text } from '@chakra-ui/react'
 import { Suspense, useEffect, useState } from 'react';
 import fetchRoom from '@/pages/api/rooms/fetchRoom';
-import CldImage from '../components/CldImage';
+import CldImage from '../components/ImageComp';
 import Map from "../Map";
 
 export default function RomilyRoom() {
