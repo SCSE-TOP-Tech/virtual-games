@@ -112,6 +112,8 @@ export default function CooperPage() {
                   item={room.dummy_objects.spaceID_card}
                   onClick={console.log("test")}
                   //chakra props
+                  filter="auto"
+                  brightness="75%"
                   className={styles.item}
                   width="5.5rem"
                   right={SizeFormatter(
@@ -142,7 +144,7 @@ export default function CooperPage() {
                   onClick={console.log("test")}
                   //chakra props
                   className={styles.item}
-                  width="3.5rem"
+                  width="3.5rem" //use SizeFormatter if item should be different for different devices
                   left={SizeFormatter(
                     "8.5rem", //iphone se
                     "9.5rem", //iphone xr
