@@ -3,9 +3,9 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import CldImage from "../components/ImageComp";
+import { CldImage, CustomImage } from "../components/ImageComp";
 import Map from "../Map";
-
+import CustomImageTest from "../components/CustomImage";
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
 
@@ -33,7 +33,15 @@ export default function CooperPage() {
               <CldImage item={room.background} />
               <Box position="absolute" zIndex="1">
                 {/* luggage  */}
-                <CldImage
+
+                <CustomImage
+                  item={room.dummy_objects.luggage}
+                  className={styles.item}
+                  right="0px"
+                  top="50px"
+                  width="9rem"
+                />
+                {/* <CldImage
                   item={room.dummy_objects.luggage}
                   className={styles.item}
                   style={{
@@ -42,7 +50,8 @@ export default function CooperPage() {
                     top: "320px",
                     width: "150px",
                   }}
-                />
+                /> */}
+
                 {/* newspaper  */}
                 <CldImage
                   item={room.dummy_objects.newspaper}
