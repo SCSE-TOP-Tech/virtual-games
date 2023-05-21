@@ -6,11 +6,11 @@ import { chakra } from "@chakra-ui/react";
 
 // for handling screensizes. returns a formatted object to use in chakra styling
 // for now only accounts for iphone se, iphone xr, iphone 12 pro, pixel 5, samsung galaxy s8+,
-//                           samsung galaxy s20 ultra, ipad air, ipad mini
+//                           samsung galaxy s20 ultra, ipad air, ipad mini (pass parameters in that order)
 // NOTE: this function is for convenience only and serves no functional purpose.
 const SizeFormatter = (
   iphone_se_prop = "0",
-  iphone_xr_prop = "10rem",
+  iphone_xr_prop = "0",
   iphone_12pro_prop = "0",
   pixel_5_prop = "0",
   galaxy_s8plus_prop = "0",
@@ -18,8 +18,6 @@ const SizeFormatter = (
   ipad_air_prop = "0",
   ipad_mini_prop = "0"
 ) => {
-  console.log(iphone_12pro_prop);
-  console.log(iphone_xr_prop);
   return {
     iphone_se: iphone_se_prop,
     iphone_xr: iphone_xr_prop,
@@ -66,7 +64,7 @@ const ItemImage = chakra(ImageContent, {
 //
 //
 //
-//will be deprecated soon. to be replaced with CustomImage
+//will be deprecated soon. to be replaced with custom ItemImage
 const CldImageItems = ({ item, className, location, width, onClick }) => {
   return (
     <Image

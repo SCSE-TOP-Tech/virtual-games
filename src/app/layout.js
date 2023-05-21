@@ -13,6 +13,8 @@ const theme = extendTheme({
     pixel_5: "393px",
     galaxy_s8plus: "360px",
     galaxy_s20ultra: "412px",
+    ipad_air: "820px",
+    ipad_mini: "768px",
   },
 });
 
