@@ -10,7 +10,7 @@ import { chakra } from "@chakra-ui/react";
 // NOTE: this function is for convenience only and serves no functional purpose.
 const SizeFormatter = (
   iphone_se_prop = "0",
-  iphone_xr_prop = "8rem",
+  iphone_xr_prop = "10rem",
   iphone_12pro_prop = "0",
   pixel_5_prop = "0",
   galaxy_s8plus_prop = "0",
@@ -18,6 +18,8 @@ const SizeFormatter = (
   ipad_air_prop = "0",
   ipad_mini_prop = "0"
 ) => {
+  console.log(iphone_12pro_prop);
+  console.log(iphone_xr_prop);
   return {
     iphone_se: iphone_se_prop,
     iphone_xr: iphone_xr_prop,
@@ -38,8 +40,8 @@ const ImageContent = ({ item, onClick, className }) => {
       src={item.src}
       onClick={onClick}
       className={className}
-      width={item.width}
-      height={item.height}
+      width={item.width} //will be overwritten by chakra prop width
+      height={item.height} //will be overwritten by chakra prop
     />
   );
 };
@@ -48,7 +50,7 @@ const ImageContent = ({ item, onClick, className }) => {
 //
 //
 //wrapper using chakra factory
-const CustomImage = chakra(ImageContent, {
+const ItemImage = chakra(ImageContent, {
   baseStyle: {
     position: "relative",
     margin: 0,
@@ -103,4 +105,4 @@ const CldImage = ({ item, className, style, onClick }) => {
   );
 };
 //
-export { CldImage, CldImageItems, CustomImage, SizeFormatter };
+export { CldImage, CldImageItems, ItemImage, SizeFormatter };

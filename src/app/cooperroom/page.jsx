@@ -3,12 +3,23 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import { CldImage, CustomImage } from "../components/ImageComp";
+import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
 import Map from "../Map";
-import CustomImageTest from "../components/CustomImage";
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
-
+  const a = SizeFormatter();
+  const b = {
+    iphone_se: "0",
+    iphone_xr: "8rem",
+    iphone_12pro: "0",
+    pixel_5: "0",
+    galaxy_s8plus: "0",
+    galaxy_s20ultra: "0",
+    ipad_air: "0",
+    ipad_mini: "0",
+  };
+  //console.log(a.iphone_se === b.iphone_se);
+  //console.log(isEqual(a, b));
   // Initial Load
   useEffect(() => {
     fetchRoom("cooper", true).then((data) => {
@@ -29,28 +40,36 @@ export default function CooperPage() {
                 Time placeholder
               </Box>
             </Container>
-            <Box display="flex" justifyContent="center" zIndex="0" width="100%">
+            <Box
+              display="flex"
+              justifyContent="center"
+              position="relative"
+              zIndex="0"
+              width="100%"
+            >
               <CldImage item={room.background} />
               <Box position="absolute" zIndex="1">
                 {/* luggage  */}
 
-                <CustomImage
+                <ItemImage
                   item={room.dummy_objects.luggage}
                   className={styles.item}
-                  right="0px"
-                  top="50px"
-                  width="9rem"
+                  onClick={console.log("test")}
+                  //chakra props
+                  right={SizeFormatter(
+                    "0",
+                    "15rem", //iphone xr prop
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0"
+                  )}
+                  top={{ iphone_xr: "15rem" }}
+                  width="8rem"
+                  brightness="50%"
                 />
-                {/* <CldImage
-                  item={room.dummy_objects.luggage}
-                  className={styles.item}
-                  style={{
-                    position: "relative",
-                    right: "50px",
-                    top: "320px",
-                    width: "150px",
-                  }}
-                /> */}
 
                 {/* newspaper  */}
                 <CldImage
