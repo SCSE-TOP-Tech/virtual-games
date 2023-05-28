@@ -4,25 +4,39 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
   PopoverCloseButton,
-  PopoverAnchor,
-  Button,
+  Box,
 } from "@chakra-ui/react";
+import { SizeFormatter } from "./ImageComp";
 
-const Hint = (hints, isOpen, setIsOpen) => {
-  console.log(hints);
+const Hint = ({ children }) => {
+  const itemInfo = children.props.item;
   return (
-    <Popover background="black">
+    <Popover placement="bottom">
       <PopoverTrigger>
-        <Button>test</Button>
+        <Box>{children}</Box>
       </PopoverTrigger>
-      <PopoverContent>
-        <PopoverArrow />
+      <PopoverContent
+        top={children.props.top}
+        right={children.props.right}
+        width={SizeFormatter(
+          "12rem", //iphone se
+          "12rem", //iphone xr
+          "12rem", //iphone 12pro
+          "12rem", //pixel 5
+          "12rem", //samsung galaxy s8+
+          "12rem", //samsung galaxy s20 ultra
+          "18rem", //ipad air
+          "18rem" //ipad mini
+        )}
+      >
         <PopoverCloseButton />
-        <PopoverHeader>Confirmation!</PopoverHeader>
-        <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
+        <PopoverHeader>
+          {itemInfo?.name ? itemInfo.name : "An Item!"}
+        </PopoverHeader>
+        <PopoverBody>
+          {itemInfo?.desc ? itemInfo.desc : "A mysterious item is found"}
+        </PopoverBody>
       </PopoverContent>
     </Popover>
   );
