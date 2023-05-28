@@ -1,40 +1,31 @@
-import { useRef } from "react";
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
   Button,
-  useDisclosure,
 } from "@chakra-ui/react";
 
-const Hint = (hints) => {
-  const [isOpen, onOpen, onClose] = useDisclosure;
-
+const Hint = (hints, isOpen, setIsOpen) => {
   console.log(hints);
-
-  <>
-    <Button onClick={onOpen}>Open Modal</Button>
-
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>{hints}</ModalBody>
-
-        <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
-            Close
-          </Button>
-          {/* <Button variant="ghost">Secondary Action</Button> */}
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  </>;
+  return (
+    <Popover background="black">
+      <PopoverTrigger>
+        <Button>test</Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <PopoverArrow />
+        <PopoverCloseButton />
+        <PopoverHeader>Confirmation!</PopoverHeader>
+        <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
+      </PopoverContent>
+    </Popover>
+  );
 };
 
 export default Hint;
