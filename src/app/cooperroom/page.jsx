@@ -1,26 +1,13 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
-import { Suspense, useEffect, useState } from "react";
+import { Container, Box } from "@chakra-ui/react";
+import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
 import Map from "../Map";
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
-  const a = SizeFormatter();
-  const b = {
-    iphone_se: "0",
-    iphone_xr: "8rem",
-    iphone_12pro: "0",
-    pixel_5: "0",
-    galaxy_s8plus: "0",
-    galaxy_s20ultra: "0",
-    ipad_air: "0",
-    ipad_mini: "0",
-  };
-  //console.log(a.iphone_se === b.iphone_se);
-  //console.log(isEqual(a, b));
-  // Initial Load
+
   useEffect(() => {
     fetchRoom("cooper", true).then((data) => {
       setRoom(data);
@@ -28,7 +15,7 @@ export default function CooperPage() {
   }, []);
 
   return (
-    <div>
+    <Suspense fallback={<h1>Loading</h1>}>
       {room && (
         <div>
           <Box w={["100%", "30em"]} h="100%" p={4}>
@@ -47,7 +34,8 @@ export default function CooperPage() {
               zIndex="0"
               width="100%"
             >
-              <CldImage item={room.background} />
+              {/* can use ItemImage for background image as well  */}
+              <ItemImage item={room.background} zIndex="0" />
               <Box position="absolute" zIndex="1">
                 {/* luggage  */}
                 <ItemImage
@@ -180,6 +168,6 @@ export default function CooperPage() {
           </Box>
         </div>
       )}
-    </div>
+    </Suspense>
   );
 }
