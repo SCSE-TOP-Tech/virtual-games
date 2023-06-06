@@ -22,21 +22,43 @@ const Hint = ({ children }) => {
         right={children.props?.right}
         left={children.props?.left}
         width={SizeFormatter(
-          "12rem", //iphone se
-          "12rem", //iphone xr
-          "12rem", //iphone 12pro
-          "12rem", //pixel 5
-          "12rem", //samsung galaxy s8+
-          "12rem", //samsung galaxy s20 ultra
+          "10rem", //iphone se
+          "10rem", //iphone xr
+          "10rem", //iphone 12pro
+          "10rem", //pixel 5
+          "10rem", //samsung galaxy s8+
+          "10rem", //samsung galaxy s20 ultra
           "18rem", //ipad air
           "18rem" //ipad mini
         )}
       >
         <PopoverCloseButton />
-        <PopoverHeader>
+        <PopoverHeader
+          fontSize={SizeFormatter(
+            "xs", //iphone se
+            "xs", //iphone xr
+            "xs", //iphone 12pro
+            "xs", //pixel 5
+            "xs", //samsung galaxy s8+
+            "xs", //samsung galaxy s20 ultra
+            "md", //ipad air
+            "md" //ipad mini
+          )}
+        >
           {itemInfo?.name ? itemInfo.name : "An Item!"}
         </PopoverHeader>
-        <PopoverBody>
+        <PopoverBody
+          fontSize={SizeFormatter(
+            "xs", //iphone se
+            "xs", //iphone xr
+            "xs", //iphone 12pro
+            "xs", //pixel 5
+            "xs", //samsung galaxy s8+
+            "xs", //samsung galaxy s20 ultra
+            "md", //ipad air
+            "md" //ipad mini
+          )}
+        >
           {itemInfo?.desc ? itemInfo.desc : "A mysterious item is found"}
         </PopoverBody>
       </PopoverContent>
