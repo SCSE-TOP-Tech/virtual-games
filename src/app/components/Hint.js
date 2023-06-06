@@ -17,8 +17,10 @@ const Hint = ({ children }) => {
         <Box>{children}</Box>
       </PopoverTrigger>
       <PopoverContent
-        top={children.props.top}
-        right={children.props.right}
+        top={children.props?.top}
+        bottom={children.props?.bottom}
+        right={children.props?.right}
+        left={children.props?.left}
         width={SizeFormatter(
           "12rem", //iphone se
           "12rem", //iphone xr
