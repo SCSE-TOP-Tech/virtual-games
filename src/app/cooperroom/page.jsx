@@ -7,7 +7,6 @@ import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
 import Map from "../Map";
 import Hint from "../components/Hint";
 export default function CooperPage() {
-  const [isOpenHint, setIsOpenHint] = useState(true);
   const [room, setRoom] = useState(false);
 
   useEffect(() => {
@@ -39,33 +38,35 @@ export default function CooperPage() {
             {/* items */}
             <Box position="absolute" zIndex="1">
               {/* luggage  */}
-              <ItemImage
-                item={room.dummy_objects.luggage}
-                onClick={console.log("test")}
-                //chakra props
-                className={styles.item}
-                width="6.5rem"
-                right={SizeFormatter(
-                  "1rem", //iphone se
-                  "1rem", //iphone xr
-                  "1rem", //iphone 12pro
-                  "1rem", //pixel 5
-                  "1rem", //samsung galaxy s8+
-                  "1rem", //samsung galaxy s20 ultra
-                  "1rem", //ipad air
-                  "1rem" //ipad mini
-                )}
-                top={SizeFormatter(
-                  "16rem",
-                  "17.5rem",
-                  "16rem",
-                  "16rem",
-                  "15rem",
-                  "17.5rem",
-                  "21rem",
-                  "21rem"
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.luggage}
+                  onClick={console.log("test")}
+                  //chakra props
+                  className={styles.item}
+                  width="6.5rem"
+                  right={SizeFormatter(
+                    "1rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "16rem",
+                    "17.5rem",
+                    "16rem",
+                    "16rem",
+                    "15rem",
+                    "17.5rem",
+                    "21rem",
+                    "21rem"
+                  )}
+                />
+              </Hint>
 
               {/* newspaper  */}
               <Hint>
