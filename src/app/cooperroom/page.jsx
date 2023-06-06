@@ -1,7 +1,7 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
-import { Suspense, useEffect, useState } from "react";
+import { Container, Box } from "@chakra-ui/react";
+import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
 import Map from "../Map";
@@ -10,9 +10,6 @@ export default function CooperPage() {
   const [isOpenHint, setIsOpenHint] = useState(true);
   const [room, setRoom] = useState(false);
 
-  //console.log(a.iphone_se === b.iphone_se);
-  //console.log(isEqual(a, b));
-  // Initial Load
   useEffect(() => {
     fetchRoom("cooper", true).then((data) => {
       setRoom(data);
@@ -20,57 +17,55 @@ export default function CooperPage() {
   }, []);
 
   return (
-    <div>
+    <Suspense fallback={<h1>Loading</h1>}>
       {room && (
-        <div>
-          <Box w={["100%", "30em"]} h="100%" p={4}>
-            {/* background ima`ge */}
-            <Container display="flex" justifyContent="space-around">
-              {/* placeholders for components  */}
-              <Map />
-              <Box color="red" fontWeight="bold" fontSize="2vh">
-                Time placeholder
-              </Box>
-            </Container>
-            <Box
-              display="flex"
-              justifyContent="center"
-              position="relative"
-              zIndex="0"
-              width="100%"
-            >
-              <CldImage item={room.background} />
-              <Box position="absolute" zIndex="1">
-                {/* luggage  */}
-                <Hint>
-                  <ItemImage
-                    item={room.dummy_objects.luggage}
-                    onClick={console.log("test")}
-                    //chakra props
-                    className={styles.item}
-                    width="6.5rem"
-                    right={SizeFormatter(
-                      "1rem", //iphone se
-                      "1rem", //iphone xr
-                      "1rem", //iphone 12pro
-                      "1rem", //pixel 5
-                      "1rem", //samsung galaxy s8+
-                      "1rem", //samsung galaxy s20 ultra
-                      "1rem", //ipad air
-                      "1rem" //ipad mini
-                    )}
-                    top={SizeFormatter(
-                      "16rem",
-                      "17.5rem",
-                      "16rem",
-                      "16rem",
-                      "15rem",
-                      "17.5rem",
-                      "21rem",
-                      "21rem"
-                    )}
-                  />
-                </Hint>
+        <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+          <Container display="flex" justifyContent="space-around">
+            <Map />
+            <Box color="red" fontWeight="bold" fontSize="2vh">
+              Time placeholder
+            </Box>
+          </Container>
+          <Box
+            display="flex"
+            justifyContent="center"
+            position="relative"
+            width="100%"
+          >
+            {/* background image */}
+            {/* can use ItemImage for background image as well  */}
+            <ItemImage item={room.background} />
+
+            {/* items */}
+            <Box position="absolute" zIndex="1">
+              {/* luggage  */}
+              <ItemImage
+                item={room.dummy_objects.luggage}
+                onClick={console.log("test")}
+                //chakra props
+                className={styles.item}
+                width="6.5rem"
+                right={SizeFormatter(
+                  "1rem", //iphone se
+                  "1rem", //iphone xr
+                  "1rem", //iphone 12pro
+                  "1rem", //pixel 5
+                  "1rem", //samsung galaxy s8+
+                  "1rem", //samsung galaxy s20 ultra
+                  "1rem", //ipad air
+                  "1rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "16rem",
+                  "17.5rem",
+                  "16rem",
+                  "16rem",
+                  "15rem",
+                  "17.5rem",
+                  "21rem",
+                  "21rem"
+                )}
+              />
 
                 {/* newspaper  */}
                 <Hint>
@@ -181,6 +176,6 @@ export default function CooperPage() {
           </Box>
         </div>
       )}
-    </div>
+    </Suspense>
   );
 }
