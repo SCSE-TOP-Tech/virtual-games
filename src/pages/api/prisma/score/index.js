@@ -1,16 +1,26 @@
-import prisma from '../../../lib/prisma'
+import prisma from "../../../../../lib/prisma";
 
-// POST /api/prisma/score
+// PUT /api/prisma/score
 // Required fields in body: userId, timerScore, hintsScore, culpritScore, totalScore
 export default async function handle(req, res) {
-  const { userId, timerScore, hintsScore, culpritScore, totalScore } = req.body
-  const result = await prisma.post.create({
-    data: {
-      timerScore: timerScore, 
-      hintsScore: hintsScore, culpritScore,
-      totalScore: totalScore,
-      user: { connect: { userId: userId } },
+  const { userId, timerScore, hintScore, culpritScore } = req.body;
+  // const totalScore = timerScore + hintScore + culpritScore;
+  // console.log(timerScore);
+
+  const result = await prisma.user.update({
+    where: {
+      id: userId,
     },
-  })
-  res.json(result)
+    data: {
+      scores: {
+        update: {
+          timerScore: timerScore,
+          hintScore: hintScore,
+          culpritScore: culpritScore,
+          // totalScore: totalScore,
+        },
+      },
+    },
+  });
+  res.json(result);
 }

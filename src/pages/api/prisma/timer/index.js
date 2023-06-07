@@ -4,12 +4,22 @@ import prisma from "../../../../../lib/prisma";
 // Required fields in body: userID, startTime, endTime, isActive
 export default async function handle(req, res) {
   const { userId, startTime, endTime, isActive } = req.body;
-  const result = await prisma.timer.create({
+  const totalTime = endTime - startTime;
+  const result = await prisma.user.update({
+    where: {
+      id: userId,
+    },
     data: {
-      startTime: startTime,
-      endTime: endTime,
-      isActive: isActive,
-      user: { connect: { userId: userId } },
+      timer: {
+        updateMany: {
+          data: {
+            startTime: startTime,
+            endTime: endTime,
+            totalTime: totalTime,
+            isActive: isActive,
+          },
+        },
+      },
     },
   });
   res.json(result);

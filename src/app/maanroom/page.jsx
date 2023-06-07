@@ -5,6 +5,9 @@ import { Container, Text, Box } from '@chakra-ui/react'
 import CldImage from '../components/CldImage'
 import { Suspense, useEffect, useState } from 'react'
 import fetchRoom from '@/pages/api/rooms/fetchRoom'
+import createUser from '@/pages/api/prisma/user/createUser'
+import updateTimer from '@/pages/api/prisma/timer/updateTimer'
+import updateScore from '@/pages/api/prisma/score/updateScore'
 
 export default function MaanRoom() {
   const [room, setRoom] = useState(false);
@@ -16,6 +19,25 @@ export default function MaanRoom() {
         setRoom(data);
       })
   }, []);
+
+  const submitHandler = async(e) => {
+    e.preventDefault();
+    updateScore({
+      id: "1",
+      timerScore: 10, 
+      hintScore: 2, 
+      culpritScore: 5
+    })
+  }
+
+  const csubmitHandler = async(e) => {
+    e.preventDefault();
+    const body = { 
+      email: "2",
+      password: "1",
+    };
+    createUser(body)
+  }
 
   return (
     <Suspense fallback={<h1>Loading</h1>}> 
@@ -41,6 +63,12 @@ export default function MaanRoom() {
               <Text color='red' fontWeight='bold' fontSize='2vh'>
                 Time placeholder
               </Text>
+              <button onClick={submitHandler}>
+                yes
+              </button>
+              <button onClick={csubmitHandler} className='text-white'>
+                no
+              </button>
             </Container>
             <CldImage 
               item={room.background}
