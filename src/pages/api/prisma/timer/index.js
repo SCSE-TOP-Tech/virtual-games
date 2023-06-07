@@ -1,9 +1,9 @@
-import prisma from '../../../../../lib/prisma'
+import prisma from "../../../../../lib/prisma";
 
-// POST /api/prisma/postTimer
+// POST /api/prisma/timer
 // Required fields in body: userID, startTime, endTime, isActive
 export default async function handle(req, res) {
-  const { startTime, endTime, isActive, userId } = req.body
+  const { userId, startTime, endTime, isActive } = req.body;
   const result = await prisma.timer.create({
     data: {
       startTime: startTime,
@@ -11,6 +11,6 @@ export default async function handle(req, res) {
       isActive: isActive,
       user: { connect: { userId: userId } },
     },
-  })
-  res.json(result)
+  });
+  res.json(result);
 }

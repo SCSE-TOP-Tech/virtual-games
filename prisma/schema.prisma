@@ -6,13 +6,13 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model User{
-  id       String @id @default(uuid())
-  email    String @unique
+model User {
+  id       String         @id @default(uuid())
+  email    String         @unique
   password String
   name     String?
   timers   Timer[] // One-to-many mapping
@@ -21,37 +21,37 @@ model User{
   hints    Hint?
 }
 
-model Timer{
-  timerID   Int @id @default(autoincrement())
-  user      User @relation(fields: [userID], references: [id])  
-  userID    String 
-  startTime Int @default(0)
-  endTime   Int @default(0)
-  totalTime Int @default(0)
+model Timer {
+  timerID   Int     @id @default(autoincrement())
+  user      User    @relation(fields: [userID], references: [id])
+  userID    String
+  startTime Int     @default(0)
+  endTime   Int     @default(0)
+  totalTime Int     @default(0)
   isActive  Boolean
 }
 
-model Score{
-  scoreID      Int @id @default(autoincrement())
-  user         User @relation(fields: [userID], references: [id])
-  userID       String  @unique
-  timerScore   Int 
+model Score {
+  scoreID      Int    @id @default(autoincrement())
+  user         User   @relation(fields: [userID], references: [id])
+  userID       String @unique
+  timerScore   Int
   hintScore    Int
   culpritScore Int
   totalScore   Int
 }
 
-model CulpritGuess{
-  guessID     Int @id @default(autoincrement())
-  user        User @relation(fields: [userID], references: [id])
-  userID      String 
+model CulpritGuess {
+  guessID     Int     @id @default(autoincrement())
+  user        User    @relation(fields: [userID], references: [id])
+  userID      String
   culpritName String
   isCorrect   Boolean
 }
 
-model Hint{
-  hintID         Int @id @default(autoincrement())
-  user           User @relation(fields: [userID], references: [id])
+model Hint {
+  hintID         Int    @id @default(autoincrement())
+  user           User   @relation(fields: [userID], references: [id])
   userID         String @unique
-  hintsCollected Int @default(0)
+  hintsCollected Int    @default(0)
 }

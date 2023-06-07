@@ -4,7 +4,14 @@ const prisma = new PrismaClient()
 
 async function main() {
   // ... you will write your Prisma Client queries here
-  
+  const user = await prisma.user.create({
+    data: {
+      name: "John",
+      email: "tese@f.com",
+      password: "yes"
+    }
+  })
+  console.log(user)
 }
 
 main()

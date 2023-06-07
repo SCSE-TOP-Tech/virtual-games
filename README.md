@@ -37,7 +37,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Database
+## Prisma Database
 
 Installing dependencies for prisma
 
@@ -54,20 +54,26 @@ npm install @prisma/client
 yarn add @prisma/client
 ```
 
-Migration to database tables
+Migration to database tables files
 
 ```bash
 npx prisma migrate dev --name init
-```
-
-Open Prisma Studio
-
-```bash
-npx prisma studio
 ```
 
 Execute script in script.ts
 
 ```bash
 npx ts-node prisma/script.ts
+```
+
+Sync with mySQL database
+
+```bash
+npx prisma db push
+```
+
+Open Prisma Studio
+
+```bash
+npx prisma studio
 ```
