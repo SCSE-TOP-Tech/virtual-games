@@ -4,6 +4,7 @@ import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import CldImage from "../components/CldImage";
+import Map from "../Map";
 
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
@@ -23,15 +24,7 @@ export default function CooperPage() {
             {/* background ima`ge */}
             <Container display="flex" justifyContent="space-around">
               {/* placeholders for components  */}
-              <Box
-                color="red"
-                fontWeight="bold"
-                fontSize="2vh"
-                background="white"
-                p="10%"
-              >
-                Map placeholder
-              </Box>
+              <Map />
               <Box color="red" fontWeight="bold" fontSize="2vh">
                 Time placeholder
               </Box>

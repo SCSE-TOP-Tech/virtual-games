@@ -4,6 +4,7 @@ import { Container, Box, Text } from '@chakra-ui/react'
 import { Suspense, useEffect, useState } from 'react';
 import fetchRoom from '@/pages/api/rooms/fetchRoom';
 import CldImage from '../components/CldImage';
+import Map from "../Map";
 
 export default function RomilyRoom() {
   const [room, setRoom] = useState(false);
@@ -38,9 +39,7 @@ export default function RomilyRoom() {
                 mt='1%'
               >
                 {/* placeholders for components  */}
-                <Text color='black' fontWeight='bold' fontSize='2vh'>
-                  Map placeholder
-                </Text>
+                <Map />
                 <Text color='black' fontWeight='bold' fontSize='2vh'>
                   Time placeholder
                 </Text>

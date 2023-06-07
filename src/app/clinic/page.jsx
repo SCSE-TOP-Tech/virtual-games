@@ -8,6 +8,7 @@ import background from "../../../public/Rooms/Clinic/clinic.png";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import CldImage from "../components/CldImage";
+import Map from "../Map";
 
 export default function Clinic() {
   const [room, setRoom] = useState(false);
@@ -38,9 +39,7 @@ export default function Clinic() {
                 mt="1%"
               >
                 {/* placeholders for components  */}
-                <Text color="red" fontWeight="bold" fontSize="2vh">
-                  Map placeholder
-                </Text>
+                <Map />
                 <Text color="red" fontWeight="bold" fontSize="2vh">
                   Time placeholder
                 </Text>
