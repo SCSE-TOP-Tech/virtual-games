@@ -11,8 +11,11 @@
   "dependencies": {
     "@chakra-ui/next-js": "^2.0.1",
     "@chakra-ui/react": "^2.5.2",
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.9.2",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "cloudinary": "^1.35.0",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
 <<<<<<< HEAD
@@ -20,9 +23,9 @@
 =======
     "framer-motion": "^10.5.0",
     "next": "13.2.4",
+    "next-cloudinary": "^4.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
-
->>>>>>> 557a4cb53b01968ea60bd8c6f8cda742dbee75f7
+    "react-dom": "18.2.0",
+    "react-icons": "^4.8.0"
   }
 }
