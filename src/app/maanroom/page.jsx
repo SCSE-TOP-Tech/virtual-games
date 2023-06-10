@@ -33,9 +33,9 @@ export default function MaanRoom() {
   const csubmitHandler = async(e) => {
     e.preventDefault();
     createUser({
-      email: "2",
-      password: "1",
-      name: "gene"
+      email: "3",
+      password: "2",
+      name: "agene"
     })
   }
 
