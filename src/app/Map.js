@@ -9,6 +9,7 @@ export default function Map() {
 
     const rooms = [
         { name: 'Clinic', href: '/clinic' },
+        { name: "Control Room", href: '/controlroom' },
         { name: 'Hallway', href: '/hallway' },
         { name: "Princess' Room", href: '/princessroom' },
         { name: "Dressing Room", href: '/dressingroom' },
