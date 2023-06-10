@@ -847,13 +847,13 @@
   resolved "https://registry.npmjs.org/@chakra-ui/visually-hidden/-/visually-hidden-2.0.15.tgz"
   integrity sha512-WWULIiucYRBIewHKFA7BssQ2ABLHLVd9lrUo3N3SZgR0u4ZRDDVEUNOy+r+9ruDze8+36dGbN9wsN1IdELtdOw==
 
-"@cloudinary-util/url-loader@^3.5.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.6.1.tgz#522656f6a40407e512be58e3d0e04b292c582c44"
-  integrity sha512-VxyJ1PhkDMhGay9Z8kdFlNwD13cGQdW+GoW0dj67FRHG5Csl9h6qeizPw/bWsDj9lBcRVZGBlLKEwDECXQAukg==
+"@cloudinary-util/url-loader@^3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.8.1.tgz#c819e6c305293333ba4bb5b72b640d1f386d821b"
+  integrity sha512-cBAPiAulWIG5M6HkFDvHhWVo0BJfWnZrr3jz7mIvdVrhKJl3CgK6p9kzSWKC62Ib9SUHMzKBC9R2B8jn+ZCBKA==
   dependencies:
     "@cloudinary-util/util" "2.0.1"
-    "@cloudinary/url-gen" "^1.8.7"
+    "@cloudinary/url-gen" "^1.10.1"
 
 "@cloudinary-util/util@2.0.1", "@cloudinary-util/util@^2.0.1":
   version "2.0.1"
@@ -886,10 +886,10 @@
   dependencies:
     "@cloudinary/url-gen" "^1.7.0"
 
-"@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@^1.8.6", "@cloudinary/url-gen@^1.8.7", "@cloudinary/url-gen@^1.9.2":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.10.0.tgz#cdf64add1833fb616289bc96fbf97d20c8a953c1"
-  integrity sha512-J3V+gzT6Tepw9bMrR3prWVbW22cIFJtPS8Wkt1WFSZVHWpZx8/vv9ACHaxUmRqaSkjhX8ErsuzDY5YxdWnaCbw==
+"@cloudinary/url-gen@^1.10.1", "@cloudinary/url-gen@^1.7.0", "@cloudinary/url-gen@^1.8.6", "@cloudinary/url-gen@^1.9.2":
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.10.1.tgz#b5b49e03252a90bba17038024f206328482eac96"
+  integrity sha512-6pBmapnL7G231NbNWhKbi+08HcpNASci7M3OmZWaUCQWUfdmo3au27HT3Zqg9NMsisfyer3t7o0RXzPQ4XlmMg==
   dependencies:
     "@cloudinary/transformation-builder-sdk" "^1.2.7"
 
@@ -1227,9 +1227,9 @@
   integrity sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==
 
 "@types/node@^14.14.10":
-  version "14.18.47"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.47.tgz#89a56b05804d136cb99bf2f823bb00814a889aae"
-  integrity sha512-OuJi8bIng4wYHHA3YpKauL58dZrPxro3d0tabPHyiNF8rKfGKuVfr83oFlPLmKri1cX+Z3cJP39GXmnqkP11Gw==
+  version "14.18.48"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.48.tgz#ee5c7ac6e38fd2a9e6885f15c003464cf2da343c"
+  integrity sha512-iL0PIMwejpmuVHgfibHpfDwOdsbmB50wr21X71VnF5d7SsBF7WK+ZvP/SCcFm7Iwb9iiYSap9rlrdhToNAWdxg==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2873,11 +2873,11 @@ netmask@^2.0.2:
   integrity sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==
 
 next-cloudinary@^4.1.1:
-  version "4.10.1"
-  resolved "https://registry.yarnpkg.com/next-cloudinary/-/next-cloudinary-4.10.1.tgz#bfd00920f6b154d99bc4253e290445efd9e74156"
-  integrity sha512-rMJH7ILj478xkjCFQLOfL3cvGJLUkmmjRIZORTK6hCBgXKvX7yZtUPbJd0cnwIzwL4V5ur1g9ZLG8xh8deR26Q==
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/next-cloudinary/-/next-cloudinary-4.12.0.tgz#489d1bfad0d2c82fbbbf7af5c58908b194255c04"
+  integrity sha512-PzhY3W5KD9oDSvHUarrbtnx8flSriT4KKGNW2y0wy7VEoxF4bP1VunHWeBvDrAQ1pp7aYHeLVY8SAKMCVjPViA==
   dependencies:
-    "@cloudinary-util/url-loader" "^3.5.1"
+    "@cloudinary-util/url-loader" "^3.8.1"
     "@cloudinary-util/util" "^2.0.1"
     "@cloudinary/url-gen" "^1.8.6"
 
