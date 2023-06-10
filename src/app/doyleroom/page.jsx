@@ -3,7 +3,7 @@
 import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import fetchRoom from "@/resources/fetchRoom";
 import CldImage from "../components/CldImage";
 import Map from "../Map";
 

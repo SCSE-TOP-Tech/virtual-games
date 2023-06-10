@@ -4,8 +4,7 @@ import prisma from "../../../../../lib/prisma";
 // Required fields in body: userId, timerScore, hintsScore, culpritScore, totalScore
 export default async function handle(req, res) {
   const { userId, timerScore, hintScore, culpritScore } = req.body;
-  // const totalScore = timerScore + hintScore + culpritScore;
-  // console.log(timerScore);
+  const totalScore = timerScore + hintScore + culpritScore;
 
   const result = await prisma.user.update({
     where: {
@@ -17,7 +16,7 @@ export default async function handle(req, res) {
           timerScore: timerScore,
           hintScore: hintScore,
           culpritScore: culpritScore,
-          // totalScore: totalScore,
+          totalScore: totalScore,
         },
       },
     },

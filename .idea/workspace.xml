@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="yarn install" />
+    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="Refactored Helper Functions into /Resources">
+      <change afterPath="$PROJECT_DIR$/src/resources/createUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/fetchCharacter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/updateScore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/brandroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/brandroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/captainroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/captainroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/carmenroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/carmenroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/clinic/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/clinic/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/cooperroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/cooperroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/doyleroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/doyleroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dressingroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dressingroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/hallway/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/hallway/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/maanroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/maanroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/princessroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/princessroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/romilyroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/romilyroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/seraphineroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/seraphineroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/characters/fetchCharacter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/prisma/hints/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/fetchChoices.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/postChoices.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/prisma/hints/[id].js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/prisma/score/[id].js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/prisma/score/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/prisma/score/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/prisma/score/updateScore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/prisma/timer/updateTimer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/updateTimer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/prisma/user/createUser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/prisma/user/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/prisma/user/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/rooms/fetchRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/fetchRoom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +55,7 @@
   <component name="ProjectId" id="2R0SIQkppoWh42TgQ71fTiOHTMq" />
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -41,9 +73,15 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/resources" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -74,9 +112,21 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Unversioned" />
     <MESSAGE value="yarn install" />
-    <option name="LAST_COMMIT_MESSAGE" value="yarn install" />
+    <MESSAGE value="Refactored Helper Functions into /Resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Helper Functions into /Resources" />
   </component>
 </project>

@@ -4,10 +4,10 @@ import Map from '../Map'
 import { Container, Text, Box } from '@chakra-ui/react'
 import CldImage from '../components/CldImage'
 import { Suspense, useEffect, useState } from 'react'
-import fetchRoom from '@/pages/api/rooms/fetchRoom'
-import createUser from '@/pages/api/prisma/user/createUser'
-import updateTimer from '@/pages/api/prisma/timer/updateTimer'
-import updateScore from '@/pages/api/prisma/score/updateScore'
+import fetchRoom from '@/resources/fetchRoom'
+import createUser from '@/resources/createUser'
+import updateTimer from '@/resources/updateTimer'
+import updateScore from '@/resources/updateScore'
 
 export default function MaanRoom() {
   const [room, setRoom] = useState(false);
@@ -23,7 +23,7 @@ export default function MaanRoom() {
   const submitHandler = async(e) => {
     e.preventDefault();
     updateScore({
-      id: "1",
+      id: "e863d473-7130-4cfc-a97e-ec79e9216da8",
       timerScore: 10, 
       hintScore: 2, 
       culpritScore: 5
@@ -32,11 +32,11 @@ export default function MaanRoom() {
 
   const csubmitHandler = async(e) => {
     e.preventDefault();
-    const body = { 
+    createUser({
       email: "2",
       password: "1",
-    };
-    createUser(body)
+      name: "gene"
+    })
   }
 
   return (
