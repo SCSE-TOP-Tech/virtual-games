@@ -10,9 +10,7 @@ async function fetchRoom(id, isCharacter) {
     
     const data = response.json()
 
-    const result = (isCharacter ? data.then(character => character.room) : data)
-    
-    return result;
+    return (isCharacter ? data.then(character => character.room) : data);
 }
 
 export default fetchRoom
