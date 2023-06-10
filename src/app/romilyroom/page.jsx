@@ -3,7 +3,7 @@ import styles from "./components/styles.module.css";
 import { Container, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { Hint, ItemImage, SizeFormatter } from "../components/ImageComp";
 import Map from "../Map";
 
 export default function RomilyRoom() {
@@ -40,165 +40,176 @@ export default function RomilyRoom() {
             {/* items */}
             <Box position="absolute" zIndex="1">
               {/* Basketball */}
-              <ItemImage
-                item={room.dummy_objects.basketball}
-                className={styles.item}
-                width="3rem"
-                filter="auto"
-                brightness="75%"
-                right={SizeFormatter(
-                  "6rem", //iphone se
-                  "7rem", //iphone xr
-                  "6rem", //iphone 12pro
-                  "6.5rem", //pixel 5
-                  "6rem", //samsung galaxy s8+
-                  "7rem", //samsung galaxy s20 ultra
-                  "9rem", //ipad air
-                  "9rem" //ipad mini
-                )}
-                top={SizeFormatter(
-                  "18rem",
-                  "20.5rem",
-                  "19rem",
-                  "19rem",
-                  "17rem",
-                  "20.5rem",
-                  "24.5rem",
-                  "24.5rem"
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.basketball}
+                  className={styles.item}
+                  width="3rem"
+                  filter="auto"
+                  brightness="75%"
+                  right={SizeFormatter(
+                    "6rem", //iphone se
+                    "7rem", //iphone xr
+                    "6rem", //iphone 12pro
+                    "6.5rem", //pixel 5
+                    "6rem", //samsung galaxy s8+
+                    "7rem", //samsung galaxy s20 ultra
+                    "9rem", //ipad air
+                    "9rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "18rem",
+                    "20.5rem",
+                    "19rem",
+                    "19rem",
+                    "17rem",
+                    "20.5rem",
+                    "24.5rem",
+                    "24.5rem"
+                  )}
+                />
+              </Hint>
 
               {/* Punching Bag */}
-              <ItemImage
-                item={room.dummy_objects.punchingbag}
-                className={styles.item}
-                width={SizeFormatter(
-                  "6.5rem", //iphone se
-                  "6.5rem", //iphone xr
-                  "6.5rem", //iphone 12pro
-                  "6.5rem", //pixel 5
-                  "6.5rem", //samsung galaxy s8+
-                  "6.5rem", //samsung galaxy s20 ultra
-                  "9rem", //ipad air
-                  "9rem" //ipad mini
-                )}
-                filter="auto"
-                brightness="70%"
-                left={SizeFormatter(
-                  "5rem", //iphone se
-                  "6rem", //iphone xr
-                  "5.5rem", //iphone 12pro
-                  "5.5rem", //pixel 5
-                  "5rem", //samsung galaxy s8+
-                  "6rem", //samsung galaxy s20 ultra
-                  "6rem", //ipad air
-                  "6rem" //ipad mini
-                )}
-                top={SizeFormatter(
-                  "8rem", //iphone se
-                  "10.5rem", //iphone xr
-                  "9rem", //iphone 12pro
-                  "9rem", //pixel 5
-                  "7rem", //samsung galaxy s8+
-                  "10rem", //samsung galaxy s20 ultra
-                  "11rem", //ipad air
-                  "11rem" //ipad mini
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.punchingbag}
+                  className={styles.item}
+                  width={SizeFormatter(
+                    "6.5rem", //iphone se
+                    "6.5rem", //iphone xr
+                    "6.5rem", //iphone 12pro
+                    "6.5rem", //pixel 5
+                    "6.5rem", //samsung galaxy s8+
+                    "6.5rem", //samsung galaxy s20 ultra
+                    "9rem", //ipad air
+                    "9rem" //ipad mini
+                  )}
+                  filter="auto"
+                  brightness="70%"
+                  left={SizeFormatter(
+                    "5rem", //iphone se
+                    "6rem", //iphone xr
+                    "5.5rem", //iphone 12pro
+                    "5.5rem", //pixel 5
+                    "5rem", //samsung galaxy s8+
+                    "6rem", //samsung galaxy s20 ultra
+                    "6rem", //ipad air
+                    "6rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "8rem", //iphone se
+                    "10.5rem", //iphone xr
+                    "9rem", //iphone 12pro
+                    "9rem", //pixel 5
+                    "7rem", //samsung galaxy s8+
+                    "10rem", //samsung galaxy s20 ultra
+                    "11rem", //ipad air
+                    "11rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* Towel */}
-              <ItemImage
-                item={room.dummy_objects.towel}
-                className={styles.item}
-                width="4rem"
-                filter="auto"
-                brightness="80%"
-                left={SizeFormatter(
-                  "1rem", //iphone se
-                  "1rem", //iphone xr
-                  "1rem", //iphone 12pro
-                  "1rem", //pixel 5
-                  "1rem", //samsung galaxy s8+
-                  "1rem", //samsung galaxy s20 ultra
-                  "1rem", //ipad air
-                  "1rem" //ipad mini
-                )}
-                top={SizeFormatter(
-                  "6rem", //iphone se
-                  "8rem", //iphone xr
-                  "7rem", //iphone 12pro
-                  "7rem", //pixel 5
-                  "5rem", //samsung galaxy s8+
-                  "8rem", //samsung galaxy s20 ultra
-                  "9rem" //ipad mini
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.towel}
+                  className={styles.item}
+                  width="4rem"
+                  filter="auto"
+                  brightness="80%"
+                  left={SizeFormatter(
+                    "1rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "6rem", //iphone se
+                    "8rem", //iphone xr
+                    "7rem", //iphone 12pro
+                    "7rem", //pixel 5
+                    "5rem", //samsung galaxy s8+
+                    "8rem", //samsung galaxy s20 ultra
+                    "9rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* Clothes */}
-              <ItemImage
-                item={room.dummy_objects.clothes}
-                className={styles.item}
-                width="8rem"
-                filter="auto"
-                brightness="80%"
-                right={SizeFormatter(
-                  "1rem", //iphone se
-                  "1rem", //iphone xr
-                  "1rem", //iphone 12pro
-                  "1rem", //pixel 5
-                  "1rem", //samsung galaxy s8+
-                  "1rem", //samsung galaxy s20 ultra
-                  "1rem", //ipad air
-                  "1rem" //ipad mini
-                )}
-                bottom={SizeFormatter(
-                  "4rem", //iphone se
-                  "2rem", //iphone xr
-                  "3rem", //iphone 12pro
-                  "3rem", //pixel 5
-                  "4.5rem", //samsung galaxy s8+
-                  "2rem", //samsung galaxy s20 ultra
-                  "3rem", //ipad mini
-                  "3rem"
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.clothes}
+                  className={styles.item}
+                  width="8rem"
+                  filter="auto"
+                  brightness="80%"
+                  right={SizeFormatter(
+                    "1rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  bottom={SizeFormatter(
+                    "4rem", //iphone se
+                    "2rem", //iphone xr
+                    "3rem", //iphone 12pro
+                    "3rem", //pixel 5
+                    "4.5rem", //samsung galaxy s8+
+                    "2rem", //samsung galaxy s20 ultra
+                    "3rem", //ipad mini
+                    "3rem"
+                  )}
+                />
+              </Hint>
+
               {/* Dumbbell */}
-              <ItemImage
-                item={room.dummy_objects.dumbbell}
-                className={styles.item}
-                filter="auto"
-                brightness="70%"
-                width={SizeFormatter(
-                  "2rem", //iphone se
-                  "2rem", //iphone xr
-                  "2rem", //iphone 12pro
-                  "2rem", //pixel 5
-                  "2rem", //samsung galaxy s8+
-                  "2rem", //samsung galaxy s20 ultra
-                  "3rem", //ipad air
-                  "3rem" //ipad mini
-                )}
-                right={SizeFormatter(
-                  "6rem", //iphone se
-                  "7rem", //iphone xr
-                  "6.5rem", //iphone 12pro
-                  "6.5rem", //pixel 5
-                  "6rem", //samsung galaxy s8+
-                  "7rem", //samsung galaxy s20 ultra
-                  "9rem", //ipad air
-                  "9rem" //ipad mini
-                )}
-                bottom={SizeFormatter(
-                  "8.5rem", //iphone se
-                  "7rem", //iphone xr
-                  "8rem", //iphone 12pro
-                  "8rem", //pixel 5
-                  "9.5rem", //samsung galaxy s8+
-                  "7.5rem", //samsung galaxy s20 ultra
-                  "9.5rem", //ipad air
-                  "9.5rem" //ipad mini
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.dumbbell}
+                  className={styles.item}
+                  filter="auto"
+                  brightness="70%"
+                  width={SizeFormatter(
+                    "2rem", //iphone se
+                    "2rem", //iphone xr
+                    "2rem", //iphone 12pro
+                    "2rem", //pixel 5
+                    "2rem", //samsung galaxy s8+
+                    "2rem", //samsung galaxy s20 ultra
+                    "3rem", //ipad air
+                    "3rem" //ipad mini
+                  )}
+                  right={SizeFormatter(
+                    "6rem", //iphone se
+                    "7rem", //iphone xr
+                    "6.5rem", //iphone 12pro
+                    "6.5rem", //pixel 5
+                    "6rem", //samsung galaxy s8+
+                    "7rem", //samsung galaxy s20 ultra
+                    "9rem", //ipad air
+                    "9rem" //ipad mini
+                  )}
+                  bottom={SizeFormatter(
+                    "8.5rem", //iphone se
+                    "7rem", //iphone xr
+                    "8rem", //iphone 12pro
+                    "8rem", //pixel 5
+                    "9.5rem", //samsung galaxy s8+
+                    "7.5rem", //samsung galaxy s20 ultra
+                    "9.5rem", //ipad air
+                    "9.5rem" //ipad mini
+                  )}
+                />
+              </Hint>
             </Box>
           </Box>
           <Box
