@@ -3,7 +3,7 @@ import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
 import CldImage from '../components/CldImage'
 import { Suspense, useEffect, useState } from 'react'
-import fetchRoom from '@/resources/fetchRoom'
+import fetchRoom from '@/resources/cloudinary/fetchRoom'
 import Map from "../Map";
 
 export default function CarmenRoom() {

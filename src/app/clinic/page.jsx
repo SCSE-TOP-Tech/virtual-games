@@ -6,7 +6,7 @@ import styles from "./components/styles.module.css";
 
 import background from "../../../public/Rooms/Clinic/clinic.png";
 import { useEffect, useState } from "react";
-import fetchRoom from "@/resources/fetchRoom";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import CldImage from "../components/CldImage";
 import Map from "../Map";
 

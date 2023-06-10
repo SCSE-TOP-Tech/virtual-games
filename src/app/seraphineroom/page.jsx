@@ -1,5 +1,5 @@
 "use client";
-import fetchRoom from "@/resources/fetchRoom";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { Container, Box, Text } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";

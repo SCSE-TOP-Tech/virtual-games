@@ -1,6 +1,5 @@
-import prisma from "../../../../../lib/prisma";
-
-// PUT /api/prisma/score
+import prisma from "../../../../../../lib/prisma";
+// PUT /api/prisma/score/update
 // Required fields in body: userId, timerScore, hintsScore, culpritScore, totalScore
 export default async function handle(req, res) {
   const { userId, timerScore, hintScore, culpritScore } = req.body;

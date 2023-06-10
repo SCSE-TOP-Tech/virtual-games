@@ -4,10 +4,10 @@ import Map from '../Map'
 import { Container, Text, Box } from '@chakra-ui/react'
 import CldImage from '../components/CldImage'
 import { Suspense, useEffect, useState } from 'react'
-import fetchRoom from '@/resources/fetchRoom'
-import createUser from '@/resources/createUser'
-import updateTimer from '@/resources/updateTimer'
-import updateScore from '@/resources/updateScore'
+import fetchRoom from '@/resources/cloudinary/fetchRoom'
+import createUser from '@/resources/prisma/createUser'
+import updateTimer from '@/resources/prisma/updateTimer'
+import updateScore from '@/resources/prisma/updateScore'
 
 export default function MaanRoom() {
   const [room, setRoom] = useState(false);

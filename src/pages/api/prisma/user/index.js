@@ -8,6 +8,12 @@ export default async function handle(req, res) {
   const result = await prisma.user.create({
     data: {
       ...req.body,
+      score: {
+        timerScore: 0,
+        hintsScore: 0,
+        culpritScore: 0,
+        totalScore: 0
+      }
     },
   });
   res.json(result);
