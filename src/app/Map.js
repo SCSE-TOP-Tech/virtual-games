@@ -11,6 +11,7 @@ export default function Map() {
         { name: 'Clinic', href: '/clinic' },
         { name: "Control Room", href: '/controlroom' },
         { name: 'Hallway', href: '/hallway' },
+        { name: "Kitchen", href: '/kitchen' },
         { name: "Princess' Room", href: '/princessroom' },
         { name: "Dressing Room", href: '/dressingroom' },
         { name: "Captain's Room", href: '/captainroom' },
