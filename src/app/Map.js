@@ -20,7 +20,8 @@ export default function Map() {
         { name: "Doyle's Room", href: '/doyleroom' },
         { name: "Maan's Room", href: '/maanroom' },
         { name: "Romily's Room", href: '/romilyroom' },
-        { name: "Seraphine's Room", href: '/seraphineroom' }
+        { name: "Seraphine's Room", href: '/seraphineroom' },
+        { name: "Storage's Room", href: '/storageroom' }
     ]
 
     return (
