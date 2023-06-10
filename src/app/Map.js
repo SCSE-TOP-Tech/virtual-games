@@ -9,7 +9,9 @@ export default function Map() {
 
     const rooms = [
         { name: 'Clinic', href: '/clinic' },
+        { name: "Control Room", href: '/controlroom' },
         { name: 'Hallway', href: '/hallway' },
+        { name: "Kitchen", href: '/kitchen' },
         { name: "Princess' Room", href: '/princessroom' },
         { name: "Dressing Room", href: '/dressingroom' },
         { name: "Captain's Room", href: '/captainroom' },
@@ -19,7 +21,8 @@ export default function Map() {
         { name: "Doyle's Room", href: '/doyleroom' },
         { name: "Maan's Room", href: '/maanroom' },
         { name: "Romily's Room", href: '/romilyroom' },
-        { name: "Seraphine's Room", href: '/seraphineroom' }
+        { name: "Seraphine's Room", href: '/seraphineroom' },
+        { name: "Storage's Room", href: '/storageroom' }
     ]
 
     return (
