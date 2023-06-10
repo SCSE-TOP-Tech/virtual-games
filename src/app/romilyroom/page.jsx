@@ -3,7 +3,8 @@ import styles from "./components/styles.module.css";
 import { Container, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import { Hint, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
+import Hint from "../components/Hint";
 import Map from "../Map";
 
 export default function RomilyRoom() {
