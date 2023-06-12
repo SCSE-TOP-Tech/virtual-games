@@ -1,7 +1,7 @@
 "use client";
 import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
-import CldImage from "../components/CldImage";
+import CldImage from "../components/ImageComp";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Map from "../Map";

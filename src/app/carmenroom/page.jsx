@@ -1,7 +1,7 @@
 'use client'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
-import CldImage from '../components/CldImage'
+import { CldImage, CldImageItems } from '../components/ImageComp'
 import { Suspense, useEffect, useState } from 'react'
 import fetchRoom from '@/pages/api/rooms/fetchRoom'
 import Map from "../Map";
@@ -55,7 +55,6 @@ export default function CarmenRoom() {
 
               {/* mail */}
               <CldImage
-                onClick={()=>textHandler(room.clues.mail.desc)}
                 item={room.clues.mail}
                 className={styles.item}
                 style={{
@@ -64,13 +63,11 @@ export default function CarmenRoom() {
                   top: '318px',
                   width: '140px',
                   margin: '0',
-                  cursor: 'pointer'
                 }}
               />
 
               {/* master key */}
               <CldImage
-                onClick={()=>textHandler(room.clues.master_key.desc)}
                 item={room.clues.master_key}
                 className={styles.item}
                 style={{
@@ -79,13 +76,11 @@ export default function CarmenRoom() {
                   top: '490px',
                   width: '45px',
                   margin: '0',
-                  cursor: 'pointer'
                 }}
               />
 
                 {/* clothspin */}
                 <CldImage
-                  onClick={()=>textHandler(room.dummy_objects.clothespin.desc)}
                   item={room.dummy_objects.clothespin}
                   className={styles.item}
                   style={{
@@ -94,7 +89,6 @@ export default function CarmenRoom() {
                     top: '480px',
                     width: '30px',
                     margin: '0',
-                    cursor: 'pointer'
                   }}
                 />
             
