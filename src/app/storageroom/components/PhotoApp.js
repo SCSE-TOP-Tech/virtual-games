@@ -9,7 +9,12 @@ export default function PhotoApp() {
                 <Container paddingLeft='1rem' fontWeight='1.4rem'>Photos</Container>
             </Flex>
 
-        
+            <img 
+                src="rooms/Storage/selfie.png" 
+                alt='selfie' 
+                width='90%'
+                style = {{position:'relative', top:'5%', left:'5%'}}
+            />
         </Box>
     )
 }

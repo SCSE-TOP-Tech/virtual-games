@@ -1,5 +1,5 @@
 import { Box, Container, Flex } from "@chakra-ui/react";
-import { MdKeyboardArrowRight, MdKeyboardTab, MdSettingsPhone } from "react-icons/md";
+import { MdKeyboardTab, MdSettingsPhone } from "react-icons/md";
 
 export default function PhotoApp() {
     return (
@@ -10,7 +10,7 @@ export default function PhotoApp() {
             </Flex>
 
             <Flex p='1rem'>
-                <MdKeyboardTab fontSize='25px' color="green"/>
+                <MdKeyboardTab fontSize='1.6rem' color="green"/>
                 <Container paddingLeft='1rem' fontWeight='1.4rem'>Today, 9.03 pm | Princess </Container>
                 
             </Flex>

@@ -45,7 +45,7 @@ export default function StorageRoom() {
               h="90%"
               width="100%"
             >
-              {isPhoneOpen && <Phone />}
+              {isPhoneOpen && <Phone handler={togglePhone}/>}
               <Container
                 position="absolute"
                 display="flex"
@@ -181,3 +181,4 @@ export default function StorageRoom() {
     </Suspense>
   );
 }
+

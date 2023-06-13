@@ -1,12 +1,12 @@
-import { MdCall, MdCameraAlt } from 'react-icons/md'
+import { MdCall, MdCameraAlt, MdCropSquare } from 'react-icons/md'
 import { Box, Flex, IconButton } from "@chakra-ui/react";
 import { useState } from "react";
 import PhotoApp from './PhotoApp';
 import CallApp from './CallApp';
-
-export default function Phone() {
-    const [isPhoto, setPhoto] = useState(true)
-    const [isCallLog, setCallLog] = useState(false)
+import togglePhone from '../page';
+export default function Phone(props) {
+    const [isPhoto, setPhoto] = useState(false)
+    const [isCallLog, setCallLog] = useState(true)
 
     const togglePhoto = () => {
         if (!isPhoto) {
@@ -51,13 +51,19 @@ export default function Phone() {
                 >
                     <IconButton
                         aria-label='Call App'
-                        fontSize='20px'
+                        fontSize='1.5rem'
                         icon={<MdCall />}
                         onClick={toggleCallLog}
                     />
                     <IconButton
+                        aria-label='Close Phone'
+                        fontSize='1.5rem'
+                        icon={<MdCropSquare />}
+                        onClick={props.handler}
+                    />
+                    <IconButton
                         aria-label='Photos App'
-                        fontSize='20px'
+                        fontSize='1.5rem'
                         icon={<MdCameraAlt />}
                         onClick={togglePhoto}
                     />
