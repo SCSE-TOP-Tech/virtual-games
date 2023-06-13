@@ -3,7 +3,6 @@ import { Box, Flex, IconButton } from "@chakra-ui/react";
 import { useState } from "react";
 import PhotoApp from './PhotoApp';
 import CallApp from './CallApp';
-import togglePhone from '../page';
 export default function Phone(props) {
     const [isPhoto, setPhoto] = useState(false)
     const [isCallLog, setCallLog] = useState(true)
