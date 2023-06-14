@@ -1,11 +1,11 @@
 "use client";
 
 import styles from "./components/styles.module.css";
-import { Container, Text, Box, Collapse, Button } from "@chakra-ui/react";
+import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import CldImage from "../components/CldImage";
 import Map from "../Map";
+import { CldImage } from "@/app/components/ImageComp";
 
 export default function StorageRoom() {
   const [room, setRoom] = useState(false);
@@ -18,7 +18,7 @@ export default function StorageRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("doyle", true)
+    fetchRoom("storage_room", false)
       .then(data => {
         setRoom(data);
       })
@@ -50,14 +50,12 @@ export default function StorageRoom() {
                     Time placeholder
                   </Text>
                 </Container>
-                {/* background (temporary viewing) */}
-                <img src="rooms/Storage/background.png" alt="background" />
+                {/* background*/}
+                <CldImage item={room.background}/>
                 <Box position="absolute" zIndex="1">
-
                   {/* dead doctor (temp viewing) */}
-                  <img 
-                    src="rooms/Storage/dead-doctor.png" 
-                    alt="dead doctor"
+                  <CldImage
+                    item={room.npc.dead_doctor}
                     style={{
                       position: "relative",
                       right: "4rem",
@@ -69,9 +67,8 @@ export default function StorageRoom() {
                   />
 
                   {/* tesseract (temp viewing) */}
-                  <img 
-                    src="rooms/Storage/tesseract.png" 
-                    alt="tesseract"
+                  <CldImage
+                    item={room.clues.tesseract}
                     style={{
                       position: "relative",
                       right: "-12.4rem",
@@ -83,9 +80,8 @@ export default function StorageRoom() {
                   />
 
                   {/* screwdriver (temp viewing) */}
-                  <img 
-                    src="rooms/Storage/screwdriver.png" 
-                    alt="screwdriver"
+                  <CldImage
+                    item={room.dummy_objects.screwdriver}
                     style={{
                       position: "relative",
                       right: "1rem",
@@ -95,11 +91,10 @@ export default function StorageRoom() {
                     }}
                     className={styles.item}
                   />
-                  
+
                   {/* mop and bucket (temp viewing) */}
-                  <img 
-                    src="rooms/Storage/mop-bucket.png" 
-                    alt="mop and bucket"
+                  <CldImage
+                    item={room.dummy_objects.mopbucket}
                     style={{
                       position: "relative",
                       right: "-2.4rem",
@@ -111,9 +106,8 @@ export default function StorageRoom() {
                   />
 
                   {/* blood stained clothspin (temp viewing) */}
-                  <img 
-                    src="rooms/Storage/blood-stained-clothspin.png" 
-                    alt="blood stained clothspin"
+                  <CldImage
+                    item={room.clues.blood_clothpin}
                     style={{
                       position: "relative",
                       right: "5.4rem",
@@ -125,9 +119,8 @@ export default function StorageRoom() {
                   />
 
                   {/* doctor's galaxy phone (temp viewing) */}
-                  <img 
-                    src="rooms/Storage/doctor-phone.png" 
-                    alt="galaxy phone"
+                  <CldImage
+                    item={room.clues.doctorphone}
                     style={{
                       position: "relative",
                       right: "5.4rem",
@@ -141,9 +134,8 @@ export default function StorageRoom() {
                   {/* cloth (temp viewing) */}
                   <Box>
                     {!isClicked && 
-                      <img 
-                      src="rooms/Storage/cloth.png" 
-                      alt="cloth"
+                      <CldImage
+                      item={room.clues.cloth}
                       style={{
                         position: "relative",
                         right: "-11rem",

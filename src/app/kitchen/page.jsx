@@ -4,12 +4,13 @@ import { Container, Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Map from "../Map";
+import { CldImage } from "@/app/components/ImageComp";
 
 export default function Kitchen() {
   const [room, setRoom] = useState(false);
 
     useEffect(() => {
-      fetchRoom("cooper", true).then((data) => {
+      fetchRoom("kitchen", false).then((data) => {
         setRoom(data);
       });
     }, []);
@@ -31,16 +32,14 @@ export default function Kitchen() {
             width="100%"
           >
             {/* background image */}
-            {/* temporarily uses <img />  */}
-            <img src="rooms/Kitchen/background.png" alt="background" />
+            <CldImage item={room.background}/>
 
             {/* items */}
             <Box position="absolute" zIndex="1">
 
                {/* blood stained knife (temp viewing) */}
-               <img 
-                    src="rooms/Kitchen/blood-stained-knife.png" 
-                    alt="blood stained knife"
+               <CldImage
+                    item={room.clues.knife}
                     style={{
                       position: "relative",
                       right: "5.7rem",
@@ -52,9 +51,8 @@ export default function Kitchen() {
                   />
 
                 {/* blood stained meat (temp viewing) */}
-                <img 
-                    src="rooms/Kitchen/blood-stained-meat.png" 
-                    alt="blood stained meat"
+                <CldImage
+                    item={room.clues.meat}
                     style={{
                       position: "relative",
                       right: "7.6rem",
@@ -66,9 +64,8 @@ export default function Kitchen() {
                   />
 
                 {/* blood stained apron (temp viewing) */}
-                <img 
-                    src="rooms/Kitchen/blood-stained-apron.png" 
-                    alt="blood stained apron"
+                <CldImage
+                    item={room.clues.apron}
                     style={{
                       position: "relative",
                       right: "-1rem",
