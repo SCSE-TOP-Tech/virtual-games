@@ -7,8 +7,12 @@ export const characters = [
     name: "Doyle",
     image: "src.png",
     actions: {
-      x: "src.svg",
-      talk: "src.svg",
+      move: {
+        name: "Doyle moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/doyleMoving_rdhhi2.gif"
+      },
     },
     room: {
       name: "Doyle's Room",
@@ -72,8 +76,12 @@ export const characters = [
     name: "Carmen",
     image: "src.png",
     actions: {
-      x: "src.svg",
-      talk: "src.svg",
+      move: {
+        name: "Carmen moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756674/virtual_games/characters/movement/camenMoving_ij1zy2.gif"
+      },
     },
     room: {
       name: "Carmen's Room",
@@ -116,8 +124,12 @@ export const characters = [
     name: "Seraphine",
     image: "src.png",
     actions: {
-      walk: "src.svg",
-      talk: "src.svg",
+      move: {
+        name: "Seraphine moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/seraphineMoving_axmd0i.gif"
+      },
     },
     room: {
       name: "Seraphine Room",
@@ -167,8 +179,18 @@ export const characters = [
     name: "Cooper",
     image: "src.png",
     actions: {
-      x: "src.svg",
-      talk: "src.svg",
+      move: {
+        name: "Cooper moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756669/virtual_games/characters/movement/cooperMoving_bd2mcd.gif"
+      },
+      kill: {
+        name: "Cooper kills.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756229/virtual_games/characters/actions/cooperKill_i0w3x3.gif"
+      },
     },
     room: {
       name: "Cooper's Room",
@@ -217,8 +239,12 @@ export const characters = [
     name: "Romily",
     image: "src.png",
     actions: {
-      x: "src.svg",
-      talk: "src.svg",
+      move: {
+        name: "Romily moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/romillyMoving_qkypcz.gif"
+      },
     },
     room: {
       name: "Romily's Room",
@@ -273,8 +299,12 @@ export const characters = [
     name: "Maan",
     image: "src.png",
     actions: {
-      x: "src.svg",
-      talk: "src.svg",
+      move: {
+        name: "Maan moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/mannMoving_el5wuc.gif"
+      },
     },
     room: {
       name: "Maan's Room",
@@ -310,8 +340,12 @@ export const characters = [
     name: "Brand",
     image: "src.png",
     actions: {
-      x: "src.svg",
-      talk: "src.svg",
+      move: {
+        name: "Brand moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/brandMoving_usbnrh.gif"
+      },
     },
     room: {
       name: "Brand's Room",
@@ -332,17 +366,21 @@ export const characters = [
       }
     },
   },
-  // Maan (Updated V1)
+  // Knight (Updated V1)
   {
-    id: "maan",
-    name: "Maan",
+    id: "knight",
+    name: "Knight",
     image: "src.png",
     actions: {
-      x: "src.svg",
-      talk: "src.svg",
+      move: {
+        name: "Knight moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/knightMoving_ojyv3i.gif"
+      },
     },
     room: {
-      name: "Maan's Room",
+      name: "Knight's Room",
       background: {
         name: "Maan's Room Background",
         height: 1024,
@@ -375,8 +413,12 @@ export const characters = [
     name: "Princess White",
     image: "src.png",
     actions: {
-        x: "src.svg",
-        talk: "src.svg",
+      move: {
+        name: "Princess White moves.",
+        height: 300,
+        width: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/princessMoving_o75czo.gif"
+      },
     },
     room: {
         name: "Princess White's Room",
@@ -508,6 +550,7 @@ export const rooms = [
       }
     }
   },
+
   // Clinic (Updated V1)
   {
     id: "clinic",
@@ -528,6 +571,7 @@ export const rooms = [
       },
     },
   },
+
   // Dressing Room (Updated V1)
   {
     id: "dressing_room",
@@ -548,6 +592,130 @@ export const rooms = [
       },
     },
   },
+
+  // Control Room (Updated V1)
+  {
+    id: "control_room",
+    name: "Control Room",
+    background: {
+      name: "Control Room Background",
+      height: 1024,
+      width: 1024,
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754178/virtual_games/rooms/control/background_zze5kw.png"
+    },
+    dummy_objects: {
+      computer: {
+        name: "Space Computer",
+        desc: "Space Computer",
+        width: 113,
+        height: 78,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754177/virtual_games/rooms/control/security-computer_tbe11m.png",
+      },
+    },
+  },
+
+  // Kitchen (Updated V1)
+  {
+    id: "kitchen",
+    name: "Kitchen",
+    background: {
+      name: "Kitchen Background",
+      height: 1024,
+      width: 1024,
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754638/virtual_games/rooms/kitchen/background_xzed8m.png"
+    },
+    clues: {
+      apron: {
+        name: "Blood Stained Apron",
+        desc: "Apron with bloody marks, I wonder what happened...?",
+        width: 390,
+        height: 280,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754637/virtual_games/rooms/kitchen/blood-stained-apron_sxqgkx.png",
+      },
+      knife: {
+        name: "Blood Stained Knife",
+        desc: "What blood could this be.., maybe I'm just thinking too much...",
+        width: 612,
+        height: 408,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754636/virtual_games/rooms/kitchen/blood-stained-knife_haxjwc.png",
+      },
+      meat: {
+        name: "Blood Stained Meat",
+        desc: "Poor cows...",
+        width: 246,
+        height: 205,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754636/virtual_games/rooms/kitchen/blood-stained-meat_r3tsx2.png",
+      },
+    },
+  },
+
+  // Storage Room (Updated V1)
+  {
+    id: "storage_room",
+    name: "Storage Room",
+    background: {
+      name: "Storage Room Background",
+      height: 952,
+      width: 952,
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754969/virtual_games/rooms/storage/background_notct1.png"
+    },
+    clues:{
+      tesseract: {
+        name: "Tesseract",
+        desc: "Woah! It's the Tesseract that Princess White has been looking for!",
+        width: 275,
+        height: 183,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754968/virtual_games/rooms/storage/tesseract_offmfd.png",
+      },
+      doctorphone: {
+        name: "Doctor Phone",
+        desc: "This is the doctor's phone! Let's take a look.",
+        width: 666,
+        height: 375,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754967/virtual_games/rooms/storage/doctor-phone_chdhui.png",
+      },
+      blood_clothpin: {
+        name: "Blood Stained Clothpin",
+        desc: "Wait... this is rather familiar..?",
+        width: 230,
+        height: 219,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754967/virtual_games/rooms/storage/blood-stained-clothspin_p6wpjh.png",
+      },
+      cloth: {
+        name: "Black Cloth",
+        desc: "Just an ordinary cloth, or is it?",
+        width: 300,
+        height: 249,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754967/virtual_games/rooms/storage/cloth_xwxxb4.png",
+      },
+    },
+    dummy_objects: {
+      screwdriver:{
+        name: "Screwdriver",
+        desc: "Could be useful, I wonder what its for",
+        width: 556,
+        height: 448,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754968/virtual_games/rooms/storage/screwdriver_ay4app.png",
+      },
+      mopbucket: {
+        name: "Mop and Bucket",
+        desc: "Its a mop and bucket, what are you expecting.",
+        width: 360,
+        height: 493,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754967/virtual_games/rooms/storage/mop-bucket_eolt4b.png",
+      },
+    },
+    npc: {
+      dead_doctor: {
+        name: "Dead Doctor",
+        desc: "Holy Crap, what happened to him!",
+        width: 474,
+        height: 526,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754968/virtual_games/rooms/storage/dead-doctor_xhebpv.png",
+      }
+    },
+  },
+
 ];
 
 export const scenes = [

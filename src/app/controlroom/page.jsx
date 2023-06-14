@@ -4,12 +4,13 @@ import { Container, Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Map from "../Map";
+import { CldImage } from "@/app/components/ImageComp";
 
 export default function ControlRoom() {
   const [room, setRoom] = useState(false);
 
     useEffect(() => {
-      fetchRoom("cooper", true).then((data) => {
+      fetchRoom("control_room", false).then((data) => {
         setRoom(data);
       });
     }, []);
@@ -31,25 +32,23 @@ export default function ControlRoom() {
             width="100%"
           >
             {/* background image */}
-            {/* temporarily uses <img />  */}
-            <img src="rooms/Controlroom/background.png" alt="background" />
+            <CldImage item={room.background}/>
 
             {/* items */}
             <Box position="absolute" zIndex="1">
 
                {/* security computer (temp viewing) */}
-               <img 
-                    src="rooms/Controlroom/security-computer.png" 
-                    alt="security computer"
-                    style={{
-                      position: "relative",
-                      right: "-0.1rem",
-                      top: "14.1rem",
-                      width: "3.3rem",
-                      margin: "0",
-                    }}
-                    className={styles.item}
-                  />
+              <CldImage
+                  item={room.dummy_objects.computer}
+                  style={{
+                    position: "relative",
+                    right: "-0.1rem",
+                    top: "14.1rem",
+                    width: "3.3rem",
+                    margin: "0",
+                  }}
+                  className={styles.item}
+                />
 
             </Box>
           </Box>
