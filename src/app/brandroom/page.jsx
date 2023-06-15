@@ -1,7 +1,7 @@
 "use client";
 import styles from "./components/styles.module.css";
 import { Container, Box } from "@chakra-ui/react";
-import { ItemImage, SizeFormatter, CldImage } from "../components/ImageComp";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Map from "../Map";
@@ -36,11 +36,6 @@ export default function BrandRoom() {
               {/* background image */}
               <ItemImage item={room.background} />
               <Box position="absolute" zIndex="1">
-                <CldImage
-                  item={room.clues.galaxy_phone}
-                  className={styles.item}
-                />
-
                 {/* spoiled image need to change to a new image */}
                 {/* galaxy phone */}
                 <ItemImage
@@ -67,13 +62,6 @@ export default function BrandRoom() {
                     "1rem", //ipad air
                     "1rem" //ipad mini
                   )}
-                  // style={{
-                  //   position: "relative",
-                  //   right: "29px",
-                  //   top: "30px",
-                  //   width: "100%",
-                  //   margin: "0",
-                  // }}
                 />
               </Box>
             </Box>
