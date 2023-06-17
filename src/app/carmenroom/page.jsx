@@ -1,15 +1,14 @@
 'use client'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
-import { CldImage, CldImageItems } from '../components/ImageComp'
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { Suspense, useEffect, useState } from 'react'
 import fetchRoom from '@/pages/api/rooms/fetchRoom'
 import Map from "../Map";
+import Hint from '../components/Hint';
 
 export default function CarmenRoom() {
-
   const [room, setRoom] = useState(false);
-  const [text, setText] = useState("Carmen's Room");
   
   // Initial Load
   useEffect(() => {
@@ -25,9 +24,13 @@ export default function CarmenRoom() {
   return (
     <Suspense fallback={<h1>Loading</h1>}> 
     {room && 
-      (<div>
-        <Box w={['100%', '30rem']} h='100%' p={4}>
-          {/* background image */}
+      (<Box w={['100%', '30rem']} h='100%' p={4} position='relative'>
+        <Container display="flex" justifyContent="space-around">
+            <Map />
+            <Box color="red" fontWeight="bold" fontSize="2vh">
+              Time placeholder
+            </Box>
+          </Container>
           <Box
             display='flex'
             justifyContent='center'
@@ -35,59 +38,110 @@ export default function CarmenRoom() {
             h='90%'
             width='100%'
           >
-            <Container
-              position='absolute'
-              display='flex'
-              justifyContent='space-around'
-              mt='1%'
-            >
-              {/* placeholders for components  */}
-              <Map />
-              <Text color='red' fontWeight='bold' fontSize='2vh'>
-                Time placeholder
-              </Text>
-            </Container>
-            <CldImage 
-              item={room.background}
-            />
+            {/* background image */}
+            <ItemImage item={room.background} height='60%'/>
+            {/* items */}
             <Box position='absolute' zIndex='1'>
-
-
               {/* mail */}
-              <CldImageItems
-                onClick={()=>textHandler(room.clues.mail.desc)}
+              <Hint>
+              <ItemImage
                 item={room.clues.mail}
                 className={styles.item}
-                location={['20rem', '10rem', 'unset', 'unset']}
-                width='140px'
+                width='5.9rem'
+                right={SizeFormatter(
+                  "8rem", //iphone se
+                  "9rem", //iphone xr
+                  "8.3rem", //iphone 12pro
+                  "8.3rem", //pixel 5
+                  "7.8rem", //samsung galaxy s8+
+                  "8.7rem", //samsung galaxy s20 ultra
+                  "10.2rem", //ipad air
+                  "10.2rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "11rem",
+                  "10.9rem",
+                  "10.9rem",
+                  "10.9rem",
+                  "10.9rem",
+                  "10.9rem",
+                  "10.9rem",
+                  "10.9rem"
+                )}
               />
-
+              </Hint>
+              
               {/* master key */}
-              <CldImageItems
-                onClick={()=>textHandler(room.clues.master_key.desc)}
+              <Hint>
+              <ItemImage
                 item={room.clues.master_key}
                 className={styles.item}
-                location={['30rem', '-3rem', 'unset', 'unset']}
-                width='45px'
+                width='2rem'
+                right={SizeFormatter(
+                  "0rem", //iphone se
+                  "1rem", //iphone xr
+                  "1rem", //iphone 12pro
+                  "1rem", //pixel 5
+                  "1rem", //samsung galaxy s8+
+                  "1.3rem", //samsung galaxy s20 ultra
+                  "1.3rem", //ipad air
+                  "1.4rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "16.7rem",
+                  "16.7rem",
+                  "16.3rem",
+                  "16.4rem",
+                  "16.3rem",
+                  "16.5rem",
+                  "16.5rem",
+                  "16.5rem"
+                )}
               />
-
-                {/* clothspin */}
-                <CldImageItems
-                  onClick={()=>textHandler(room.dummy_objects.clothespin.desc)}
+              </Hint>
+              
+              {/* clothspin */}
+              <Hint>
+                <ItemImage
                   item={room.dummy_objects.clothespin}
                   className={styles.item}
                   location={['30rem', '-15rem', 'unset', 'unset']}
-                  width='30px'
-                 
+                  width='1.5rem'
+                  right={SizeFormatter(
+                    "-10rem", //iphone se
+                    "-12.2rem", //iphone xr
+                    "-12rem", //iphone 12pro
+                    "-12rem", //pixel 5
+                    "-11rem", //samsung galaxy s8+
+                    "-12rem", //samsung galaxy s20 ultra
+                    "-14rem", //ipad air
+                    "-14rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "16rem",
+                    "16rem",
+                    "16rem",
+                    "16rem",
+                    "16rem",
+                    "16rem",
+                    "16rem",
+                    "16rem"
+                  )}
                 />
-            
+              </Hint>
             </Box>
           </Box>
-          <Box position='absolute' bottom='10%' mt='2%' w='28em' background='white'>
-            {text}
+          <Box
+            position="absolute"
+            bottom="10%"
+            mt="2%"
+            w="100%"
+            background="white"
+          >
+            Text Component Here
           </Box>
         </Box>
-      </div>)}
+      )}
     </Suspense>
   )
 }
