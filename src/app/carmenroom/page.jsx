@@ -1,7 +1,7 @@
 'use client'
 import styles from './components/styles.module.css'
 import { Container, Text, Box } from '@chakra-ui/react'
-import { ItemImage, SizeFormatter } from "../components/ImageComp";
+import { ItemImage, SizeFormatter, CustomBgImage } from "../components/ImageComp";
 import { Suspense, useEffect, useState } from 'react'
 import fetchRoom from '@/pages/api/rooms/fetchRoom'
 import Map from "../Map";
@@ -39,7 +39,7 @@ export default function CarmenRoom() {
             width='100%'
           >
             {/* background image */}
-            <ItemImage item={room.background} height='60%'/>
+            <CustomBgImage item={room.background} height='58%'/>
             {/* items */}
             <Box position='absolute' zIndex='1'>
               {/* mail */}
@@ -132,8 +132,6 @@ export default function CarmenRoom() {
             </Box>
           </Box>
           <Box
-            position="absolute"
-            bottom="10%"
             mt="2%"
             w="100%"
             background="white"
