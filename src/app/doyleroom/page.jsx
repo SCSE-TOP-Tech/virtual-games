@@ -4,8 +4,8 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import CldImage from "../components/ImageComp";
-import Map from "../Map";
+import {CldImage} from "../components/ImageComp";
+import Navbar from "../components/Navbar";
 
 export default function DoyleRoom() {
   const [room, setRoom] = useState(false);
@@ -23,7 +23,8 @@ export default function DoyleRoom() {
     <Suspense fallback={<h1>Loading</h1>}> 
       {room && 
         (<div>
-          <Box w={["100%", "30em"]} h="100%" p={4}>
+          <Box w={["100%", "30em"]} h="100%">
+            <Navbar />
             {/* background image */}
               <Box
                 display="flex"

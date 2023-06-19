@@ -4,7 +4,7 @@ import { Container, Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
-import Map from "../Map";
+import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
@@ -18,13 +18,9 @@ export default function CooperPage() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       {room && (
-        <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <Container display="flex" justifyContent="space-around">
-            <Map />
-            <Box color="red" fontWeight="bold" fontSize="2vh">
-              Time placeholder
-            </Box>
-          </Container>
+
+        <Box w={["100%", "30em"]} h="100%" position="relative">
+          <Navbar />
           <Box
             display="flex"
             justifyContent="center"

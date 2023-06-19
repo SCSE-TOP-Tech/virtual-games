@@ -3,8 +3,8 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import CldImage from "../components/ImageComp";
-import Map from "../Map";
+import {CldImage} from "../components/ImageComp";
+import Navbar from "../components/Navbar";
 
 export default function CaptainRoom() {
   const [room, setRoom] = useState(false);
@@ -20,7 +20,8 @@ export default function CaptainRoom() {
       {room && (
         <div>
           {/* //bound to mobile vi */}
-          <Box w={["100%", "30em"]} h="100%" p={4}>
+          <Box w={["100%", "30em"]} h="100%">
+           <Navbar />
             {/* container for background image and items*/}
             <Box
               display="flex"
@@ -29,19 +30,7 @@ export default function CaptainRoom() {
               h="90%"
               width="100%"
             >
-              {/* map and time components */}
-              <Container
-                position="absolute"
-                display="flex"
-                justifyContent="space-around"
-                mt="1%"
-              >
-                {/* placeholders for components  */}
-                <Map />
-                <Text color="white" fontWeight="bold" fontSize="2vh">
-                  Time placeholder
-                </Text>
-              </Container>
+  
               {/* background image */}
               <CldImage item={room.background}/>
               {/* items container */}

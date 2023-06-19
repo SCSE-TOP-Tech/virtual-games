@@ -3,8 +3,8 @@ import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import CldImage from "../components/ImageComp";
-import Map from "../Map";
+import {CldImage} from "../components/ImageComp";
+import Navbar from "../components/Navbar";
 
 export default function DoyleRoom() {
   const [room, setRoom] = useState(false);
@@ -20,7 +20,8 @@ export default function DoyleRoom() {
     <div>
       {room && (
         <div>
-          <Box w={["100%", "30em"]} h="100%" p={4}>
+          <Box w={["100%", "30em"]} h="100%">
+            <Navbar />
             {/* background image */}
             <Box
               display="flex"
@@ -29,18 +30,6 @@ export default function DoyleRoom() {
               h="90%"
               width="100%"
             >
-              <Container
-                position="absolute"
-                display="flex"
-                justifyContent="space-around"
-                mt="1%"
-              >
-                {/* placeholders for components  */}
-                <Map />
-                <Text color="red" fontWeight="bold" fontSize="2vh">
-                  Time placeholder
-                </Text>
-              </Container>
               <CldImage item={room.background}/>
               <Box position="absolute" zIndex="1">
                 {/* lipstick*/}

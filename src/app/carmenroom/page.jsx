@@ -4,7 +4,7 @@ import { Container, Text, Box } from '@chakra-ui/react'
 import { ItemImage, SizeFormatter, CldImage } from "../components/ImageComp";
 import { Suspense, useEffect, useState } from 'react'
 import fetchRoom from '@/pages/api/rooms/fetchRoom'
-import Map from "../Map";
+import Navbar from '../components/Navbar';
 import Hint from '../components/Hint';
 
 export default function CarmenRoom() {
@@ -24,13 +24,8 @@ export default function CarmenRoom() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       {room &&
-        (<Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <Container display="flex" justifyContent="space-around">
-            <Map />
-            <Box color="red" fontWeight="bold" fontSize="2vh">
-              Time placeholder
-            </Box>
-          </Container>
+        (<Box w={["100%", "30em"]} h="100%" position="relative">
+          <Navbar />
           <Box
             display="flex"
             justifyContent="center"

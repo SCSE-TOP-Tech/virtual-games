@@ -3,9 +3,9 @@ import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import { Container, Box, Text } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";
-import CldImage from "../components/ImageComp";
+import {CldImage} from "../components/ImageComp";
 import styles from "./components/styles.module.css";
-import Map from "../Map";
+import Navbar from "../components/Navbar";
 
 export default function SeraphineRoom() {
   const [room, setRoom] = useState(false);
@@ -22,16 +22,10 @@ export default function SeraphineRoom() {
       {room && (
         <div>
           {/* bound to mobile view */}
-          <Box w={["100%", "30em"]} h="100%" p={4}>
+          <Box w={["100%", "30em"]} h="100%">
+          <Navbar />
             {/* container for background image and items*/}
-            {/* map and time components */}
-            <Container display="flex" justifyContent="space-around">
-              {/* placeholders for components  */}
-              <Map />
-              <Box color="red" fontWeight="bold" fontSize="2vh" p="10%">
-                Time placeholder
-              </Box>
-            </Container>
+            
             <Box display="flex" justifyContent="center" zIndex="0" width="100%">
               {/* background image */}
               <CldImage item={room.background} />

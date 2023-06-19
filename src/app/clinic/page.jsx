@@ -7,8 +7,8 @@ import styles from "./components/styles.module.css";
 import background from "../../../public/Rooms/Clinic/clinic.png";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import CldImage from "../components/ImageComp";
-import Map from "../Map";
+import {CldImage} from "../components/ImageComp";
+import Navbar from "../components/Navbar";
 
 export default function Clinic() {
   const [room, setRoom] = useState(false);
@@ -23,7 +23,8 @@ export default function Clinic() {
     <div>
       {room && (
         <div>
-          <Box w={["100%", "30em"]} h="100%" p={4}>
+          <Box w={["100%", "30em"]} h="100%">
+            <Navbar />
             {/* background image */}
             <Box
               display="flex"
@@ -32,18 +33,6 @@ export default function Clinic() {
               h="90%"
               width="100%"
             >
-              <Container
-                position="absolute"
-                display="flex"
-                justifyContent="space-around"
-                mt="1%"
-              >
-                {/* placeholders for components  */}
-                <Map />
-                <Text color="red" fontWeight="bold" fontSize="2vh">
-                  Time placeholder
-                </Text>
-              </Container>
               <Image src={background} alt="background" />
               <Box position="absolute" zIndex="1">
                 {/* doctor */}

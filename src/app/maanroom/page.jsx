@@ -1,8 +1,8 @@
 'use client'
 import styles from './components/styles.module.css'
-import Map from '../Map'
+import Navbar from '../components/Navbar'
 import { Container, Text, Box } from '@chakra-ui/react'
-import CldImage from '../components/ImageComp'
+import {CldImage} from '../components/ImageComp'
 import { Suspense, useEffect, useState } from 'react'
 import fetchRoom from '@/pages/api/rooms/fetchRoom'
 
@@ -21,7 +21,8 @@ export default function MaanRoom() {
     <Suspense fallback={<h1>Loading</h1>}> 
     {room && 
       (<div>
-        <Box w={['100%', '30em']} h='100%' p={4}>
+        <Box w={['100%', '30em']} h='100%' >
+        <Navbar />
           {/* background image */}
           <Box
             display='flex'

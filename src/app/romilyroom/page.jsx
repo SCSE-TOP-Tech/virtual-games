@@ -5,7 +5,7 @@ import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import Hint from "../components/Hint";
-import Map from "../Map";
+import Navbar from "../components/Navbar";
 
 export default function RomilyRoom() {
   const [room, setRoom] = useState(false);
@@ -21,13 +21,8 @@ export default function RomilyRoom() {
     // To add loading page
     <Suspense fallback={<h1>Loading</h1>}>
       {room && (
-        <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <Container display="flex" justifyContent="space-around">
-            <Map />
-            <Box color="red" fontWeight="bold" fontSize="2vh">
-              Time placeholder
-            </Box>
-          </Container>
+        <Box w={["100%", "30em"]} h="100%" position="relative">
+          <Navbar />
 
           <Box
             display="flex"
