@@ -59,18 +59,6 @@ const ItemImage = chakra(ImageContent, {
   },
 });
 
-// This is for backgrounds with very large heights compared to widths
-// set the height as a prop around 58% - 65%
-const CustomBgImage = chakra(ImageContent, {
-  baseStyle: {
-    position: "relative",
-    margin: 0
-  },
-  shouldForwardProp: (props) => {
-    return ["item", "onClick", "className"].includes(props);
-  },
-});
-
 //
 //
 //
