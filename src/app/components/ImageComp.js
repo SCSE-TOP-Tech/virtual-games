@@ -103,4 +103,4 @@ const CldImage = ({ item, className, style, onClick }) => {
   );
 };
 //
-export { CldImage, CldImageItems, ItemImage, CustomBgImage, SizeFormatter };
+export { CldImage, CldImageItems, ItemImage,  SizeFormatter };
