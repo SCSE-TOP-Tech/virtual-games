@@ -33,18 +33,7 @@ export default function DoyleRoom() {
                 h="90%"
                 width="100%"
               >
-                <Container
-                  position="absolute"
-                  display="flex"
-                  justifyContent="space-around"
-                  mt="1%"
-                >
-                  {/* placeholders for components  */}
-                  <Map />
-                  <Text color="red" fontWeight="bold" fontSize="2vh">
-                    Time placeholder
-                  </Text>
-                </Container>
+                
                 <CldImage
                   item={room.background}
                 />

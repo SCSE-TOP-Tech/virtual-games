@@ -47,18 +47,7 @@ export default function StorageRoom() {
               width="100%"
             >
               {isPhoneOpen && <Phone handler={togglePhone} />}
-              <Container
-                position="absolute"
-                display="flex"
-                justifyContent="space-around"
-                mt="1%"
-              >
-                {/* placeholders for components  */}
-                <Map />
-                <Text color="red" fontWeight="bold" fontSize="2vh">
-                  Time placeholder
-                </Text>
-              </Container>
+              
               {/* background (temporary viewing) */}
               <img src="rooms/Storage/background.png" alt="background" />
               <Box position="absolute" zIndex="1">
