@@ -4,15 +4,16 @@ import { Container, Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Map from "../Map";
+import Image from "next/image";
 
 export default function ControlRoom() {
   const [room, setRoom] = useState(false);
 
-    useEffect(() => {
-      fetchRoom("cooper", true).then((data) => {
-        setRoom(data);
-      });
-    }, []);
+  useEffect(() => {
+    fetchRoom("cooper", true).then((data) => {
+      setRoom(data);
+    });
+  }, []);
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -32,25 +33,23 @@ export default function ControlRoom() {
           >
             {/* background image */}
             {/* temporarily uses <img />  */}
-            <img src="rooms/Controlroom/background.png" alt="background" />
+            <Image src="rooms/Controlroom/background.png" alt="background" />
 
             {/* items */}
             <Box position="absolute" zIndex="1">
-
-               {/* security computer (temp viewing) */}
-               <img 
-                    src="rooms/Controlroom/security-computer.png" 
-                    alt="security computer"
-                    style={{
-                      position: "relative",
-                      right: "-0.1rem",
-                      top: "14.1rem",
-                      width: "3.3rem",
-                      margin: "0",
-                    }}
-                    className={styles.item}
-                  />
-
+              {/* security computer (temp viewing) */}
+              <Image
+                src="rooms/Controlroom/security-computer.png"
+                alt="security computer"
+                style={{
+                  position: "relative",
+                  right: "-0.1rem",
+                  top: "14.1rem",
+                  width: "3.3rem",
+                  margin: "0",
+                }}
+                className={styles.item}
+              />
             </Box>
           </Box>
 
