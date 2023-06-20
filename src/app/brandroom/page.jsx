@@ -5,6 +5,7 @@ import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Map from "../Map";
+import { rooms } from "../../../data/data";
 
 export default function BrandRoom() {
   const [room, setRoom] = useState(false);
@@ -36,7 +37,7 @@ export default function BrandRoom() {
               {/* background image */}
               <ItemImage item={room.background} />
               <Box position="absolute" zIndex="1">
-                {/* spoiled image need to change to a new image */}
+                {/* temp custom image is used */}
                 {/* galaxy phone */}
                 <ItemImage
                   item={room.clues.galaxy_phone}
