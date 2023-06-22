@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/next-js": "^2.0.1",
     "@chakra-ui/react": "^2.5.2",
     "@cloudinary/react": "^1.11.2",
@@ -22,7 +23,7 @@
     "next": "13.2.4",
     "next-cloudinary": "^4.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
-
+    "react-dom": "18.2.0",
+    "react-icons": "^4.9.0"
   }
 }
