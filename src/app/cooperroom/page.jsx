@@ -3,7 +3,7 @@ import styles from "./components/styles.module.css";
 import { Container, Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import { ItemImage, SizeFormatter } from "../components/ImageComp";
+import CldImage from "../components/ImageComp";
 import Map from "../Map";
 import Hint from "../components/Hint";
 export default function CooperPage() {

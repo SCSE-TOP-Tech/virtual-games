@@ -54,42 +54,31 @@ export default function CarmenRoom() {
 
 
               {/* mail */}
-              <CldImage
+              <CldImageItems
+                onClick={()=>textHandler(room.clues.mail.desc)}
                 item={room.clues.mail}
                 className={styles.item}
-                style={{
-                  position: 'relative',
-                  right: '175px',
-                  top: '318px',
-                  width: '140px',
-                  margin: '0',
-                }}
+                location={['20rem', '10rem', 'unset', 'unset']}
+                width='140px'
               />
 
               {/* master key */}
-              <CldImage
+              <CldImageItems
+                onClick={()=>textHandler(room.clues.master_key.desc)}
                 item={room.clues.master_key}
                 className={styles.item}
-                style={{
-                  position: 'relative',
-                  right: '-50px',
-                  top: '490px',
-                  width: '45px',
-                  margin: '0',
-                }}
+                location={['30rem', '-3rem', 'unset', 'unset']}
+                width='45px'
               />
 
                 {/* clothspin */}
-                <CldImage
+                <CldImageItems
+                  onClick={()=>textHandler(room.dummy_objects.clothespin.desc)}
                   item={room.dummy_objects.clothespin}
                   className={styles.item}
-                  style={{
-                    position: 'relative',
-                    right: '-240px',
-                    top: '480px',
-                    width: '30px',
-                    margin: '0',
-                  }}
+                  location={['30rem', '-15rem', 'unset', 'unset']}
+                  width='30px'
+                 
                 />
             
             </Box>
