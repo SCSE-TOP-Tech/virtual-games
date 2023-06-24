@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./components/styles.module.css";
-import { Container, Text, Box, Collapse, Button } from "@chakra-ui/react";
+import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Map from "../Map";
@@ -24,7 +24,7 @@ export default function StorageRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("doyle", true)
+    fetchRoom("storage_room", false)
       .then(data => {
         setRoom(data);
       })

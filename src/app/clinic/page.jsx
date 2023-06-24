@@ -7,7 +7,7 @@ import styles from "./components/styles.module.css";
 import background from "../../../public/Rooms/Clinic/clinic.png";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import CldImage from "../components/ImageComp";
+import { CldImage } from "../components/ImageComp";
 import Map from "../Map";
 
 export default function Clinic() {
