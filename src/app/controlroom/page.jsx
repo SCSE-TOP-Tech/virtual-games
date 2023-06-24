@@ -9,11 +9,11 @@ import Navbar from "../components/Navbar";
 export default function ControlRoom() {
   const [room, setRoom] = useState(false);
 
-    useEffect(() => {
-      fetchRoom("control_room", false).then((data) => {
-        setRoom(data);
-      });
-    }, []);
+  useEffect(() => {
+    fetchRoom("control_room", false).then((data) => {
+      setRoom(data);
+    });
+  }, []);
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>

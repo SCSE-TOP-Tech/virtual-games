@@ -4,112 +4,127 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import {CldImage} from "../components/ImageComp";
+import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
 import Navbar from "../components/Navbar";
 
 export default function DoyleRoom() {
   const [room, setRoom] = useState(false);
-  
+
   // Initial Load
   useEffect(() => {
-    fetchRoom("doyle", true)
-      .then(data => {
-        setRoom(data);
-      })
+    fetchRoom("doyle", true).then((data) => {
+      setRoom(data);
+    });
   }, []);
 
   return (
     // To add loading page
-    <Suspense fallback={<h1>Loading</h1>}> 
-      {room && 
-        (<div>
-          <Box w={["100%", "30em"]} h="100%">
-            <Navbar />
-            {/* background image */}
-              <Box
-                display="flex"
-                justifyContent="center"
-                zIndex="0"
-                h="90%"
-                width="100%"
-              >
-                
-                <CldImage
-                  item={room.background}
-                />
-                <Box position="absolute" zIndex="1">
-                  {/* album */}
-                  <CldImage
-                    item={room.clues.music_albums}
-                    className={styles.item}
-                    style={{
-                      position: "relative",
-                      right: "70px",
-                      top: "435px",
-                      width: "45px",
-                      margin: "0",
-                    }}
-                  />
+    <Suspense fallback={<h1>Loading</h1>}>
+      {room && (
+        <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+          <Navbar />
 
-                  {/*luggage */}
-                  <CldImage
-                    item={room.dummy_objects.luggage}
-                    className={styles.item}
-                    style={{
-                      position: "relative",
-                      right: "120px",
-                      top: "500px",
-                      width: "70px",
-                      filter: "brightness(0.60)",
-                    }}
-                  />
+          <Box display="flex" justifyContent="center" width="100%">
+            <ItemImage item={room.background} />
+            <Box position="absolute" zIndex="1">
+              {/* album */}
+              <ItemImage
+                item={room.clues.music_albums}
+                className={styles.item}
+                width="3.5rem"
+                right={SizeFormatter(
+                  "3rem", //iphone se
+                  "3.5rem", //iphone xr
+                  "3rem", //iphone 12pro
+                  "3.5rem", //pixel 5
+                  "3rem", //samsung galaxy s8+
+                  "3.5rem", //samsung galaxy s20 ultra
+                  "5rem", //ipad air
+                  "5rem" //ipad mini
+                )}
+              />
 
-                  {/* id card */}
-                  <CldImage
-                    item={room.clues.spaceID_card}
-                    className={styles.item}
-                    style={{
-                      position: "relative",
-                      right: "50px",
-                      top: "450px",
-                      width: "100px",
-                    }}
-                  />
+              {/*luggage */}
+              <ItemImage
+                item={room.dummy_objects.luggage}
+                className={styles.item}
+                width="4rem"
+                right={SizeFormatter(
+                  "3rem", //iphone se
+                  "3.5rem", //iphone xr
+                  "3rem", //iphone 12pro
+                  "3.5rem", //pixel 5
+                  "3rem", //samsung galaxy s8+
+                  "3.5rem", //samsung galaxy s20 ultra
+                  "5rem", //ipad air
+                  "5rem" //ipad mini
+                )}
+              />
 
-                  {/* clothes */}
-                  <CldImage 
-                    item={room.dummy_objects.clothes} 
-                    className={styles.item} 
-                    style={{
-                      position: "relative",
-                      left: "35px",
-                      top: "175px",
-                      width: "100px",
-                      filter: "brightness(0.70)",
-                    }}
-                  />
+              {/* id card */}
+              <ItemImage
+                item={room.clues.spaceID_card}
+                className={styles.item}
+                width="5rem"
+                right={SizeFormatter(
+                  "3rem", //iphone se
+                  "3.5rem", //iphone xr
+                  "3rem", //iphone 12pro
+                  "3.5rem", //pixel 5
+                  "3rem", //samsung galaxy s8+
+                  "3.5rem", //samsung galaxy s20 ultra
+                  "5rem", //ipad air
+                  "5rem" //ipad mini
+                )}
+              />
 
-                  {/* bloodstained small towel  */}
-                  <CldImage
-                    item={room.clues.bloodstained_towel}
-                    className={styles.item}
-                    style={{
-                      position: "relative",
-                      left: "150px",
-                      top: "350px",
-                      width: "80px",
-                      filter: "brightness(0.5)",
-                    }}
-                  />
-                </Box>
-              </Box>
-      
-            <Box position="absolute" bottom="10%" mt="2%" w="28em" background="white">
-              Text Component Here
+              {/* clothes */}
+              <ItemImage
+                item={room.dummy_objects.clothes}
+                className={styles.item}
+                width="6rem"
+                right={SizeFormatter(
+                  "3rem", //iphone se
+                  "3.5rem", //iphone xr
+                  "3rem", //iphone 12pro
+                  "3.5rem", //pixel 5
+                  "3rem", //samsung galaxy s8+
+                  "3.5rem", //samsung galaxy s20 ultra
+                  "5rem", //ipad air
+                  "5rem" //ipad mini
+                )}
+              />
+
+              {/* bloodstained small towel  */}
+              <ItemImage
+                item={room.clues.bloodstained_towel}
+                className={styles.item}
+                width="4rem"
+                right={SizeFormatter(
+                  "3rem", //iphone se
+                  "3.5rem", //iphone xr
+                  "3rem", //iphone 12pro
+                  "3.5rem", //pixel 5
+                  "3rem", //samsung galaxy s8+
+                  "3.5rem", //samsung galaxy s20 ultra
+                  "5rem", //ipad air
+                  "5rem" //ipad mini
+                )}
+              />
             </Box>
           </Box>
-        </div>
-        )}
+
+          <Box
+            position="absolute"
+            bottom="10%"
+            mt="2%"
+            w="28em"
+            background="white"
+          >
+            Text Component Here
+          </Box>
+        </Box>
+      )}
     </Suspense>
   );
 }

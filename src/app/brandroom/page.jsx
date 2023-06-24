@@ -1,10 +1,11 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
-import { CldImage } from "../components/ImageComp";
-import { useEffect, useState } from "react";
+import { Container, Box } from "@chakra-ui/react";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
+import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Navbar from "../components/Navbar";
+import { rooms } from "../../../data/data";
 
 
 export default function BrandRoom() {
@@ -18,33 +19,46 @@ export default function BrandRoom() {
   }, []);
 
   return (
-    <div>
+    <Suspense fallback={<h1>Loading</h1>}>
       {room && (
         <div>
-          <Box w={["100%", "30em"]} h="100%" position='relative'>
-           <Navbar />
-            {/* background image */}
+          <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+            <Navbar />
             <Box
               display="flex"
               justifyContent="center"
-              zIndex="0"
-              h="90%"
+              position="relative"
               width="100%"
             >
-              
-              <CldImage item={room.background} />
+              {/* background image */}
+              <ItemImage item={room.background} />
               <Box position="absolute" zIndex="1">
+                {/* temp custom image is used */}
                 {/* galaxy phone */}
-                <CldImage
+                <ItemImage
                   item={room.clues.galaxy_phone}
                   className={styles.item}
-                  style={{
-                    position: "relative",
-                    right: "29px",
-                    top: "120px",
-                    width: "100%",
-                    margin: "0",
-                  }}
+                  width="2rem"
+                  left={SizeFormatter(
+                    "5rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  bottom={SizeFormatter(
+                    "10rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
                 />
               </Box>
             </Box>
@@ -60,6 +74,6 @@ export default function BrandRoom() {
           </Box>
         </div>
       )}
-    </div>
+    </Suspense>
   );
 }
