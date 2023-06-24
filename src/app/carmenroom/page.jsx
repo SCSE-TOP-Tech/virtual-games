@@ -111,15 +111,15 @@ export default function CarmenRoom() {
                   width='1.5rem'
                   filter="auto"
                   brightness='20%'
-                  right={SizeFormatter(
-                    "-11rem", //iphone se
-                    "-12.2rem", //iphone xr
-                    "-12rem", //iphone 12pro
-                    "-12rem", //pixel 5
-                    "-11rem", //samsung galaxy s8+
-                    "-12rem", //samsung galaxy s20 ultra
-                    "-14rem", //ipad air
-                    "-14rem" //ipad mini
+                  left={SizeFormatter(
+                    "11rem", //iphone se
+                    "12.2rem", //iphone xr
+                    "12rem", //iphone 12pro
+                    "12rem", //pixel 5
+                    "11rem", //samsung galaxy s8+
+                    "12rem", //samsung galaxy s20 ultra
+                    "14rem", //ipad air
+                    "14rem" //ipad mini
                   )}
                   top={SizeFormatter(
                     "12.7rem",
