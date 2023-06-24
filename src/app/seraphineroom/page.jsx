@@ -3,7 +3,7 @@ import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import { Container, Box, Text } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";
-import {CldImage} from "../components/ImageComp";
+import { CldImage } from "../components/ImageComp";
 import styles from "./components/styles.module.css";
 import Navbar from "../components/Navbar";
 

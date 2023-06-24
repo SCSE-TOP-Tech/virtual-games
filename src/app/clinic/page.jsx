@@ -7,8 +7,9 @@ import styles from "./components/styles.module.css";
 import background from "../../../public/Rooms/Clinic/clinic.png";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import {CldImage} from "../components/ImageComp";
+import { CldImage } from "../components/ImageComp";
 import Navbar from "../components/Navbar";
+
 
 export default function Clinic() {
   const [room, setRoom] = useState(false);
