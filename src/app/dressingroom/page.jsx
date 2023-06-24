@@ -3,7 +3,7 @@ import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import CldImage from "../components/ImageComp";
+import { CldImage } from "../components/ImageComp";
 import Map from "../Map";
 
 export default function DoyleRoom() {
