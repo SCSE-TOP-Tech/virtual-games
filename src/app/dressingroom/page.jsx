@@ -4,7 +4,7 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import Hint from "../components/Hint";
 
 export default function DressingRoom() {
@@ -28,10 +28,9 @@ export default function DressingRoom() {
             position="relative"
             width="100%"
           >
-            <CldImage item={room.background} />
+            <ItemImage item={room.background} />
 
             <Box position="absolute" zIndex="1">
-
               {/* lipstick*/}
               <Hint>
                 <ItemImage
@@ -62,14 +61,9 @@ export default function DressingRoom() {
                   )}
                 />
               </Hint>
-
             </Box>
           </Box>
-          <Box
-            mt="2%"
-            w="100%"
-            background="white"
-          >
+          <Box mt="2%" w="100%" background="white">
             Text Component Here
           </Box>
         </Box>

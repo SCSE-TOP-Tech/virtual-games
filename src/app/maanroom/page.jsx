@@ -1,6 +1,6 @@
 "use client";
 import styles from "./components/styles.module.css";
-import Navbar from '../components/Navbar'
+import Navbar from "../components/Navbar";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
 import { Suspense, useEffect, useState } from "react";
@@ -28,9 +28,8 @@ export default function MaanRoom() {
             position="relative"
             width="100%"
           >
-            <CldImage item={room.background} />
+            <ItemImage item={room.background} />
             <Box position="absolute" zIndex="1">
-
               {/* spacesword  */}
               <Hint>
                 <ItemImage
@@ -61,14 +60,9 @@ export default function MaanRoom() {
                   )}
                 />
               </Hint>
-
             </Box>
           </Box>
-          <Box
-            mt="2%"
-            w="100%"
-            background="white"
-          >
+          <Box mt="2%" w="100%" background="white">
             Text Component Here
           </Box>
         </Box>

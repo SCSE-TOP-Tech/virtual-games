@@ -3,7 +3,7 @@ import styles from "./components/styles.module.css";
 import { Container, Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import { CldImage } from "@/app/components/ImageComp";
+import { CldImage, ItemImage } from "@/app/components/ImageComp";
 import Navbar from "../components/Navbar";
 
 export default function ControlRoom() {
@@ -27,24 +27,22 @@ export default function ControlRoom() {
             width="100%"
           >
             {/* background image */}
-            <CldImage item={room.background}/>
+            <ItemImage item={room.background} />
 
             {/* items */}
             <Box position="absolute" zIndex="1">
-
-               {/* security computer (temp viewing) */}
+              {/* security computer (temp viewing) */}
               <CldImage
-                  item={room.dummy_objects.computer}
-                  style={{
-                    position: "relative",
-                    right: "-0.1rem",
-                    top: "14.1rem",
-                    width: "3.3rem",
-                    margin: "0",
-                  }}
-                  className={styles.item}
-                />
-
+                item={room.dummy_objects.computer}
+                style={{
+                  position: "relative",
+                  right: "-0.1rem",
+                  top: "14.1rem",
+                  width: "3.3rem",
+                  margin: "0",
+                }}
+                className={styles.item}
+              />
             </Box>
           </Box>
 

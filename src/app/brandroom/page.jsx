@@ -1,12 +1,12 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Container, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Navbar from "../components/Navbar";
 import { rooms } from "../../../data/data";
-
+import Hint from "../components/Hint";
 
 export default function BrandRoom() {
   const [room, setRoom] = useState(false);
@@ -33,33 +33,35 @@ export default function BrandRoom() {
               {/* background image */}
               <ItemImage item={room.background} />
               <Box position="absolute" zIndex="1">
-                {/* temp custom image is used */}
+                {/* temp custom image to be used */}
                 {/* galaxy phone */}
-                <ItemImage
-                  item={room.clues.galaxy_phone}
-                  className={styles.item}
-                  width="2rem"
-                  left={SizeFormatter(
-                    "5rem", //iphone se
-                    "1rem", //iphone xr
-                    "1rem", //iphone 12pro
-                    "1rem", //pixel 5
-                    "1rem", //samsung galaxy s8+
-                    "1rem", //samsung galaxy s20 ultra
-                    "1rem", //ipad air
-                    "1rem" //ipad mini
-                  )}
-                  bottom={SizeFormatter(
-                    "10rem", //iphone se
-                    "1rem", //iphone xr
-                    "1rem", //iphone 12pro
-                    "1rem", //pixel 5
-                    "1rem", //samsung galaxy s8+
-                    "1rem", //samsung galaxy s20 ultra
-                    "1rem", //ipad air
-                    "1rem" //ipad mini
-                  )}
-                />
+                <Hint>
+                  <ItemImage
+                    item={room.clues.galaxy_phone}
+                    className={styles.item}
+                    width="2rem"
+                    left={SizeFormatter(
+                      "5rem", //iphone se
+                      "1rem", //iphone xr
+                      "1rem", //iphone 12pro
+                      "1rem", //pixel 5
+                      "1rem", //samsung galaxy s8+
+                      "1rem", //samsung galaxy s20 ultra
+                      "1rem", //ipad air
+                      "1rem" //ipad mini
+                    )}
+                    bottom={SizeFormatter(
+                      "10rem", //iphone se
+                      "1rem", //iphone xr
+                      "1rem", //iphone 12pro
+                      "1rem", //pixel 5
+                      "1rem", //samsung galaxy s8+
+                      "1rem", //samsung galaxy s20 ultra
+                      "1rem", //ipad air
+                      "1rem" //ipad mini
+                    )}
+                  />
+                </Hint>
               </Box>
             </Box>
             <Box

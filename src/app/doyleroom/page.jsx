@@ -4,8 +4,9 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import Navbar from "../components/Navbar";
+import Hint from "../components/Hint";
 
 export default function DoyleRoom() {
   const [room, setRoom] = useState(false);
@@ -28,89 +29,99 @@ export default function DoyleRoom() {
             <ItemImage item={room.background} />
             <Box position="absolute" zIndex="1">
               {/* album */}
-              <ItemImage
-                item={room.clues.music_albums}
-                className={styles.item}
-                width="3.5rem"
-                right={SizeFormatter(
-                  "3rem", //iphone se
-                  "3.5rem", //iphone xr
-                  "3rem", //iphone 12pro
-                  "3.5rem", //pixel 5
-                  "3rem", //samsung galaxy s8+
-                  "3.5rem", //samsung galaxy s20 ultra
-                  "5rem", //ipad air
-                  "5rem" //ipad mini
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.clues.music_albums}
+                  className={styles.item}
+                  width="3.5rem"
+                  right={SizeFormatter(
+                    "3rem", //iphone se
+                    "3.5rem", //iphone xr
+                    "3rem", //iphone 12pro
+                    "3.5rem", //pixel 5
+                    "3rem", //samsung galaxy s8+
+                    "3.5rem", //samsung galaxy s20 ultra
+                    "5rem", //ipad air
+                    "5rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/*luggage */}
-              <ItemImage
-                item={room.dummy_objects.luggage}
-                className={styles.item}
-                width="4rem"
-                right={SizeFormatter(
-                  "3rem", //iphone se
-                  "3.5rem", //iphone xr
-                  "3rem", //iphone 12pro
-                  "3.5rem", //pixel 5
-                  "3rem", //samsung galaxy s8+
-                  "3.5rem", //samsung galaxy s20 ultra
-                  "5rem", //ipad air
-                  "5rem" //ipad mini
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.luggage}
+                  className={styles.item}
+                  width="4rem"
+                  right={SizeFormatter(
+                    "3rem", //iphone se
+                    "3.5rem", //iphone xr
+                    "3rem", //iphone 12pro
+                    "3.5rem", //pixel 5
+                    "3rem", //samsung galaxy s8+
+                    "3.5rem", //samsung galaxy s20 ultra
+                    "5rem", //ipad air
+                    "5rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* id card */}
-              <ItemImage
-                item={room.clues.spaceID_card}
-                className={styles.item}
-                width="5rem"
-                right={SizeFormatter(
-                  "3rem", //iphone se
-                  "3.5rem", //iphone xr
-                  "3rem", //iphone 12pro
-                  "3.5rem", //pixel 5
-                  "3rem", //samsung galaxy s8+
-                  "3.5rem", //samsung galaxy s20 ultra
-                  "5rem", //ipad air
-                  "5rem" //ipad mini
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.clues.spaceID_card}
+                  className={styles.item}
+                  width="5rem"
+                  right={SizeFormatter(
+                    "3rem", //iphone se
+                    "3.5rem", //iphone xr
+                    "3rem", //iphone 12pro
+                    "3.5rem", //pixel 5
+                    "3rem", //samsung galaxy s8+
+                    "3.5rem", //samsung galaxy s20 ultra
+                    "5rem", //ipad air
+                    "5rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* clothes */}
-              <ItemImage
-                item={room.dummy_objects.clothes}
-                className={styles.item}
-                width="6rem"
-                right={SizeFormatter(
-                  "3rem", //iphone se
-                  "3.5rem", //iphone xr
-                  "3rem", //iphone 12pro
-                  "3.5rem", //pixel 5
-                  "3rem", //samsung galaxy s8+
-                  "3.5rem", //samsung galaxy s20 ultra
-                  "5rem", //ipad air
-                  "5rem" //ipad mini
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.clothes}
+                  className={styles.item}
+                  width="6rem"
+                  right={SizeFormatter(
+                    "3rem", //iphone se
+                    "3.5rem", //iphone xr
+                    "3rem", //iphone 12pro
+                    "3.5rem", //pixel 5
+                    "3rem", //samsung galaxy s8+
+                    "3.5rem", //samsung galaxy s20 ultra
+                    "5rem", //ipad air
+                    "5rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* bloodstained small towel  */}
-              <ItemImage
-                item={room.clues.bloodstained_towel}
-                className={styles.item}
-                width="4rem"
-                right={SizeFormatter(
-                  "3rem", //iphone se
-                  "3.5rem", //iphone xr
-                  "3rem", //iphone 12pro
-                  "3.5rem", //pixel 5
-                  "3rem", //samsung galaxy s8+
-                  "3.5rem", //samsung galaxy s20 ultra
-                  "5rem", //ipad air
-                  "5rem" //ipad mini
-                )}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.clues.bloodstained_towel}
+                  className={styles.item}
+                  width="4rem"
+                  right={SizeFormatter(
+                    "3rem", //iphone se
+                    "3.5rem", //iphone xr
+                    "3rem", //iphone 12pro
+                    "3.5rem", //pixel 5
+                    "3rem", //samsung galaxy s8+
+                    "3.5rem", //samsung galaxy s20 ultra
+                    "5rem", //ipad air
+                    "5rem" //ipad mini
+                  )}
+                />
+              </Hint>
             </Box>
           </Box>
 

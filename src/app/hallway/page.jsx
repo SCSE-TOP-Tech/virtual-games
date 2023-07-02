@@ -1,27 +1,25 @@
-'use client'
-import styles from './components/styles.module.css'
-import { Container, Text, Box } from '@chakra-ui/react'
+"use client";
+import styles from "./components/styles.module.css";
+import { Container, Text, Box } from "@chakra-ui/react";
 import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
-import { Suspense, useEffect, useState } from 'react'
-import fetchRoom from '@/pages/api/rooms/fetchRoom'
+import { Suspense, useEffect, useState } from "react";
+import fetchRoom from "@/pages/api/rooms/fetchRoom";
 import Navbar from "../components/Navbar";
-import Hint from '../components/Hint';
+import Hint from "../components/Hint";
 export default function Hallway() {
-
   const [room, setRoom] = useState(false);
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("hallway", false)
-      .then(data => {
-        setRoom(data);
-      })
+    fetchRoom("hallway", false).then((data) => {
+      setRoom(data);
+    });
   }, []);
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
-      {room &&
-        (<Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+      {room && (
+        <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
           <Box
             display="flex"
@@ -29,17 +27,16 @@ export default function Hallway() {
             position="relative"
             width="100%"
           >
-            <CldImage item={room.background} />
-            <Box position='absolute' zIndex='1'>
-
+            <ItemImage item={room.background} />
+            <Box position="absolute" zIndex="1">
               {/* sibling-photo */}
               <Hint>
                 <ItemImage
                   item={room.clues.portrait}
                   className={styles.item}
-                  width='0.7rem'
+                  width="0.7rem"
                   filter="auto"
-                  brightness='60%'
+                  brightness="60%"
                   left={SizeFormatter(
                     "3.1rem", //iphone se
                     "3.4rem", //iphone xr
@@ -65,15 +62,11 @@ export default function Hallway() {
             </Box>
           </Box>
 
-          <Box
-            mt="2%"
-            w="100%"
-            background="white"
-          >
+          <Box mt="2%" w="100%" background="white">
             Text Component Here
           </Box>
-        </Box>)
-      }
+        </Box>
+      )}
     </Suspense>
-  )
+  );
 }
