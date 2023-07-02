@@ -31,9 +31,9 @@ export default function Map() {
                     Map
                 </Text>
             </MenuButton>
-            <MenuList>
+            <MenuList zIndex={100}>
                 {rooms.map((location, index) => (
-                    <MenuItem key={index} p='0.3rem' ml='1%'>
+                    <MenuItem key={index} p='0.3rem' ml='1%' zIndex={100}>
                         <Link href={location.href}>
                             <Text fontWeight={500} fontSize='0.8rem'>
                                 {location.name}
