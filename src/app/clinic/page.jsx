@@ -1,14 +1,14 @@
 "use client";
-import { Container, Box, Text, StylesProvider } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 import Image from "next/image";
 import styles from "./components/styles.module.css";
 
 import background from "../../../public/Rooms/Clinic/clinic.png";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import { CldImage } from "../components/ImageComp";
-import Map from "../Map";
+import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import Navbar from "../components/Navbar";
 
 export default function Clinic() {
   const [room, setRoom] = useState(false);
@@ -20,58 +20,61 @@ export default function Clinic() {
     });
   }, []);
   return (
-    <div>
+    <Suspense fallback={<h1>Loading</h1>}>
       {room && (
-        <div>
-          <Box w={["100%", "30em"]} h="100%" p={4}>
-            {/* background image */}
-            <Box
-              display="flex"
-              justifyContent="center"
-              zIndex="0"
-              h="90%"
-              width="100%"
-            >
-              <Container
-                position="absolute"
-                display="flex"
-                justifyContent="space-around"
-                mt="1%"
-              >
-                {/* placeholders for components  */}
-                <Map />
-                <Text color="red" fontWeight="bold" fontSize="2vh">
-                  Time placeholder
-                </Text>
-              </Container>
-              <Image src={background} alt="background" />
-              <Box position="absolute" zIndex="1">
-                {/* doctor */}
-                <CldImage
-                  item={room.npc.doctor}
-                  className={styles.item}
-                  style={{
-                    position: "relative",
-                    right: "-80px",
-                    top: "400px",
-                    width: "200px",
-                    margin: "0",
-                  }}
-                />
-              </Box>
-            </Box>
-            <Box
-              position="absolute"
-              bottom="10%"
-              mt="2%"
-              w="28em"
-              background="white"
-            >
-              Text Component Here
+        <Box w={["100%", "30em"]} h="100%">
+          <Navbar />
+          {/* background image */}
+          <Box
+            display="flex"
+            justifyContent="center"
+            zIndex="0"
+            h="90%"
+            width="100%"
+          >
+            {/* to export background to cloud  */}
+            <Image src={background} alt="background" />
+
+            <Box position="absolute" zIndex="1">
+              {/* doctor */}
+              <ItemImage
+                item={room.npc.doctor}
+                className={styles.item}
+                width="20rem"
+                left={SizeFormatter(
+                  "5rem", //iphone se
+                  "5rem", //iphone xr
+                  "5rem", //iphone 12pro
+                  "5rem", //pixel 5
+                  "5rem", //samsung galaxy s8+
+                  "5rem", //samsung galaxy s20 ultra
+                  "5rem", //ipad air
+                  "5rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "20rem", //iphone se
+                  "20rem", //iphone xr
+                  "20rem", //iphone 12pro
+                  "20rem", //pixel 5
+                  "20rem", //samsung galaxy s8+
+                  "20rem", //samsung galaxy s20 ultra
+                  "20rem", //ipad air
+                  "20rem" //ipad mini
+                )}
+              />
             </Box>
           </Box>
-        </div>
+          <Box
+            position="absolute"
+            bottom="10%"
+            mt="2%"
+            w="28em"
+            background="white"
+          >
+            Text Component Here
+          </Box>
+        </Box>
       )}
-    </div>
+    </Suspense>
   );
 }

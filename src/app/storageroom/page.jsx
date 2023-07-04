@@ -4,7 +4,7 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import Map from "../Map";
+import Navbar from "../components/Navbar";
 import Phone from "./components/Phone";
 
 export default function StorageRoom() {
@@ -35,8 +35,9 @@ export default function StorageRoom() {
     <Suspense fallback={<h1>Loading</h1>}>
       {room &&
         (<div>
-          
-          <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+
+          <Box w={["100%", "30em"]} h="100%" position="relative">
+            <Navbar />
             {/* background image */}
             <Box
               display="flex"
@@ -45,19 +46,8 @@ export default function StorageRoom() {
               h="90%"
               width="100%"
             >
-              {isPhoneOpen && <Phone handler={togglePhone}/>}
-              <Container
-                position="absolute"
-                display="flex"
-                justifyContent="space-around"
-                mt="1%"
-              >
-                {/* placeholders for components  */}
-                <Map />
-                <Text color="red" fontWeight="bold" fontSize="2vh">
-                  Time placeholder
-                </Text>
-              </Container>
+              {isPhoneOpen && <Phone handler={togglePhone} />}
+              
               {/* background (temporary viewing) */}
               <img src="rooms/Storage/background.png" alt="background" />
               <Box position="absolute" zIndex="1">
@@ -169,7 +159,7 @@ export default function StorageRoom() {
 
               </Box>
             </Box>
-            
+
             <Box position="absolute" bottom="10%" mt="2%" w="28em" background="white">
               Text Component Here
             </Box>

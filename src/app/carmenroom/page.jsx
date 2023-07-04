@@ -1,36 +1,27 @@
-'use client'
-import styles from './components/styles.module.css'
-import { Container, Text, Box } from '@chakra-ui/react'
+"use client";
+import styles from "./components/styles.module.css";
+import { Container, Text, Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter, CldImage } from "../components/ImageComp";
-import { Suspense, useEffect, useState } from 'react'
-import fetchRoom from '@/pages/api/rooms/fetchRoom'
-import Map from "../Map";
-import Hint from '../components/Hint';
+import { Suspense, useEffect, useState } from "react";
+import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import Navbar from "../components/Navbar";
+import Hint from "../components/Hint";
 
 export default function CarmenRoom() {
   const [room, setRoom] = useState(false);
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("carmen", true)
-      .then(data => {
-        setRoom(data);
-      })
+    fetchRoom("carmen", true).then((data) => {
+      setRoom(data);
+    });
   }, []);
 
-  const textHandler = (text) => {
-    setText(text);
-  }
   return (
     <Suspense fallback={<h1>Loading</h1>}>
-      {room &&
-        (<Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <Container display="flex" justifyContent="space-around">
-            <Map />
-            <Box color="red" fontWeight="bold" fontSize="2vh">
-              Time placeholder
-            </Box>
-          </Container>
+      {room && (
+        <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+          <Navbar />
           <Box
             display="flex"
             justifyContent="center"
@@ -38,17 +29,17 @@ export default function CarmenRoom() {
             width="100%"
           >
             {/* background image */}
-            <CldImage item={room.background} />
+            <ItemImage item={room.background} />
             {/* items */}
-            <Box position='absolute' zIndex='1'>
+            <Box position="absolute" zIndex="1">
               {/* mail */}
               <Hint>
                 <ItemImage
                   item={room.clues.mail}
                   className={styles.item}
-                  width='5.9rem'
+                  width="5.9rem"
                   filter="auto"
-                  brightness='76%'
+                  brightness="76%"
                   right={SizeFormatter(
                     "8rem", //iphone se
                     "9rem", //iphone xr
@@ -77,9 +68,9 @@ export default function CarmenRoom() {
                 <ItemImage
                   item={room.clues.master_key}
                   className={styles.item}
-                  width='2rem'
+                  width="2rem"
                   filter="auto"
-                  brightness='76%'
+                  brightness="76%"
                   right={SizeFormatter(
                     "0rem", //iphone se
                     "1rem", //iphone xr
@@ -108,9 +99,9 @@ export default function CarmenRoom() {
                 <ItemImage
                   item={room.dummy_objects.clothespin}
                   className={styles.item}
-                  width='1.5rem'
+                  width="1.5rem"
                   filter="auto"
-                  brightness='20%'
+                  brightness="20%"
                   left={SizeFormatter(
                     "11rem", //iphone se
                     "12.2rem", //iphone xr
@@ -135,15 +126,11 @@ export default function CarmenRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box
-            mt="2%"
-            w="100%"
-            background="white"
-          >
+          <Box mt="2%" w="100%" background="white">
             Text Component Here
           </Box>
         </Box>
-        )}
+      )}
     </Suspense>
-  )
+  );
 }

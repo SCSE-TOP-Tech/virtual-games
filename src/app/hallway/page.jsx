@@ -1,75 +1,72 @@
-'use client'
-import styles from './components/styles.module.css'
-import { Container, Text, Box } from '@chakra-ui/react'
-import { CldImage } from "../components/ImageComp";
-import { Suspense, useEffect, useState } from 'react'
-import fetchRoom from '@/pages/api/rooms/fetchRoom'
-import Map from "../Map";
-
+"use client";
+import styles from "./components/styles.module.css";
+import { Container, Text, Box } from "@chakra-ui/react";
+import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { Suspense, useEffect, useState } from "react";
+import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import Navbar from "../components/Navbar";
+import Hint from "../components/Hint";
 export default function Hallway() {
-
   const [room, setRoom] = useState(false);
-  
+
   // Initial Load
   useEffect(() => {
-    fetchRoom("hallway", false)
-      .then(data => {
-        setRoom(data);
-      })
+    fetchRoom("hallway", false).then((data) => {
+      setRoom(data);
+    });
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}> 
-    {room && 
-      (<div>
-        <Box w={['100%', '30em']} h='100%' p={4}>
-          {/* background image */}
+    <Suspense fallback={<h1>Loading</h1>}>
+      {room && (
+        <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+          <Navbar />
           <Box
-            display='flex'
-            justifyContent='center'
-            zIndex='0'
-            h='90%'
-            width='100%'
+            display="flex"
+            justifyContent="center"
+            position="relative"
+            width="100%"
           >
-            <Container
-              position='absolute'
-              display='flex'
-              justifyContent='space-around'
-              mt='1%'
-            >
-              {/* placeholders for components  */}
-              <Map />
-
-              <Text color='red' fontWeight='bold' fontSize='2vh'>
-                Time placeholder
-              </Text>
-
-            </Container>
-            <CldImage item={room.background}/>
-            <Box position='absolute' zIndex='1'>
-
+            <ItemImage item={room.background} />
+            <Box position="absolute" zIndex="1">
               {/* sibling-photo */}
-              <CldImage
-                item={room.clues.portrait}
-                className={styles.item}
-                style={{
-                  position: 'relative',
-                  right: '-56px',
-                  top: '370px',
-                  width: '20px',
-                  margin: '0',
-                }}
-              />
-
+              <Hint>
+                <ItemImage
+                  item={room.clues.portrait}
+                  className={styles.item}
+                  width="0.7rem"
+                  filter="auto"
+                  brightness="60%"
+                  left={SizeFormatter(
+                    "3.1rem", //iphone se
+                    "3.4rem", //iphone xr
+                    "3.2rem", //iphone 12pro
+                    "3.2rem", //pixel 5
+                    "2.93rem", //samsung galaxy s8+
+                    "3.4rem", //samsung galaxy s20 ultra
+                    "4.1rem", //ipad air
+                    "4.1rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "11.5rem",
+                    "12.8rem",
+                    "12rem",
+                    "12rem",
+                    "10.9rem",
+                    "12.8rem",
+                    "15rem",
+                    "15rem"
+                  )}
+                />
+              </Hint>
             </Box>
           </Box>
 
-          <Box position='absolute' bottom='10%' mt='2%' w='28em' background='white'>
+          <Box mt="2%" w="100%" background="white">
             Text Component Here
           </Box>
         </Box>
-      </div>)
-    } 
+      )}
     </Suspense>
-  )
+  );
 }
