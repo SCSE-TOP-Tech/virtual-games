@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { states, rooms, characters } from "../data/data.js";
+import { states, rooms, characters } from "../data/data";
 
 const prisma = new PrismaClient();
 async function main() {
