@@ -2,60 +2,81 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+}
+
+model Account {
+  accountID Int    @id @default(autoincrement())
+  user      User   @relation(fields: [userID], references: [userID])
+  userID    Int    @unique
+  email     String @unique
+  password  String
 }
 
 model User {
-  id       String         @id @default(uuid())
-  email    String         @unique
-  password String
-  name     String
-  timers   Timer[] // One-to-many mapping
-  guesses  CulpritGuess[]
-  scores   Score?
-  hints    Hint[]
+  userID  Int        @id @default(autoincrement())
+  name    String
+  state   State      @relation(fields: [stateID], references: [stateID])
+  stateID Int
+  timers  Timer[] // 1-M
+  items   UserItem[] // 1-M
+  guess   Guess? // 1-1
+  Account Account? // 1-1
 }
 
 model Timer {
   timerID   Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userID], references: [id])
-  userID    String
-  createdAt DateTime
-  startTime Int      @default(0)
-  endTime   Int      @default(0)
-  totalTime Int      @default(0)
-  isActive  Boolean
+  user      User     @relation(fields: [userID], references: [userID])
+  userID    Int      @unique
+  startTime DateTime @default(now())
+  endTime   DateTime
+  timeTaken Float
 }
 
-// One-to-One
-model Score {
-  scoreID      Int    @id @default(autoincrement())
-  user         User   @relation(fields: [userID], references: [id])
-  userID       String @unique
-  timerScore   Int
-  hintScore    Int
-  culpritScore Int
-  totalScore   Int
+model Guess {
+  guessID Int   @id @default(autoincrement())
+  user    User  @relation(fields: [userID], references: [userID])
+  userID  Int   @unique
+  score   Float
 }
 
-model CulpritGuess {
-  guessID     Int      @id @default(autoincrement())
-  user        User     @relation(fields: [userID], references: [id])
-  userID      String
-  createdAt   DateTime
-  culpritName String
-  isCorrect   Boolean
+model UserItem {
+  userItemID  Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userID], references: [userID])
+  userID      Int       @unique
+  stateItem   StateItem @relation(fields: [stateItemID], references: [stateItemID])
+  stateItemID Int       @unique
+  collected   Boolean
 }
 
-model Hint {
-  hintID      Int      @id @default(autoincrement())
-  user        User     @relation(fields: [userID], references: [id])
-  userID      String   @unique
-  collectedAt DateTime
-  hintName    String
+model Item {
+  itemID     Int         @id
+  name       String
+  stateItems StateItem[]
+}
+
+model State {
+  stateID     Int         @id
+  name        String
+  currentTime DateTime
+  users       User[]
+  stateItems  StateItem[]
+}
+
+model StateItem {
+  stateItemID Int        @id @default(autoincrement())
+  state       State      @relation(fields: [stateID], references: [stateID])
+  item        Item       @relation(fields: [itemID], references: [itemID])
+  stateID     Int        @unique
+  itemID      Int        @unique
+  available   Boolean
+  useritem    UserItem[]
 }

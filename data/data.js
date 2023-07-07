@@ -3,15 +3,15 @@
 export const characters = [
   // Doyle (Updated V1)
   {
-    id: "doyle",
+    stateID: "doyle",
     name: "Doyle",
     image: "src.png",
     actions: {
       move: {
         name: "Doyle moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/doyleMoving_rdhhi2.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/doyleMoving_rdhhi2.gif",
       },
     },
     room: {
@@ -19,28 +19,28 @@ export const characters = [
       background: {
         name: "Doyle's Room Background",
         height: 1024,
-        width: 1024,
+        wstateIDth: 1024,
         src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516074/virtual_games/rooms/doyle/doyleroombg_eocjy8.png`,
       },
       clues: {
         spaceID_card: {
           name: "Space ID Card",
           desc: "Home Station: Andromeda",
-          width: 485,
+          wstateIDth: 485,
           height: 318,
-          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/id_yzk534.png",
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/stateID_yzk534.png",
         },
         music_albums: {
           name: "Music Albums",
           desc: "Music Albums belonging to...",
-          width: 485,
+          wstateIDth: 485,
           height: 318,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/album_pbr2bh.png",
         },
         bloodstained_towel: {
           name: "Blood-stained Towel",
           desc: "Towel stained with blood",
-          width: 612,
+          wstateIDth: 612,
           height: 408,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/towel_ysje7j.png",
         },
@@ -49,21 +49,21 @@ export const characters = [
         rug: {
           name: "Blood-stained Rug",
           desc: "Music Albums belonging to...",
-          width: 1632,
+          wstateIDth: 1632,
           height: 519,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/album_pbr2bh.png",
         },
         clothes: {
           name: "Clothes",
           desc: "Music Albums belonging to...",
-          width: 637,
+          wstateIDth: 637,
           height: 327,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/clothes_ybv5gf.png",
         },
         luggage: {
           name: "Luggage",
           desc: "Music Albums belonging to...",
-          width: 398,
+          wstateIDth: 398,
           height: 627,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516228/virtual_games/rooms/doyle/luggage_kwyefl.png",
         },
@@ -72,15 +72,15 @@ export const characters = [
   },
   // Carmen (Updated V1)
   {
-    id: "carmen",
+    stateID: "carmen",
     name: "Carmen",
     image: "src.png",
     actions: {
       move: {
         name: "Carmen moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756674/virtual_games/characters/movement/camenMoving_ij1zy2.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756674/virtual_games/characters/movement/camenMoving_ij1zy2.gif",
       },
     },
     room: {
@@ -88,21 +88,21 @@ export const characters = [
       background: {
         name: "Carmen's Room Background",
         height: 1024,
-        width: 1024,
+        wstateIDth: 1024,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853525/virtual_games/rooms/carmen/carmenbg_nk8x4n.png",
       },
       clues: {
         master_key: {
           name: "Master Key",
           desc: "Seems like the key to the Master Room",
-          width: 348,
+          wstateIDth: 348,
           height: 306,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853516/virtual_games/rooms/carmen/master-key_uunebr.png",
         },
         mail: {
           name: "Invitation Letter",
           desc: "Sent from Planet Earth",
-          width: 348,
+          wstateIDth: 348,
           height: 306,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853517/virtual_games/rooms/carmen/mail_ks6fyi.png",
         },
@@ -111,7 +111,7 @@ export const characters = [
         clothespin: {
           name: "Clothespin",
           desc: "Oddly familiar clothespin",
-          width: 230,
+          wstateIDth: 230,
           height: 219,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680853516/virtual_games/rooms/carmen/clothspin_hzfkhg.png",
         },
@@ -120,15 +120,15 @@ export const characters = [
   },
   // Seraphine (Updated V1)
   {
-    id: "seraphine",
+    stateID: "seraphine",
     name: "Seraphine",
     image: "src.png",
     actions: {
       move: {
         name: "Seraphine moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/seraphineMoving_axmd0i.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/seraphineMoving_axmd0i.gif",
       },
     },
     room: {
@@ -136,37 +136,37 @@ export const characters = [
       background: {
         name: "Seraphine's Room Background",
         height: 1024,
-        width: 1024,
+        wstateIDth: 1024,
         src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527564/virtual_games/rooms/seraphine/background_s71lfy.png`,
       },
       clues: {
         lipstick: {
           name: "Seraphine's Lipstick",
           desc: "",
-          width: 225,
+          wstateIDth: 225,
           height: 225,
-          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527556/virtual_games/rooms/seraphine/lipstick_zhpyid.png",
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527556/virtual_games/rooms/seraphine/lipstick_zhpystateID.png",
         },
       },
       dummy_objects: {
         teddybear: {
           name: "Teddy Bear",
           desc: "",
-          width: 360,
+          wstateIDth: 360,
           height: 540,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/teddybear_owi8x6.png",
         },
         camera: {
           name: "Camera",
           desc: "",
-          width: 500,
+          wstateIDth: 500,
           height: 500,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/camera_tpymff.png",
         },
         jewelrybox: {
           name: "Jewelry Box",
           desc: "",
-          width: 825,
+          wstateIDth: 825,
           height: 590,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680527557/virtual_games/rooms/seraphine/jewelrybox_oi31xq.png",
         },
@@ -175,21 +175,21 @@ export const characters = [
   },
   // Cooper (Updated V1)
   {
-    id: "cooper",
+    stateID: "cooper",
     name: "Cooper",
     image: "src.png",
     actions: {
       move: {
         name: "Cooper moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756669/virtual_games/characters/movement/cooperMoving_bd2mcd.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756669/virtual_games/characters/movement/cooperMoving_bd2mcd.gif",
       },
       kill: {
         name: "Cooper kills.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756229/virtual_games/characters/actions/cooperKill_i0w3x3.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756229/virtual_games/characters/actions/cooperKill_i0w3x3.gif",
       },
     },
     room: {
@@ -197,7 +197,7 @@ export const characters = [
       background: {
         name: "Cooper's Room Background",
         height: 1024,
-        width: 1024,
+        wstateIDth: 1024,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860699/virtual_games/rooms/cooper/background_iqjcqz.png",
       },
       clues: {},
@@ -205,45 +205,45 @@ export const characters = [
         newspaper: {
           name: "Newspaper",
           desc: "Pile of newspapers",
-          width: 523,
+          wstateIDth: 523,
           height: 228,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860694/virtual_games/rooms/cooper/newspaper_nikarg.png",
         },
         coffee_machine: {
           name: "Coffee Machine",
           desc: "Fine-looking coffee machine",
-          width: 341,
+          wstateIDth: 341,
           height: 218,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860694/virtual_games/rooms/cooper/coffeemachine_gcwlqv.png",
         },
         luggage: {
           name: "Luggage",
           desc: "Cooper's Luggage",
-          width: 551,
+          wstateIDth: 551,
           height: 453,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860693/virtual_games/rooms/cooper/luggage_ek0ycq.png",
         },
         spaceID_card: {
           name: "Space ID Card",
           desc: "Home Station: Earth",
-          width: 608,
+          wstateIDth: 608,
           height: 254,
-          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860693/virtual_games/rooms/cooper/id_ybs5kj.png",
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680860693/virtual_games/rooms/cooper/stateID_ybs5kj.png",
         },
       },
     },
   },
   // Romily (Updated V1)
   {
-    id: "romily",
+    stateID: "romily",
     name: "Romily",
     image: "src.png",
     actions: {
       move: {
         name: "Romily moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/romillyMoving_qkypcz.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/romillyMoving_qkypcz.gif",
       },
     },
     room: {
@@ -251,42 +251,42 @@ export const characters = [
       background: {
         name: "Romily's Room Background",
         height: 1024,
-        width: 1024,
+        wstateIDth: 1024,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861949/virtual_games/rooms/romily/background_zndzxj.png",
       },
       dummy_objects: {
         basketball: {
           name: "Basketball",
           desc: "Galaxy Basketball",
-          width: 501,
+          wstateIDth: 501,
           height: 498,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861945/virtual_games/rooms/romily/basketball_yrwg4k.png",
         },
         clothes: {
           name: "Clothes",
           desc: "Pile of boring clothes",
-          width: 637,
+          wstateIDth: 637,
           height: 392,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861944/virtual_games/rooms/romily/clothes_kig0x8.png",
         },
         towel: {
           name: "Blood-stained Towel",
           desc: "Blood stained towel",
-          width: 612,
+          wstateIDth: 612,
           height: 408,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861943/virtual_games/rooms/romily/towel_wkxqn4.png",
         },
         dumbbell: {
           name: "Dumbbells",
           desc: "30kg dumbbells",
-          width: 428,
+          wstateIDth: 428,
           height: 584,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861944/virtual_games/rooms/romily/dumbbell_prijmb.png",
         },
         punchingbag: {
           name: "Punching Bag",
           desc: "30kg dumbbells",
-          width: 325,
+          wstateIDth: 325,
           height: 483,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861944/virtual_games/rooms/romily/punching-bag_p2d8yl.png",
         },
@@ -295,15 +295,15 @@ export const characters = [
   },
   // Maan (Updated V1)
   {
-    id: "maan",
+    stateID: "maan",
     name: "Maan",
     image: "src.png",
     actions: {
       move: {
         name: "Maan moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/mannMoving_el5wuc.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/mannMoving_el5wuc.gif",
       },
     },
     room: {
@@ -311,23 +311,23 @@ export const characters = [
       background: {
         name: "Maan's Room Background",
         height: 1024,
-        width: 1024,
+        wstateIDth: 1024,
         src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870723/virtual_games/rooms/maan/background_sbrqpu.png`,
       },
       clues: {
         spaceID_card: {
           name: "Space ID Card",
           desc: "Home Station: Andromeda",
-          width: 485,
+          wstateIDth: 485,
           height: 318,
-          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/id_yzk534.png",
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/stateID_yzk534.png",
         },
       },
       dummy_objects: {
         spacesword: {
           name: "Space Sword",
           desc: "Extra edgy sword",
-          width: 459,
+          wstateIDth: 459,
           height: 544,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870716/virtual_games/rooms/maan/spacesword_bxyqiw.png",
         },
@@ -336,15 +336,15 @@ export const characters = [
   },
   // Brand (Updated V1)
   {
-    id: "brand",
+    stateID: "brand",
     name: "Brand",
     image: "src.png",
     actions: {
       move: {
         name: "Brand moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/brandMoving_usbnrh.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/brandMoving_usbnrh.gif",
       },
     },
     room: {
@@ -352,31 +352,31 @@ export const characters = [
       background: {
         name: "Brand's Room Background",
         height: 1024,
-        width: 1024,
+        wstateIDth: 1024,
         src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684157090/virtual_games/rooms/brand/brandbg_lq1ogi.png`,
       },
       clues: {
         galaxy_phone: {
           name: "Galaxy Phone",
           desc: "Galaxy Phone",
-          width: 1024,
+          wstateIDth: 1024,
           height: 1024,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684157088/virtual_games/rooms/brand/galaxy-phone_xvefqp.png",
         },
-      }
+      },
     },
   },
   // Knight (Updated V1)
   {
-    id: "knight",
+    stateID: "knight",
     name: "Knight",
     image: "src.png",
     actions: {
       move: {
         name: "Knight moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/knightMoving_ojyv3i.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/knightMoving_ojyv3i.gif",
       },
     },
     room: {
@@ -384,23 +384,23 @@ export const characters = [
       background: {
         name: "Maan's Room Background",
         height: 1024,
-        width: 1024,
+        wstateIDth: 1024,
         src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870723/virtual_games/rooms/maan/background_sbrqpu.png`,
       },
       clues: {
         spaceID_card: {
           name: "Space ID Card",
           desc: "Home Station: Andromeda",
-          width: 485,
+          wstateIDth: 485,
           height: 318,
-          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/id_yzk534.png",
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680516227/virtual_games/rooms/doyle/stateID_yzk534.png",
         },
       },
       dummy_objects: {
         spacesword: {
           name: "Space Sword",
           desc: "Extra edgy sword",
-          width: 459,
+          wstateIDth: 459,
           height: 544,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870716/virtual_games/rooms/maan/spacesword_bxyqiw.png",
         },
@@ -409,50 +409,50 @@ export const characters = [
   },
   // Princess White (Updated V1)
   {
-    id: "princess_white",
+    stateID: "princess_white",
     name: "Princess White",
     image: "src.png",
     actions: {
       move: {
         name: "Princess White moves.",
         height: 300,
-        width: 300,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/princessMoving_o75czo.gif"
+        wstateIDth: 300,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/princessMoving_o75czo.gif",
       },
     },
     room: {
-        name: "Princess White's Room",
-        background: {
+      name: "Princess White's Room",
+      background: {
         name: "Princess White's Room Background",
         height: 952,
-        width: 952,
+        wstateIDth: 952,
         src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160197/virtual_games/rooms/princesswhite/background_ytuxli.png`,
-        },
-        clues: {
+      },
+      clues: {
         map: {
-            name: "Map of Infinity Stones",
-            desc: "Map of the Infinity Stones",
-            width: 605,
-            height: 575,
-            src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160196/virtual_games/rooms/princesswhite/infinity-stones-map_ho4saw.png",
+          name: "Map of Infinity Stones",
+          desc: "Map of the Infinity Stones",
+          wstateIDth: 605,
+          height: 575,
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160196/virtual_games/rooms/princesswhite/infinity-stones-map_ho4saw.png",
         },
         safe: {
-            name: "Empty Safe",
-            desc: "Safe that had been stolen from!",
-            width: 276,
-            height: 210,
-            src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160196/virtual_games/rooms/princesswhite/empty-safe_zzcxjz.png",
-            },
+          name: "Empty Safe",
+          desc: "Safe that had been stolen from!",
+          wstateIDth: 276,
+          height: 210,
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160196/virtual_games/rooms/princesswhite/empty-safe_zzcxjz.png",
         },
-        dummy_objects: {
-            door: {
-                name: "Door",
-                desc: "Just an ordinary door",
-                width: 86,
-                height: 493,
-                src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160195/virtual_games/rooms/princesswhite/connecting-door_jjo8al.png",
-            },
+      },
+      dummy_objects: {
+        door: {
+          name: "Door",
+          desc: "Just an ordinary door",
+          wstateIDth: 86,
+          height: 493,
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160195/virtual_games/rooms/princesswhite/connecting-door_jjo8al.png",
         },
+      },
     },
   },
 ];
@@ -460,19 +460,19 @@ export const characters = [
 export const rooms = [
   // Hallway (Updated V1)
   {
-    id: "hallway",
+    stateID: "hallway",
     name: "Hallway",
     background: {
       name: "Hallway Background",
       height: 1024,
-      width: 1024,
+      wstateIDth: 1024,
       src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681871724/virtual_games/rooms/hallway/hallway-spaceship_afeimt.png`,
     },
     clues: {
       portrait: {
         name: "Portrait of Siblings",
         desc: "Image of the White Siblings",
-        width: 449,
+        wstateIDth: 449,
         height: 444,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681871718/virtual_games/rooms/hallway/perspective-sibling-photo_qlwolu.png",
       },
@@ -481,7 +481,7 @@ export const rooms = [
       spacesword: {
         name: "Space Sword",
         desc: "Extra edgy sword",
-        width: 459,
+        wstateIDth: 459,
         height: 544,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870716/virtual_games/rooms/maan/spacesword_bxyqiw.png",
       },
@@ -490,82 +490,82 @@ export const rooms = [
 
   // Captain Room (Updated V1)
   {
-    id: "captain",
+    stateID: "captain",
     name: "Captain's Room",
     background: {
       name: "Captain Room's Background",
       height: 952,
-      width: 952,
+      wstateIDth: 952,
       src: `https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158382/virtual_games/rooms/captain/background_pvyaxb.png`,
     },
     clues: {
       music_albums: {
         name: "Music Albums",
         desc: "Music Albums",
-        width: 618,
+        wstateIDth: 618,
         height: 404,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158381/virtual_games/rooms/captain/musicalbums_rc95qi.png",
       },
       guestbook: {
         name: "Guest Book",
-        desc: "Guest Book of the Event", 
-        width: 690,
-        height: 361, 
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/guestbook_l1nqfu.png"
+        desc: "Guest Book of the Event",
+        wstateIDth: 690,
+        height: 361,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/guestbook_l1nqfu.png",
       },
       note: {
         name: "Debt Note",
-        desc: "Debt Note of Princess White oweing 500,000 gold", 
-        width: 771,
-        height: 324, 
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158381/virtual_games/rooms/captain/note_zjinls.png"
+        desc: "Debt Note of Princess White oweing 500,000 gold",
+        wstateIDth: 771,
+        height: 324,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158381/virtual_games/rooms/captain/note_zjinls.png",
       },
       lipstick: {
         name: "Lipstick",
-        desc: "Lipstick", 
-        width: 225,
-        height: 225, 
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/lipstick_upwiwx.png"
+        desc: "Lipstick",
+        wstateIDth: 225,
+        height: 225,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/lipstick_upwiwx.png",
       },
       blood_letter: {
         name: "Bloody Letters",
-        desc: "C and W written in blood", 
-        width: 332,
-        height: 208, 
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/bloodletter_ykqiff.png"
+        desc: "C and W written in blood",
+        wstateIDth: 332,
+        height: 208,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/bloodletter_ykqiff.png",
       },
       broken_watch: {
         name: "Broken Watch",
-        desc: "Broken Watch stopped at xx.xxpm", 
-        width: 500,
-        height: 500, 
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/brokenwatch_qm3oec.png"
+        desc: "Broken Watch stopped at xx.xxpm",
+        wstateIDth: 500,
+        height: 500,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158380/virtual_games/rooms/captain/brokenwatch_qm3oec.png",
       },
       spaceguns: {
         name: "Space Guns",
-        desc: "Space Guns", 
-        width: 600,
-        height: 416, 
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158381/virtual_games/rooms/captain/spaceguns_doavma.png"
-      }
-    }
+        desc: "Space Guns",
+        wstateIDth: 600,
+        height: 416,
+        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684158381/virtual_games/rooms/captain/spaceguns_doavma.png",
+      },
+    },
   },
 
   // Clinic (Updated V1)
   {
-    id: "clinic",
+    stateID: "clinic",
     name: "Clinic",
     background: {
       name: "Clinic Background",
       height: 1024,
-      width: 1024,
-      src: ""
+      wstateIDth: 1024,
+      src: "",
     },
     npc: {
       doctor: {
         name: "Doctor",
         desc: "The doctor of the ship",
-        width: 493,
+        wstateIDth: 493,
         height: 506,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684159430/virtual_games/rooms/clinic/doctor_gtqzu6.png",
       },
@@ -574,19 +574,19 @@ export const rooms = [
 
   // Dressing Room (Updated V1)
   {
-    id: "dressing_room",
+    stateID: "dressing_room",
     name: "Dressing Room",
     background: {
       name: "Dressing Room Background",
       height: 1024,
-      width: 1024,
-      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684159872/virtual_games/rooms/dressing/background_h2vgb5.png"
+      wstateIDth: 1024,
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684159872/virtual_games/rooms/dressing/background_h2vgb5.png",
     },
     clues: {
       lipstick: {
         name: "Lipstick",
         desc: "Lipstick",
-        width: 225,
+        wstateIDth: 225,
         height: 225,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684159870/virtual_games/rooms/dressing/lipstick_wx9myl.png",
       },
@@ -595,19 +595,19 @@ export const rooms = [
 
   // Control Room (Updated V1)
   {
-    id: "control_room",
+    stateID: "control_room",
     name: "Control Room",
     background: {
       name: "Control Room Background",
       height: 1024,
-      width: 1024,
-      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754178/virtual_games/rooms/control/background_zze5kw.png"
+      wstateIDth: 1024,
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754178/virtual_games/rooms/control/background_zze5kw.png",
     },
     dummy_objects: {
       computer: {
         name: "Space Computer",
         desc: "Space Computer",
-        width: 113,
+        wstateIDth: 113,
         height: 78,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754177/virtual_games/rooms/control/security-computer_tbe11m.png",
       },
@@ -616,33 +616,33 @@ export const rooms = [
 
   // Kitchen (Updated V1)
   {
-    id: "kitchen",
+    stateID: "kitchen",
     name: "Kitchen",
     background: {
       name: "Kitchen Background",
       height: 1024,
-      width: 1024,
-      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754638/virtual_games/rooms/kitchen/background_xzed8m.png"
+      wstateIDth: 1024,
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754638/virtual_games/rooms/kitchen/background_xzed8m.png",
     },
     clues: {
       apron: {
         name: "Blood Stained Apron",
         desc: "Apron with bloody marks, I wonder what happened...?",
-        width: 390,
+        wstateIDth: 390,
         height: 280,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754637/virtual_games/rooms/kitchen/blood-stained-apron_sxqgkx.png",
       },
       knife: {
         name: "Blood Stained Knife",
         desc: "What blood could this be.., maybe I'm just thinking too much...",
-        width: 612,
+        wstateIDth: 612,
         height: 408,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754636/virtual_games/rooms/kitchen/blood-stained-knife_haxjwc.png",
       },
       meat: {
         name: "Blood Stained Meat",
         desc: "Poor cows...",
-        width: 246,
+        wstateIDth: 246,
         height: 205,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754636/virtual_games/rooms/kitchen/blood-stained-meat_r3tsx2.png",
       },
@@ -651,56 +651,56 @@ export const rooms = [
 
   // Storage Room (Updated V1)
   {
-    id: "storage_room",
+    stateID: "storage_room",
     name: "Storage Room",
     background: {
       name: "Storage Room Background",
       height: 952,
-      width: 952,
-      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754969/virtual_games/rooms/storage/background_notct1.png"
+      wstateIDth: 952,
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754969/virtual_games/rooms/storage/background_notct1.png",
     },
-    clues:{
+    clues: {
       tesseract: {
         name: "Tesseract",
         desc: "Woah! It's the Tesseract that Princess White has been looking for!",
-        width: 275,
+        wstateIDth: 275,
         height: 183,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754968/virtual_games/rooms/storage/tesseract_offmfd.png",
       },
       doctorphone: {
         name: "Doctor Phone",
         desc: "This is the doctor's phone! Let's take a look.",
-        width: 666,
+        wstateIDth: 666,
         height: 375,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754967/virtual_games/rooms/storage/doctor-phone_chdhui.png",
       },
       blood_clothpin: {
         name: "Blood Stained Clothpin",
         desc: "Wait... this is rather familiar..?",
-        width: 230,
+        wstateIDth: 230,
         height: 219,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754967/virtual_games/rooms/storage/blood-stained-clothspin_p6wpjh.png",
       },
       cloth: {
         name: "Black Cloth",
         desc: "Just an ordinary cloth, or is it?",
-        width: 300,
+        wstateIDth: 300,
         height: 249,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754967/virtual_games/rooms/storage/cloth_xwxxb4.png",
       },
     },
     dummy_objects: {
-      screwdriver:{
+      screwdriver: {
         name: "Screwdriver",
         desc: "Could be useful, I wonder what its for",
-        width: 556,
+        wstateIDth: 556,
         height: 448,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754968/virtual_games/rooms/storage/screwdriver_ay4app.png",
       },
       mopbucket: {
         name: "Mop and Bucket",
         desc: "Its a mop and bucket, what are you expecting.",
-        width: 360,
+        wstateIDth: 360,
         height: 493,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754967/virtual_games/rooms/storage/mop-bucket_eolt4b.png",
       },
@@ -709,19 +709,18 @@ export const rooms = [
       dead_doctor: {
         name: "Dead Doctor",
         desc: "Holy Crap, what happened to him!",
-        width: 474,
+        wstateIDth: 474,
         height: 526,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686754968/virtual_games/rooms/storage/dead-doctor_xhebpv.png",
-      }
+      },
     },
   },
-
 ];
 
 export const scenes = [
   // Group 1 (To Update)
   {
-    id: "group1",
+    stateID: "group1",
     name: "Group 1",
     // Start Scene
     start: {
@@ -731,11 +730,11 @@ export const scenes = [
       },
       narrations: [
         {
-          id: "",
+          stateID: "",
           text: "",
         },
         {
-          id: "",
+          stateID: "",
           text: "",
         },
       ],
@@ -744,7 +743,7 @@ export const scenes = [
 
   // Group 2 (To Update)
   {
-    id: "group2",
+    stateID: "group2",
     name: "Group 2",
     // Start Scene
     start: {
@@ -754,11 +753,11 @@ export const scenes = [
       },
       narrations: [
         {
-          id: "",
+          stateID: "",
           text: "",
         },
         {
-          id: "",
+          stateID: "",
           text: "",
         },
       ],
@@ -767,7 +766,7 @@ export const scenes = [
 
   // Knight's Death
   {
-    id: "knight_death",
+    stateID: "knight_death",
     name: "Knight's Death",
     // Start Scene
     start: {
@@ -777,11 +776,11 @@ export const scenes = [
       },
       narrations: [
         {
-          id: "brand",
+          stateID: "brand",
           text: "There is 1 more person on this spaceship whom we have not interrogated, the Knight!",
         },
         {
-          id: "mann",
+          stateID: "mann",
           text: "Yes, he is an important person in the spaceship as he holds the master key to Princess White’s room as well.",
         },
       ],
@@ -805,15 +804,15 @@ export const scenes = [
       },
       narration: [
         {
-          id: "seraphine",
+          stateID: "seraphine",
           text: "I looked everywhere, but I can't seem to find knight’s master key.",
         },
         {
-          id: "mann",
+          stateID: "mann",
           text: "I couldn’t find it too, where can it be?",
         },
         {
-          id: "cooper",
+          stateID: "cooper",
           text: "Let’s look for it around the spaceship.",
         },
       ],
@@ -826,15 +825,15 @@ export const scenes = [
       },
       narration: [
         {
-          id: "seraphine",
+          stateID: "seraphine",
           text: "We found the master key!",
         },
         {
-          id: "cooper",
+          stateID: "cooper",
           text: "Well, Carmen, this seems suspicious….",
         },
         {
-          id: "mann",
+          stateID: "mann",
           text: "Hmm, whose hairpin is that?",
         },
       ],
@@ -843,7 +842,7 @@ export const scenes = [
 
   // Doctor's Death(To Update)
   {
-    id: "doctor_death",
+    stateID: "doctor_death",
     name: "Doctor's Death",
     // Start Scene
     start: {
@@ -853,11 +852,11 @@ export const scenes = [
       },
       narrations: [
         {
-          id: "",
+          stateID: "",
           text: "",
         },
         {
-          id: "",
+          stateID: "",
           text: "",
         },
       ],
@@ -868,20 +867,20 @@ export const scenes = [
 export const transitions = [
   // Prologue
   {
-    id: "prologue",
+    stateID: "prologue",
     name: "Prologue",
     bg: "src.png",
     narrations: [
       {
-        id: "",
+        stateID: "",
         text: "",
       },
       {
-        id: "",
+        stateID: "",
         text: "",
       },
       {
-        id: "",
+        stateID: "",
         text: "",
       },
     ],
@@ -895,20 +894,20 @@ export const transitions = [
 
   // Start
   {
-    id: "starting",
+    stateID: "starting",
     name: "Starting Scene",
     bg: "src.png",
     narrations: [
       {
-        id: "",
+        stateID: "",
         text: "",
       },
       {
-        id: "",
+        stateID: "",
         text: "",
       },
       {
-        id: "",
+        stateID: "",
         text: "",
       },
     ],
@@ -922,20 +921,20 @@ export const transitions = [
 
   // Ending
   {
-    id: "ending",
+    stateID: "ending",
     name: "Ending Scene",
     bg: "src.png",
     narrations: [
       {
-        id: "",
+        stateID: "",
         text: "",
       },
       {
-        id: "",
+        stateID: "",
         text: "",
       },
       {
-        id: "",
+        stateID: "",
         text: "",
       },
     ],
@@ -945,5 +944,48 @@ export const transitions = [
         text: "...",
       },
     },
+  },
+];
+
+export const states = [
+  {
+    stateID: 1,
+    name: "introduction",
+    currentTime: new Date("2023-01-01T19:00:00Z"),
+  },
+  {
+    stateID: 2,
+    name: "investigation",
+    currentTime: new Date("2023-01-01T19:30:00Z"),
+  },
+  {
+    stateID: 3,
+    name: "captain",
+    currentTime: new Date("2023-01-01T20:00:00Z"),
+  },
+  {
+    stateID: 4,
+    name: "suspicions",
+    currentTime: new Date("2023-01-01T21:00:00Z"),
+  },
+  {
+    stateID: 5,
+    name: "deaddoctor",
+    currentTime: new Date("2023-01-01T22:00:00Z"),
+  },
+  {
+    stateID: 6,
+    name: "confrontation",
+    currentTime: new Date("2023-01-01T22:30:00Z"),
+  },
+  {
+    stateID: 7,
+    name: "guess",
+    currentTime: new Date("2023-01-01T23:00:00Z"),
+  },
+  {
+    stateID: 8,
+    name: "ending",
+    currentTime: new Date("2023-01-02T00:00:00Z"),
   },
 ];

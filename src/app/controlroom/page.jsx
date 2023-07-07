@@ -2,7 +2,7 @@
 import styles from "./components/styles.module.css";
 import { Container, Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { CldImage, ItemImage } from "@/app/components/ImageComp";
 import Navbar from "../components/Navbar";
 

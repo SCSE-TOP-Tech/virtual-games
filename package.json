@@ -20,6 +20,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@prisma/client": "^4.15.0",
+    "@vercel/postgres": "^0.4.0",
     "cloudinary": "^1.35.0",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
@@ -29,6 +30,7 @@
     "prisma": "^4.15.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.9.0"
+    "react-icons": "^4.9.0",
+    "ts-node": "^10.9.1"
   }
 }

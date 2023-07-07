@@ -17,7 +17,6 @@ async function createUser(userData) {
         password: userData.password,
         email: userData.email,
       }),
-
     });
   } catch (error) {
     console.error(error);

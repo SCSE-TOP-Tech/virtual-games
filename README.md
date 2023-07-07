@@ -39,25 +39,27 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Prisma Database
 
-Installing dependencies for prisma
+Sync with postgreSQL database
 
 ```bash
-yarn init -y
-yarn add typescript ts-node @types/node --save-dev
-yarn add prisma --save-dev
+npx prisma db push
 ```
 
-Installing prisma client
-
-```bash
-npm install @prisma/client
-yarn add @prisma/client
-```
-
-Migration to database tables files
+Migration to database tables files 
 
 ```bash
 npx prisma migrate dev --name init
+```
+
+Seeding database 
+```bash
+prisma db seed
+```
+
+Open Prisma Studio
+
+```bash
+npx prisma studio
 ```
 
 Execute script in script.ts
@@ -66,14 +68,3 @@ Execute script in script.ts
 npx ts-node prisma/script.ts
 ```
 
-Sync with mySQL database
-
-```bash
-npx prisma db push
-```
-
-Open Prisma Studio
-
-```bash
-npx prisma studio
-```
