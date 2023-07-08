@@ -36,7 +36,6 @@ export default function RootLayout({ children }) {
           </ChakraProvider>
         </CacheProvider>
       </body>
-
     </html>
   );
 }
