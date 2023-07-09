@@ -2,7 +2,7 @@
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../components/Navbar";
 import { ItemImage, SizeFormatter } from "@/app/components/ImageComp";
 import Hint from "../components/Hint";
@@ -125,7 +125,7 @@ export default function Kitchen() {
             bottom="10%"
             mt="2%"
             w="28em"
-            background="white"
+            background={"white"}
           >
             Text Component Here
           </Box>

@@ -1,7 +1,7 @@
 "use client";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
@@ -63,7 +63,7 @@ export default function DressingRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box mt="2%" w="100%" background="white">
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>

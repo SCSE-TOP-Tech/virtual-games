@@ -4,21 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/contracts/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/character.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/image.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/item.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/room.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/stateitem.ts" afterDir="false" />
+    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="Refactored StorageRoom, added baseURL for absolute pathing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/contracts/interfaces/state.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230707155553_init/migration.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/migrations/migration_lock.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/seed.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/rooms/[name].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/rooms/[name].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Rooms/Princessroom/infinity-stones-map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/brandroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/brandroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/captainroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/captainroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/carmenroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/carmenroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/clinic/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/clinic/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/controlroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/controlroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/cooperroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/cooperroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/doyleroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/doyleroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dressingroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dressingroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/kitchen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/kitchen/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/princessroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/princessroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/romilyroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/romilyroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/seraphineroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/seraphineroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/storageroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/storageroom/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/cloudinary/fetchRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/cloudinary/fetchRoom.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +55,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2R0SIQkppoWh42TgQ71fTiOHTMq" />
   <component name="ProjectLevelVcsManager">
@@ -141,18 +147,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated new DB Schema, created temporary seed," />
     <MESSAGE value="Successfully created seeder for states" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully created seeder for states" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/data/data.ts</url>
-          <line>720</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added baseURL for absolute pathing" />
+    <MESSAGE value="Refactored StorageRoom, added baseURL for absolute pathing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored StorageRoom, added baseURL for absolute pathing." />
   </component>
 </project>

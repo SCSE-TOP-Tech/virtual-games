@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
@@ -195,7 +195,7 @@ export default function DoyleRoom() {
             bottom="10%"
             mt="2%"
             w="28em"
-            background="white"
+            background={"white"}
           >
             Text Component Here
           </Box>

@@ -1,9 +1,9 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
-import { ItemImage, SizeFormatter, CldImage } from "../components/ImageComp";
+import { Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
-import fetchRoom from '@/resources/cloudinary/fetchRoom'
+import { ItemImage, SizeFormatter } from "@/app/components/ImageComp";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
 
@@ -126,7 +126,7 @@ export default function CarmenRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box mt="2%" w="100%" background="white">
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>

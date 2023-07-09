@@ -218,7 +218,7 @@ export default function CaptainRoom() {
             bottom="10%"
             mt="2%"
             w="28em"
-            background="white"
+            background={"white"}
           >
             Text Component Here
           </Box>

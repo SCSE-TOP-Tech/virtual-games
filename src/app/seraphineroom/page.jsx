@@ -1,8 +1,8 @@
 "use client";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
-import { Container, Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
-import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import styles from "./components/styles.module.css";
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
@@ -157,7 +157,7 @@ export default function SeraphineRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box mt="2%" w="100%" background="white">
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>

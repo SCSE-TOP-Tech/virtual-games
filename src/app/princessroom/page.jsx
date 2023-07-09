@@ -1,10 +1,10 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Container, Text, Box, IconButton } from "@chakra-ui/react";
+import { Box, IconButton } from "@chakra-ui/react";
 import { MdClose } from "react-icons/md";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { useEffect, useState, Suspense } from "react";
-import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
 
@@ -14,7 +14,7 @@ export default function PrincessRoom() {
 
   const toggleMap = () => {
     showMap(!inspect);
-  }
+  };
 
   // Initial Load
   useEffect(() => {
@@ -33,35 +33,40 @@ export default function PrincessRoom() {
             position="relative"
             width="100%"
           >
-            <CldImage item={room.background} />
+            <ItemImage item={room.background} />
 
-            {inspect &&
-              <Box position='absolute' top='1rem' right='1.5rem' width='15rem' display='flex'>
+            {inspect && (
+              <Box
+                position="absolute"
+                top="1rem"
+                right="1.5rem"
+                width="15rem"
+                display="flex"
+              >
                 <IconButton
-                  position='relative'
-                  aria-label='Call App'
-                  fontSize='2rem'
+                  position="relative"
+                  aria-label="Call App"
+                  fontSize="2rem"
                   icon={<MdClose />}
                   onClick={toggleMap}
-                  borderRadius='50%'
-                  marginRight='0.5rem'
+                  borderRadius="50%"
+                  marginRight="0.5rem"
                 />
 
-                <img
-                  src="rooms/Princessroom/infinity-stones-map.png"
-                  alt="dead doctor"
+                <ItemImage
+                  item={room.clues.map}
                   style={{
                     position: "relative",
                     right: "0rem",
                     top: "0rem",
                     width: "13rem",
                     margin: "0",
-                    zIndex: "10"
+                    zIndex: "10",
                   }}
                   className={styles.item}
                 />
               </Box>
-            }
+            )}
 
             <Box position="absolute" zIndex="1">
               {/* safe */}
@@ -69,9 +74,18 @@ export default function PrincessRoom() {
                 <ItemImage
                   item={room.clues.safe}
                   className={styles.item}
-                  width={['6.1rem', '6.1rem', '6.1rem', '6.1rem', '6.1rem', '6.1rem', '7.1rem', '7.1rem']}
+                  width={[
+                    "6.1rem",
+                    "6.1rem",
+                    "6.1rem",
+                    "6.1rem",
+                    "6.1rem",
+                    "6.1rem",
+                    "7.1rem",
+                    "7.1rem",
+                  ]}
                   filter="auto"
-                  brightness='70%'
+                  brightness="70%"
                   right={SizeFormatter(
                     "6.6rem", //iphone se
                     "7.5rem", //iphone xr
@@ -100,10 +114,10 @@ export default function PrincessRoom() {
                 <ItemImage
                   item={room.dummy_objects.door}
                   className={styles.item}
-                  width='1.4rem'
-                  height='13rem'
+                  width="1.4rem"
+                  height="13rem"
                   filter="auto"
-                  brightness='70%'
+                  brightness="70%"
                   left={SizeFormatter(
                     "12.4rem", //iphone se
                     "13.6rem", //iphone xr
@@ -131,9 +145,18 @@ export default function PrincessRoom() {
                 <ItemImage
                   item={room.clues.map}
                   className={styles.item}
-                  width={['1.6rem','1.6rem','1.6rem','1.6rem','1.6rem','1.6rem','2.15rem','2.15rem' ]}
+                  width={[
+                    "1.6rem",
+                    "1.6rem",
+                    "1.6rem",
+                    "1.6rem",
+                    "1.6rem",
+                    "1.6rem",
+                    "2.15rem",
+                    "2.15rem",
+                  ]}
                   filter="auto"
-                  brightness='90%'
+                  brightness="90%"
                   right={SizeFormatter(
                     "5rem", //iphone se
                     "5.4rem", //iphone xr
@@ -159,11 +182,7 @@ export default function PrincessRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box
-            mt="2%"
-            w="100%"
-            background="white"
-          >
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>
