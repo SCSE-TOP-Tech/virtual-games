@@ -20,7 +20,7 @@ export default function Login() {
   const [error, setError] = useState("");
   const [displayWarning, setDisplayWarning] = useState(false);
   const [hidden, setHidden] = useState(true);
-  const [user, setUser] = useState("fdafd");
+  const [user, setUser] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ export default function Login() {
           setTimeout(() => {
             setError("");
           }, 3000);
-        } else {
+        } else if (user !== null) {
           //route to relevant page. eg cooper room
           router.push("/cooperroom");
         }
