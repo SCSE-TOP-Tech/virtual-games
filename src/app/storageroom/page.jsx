@@ -1,11 +1,12 @@
 "use client";
 
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../components/Navbar";
 import Phone from "./components/Phone";
+import { ItemImage } from "@/app/components/ImageComp";
 
 export default function StorageRoom() {
   const [room, setRoom] = useState(false);
@@ -15,27 +16,25 @@ export default function StorageRoom() {
   const handleToggle = () => {
     //removes cloth and shows tesseract
     setClicked(true);
-  }
+  };
 
   const togglePhone = () => {
     // opens phone display
     viewPhone(!isPhoneOpen);
-  }
+  };
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("storage_room", false)
-      .then(data => {
-        setRoom(data);
-      })
+    fetchRoom("storage_room", false).then((data) => {
+      setRoom(data);
+    });
   }, []);
 
   return (
     // To add loading page
     <Suspense fallback={<h1>Loading</h1>}>
-      {room &&
-        (<div>
-
+      {room && (
+        <div>
           <Box w={["100%", "30em"]} h="100%" position="relative">
             <Navbar />
             {/* background image */}
@@ -47,15 +46,13 @@ export default function StorageRoom() {
               width="100%"
             >
               {isPhoneOpen && <Phone handler={togglePhone} />}
-              
-              {/* background (temporary viewing) */}
-              <img src="rooms/Storage/background.png" alt="background" />
-              <Box position="absolute" zIndex="1">
 
+              {/* background (temporary viewing) */}
+              <ItemImage item={room.background} />
+              <Box position="absolute" zIndex="1">
                 {/* dead doctor (temp viewing) */}
-                <img
-                  src="rooms/Storage/dead-doctor.png"
-                  alt="dead doctor"
+                <ItemImage
+                  item={room.npc.dead_doctor}
                   style={{
                     position: "relative",
                     right: "4rem",
@@ -67,9 +64,8 @@ export default function StorageRoom() {
                 />
 
                 {/* tesseract (temp viewing) */}
-                <img
-                  src="rooms/Storage/tesseract.png"
-                  alt="tesseract"
+                <ItemImage
+                  item={room.clues.tesseract}
                   style={{
                     position: "relative",
                     right: "-12.4rem",
@@ -81,9 +77,8 @@ export default function StorageRoom() {
                 />
 
                 {/* screwdriver (temp viewing) */}
-                <img
-                  src="rooms/Storage/screwdriver.png"
-                  alt="screwdriver"
+                <ItemImage
+                  item={room.dummy_objects.screwdriver}
                   style={{
                     position: "relative",
                     right: "1rem",
@@ -95,9 +90,8 @@ export default function StorageRoom() {
                 />
 
                 {/* mop and bucket (temp viewing) */}
-                <img
-                  src="rooms/Storage/mop-bucket.png"
-                  alt="mop and bucket"
+                <ItemImage
+                  item={room.dummy_objects.mopbucket}
                   style={{
                     position: "relative",
                     right: "-2.4rem",
@@ -109,9 +103,8 @@ export default function StorageRoom() {
                 />
 
                 {/* blood stained clothspin (temp viewing) */}
-                <img
-                  src="rooms/Storage/blood-stained-clothspin.png"
-                  alt="blood stained clothspin"
+                <ItemImage
+                  item={room.clues.blood_clothpin}
                   style={{
                     position: "relative",
                     right: "5.4rem",
@@ -123,9 +116,8 @@ export default function StorageRoom() {
                 />
 
                 {/* doctor's galaxy phone (temp viewing) */}
-                <img
-                  src="rooms/Storage/doctor-phone.png"
-                  alt="galaxy phone"
+                <ItemImage
+                  item={room.clues.doctorphone}
                   style={{
                     position: "relative",
                     right: "5.4rem",
@@ -139,10 +131,9 @@ export default function StorageRoom() {
 
                 {/* cloth (temp viewing) */}
                 <Box>
-                  {!isClicked &&
-                    <img
-                      src="rooms/Storage/cloth.png"
-                      alt="cloth"
+                  {!isClicked && (
+                    <ItemImage
+                      item={room.clues.cloth}
                       style={{
                         position: "relative",
                         right: "-11rem",
@@ -153,22 +144,23 @@ export default function StorageRoom() {
                       className={styles.item}
                       onClick={handleToggle}
                     />
-                  }
+                  )}
                 </Box>
-
-
               </Box>
             </Box>
 
-            <Box position="absolute" bottom="10%" mt="2%" w="28em" background="white">
+            <Box
+              position="absolute"
+              bottom="10%"
+              mt="2%"
+              w="28em"
+              background={"white"}
+            >
               Text Component Here
             </Box>
           </Box>
-
-
         </div>
-        )}
+      )}
     </Suspense>
   );
 }
-

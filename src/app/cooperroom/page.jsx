@@ -2,7 +2,7 @@
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
@@ -36,7 +36,6 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.luggage}
-                  onClick={console.log("test")}
                   //chakra props
                   className={styles.item}
                   width="6.5rem"
@@ -67,7 +66,6 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.newspaper}
-                  onClick={console.log("test")}
                   //chakra props
                   className={styles.item}
                   width="3.5rem"
@@ -98,7 +96,6 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.spaceID_card}
-                  onClick={console.log("test")}
                   //chakra props
                   filter="auto"
                   brightness="75%"
@@ -131,7 +128,6 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.coffee_machine}
-                  onClick={console.log("test")}
                   //chakra props
                   className={styles.item}
                   width="3.5rem" //use SizeFormatter if item should be different for different devices
@@ -165,7 +161,7 @@ export default function CooperPage() {
             bottom="10%"
             mt="2%"
             w="28em"
-            background="white"
+            background={"white"}
           >
             Text Component Here
           </Box>

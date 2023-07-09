@@ -1,13 +1,14 @@
-import { transitions } from "../../../../data/data.js"
+import { transitions } from "../../../../data/data.ts";
 
 export default function handler(req, res) {
-    const { name } = req.query
-    const selectedTransition = transitions.find(transition => {
-       return transition.id == name
-    })
+  const { name } = req.query;
+  const selectedTransition = transitions.find((transition) => {
+    return transition.id === name;
+  });
 
-    // Return JSON data if found
-    if(typeof selectedTransition !== 'undefined') return res.status(200).json(selectedTransition)
+  // Return JSON data if found
+  if (typeof selectedTransition !== "undefined")
+    return res.status(200).json(selectedTransition);
 
-    res.status(404).json({ error: "Scene Not found"})
+  res.status(404).json({ error: "Scene Not found" });
 }
