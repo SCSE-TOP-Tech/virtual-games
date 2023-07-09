@@ -1,10 +1,14 @@
 "use client";
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider, extendTheme, Box } from "@chakra-ui/react";
+import Fonts from "./fonts";
 
 const theme = extendTheme({
   colors: {},
-  fonts: {},
+  fonts: {
+    heading: "Raleway",
+    body: "Raleway",
+  },
   fontSizes: {},
   breakpoints: {
     iphone_se: "375px",
@@ -24,6 +28,7 @@ export default function RootLayout({ children }) {
       <body>
         <CacheProvider>
           <ChakraProvider theme={theme}>
+            <Fonts />
             <Box
               display="flex"
               bg="lightgreen"
