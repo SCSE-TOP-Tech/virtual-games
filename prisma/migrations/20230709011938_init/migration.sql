@@ -51,6 +51,7 @@ CREATE TABLE "UserItem" (
 CREATE TABLE "Item" (
     "itemID" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
+    "category" TEXT NOT NULL,
 
     CONSTRAINT "Item_pkey" PRIMARY KEY ("itemID")
 );
@@ -69,7 +70,6 @@ CREATE TABLE "StateItem" (
     "stateItemID" SERIAL NOT NULL,
     "stateID" INTEGER NOT NULL,
     "itemID" INTEGER NOT NULL,
-    "available" BOOLEAN NOT NULL,
 
     CONSTRAINT "StateItem_pkey" PRIMARY KEY ("stateItemID")
 );
@@ -91,12 +91,6 @@ CREATE UNIQUE INDEX "UserItem_userID_key" ON "UserItem"("userID");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "UserItem_stateItemID_key" ON "UserItem"("stateItemID");
-
--- CreateIndex
-CREATE UNIQUE INDEX "StateItem_stateID_key" ON "StateItem"("stateID");
-
--- CreateIndex
-CREATE UNIQUE INDEX "StateItem_itemID_key" ON "StateItem"("itemID");
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userID_fkey" FOREIGN KEY ("userID") REFERENCES "User"("userID") ON DELETE RESTRICT ON UPDATE CASCADE;

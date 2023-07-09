@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="Updated new DB Schema, created temporary seed,">
-      <change afterPath="$PROJECT_DIR$/data/state.ts" afterDir="false" />
+    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/contracts/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/character.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/image.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/item.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/room.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/stateitem.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/contracts/interfaces/state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/migrations/20230707155553_init/migration.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/migrations/migration_lock.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/seed.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/characters/[name].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/characters/[name].js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/api/rooms/[name].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/rooms/[name].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/scenes/[name].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/scenes/[name].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/transitions/[name].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/transitions/[name].js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,26 +62,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feat/VG-26",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "/Users/eugenewee/.config/yarn/global/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/VG-26&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/eugenewee/.config/yarn/global/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/contracts/interfaces" />
+      <recent name="$PROJECT_DIR$/data/contracts" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -90,7 +102,8 @@
       <workItem from="1686385425379" duration="304000" />
       <workItem from="1688383090911" duration="5438000" />
       <workItem from="1688491622001" duration="1357000" />
-      <workItem from="1688742572677" duration="3694000" />
+      <workItem from="1688742572677" duration="6833000" />
+      <workItem from="1688802028657" duration="11844000" />
     </task>
     <task id="LOCAL-00001" summary="Updated new DB Schema, created temporary seed,">
       <option name="closed" value="true" />
@@ -100,14 +113,46 @@
       <option name="project" value="LOCAL" />
       <updated>1688745609642</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Successfully created seeder for states">
+      <option name="closed" value="true" />
+      <created>1688746295006</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1688746295006</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated new DB Schema, created temporary seed," />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated new DB Schema, created temporary seed," />
+    <MESSAGE value="Successfully created seeder for states" />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully created seeder for states" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/data/data.ts</url>
+          <line>720</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { states, rooms, characters } from "../data/data";
+import { Item, Character, Room } from "../data/contracts";
+import { StateItem } from "../data/contracts/interfaces/stateitem";
 
 const prisma = new PrismaClient();
 async function main() {
@@ -7,33 +9,88 @@ async function main() {
     data: states,
   });
   console.log("Added States data");
+  let items: Item[] = [];
+  let stateItems: StateItem[] = [];
+  let counter = 0;
 
-  // function extractItems(object) {
-  //   const items: { id: bigint; name: string }[] = [];
-  //
-  //   function extract(obj) {
-  //     for (const key in obj) {
-  //       if (Array.isArray(obj[key])) {
-  //         obj[key].forEach((item) => extract(item));
-  //       } else {
-  //         items.push(obj[key]);
-  //       }
-  //     }
-  //   }
-  //
-  //   extract(object);
-  //   return items;
-  // }
-  //
-  // console.log(extractItems(rooms));
+  function extractCharacterRoom(
+    chars: Character[],
+    items: Item[],
+    stateItems: StateItem[],
+    counter: number
+  ): [Item[], StateItem[], number] {
+    chars.forEach((char: Character) => {
+      const room = char.room;
+      for (const key in room) {
+        if (key == "clues" || key == "dummy_objects") {
+          const item = room[key];
+          for (const objkey in room[key]) {
+            items.push({
+              itemID: counter,
+              name: item[objkey].name,
+              category: key,
+            });
+            stateItems.push({
+              stateItemID: counter,
+              itemID: counter++,
+              stateID: item[objkey].state,
+            });
+          }
+        }
+      }
+    });
+    return [items, stateItems, counter];
+  }
+  const charItems = extractCharacterRoom(
+    characters,
+    items,
+    stateItems,
+    counter
+  );
+  items = charItems[0];
+  stateItems = charItems[1];
+  counter = charItems[2];
 
-  // await prisma.item.createMany({
-  //   data: items,
-  // });
+  function extractRoom(
+    rooms: Room[],
+    items: Item[],
+    stateItems: StateItem[],
+    counter: number
+  ): [Item[], StateItem[], number] {
+    rooms.forEach((room: Room) => {
+      for (const key in room) {
+        if (key == "clues" || key == "dummy_objects") {
+          const item = room[key];
+          for (const objkey in room[key]) {
+            items.push({
+              itemID: counter,
+              name: item[objkey].name,
+              category: key,
+            });
+            stateItems.push({
+              stateItemID: counter,
+              itemID: counter++,
+              stateID: item[objkey].state,
+            });
+          }
+        }
+      }
+    });
+    return [items, stateItems, counter];
+  }
+  const roomItems = extractRoom(rooms, items, stateItems, counter);
+  items = roomItems[0];
+  stateItems = roomItems[1];
 
-  // console.log("Added Items data");
+  await prisma.item.createMany({
+    data: items,
+  });
+  console.log("Added Items data");
 
-  // await prisma.stateItem.createMany({});
+  await prisma.stateItem.createMany({
+    data: stateItems,
+  });
+  console.log("Added StateItem data");
 }
 main()
   .then(async () => {

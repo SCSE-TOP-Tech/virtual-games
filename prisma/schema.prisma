@@ -60,6 +60,7 @@ model UserItem {
 model Item {
   itemID     Int         @id
   name       String
+  category   String
   stateItems StateItem[]
 }
 
@@ -75,8 +76,7 @@ model StateItem {
   stateItemID Int        @id @default(autoincrement())
   state       State      @relation(fields: [stateID], references: [stateID])
   item        Item       @relation(fields: [itemID], references: [itemID])
-  stateID     Int        @unique
-  itemID      Int        @unique
-  available   Boolean
+  stateID     Int
+  itemID      Int
   useritem    UserItem[]
 }

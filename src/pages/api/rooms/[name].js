@@ -10,5 +10,5 @@ export default function handler(req, res) {
   if (typeof selectedRoom !== "undefined")
     return res.status(200).json(selectedRoom);
 
-  res.status(404).json({ error: "Room Not found" });
+  res.status(404).json({ error: "Character Not found" });
 }
