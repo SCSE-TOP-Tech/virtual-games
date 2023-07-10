@@ -1,6 +1,6 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Box, Flex, Center } from "@chakra-ui/react";
+import { Box, Flex, Center, Text } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
@@ -37,7 +37,7 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.luggage}
-                  onClick={()=>setInventory((prev)=>[...prev, "luggage"])}
+                  onClick={() => setInventory((prev) => [...prev, "luggage"])}
                   //chakra props
                   className={styles.item}
                   width="6.5rem"
@@ -68,6 +68,7 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.newspaper}
+                  onClick={() => setInventory((prev) => [...prev, "newspaper"])}
                   //chakra props
                   className={styles.item}
                   width="3.5rem"
@@ -98,6 +99,7 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.spaceID_card}
+                  onClick={() => setInventory((prev) => [...prev, "spaceID_card"])}
                   //chakra props
                   filter="auto"
                   brightness="75%"
@@ -130,6 +132,7 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.coffee_machine}
+                  onClick={() => setInventory((prev) => [...prev, "coffee_machine"])}
                   //chakra props
                   className={styles.item}
                   width="3.5rem" //use SizeFormatter if item should be different for different devices
@@ -157,23 +160,52 @@ export default function CooperPage() {
               </Hint>
             </Box>
           </Box>
-          <Flex flexWrap="wrap">
-            {inventory.map((item)=>
-            
-            <Center>
-              <ItemImage
-                item={room.dummy_objects[item]}
+
+          <Text
+            fontSize={SizeFormatter(
+              "1rem", //iphone se
+              "1rem", //iphone xr
+              "1rem", //iphone 12pro
+              "1rem", //pixel 5
+              "1rem", //samsung galaxy s8+
+              "1rem", //samsung galaxy s20 ultra
+              "1.5rem", //ipad air
+              "1.5rem" //ipad mini
+            )}
+            fontFamily="monospace"
+            py="1%"
+            fontWeight={700}
+            bgColor="white"
+            textAlign="center"
+          >
+            Your inventory:
+          </Text>
+          <Flex flexWrap="wrap" bgColor="gray.400">
+            {inventory.map((item) =>
+
+              <Center m="1%" p="1%" border="solid" borderWidth="1px" borderRadius="5%">
+                <ItemImage
+                  item={room.dummy_objects[item]}
                   //chakra props
                   className={styles.item}
 
-                  width="4rem" //use SizeFormatter if item should be different for different devices
-              />
-            </Center>
+                  width={SizeFormatter(
+                    "2rem", //iphone se
+                    "2.5rem", //iphone xr
+                    "3rem", //iphone 12pro
+                    "3rem", //pixel 5
+                    "5rem", //samsung galaxy s8+
+                    "5rem", //samsung galaxy s20 ultra
+                    "5rem", //ipad air
+                    "5rem" //ipad mini
+                  )}
+                />
+              </Center>
             )}
 
           </Flex>
 
-          <Box
+          {/* <Box
             position="absolute"
             bottom="10%"
             mt="2%"
@@ -181,7 +213,7 @@ export default function CooperPage() {
             background={"white"}
           >
             Text Component Here
-          </Box>
+          </Box> */}
         </Box>
       )}
     </Suspense>
