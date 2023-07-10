@@ -57,13 +57,6 @@ model UserItem {
   collected   Boolean
 }
 
-model Item {
-  itemID     Int         @id
-  name       String
-  category   String
-  stateItems StateItem[]
-}
-
 model State {
   stateID     Int         @id
   name        String
@@ -75,8 +68,8 @@ model State {
 model StateItem {
   stateItemID Int        @id @default(autoincrement())
   state       State      @relation(fields: [stateID], references: [stateID])
-  item        Item       @relation(fields: [itemID], references: [itemID])
   stateID     Int
-  itemID      Int
   useritem    UserItem[]
+  itemName    String
+  roomName    String
 }

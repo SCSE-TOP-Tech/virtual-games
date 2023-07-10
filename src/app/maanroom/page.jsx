@@ -1,14 +1,14 @@
 "use client";
 import styles from "./components/styles.module.css";
 import Navbar from "../components/Navbar";
-import { Container, Text, Box } from "@chakra-ui/react";
-import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { Box } from "@chakra-ui/react";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { Suspense, useEffect, useState } from "react";
-import fetchRoom from '@/resources/cloudinary/fetchRoom'
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Hint from "../components/Hint";
-import createUser from '@/resources/prisma/createUser'
-import updateTimer from '@/resources/prisma/updateTimer'
-import updateScore from '@/resources/prisma/updateScore'
+import createUser from "@/resources/prisma/login/createUser";
+import updateTimer from "@/resources/prisma/updateTimer";
+import updateScore from "@/resources/prisma/updateScore";
 
 export default function MaanRoom() {
   const [room, setRoom] = useState(false);
@@ -20,24 +20,24 @@ export default function MaanRoom() {
     });
   }, []);
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     updateScore({
       id: "e863d473-7130-4cfc-a97e-ec79e9216da8",
       timerScore: 10,
       hintScore: 2,
-      culpritScore: 5
-    })
-  }
+      culpritScore: 5,
+    });
+  };
 
-  const csubmitHandler = async(e) => {
+  const csubmitHandler = async (e) => {
     e.preventDefault();
     createUser({
       email: "3",
       password: "2",
-      name: "agene"
-    })
-  }
+      name: "agene",
+    });
+  };
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -50,7 +50,6 @@ export default function MaanRoom() {
             position="relative"
             width="100%"
           >
-
             <ItemImage item={room.background} />
             <Box position="absolute" zIndex="1">
               {/* spacesword  */}
@@ -85,7 +84,7 @@ export default function MaanRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box mt="2%" w="100%" background="white">
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>

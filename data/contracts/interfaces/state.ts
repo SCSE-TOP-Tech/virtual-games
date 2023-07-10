@@ -4,4 +4,4 @@ interface State {
   currentTime: string;
 }
 
-export { State };
+export type { State };

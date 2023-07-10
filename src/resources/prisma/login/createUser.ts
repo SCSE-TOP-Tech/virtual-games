@@ -6,6 +6,7 @@
  * @param {string} userData.password User Password
  * @param {string} userData.email User Email
  */
+import { Account } from "../../../../data/contracts/interfaces/account";
 
 async function createUser(userData) {
   try {

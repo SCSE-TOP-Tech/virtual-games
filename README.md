@@ -12,6 +12,9 @@ yarn dev
 pnpm dev
 ```
 
+Copy .env variables for testing 
+
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
@@ -49,6 +52,13 @@ Migration to database tables files
 
 ```bash
 npx prisma migrate dev --name init
+
+mkdir -p prisma/migrations/0_init
+
+npx prisma migrate diff \
+--from-empty \
+--to-schema-datamodel prisma/schema.prisma \
+--script > prisma/migrations/0_init/migration.sql
 ```
 
 Seeding database 
