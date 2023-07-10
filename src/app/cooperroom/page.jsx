@@ -1,6 +1,6 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex, Center } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
+  const [inventory, setInventory] = useState(['coffee_machine'])
 
   useEffect(() => {
     fetchRoom("cooper", true).then((data) => {
@@ -36,6 +37,7 @@ export default function CooperPage() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.luggage}
+                  onClick={()=>setInventory((prev)=>[...prev, "luggage"])}
                   //chakra props
                   className={styles.item}
                   width="6.5rem"
@@ -155,6 +157,21 @@ export default function CooperPage() {
               </Hint>
             </Box>
           </Box>
+          <Flex flexWrap="wrap">
+            {inventory.map((item)=>
+            
+            <Center>
+              <ItemImage
+                item={room.dummy_objects[item]}
+                  //chakra props
+                  className={styles.item}
+
+                  width="4rem" //use SizeFormatter if item should be different for different devices
+              />
+            </Center>
+            )}
+
+          </Flex>
 
           <Box
             position="absolute"
