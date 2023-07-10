@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "~/*": ["/*"]
+      "~/*": ["./*"]
     },
     "lib": [
       "dom",
@@ -33,7 +33,8 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "**/*.test.ts"
   ],
   "exclude": [
     "node_modules"

@@ -5,10 +5,10 @@ import { StateItem } from "../data/contracts/interfaces/stateitem";
 
 const prisma = new PrismaClient();
 async function main() {
-  // await prisma.state.createMany({
-  //   data: states,
-  // });
-  // console.log("Added States data");
+  await prisma.state.createMany({
+    data: states,
+  });
+  console.log("Added States data");
 
   let stateItems: StateItem[] = [];
   let counter = 0;
@@ -27,7 +27,7 @@ async function main() {
             stateItems.push({
               stateItemID: counter++,
               stateID: item[objkey].state,
-              itemName: item[objkey].name,
+              itemName: objkey,
               roomName: char.name,
             });
           }
@@ -53,7 +53,7 @@ async function main() {
             stateItems.push({
               stateItemID: counter++,
               stateID: item[objkey].state,
-              itemName: item[objkey].name,
+              itemName: objkey,
               roomName: room.name,
             });
           }
@@ -65,10 +65,10 @@ async function main() {
   const roomItems = extractRoom(rooms, stateItems, counter);
   stateItems = roomItems[0];
 
-  // await prisma.stateItem.createMany({
-  //   data: stateItems,
-  // });
-  // console.log("Added StateItem data");
+  await prisma.stateItem.createMany({
+    data: stateItems,
+  });
+  console.log("Added StateItem data");
 }
 main()
   .then(async () => {
