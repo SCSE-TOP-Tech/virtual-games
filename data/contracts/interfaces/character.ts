@@ -29,4 +29,4 @@ interface Character {
   };
 }
 
-export { Character };
+export type { Character };

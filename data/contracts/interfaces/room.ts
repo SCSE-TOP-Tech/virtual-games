@@ -20,4 +20,4 @@ interface Room {
   };
 }
 
-export { Room };
+export type { Room };

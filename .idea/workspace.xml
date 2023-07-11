@@ -4,24 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="Refactored StorageRoom, added baseURL for absolute pathing.">
+    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="fixed issues">
+      <change afterPath="$PROJECT_DIR$/jest/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jest/context.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jest/singleton.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Rooms/Princessroom/infinity-stones-map.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/brandroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/brandroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/captainroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/captainroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/carmenroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/carmenroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/clinic/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/clinic/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/controlroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/controlroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/cooperroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/cooperroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/doyleroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/doyleroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dressingroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dressingroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/kitchen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/kitchen/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/princessroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/princessroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/romilyroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/romilyroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/seraphineroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/seraphineroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/storageroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/storageroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/cloudinary/fetchRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/cloudinary/fetchRoom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/seed.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__tests__/login.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/__tests__/login.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/prisma/login/createUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/prisma/login/createUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -68,30 +63,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat/VG-26&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/eugenewee/.config/yarn/global/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "fix/VG-39",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "/Users/eugenewee/.config/yarn/global/node_modules/prettier",
+    "settings.editor.selected.configurable": "JavaScript.Libraries",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/jest" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/tests" />
+      <recent name="$PROJECT_DIR$/src/resources/prisma/login" />
       <recent name="$PROJECT_DIR$/data/contracts/interfaces" />
-      <recent name="$PROJECT_DIR$/data/contracts" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -110,6 +108,7 @@
       <workItem from="1688491622001" duration="1357000" />
       <workItem from="1688742572677" duration="6833000" />
       <workItem from="1688802028657" duration="11844000" />
+      <workItem from="1688949196922" duration="8169000" />
     </task>
     <task id="LOCAL-00001" summary="Updated new DB Schema, created temporary seed,">
       <option name="closed" value="true" />
@@ -127,7 +126,23 @@
       <option name="project" value="LOCAL" />
       <updated>1688746295006</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Refactored StorageRoom, added baseURL for absolute pathing.">
+      <option name="closed" value="true" />
+      <created>1688875014152</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688875014152</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed issues">
+      <option name="closed" value="true" />
+      <created>1689007884923</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689007884923</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +164,8 @@
     <MESSAGE value="Successfully created seeder for states" />
     <MESSAGE value="Added baseURL for absolute pathing" />
     <MESSAGE value="Refactored StorageRoom, added baseURL for absolute pathing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored StorageRoom, added baseURL for absolute pathing." />
+    <MESSAGE value="Updated seeder and database schema, added unit test temporary" />
+    <MESSAGE value="fixed issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed issues" />
   </component>
 </project>

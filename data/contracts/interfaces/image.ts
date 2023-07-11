@@ -7,4 +7,4 @@ interface Image {
   state: number;
 }
 
-export { Image };
+export type { Image };
