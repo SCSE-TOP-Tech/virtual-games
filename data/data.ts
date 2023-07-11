@@ -16,6 +16,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "doyle",
       name: "Doyle's Character",
       background: {
         name: "Doyle's Character Background",
@@ -91,6 +92,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "carmen",
       name: "Carmen's Character",
       background: {
         name: "Carmen's Character Background",
@@ -142,6 +144,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "seraphine",
       name: "Seraphine Character",
       background: {
         name: "Seraphine's Character Background",
@@ -207,6 +210,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "cooper",
       name: "Cooper's Character",
       background: {
         name: "Cooper's Character Background",
@@ -265,6 +269,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "romily",
       name: "Romily's Character",
       background: {
         name: "Romily's Character Background",
@@ -331,6 +336,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "maan",
       name: "Maan's Character",
       background: {
         name: "Maan's Character Background",
@@ -365,6 +371,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "brand",
       name: "Brand's Character",
       background: {
         name: "Brand's Character Background",
@@ -402,6 +409,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "knight",
       name: "Knight's Character",
       background: {
         name: "Maan's Character Background",
@@ -427,6 +435,7 @@ export const characters: Character[] = [
       },
     },
     room: {
+      room_id: "princess_white",
       name: "Princess White's Character",
       background: {
         name: "Princess White's Character Background",

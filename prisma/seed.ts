@@ -28,7 +28,7 @@ async function main() {
               stateItemID: counter++,
               stateID: item[objkey].state,
               itemName: objkey,
-              roomName: char.name,
+              roomName: room["room_id"],
             });
           }
         }
@@ -54,7 +54,7 @@ async function main() {
               stateItemID: counter++,
               stateID: item[objkey].state,
               itemName: objkey,
-              roomName: room.name,
+              roomName: room["id"],
             });
           }
         }

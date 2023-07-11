@@ -1,16 +1,14 @@
-// import { Context, createMockContext, MockContext } from "~/jest/context";
-//
-// let ctx = Context;
-// let mockCtx = MockContext;
-
-// beforeEach(() => {
-//   mockCtx = createMockContext();
-//   ctx = mockCtx as unknown as Context;
-// });
-
-import { prismaMock } from "~/jest/singleton";
+import { Context, createMockContext, MockContext } from "../../jest/context";
 import { Account } from "~/data/contracts/interfaces/account";
-import createUser from "@/resources/prisma/login/createUser";
+import createUser from "../resources/prisma/login/createUser";
+
+let ctx: Context;
+let mockCtx: MockContext;
+
+beforeEach(() => {
+  mockCtx = createMockContext();
+  ctx = mockCtx as unknown as Context;
+});
 
 describe("GET /login", () => {
   it("should create a user with associated account and items", async () => {
@@ -20,6 +18,10 @@ describe("GET /login", () => {
       email: "testEmail",
     };
 
-    await createUser(account);
+    await expect(createUser(account, ctx)).resolves.toEqual({
+      name: account.username,
+      password: account.password,
+      email: account.email,
+    });
   });
 });
