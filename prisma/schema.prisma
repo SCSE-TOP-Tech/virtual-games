@@ -51,9 +51,9 @@ model Guess {
 model UserItem {
   userItemID  Int       @id @default(autoincrement())
   user        User      @relation(fields: [userID], references: [userID])
-  userID      Int       @unique
+  userID      Int
   stateItem   StateItem @relation(fields: [stateItemID], references: [stateItemID])
-  stateItemID Int       @unique
+  stateItemID Int
   collected   Boolean
 }
 
