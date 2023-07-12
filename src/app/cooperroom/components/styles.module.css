@@ -4,3 +4,8 @@
   transition-timing-function: ease-in-out;
   filter: brightness(1.5);
 }
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}

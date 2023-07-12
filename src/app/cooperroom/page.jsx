@@ -39,7 +39,7 @@ export default function CooperPage() {
                   item={room.dummy_objects.luggage}
                   onClick={() => setInventory((prev) => [...prev, "luggage"])}
                   //chakra props
-                  className={styles.item}
+                  className={styles.item + " " + (inventory.includes("luggage") ? styles.fade : "") }
                   width="6.5rem"
                   right={SizeFormatter(
                     "1rem", //iphone se
@@ -70,7 +70,7 @@ export default function CooperPage() {
                   item={room.dummy_objects.newspaper}
                   onClick={() => setInventory((prev) => [...prev, "newspaper"])}
                   //chakra props
-                  className={styles.item}
+                  className={styles.item + " " + (inventory.includes("newspaper") ? styles.fade : "")}
                   width="3.5rem"
                   right={SizeFormatter(
                     "3rem", //iphone se
@@ -103,7 +103,7 @@ export default function CooperPage() {
                   //chakra props
                   filter="auto"
                   brightness="75%"
-                  className={styles.item}
+                  className={styles.item + " " + (inventory.includes("spaceID_card") ? styles.fade : "") }
                   width="5.5rem"
                   right={SizeFormatter(
                     "4rem", //iphone se
@@ -134,7 +134,7 @@ export default function CooperPage() {
                   item={room.dummy_objects.coffee_machine}
                   onClick={() => setInventory((prev) => [...prev, "coffee_machine"])}
                   //chakra props
-                  className={styles.item}
+                  className={styles.item + " " + (inventory.includes("coffee_machine") ? styles.fade : "") }
                   width="3.5rem" //use SizeFormatter if item should be different for different devices
                   left={SizeFormatter(
                     "8.5rem", //iphone se
