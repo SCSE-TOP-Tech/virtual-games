@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="Added createUser.ts">
-      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/timer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/contracts/interfaces/user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/login/user.ts" afterDir="false" />
+    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="Successfully created createUser.ts, to populate UserItem table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__tests__/login.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/__tests__/login.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/carmenroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/carmenroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/prisma/login/createUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/prisma/login/createUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/login/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/login/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,26 +56,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feat/VG-25",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "/Users/eugenewee/.config/yarn/global/node_modules/prettier",
-    "settings.editor.selected.configurable": "JavaScript.Libraries",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/VG-25&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/eugenewee/.config/yarn/global/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;JavaScript.Libraries&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/jest" />
@@ -107,6 +102,7 @@
       <workItem from="1688742572677" duration="6833000" />
       <workItem from="1688802028657" duration="11844000" />
       <workItem from="1688949196922" duration="8169000" />
+      <workItem from="1689159468160" duration="1535000" />
     </task>
     <task id="LOCAL-00001" summary="Updated new DB Schema, created temporary seed,">
       <option name="closed" value="true" />
@@ -148,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689091302541</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Successfully created createUser.ts, to populate UserItem table">
+      <option name="closed" value="true" />
+      <created>1689096666090</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689096666090</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +177,8 @@
     <MESSAGE value="Updated seeder and database schema, added unit test temporary" />
     <MESSAGE value="fixed issues" />
     <MESSAGE value="Added createUser.ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added createUser.ts" />
+    <MESSAGE value="Successfully created createUser.ts, to populate UserItem table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully created createUser.ts, to populate UserItem table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -181,7 +186,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/api/login/user.js</url>
           <line>5</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
