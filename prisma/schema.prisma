@@ -35,7 +35,9 @@ model User {
 model Timer {
   timerID   Int      @id @default(autoincrement())
   user      User     @relation(fields: [userID], references: [userID])
-  userID    Int      @unique
+  userID    Int
+  state     State    @relation(fields: [stateID], references: [stateID])
+  stateID   Int
   startTime DateTime @default(now())
   endTime   DateTime
   timeTaken Float
@@ -63,6 +65,7 @@ model State {
   currentTime DateTime
   users       User[]
   stateItems  StateItem[]
+  timer       Timer[]
 }
 
 model StateItem {

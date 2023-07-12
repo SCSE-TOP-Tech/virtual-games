@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="fixed issues">
-      <change afterPath="$PROJECT_DIR$/jest/client.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jest/context.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jest/singleton.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/prisma/state/update.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/api/prisma/timer/add.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/prisma/state/updateState.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/prisma/timer/addTimer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/seed.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__tests__/login.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/__tests__/login.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/prisma/login/createUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/prisma/login/createUser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/prisma/timer/index.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feat/VG-26" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,7 +65,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "fix/VG-39",
+    "git-widget-placeholder": "feat/VG-41",
+    "last_opened_file_path": "/Users/eugenewee/WebstormProjects/virtual-games/src/pages/api/prisma/timer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -84,6 +81,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/api/prisma/timer" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/jest" />
       <recent name="$PROJECT_DIR$" />
@@ -142,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689007884923</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added getAvailableItems.ts and getCollectedItems.ts handlers with API endpoints">
+      <option name="closed" value="true" />
+      <created>1689164674458</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689164674458</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +174,7 @@
     <MESSAGE value="Refactored StorageRoom, added baseURL for absolute pathing." />
     <MESSAGE value="Updated seeder and database schema, added unit test temporary" />
     <MESSAGE value="fixed issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed issues" />
+    <MESSAGE value="Added getAvailableItems.ts and getCollectedItems.ts handlers with API endpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added getAvailableItems.ts and getCollectedItems.ts handlers with API endpoints" />
   </component>
 </project>
