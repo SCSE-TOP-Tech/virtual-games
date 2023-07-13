@@ -10,7 +10,7 @@ import { Account } from "~/data/contracts/interfaces/account";
 
 async function createUser(userData: Account) {
   try {
-    await fetch(`/api/prisma/user`, {
+    await fetch(`/api/login/user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
