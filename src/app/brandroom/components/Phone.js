@@ -7,7 +7,7 @@ export default function Phone(props) {
         <Box
             position='absolute'
             h="95%"
-            w="55%"
+            w={["55%", "14rem"]}
             left='22.5%'
             top='2.5%'
             border='0.5rem solid white'
