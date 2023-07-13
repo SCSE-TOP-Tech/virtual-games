@@ -1,14 +1,20 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Box } from "@chakra-ui/react";
+import { Box, Img } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
-
+import Phone from "./components/Phone";
 export default function BrandRoom() {
   const [room, setRoom] = useState(false);
+  const [isPhoneOpen, viewPhone] = useState(false);
+
+  const togglePhone = () => {
+    // opens and closes phone display
+    viewPhone(!isPhoneOpen);
+  };
 
   // Initial Load
   useEffect(() => {
@@ -30,6 +36,7 @@ export default function BrandRoom() {
               width="100%"
             >
               {/* background image */}
+              {isPhoneOpen && <Phone handler={togglePhone} />}
               <ItemImage item={room.background} />
               <Box position="absolute" zIndex="1">
                 {/* temp custom image to be used */}
@@ -38,9 +45,9 @@ export default function BrandRoom() {
                   <ItemImage
                     item={room.clues.galaxy_phone}
                     className={styles.item}
-                    width="2rem"
+                    width="20rem"
                     left={SizeFormatter(
-                      "5rem", //iphone se
+                      "1rem", //iphone se
                       "1rem", //iphone xr
                       "1rem", //iphone 12pro
                       "1rem", //pixel 5
@@ -50,7 +57,7 @@ export default function BrandRoom() {
                       "1rem" //ipad mini
                     )}
                     bottom={SizeFormatter(
-                      "10rem", //iphone se
+                      "1rem", //iphone se
                       "1rem", //iphone xr
                       "1rem", //iphone 12pro
                       "1rem", //pixel 5
@@ -59,19 +66,14 @@ export default function BrandRoom() {
                       "1rem", //ipad air
                       "1rem" //ipad mini
                     )}
+                    onClick={togglePhone}
                   />
                 </Hint>
               </Box>
             </Box>
-            <Box
-              position="absolute"
-              bottom="10%"
-              mt="2%"
-              w="28em"
-              background={"white"}
-            >
-              Text Component Here
-            </Box>
+            <Box mt="2%" w="100%" background={"white"}>
+            Text Component Here
+          </Box>
           </Box>
         </div>
       )}
