@@ -1,10 +1,10 @@
 "use client";
 import styles from "./components/styles.module.css";
 import Navbar from "../components/Navbar";
-import { Container, Text, Box } from "@chakra-ui/react";
-import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import { Box } from "@chakra-ui/react";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { Suspense, useEffect, useState } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Hint from "../components/Hint";
 
 export default function MaanRoom() {
@@ -62,7 +62,7 @@ export default function MaanRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box mt="2%" w="100%" background="white">
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>

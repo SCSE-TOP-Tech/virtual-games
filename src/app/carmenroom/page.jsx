@@ -1,11 +1,12 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
-import { ItemImage, SizeFormatter, CldImage } from "../components/ImageComp";
+import { Box } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import { ItemImage, SizeFormatter } from "@/app/components/ImageComp";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
+import createUser from "@/resources/prisma/login/createUser";
 
 export default function CarmenRoom() {
   const [room, setRoom] = useState(false);
@@ -16,6 +17,15 @@ export default function CarmenRoom() {
       setRoom(data);
     });
   }, []);
+
+  const submitHandler = () => {
+    const acc = {
+      username: "tesastuser",
+      password: "tsaaets",
+      email: "teasat@.com",
+    };
+    createUser(acc);
+  };
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -28,6 +38,7 @@ export default function CarmenRoom() {
             position="relative"
             width="100%"
           >
+            <button onClick={submitHandler}>hello</button>
             {/* background image */}
             <ItemImage item={room.background} />
             {/* items */}
@@ -126,7 +137,7 @@ export default function CarmenRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box mt="2%" w="100%" background="white">
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>

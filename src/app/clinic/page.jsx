@@ -6,8 +6,8 @@ import styles from "./components/styles.module.css";
 
 import background from "../../../public/Rooms/Clinic/clinic.png";
 import { Suspense, useEffect, useState } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
-import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import Navbar from "../components/Navbar";
 
 export default function Clinic() {
@@ -69,7 +69,7 @@ export default function Clinic() {
             bottom="10%"
             mt="2%"
             w="28em"
-            background="white"
+            background={"white"}
           >
             Text Component Here
           </Box>

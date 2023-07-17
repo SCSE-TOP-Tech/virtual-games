@@ -3,7 +3,7 @@ import styles from "./components/styles.module.css";
 import { Container, Text, Box } from "@chakra-ui/react";
 import { CldImage, ItemImage, SizeFormatter } from "../components/ImageComp";
 import { Suspense, useEffect, useState } from "react";
-import fetchRoom from "@/pages/api/rooms/fetchRoom";
+import fetchRoom from '@/resources/cloudinary/fetchRoom'
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
 export default function Hallway() {

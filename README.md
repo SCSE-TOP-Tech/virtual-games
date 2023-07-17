@@ -12,6 +12,9 @@ yarn dev
 pnpm dev
 ```
 
+Copy .env variables for testing 
+
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
@@ -36,3 +39,43 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Prisma Database
+
+Sync with postgreSQL database
+
+```bash
+npx prisma db push
+```
+
+Migration to database tables files.
+[View Baseline Migration Guide](https://www.prisma.io/docs/guides/migrate/developing-with-prisma-migrate/add-prisma-migrate-to-a-project#baseline-your-production-environment)
+
+```bash
+mkdir -p prisma/migrations/0_init
+
+npx prisma migrate diff \
+--from-empty \
+--to-schema-datamodel prisma/schema.prisma \
+--script > prisma/migrations/0_init/migration.sql
+
+npx prisma migrate resolve --applied 0_init 
+```
+
+Seeding database 
+```bash
+prisma db seed
+```
+
+Open Prisma Studio
+
+```bash
+npx prisma studio
+```
+
+Execute script in script.ts
+
+```bash
+npx ts-node prisma/script.ts
+```
+

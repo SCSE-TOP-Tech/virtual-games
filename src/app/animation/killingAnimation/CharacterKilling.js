@@ -1,20 +1,17 @@
-import React from 'react'
-import Image from 'next/image'
-import cooperKill from '../../../../public/CharacterKilling/cooperKill.gif'
+import React from "react";
+import Image from "next/image";
+import cooperKill from "../../../../public/CharacterKilling/cooperKill.gif";
 
-export default function CharacterKilling({name, height, width}) {
-    let image;
-    switch (name) {
-      case 'cooper':
-        image = cooperKill;
-        break;
-    }
+export default function CharacterKilling({ name, height, width }) {
+  let image;
+  switch (name) {
+    case "cooper":
+      image = cooperKill;
+      break;
+  }
   return (
     <>
-      <Image height={height} width={width}
-        src={image}
-      />
+      <Image height={height} width={width} alt="killing" src={image} />
     </>
-
-  )
+  );
 }
