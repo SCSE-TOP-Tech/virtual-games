@@ -26,7 +26,6 @@ export default function BrandRoom() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       {room && (
-        <div>
           <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
             <Navbar />
             <Box
@@ -75,7 +74,6 @@ export default function BrandRoom() {
             Text Component Here
           </Box>
           </Box>
-        </div>
       )}
     </Suspense>
   );
