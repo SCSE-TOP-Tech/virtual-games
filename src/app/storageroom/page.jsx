@@ -37,6 +37,7 @@ export default function StorageRoom() {
       {room && (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
+          {/* background image */}
           <Box
             display="flex"
             justifyContent="center"
@@ -53,113 +54,219 @@ export default function StorageRoom() {
                 <ItemImage
                   item={room.npc.dead_doctor}
                   className={styles.item}
-                  width="1.5rem"
                   filter="auto"
-                  brightness="20%"
-                  left={SizeFormatter(
-                    "11rem", //iphone se
-                    "12.2rem", //iphone xr
-                    "12rem", //iphone 12pro
-                    "12rem", //pixel 5
-                    "11rem", //samsung galaxy s8+
-                    "12rem", //samsung galaxy s20 ultra
-                    "14rem", //ipad air
-                    "14rem" //ipad mini
+                  brightness="75%"
+                  width="3.7rem"
+                  right={SizeFormatter(
+                    "1.5rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "12.7rem",
-                    "15rem",
-                    "13.6rem",
-                    "14rem",
-                    "11.8rem",
-                    "15rem",
-                    "19rem",
-                    "19rem"
+                    "10rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
                   )}
                 />
               </Hint>
 
               {/* tesseract (temp viewing) */}
-              <ItemImage
-                item={room.clues.tesseract}
-                style={{
-                  position: "relative",
-                  right: "-12.4rem",
-                  top: "26rem",
-                  width: "2.5rem",
-                  margin: "0",
-                }}
-                className={styles.item}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.clues.tesseract}
+                  className={styles.item}
+                  width="2.2rem"
+                  left={SizeFormatter(
+                    "10rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "11.85rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* screwdriver (temp viewing) */}
-              <ItemImage
-                item={room.dummy_objects.screwdriver}
-                style={{
-                  position: "relative",
-                  right: "1rem",
-                  top: "23rem",
-                  width: "2.2rem",
-                  margin: "0",
-                }}
-                className={styles.item}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.screwdriver}
+                  className={styles.item}
+                  filter="auto"
+                  brightness="55%"
+                  width="1rem"
+                  left={SizeFormatter(
+                    "4.5rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "14.3rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* mop and bucket (temp viewing) */}
-              <ItemImage
-                item={room.dummy_objects.mopbucket}
-                style={{
-                  position: "relative",
-                  right: "-2.4rem",
-                  top: "21rem",
-                  width: "6rem",
-                  margin: "0",
-                }}
-                className={styles.item}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.dummy_objects.mopbucket}
+                  className={styles.item}
+                  filter="auto"
+                  brightness="55%"
+                  width="4rem"
+                  left={SizeFormatter(
+                    "3.5rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "7.3rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* blood stained clothspin (temp viewing) */}
-              <ItemImage
-                item={room.clues.blood_clothpin}
-                style={{
-                  position: "relative",
-                  right: "5.4rem",
-                  top: "14.5rem",
-                  width: "2rem",
-                  margin: "0",
-                }}
-                className={styles.item}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.clues.blood_clothpin}
+                  className={styles.item}
+                  filter="auto"
+                  brightness="45%"
+                  width="1rem"
+                  right={SizeFormatter(
+                    "6rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "4.1rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                />
+              </Hint>
 
               {/* doctor's galaxy phone (temp viewing) */}
-              <ItemImage
-                item={room.clues.doctorphone}
-                style={{
-                  position: "relative",
-                  right: "5.4rem",
-                  top: "19.5rem",
-                  width: "4.2rem",
-                  margin: "0",
-                }}
-                className={styles.item}
-                onClick={togglePhone}
-              />
+              <Hint>
+                <ItemImage
+                  item={room.clues.doctorphone}
+                  className={styles.item}
+                  filter="auto"
+                  brightness="75%"
+                  width="1.7rem"
+                  right={SizeFormatter(
+                    "3.3rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "7.2rem", //iphone se
+                    "1rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "1rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad air
+                    "1rem" //ipad mini
+                  )}
+                  onClick={togglePhone}
+                />
+              </Hint>
 
               {/* cloth (temp viewing) */}
               <Box>
                 {!isClicked && (
-                  <ItemImage
-                    item={room.clues.cloth}
-                    style={{
-                      position: "relative",
-                      right: "-11rem",
-                      top: "9.4rem",
-                      width: "5rem",
-                      margin: "0",
-                    }}
-                    className={styles.item}
-                    onClick={handleToggle}
-                  />
+                  <Hint>
+                    <ItemImage
+                      item={room.clues.cloth}
+                      className={styles.item}
+                      filter="auto"
+                      brightness="75%"
+                      width="3.2rem"
+                      left={SizeFormatter(
+                        "9.4rem", //iphone se
+                        "1rem", //iphone xr
+                        "1rem", //iphone 12pro
+                        "1rem", //pixel 5
+                        "1rem", //samsung galaxy s8+
+                        "1rem", //samsung galaxy s20 ultra
+                        "1rem", //ipad air
+                        "1rem" //ipad mini
+                      )}
+                      top={SizeFormatter(
+                        "1.5rem", //iphone se
+                        "1rem", //iphone xr
+                        "1rem", //iphone 12pro
+                        "1rem", //pixel 5
+                        "1rem", //samsung galaxy s8+
+                        "1rem", //samsung galaxy s20 ultra
+                        "1rem", //ipad air
+                        "1rem" //ipad mini
+                      )}
+                      onClick={handleToggle}
+                    />
+                  </Hint>
                 )}
               </Box>
             </Box>
