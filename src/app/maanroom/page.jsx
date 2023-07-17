@@ -6,9 +6,6 @@ import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Hint from "../components/Hint";
-import createUser from "@/resources/prisma/login/createUser";
-import updateTimer from "@/resources/prisma/updateTimer";
-import updateScore from "@/resources/prisma/updateScore";
 
 export default function MaanRoom() {
   const [room, setRoom] = useState(false);
@@ -19,25 +16,6 @@ export default function MaanRoom() {
       setRoom(data);
     });
   }, []);
-
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    updateScore({
-      id: "e863d473-7130-4cfc-a97e-ec79e9216da8",
-      timerScore: 10,
-      hintScore: 2,
-      culpritScore: 5,
-    });
-  };
-
-  const csubmitHandler = async (e) => {
-    e.preventDefault();
-    createUser({
-      email: "3",
-      password: "2",
-      name: "agene",
-    });
-  };
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
