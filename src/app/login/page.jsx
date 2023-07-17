@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import loginUser from "@/resources/prisma/login/loginUser";
 
 export default function Login() {
   const router = useRouter();
@@ -32,15 +33,14 @@ export default function Login() {
       }, 3000);
     } else {
       try {
-        //TODO: implement backend logic
-        const res = await fetch("/api/login", {
-          method: "POST",
-          body: JSON.stringify(formik.values),
-        });
-        console.log(res);
+        // TO DO: loading state when creating new user
+        // const newUser = await createUser(formik.values);
+        const currentUser = await loginUser(formik.values);
+        // TO DO: stored user state, to persist throughout gameplay
+        setUser(currentUser);
       } catch ({ name, message }) {
         console.log(`${name} : ${message}`);
-        setError(message);
+        setError(message); // TO FIX NOT WORKING!
       } finally {
         if (error !== "") {
           setTimeout(() => {

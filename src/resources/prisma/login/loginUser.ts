@@ -6,17 +6,15 @@
  * @param {string} userData.password User Password
  * @param {string} userData.email User Email
  */
-import {Account} from "~/data/contracts/interfaces/account";
+import { Account } from "~/data/contracts/interfaces/account";
 
-async function createUser(userData: Account) {
+async function loginUser(userData: Account) {
   try {
-    return await fetch(`/api/login/create`, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
+    return await fetch(`/api/login/user`, {
+      method: "GET",
       body: JSON.stringify({
         name: userData.username,
         password: userData.password,
-        email: userData.email,
       }),
     });
   } catch (error) {
@@ -25,4 +23,4 @@ async function createUser(userData: Account) {
   }
 }
 
-export default createUser;
+export default loginUser;

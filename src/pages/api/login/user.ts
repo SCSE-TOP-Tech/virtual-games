@@ -2,43 +2,24 @@ import prisma from "~/lib/prisma";
 
 export default async function handle(req, res) {
   try {
-    console.log("Successful API Call");
+    console.log("Successful API Call to login!");
     const userData = req.body;
 
-    // New User and Account
-    const newUser = await prisma.user.create({
-      data: {
-        name: userData.name,
-        state: {
-          connect: { stateID: 1 },
-        },
-        Account: {
-          create: {
-            email: userData.email,
-            password: userData.password,
-          },
-        },
-      },
-    });
-    console.log("Added User!");
-
-    // Populating with userItems
-    const stateItems = await prisma.stateItem.findMany();
-    const newUserItems = stateItems.map((item) => {
-      return {
-        userID: newUser.userID,
-        stateItemID: item.stateID,
-        collected: false,
-      };
-    });
-    console.log(newUserItems);
-
-    const newUserItemsCreated = await prisma.userItem.createMany({
-      data: newUserItems,
+    // Login account
+    const currentAccount = await prisma.account.findUnique({
+      where: {
+        email: userData.email,
+        password: userData.password
+      }
     });
 
-    console.log("Added UserItems!");
-    res.status(200).json(newUserItemsCreated);
+    if(currentAccount == null){
+      console.log("Failed to login")
+      res.status(500)
+    }
+
+    console.log("Successful login!")
+    res.status(200).json(currentAccount);
   } catch (e) {
     console.log(e);
     res.status(500);
