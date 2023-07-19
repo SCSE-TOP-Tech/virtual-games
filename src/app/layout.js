@@ -2,6 +2,7 @@
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider, extendTheme, Box } from "@chakra-ui/react";
 import Fonts from "./fonts";
+import Login from "@/app/login/page";
 
 const theme = extendTheme({
   colors: {},

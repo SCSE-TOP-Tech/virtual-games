@@ -37,9 +37,10 @@ export default function Login() {
         // const newUser = await createUser(formik.values);
         const currentUser = await loginUser(formik.values);
         // TO DO: stored user state, to persist throughout gameplay
-        setUser(currentUser);
+        currentUser != null ? setUser(currentUser) : alert("Invalid Login");
       } catch ({ name, message }) {
         console.log(`${name} : ${message}`);
+        alert("Not Logged in!");
         setError(message); // TO FIX NOT WORKING!
       } finally {
         if (error !== "") {

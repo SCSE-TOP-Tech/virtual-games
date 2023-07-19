@@ -14,14 +14,14 @@ export default async function handle(req, res) {
     });
 
     if(currentAccount == null){
-      console.log("Failed to login")
-      res.status(500)
+      console.log("Failed to login!")
+      res.status(500).json("null")
     }
 
     console.log("Successful login!")
     res.status(200).json(currentAccount);
   } catch (e) {
     console.log(e);
-    res.status(500);
+    res.status(500).json(null)
   }
 }

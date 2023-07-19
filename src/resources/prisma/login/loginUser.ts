@@ -11,7 +11,7 @@ import { Account } from "~/data/contracts/interfaces/account";
 async function loginUser(userData: Account) {
   try {
     return await fetch(`/api/login/user`, {
-      method: "GET",
+      method: "POST",
       body: JSON.stringify({
         name: userData.username,
         password: userData.password,

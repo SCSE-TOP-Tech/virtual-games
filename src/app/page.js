@@ -1,10 +1,14 @@
-'use client'
-import { Box, Text } from '@chakra-ui/react'
+"use client";
+import { Box, Text } from "@chakra-ui/react";
+import Login from "@/app/login/page";
+import { SessionProvider } from "next-auth/react";
 
-export default function Home() {
+export default function Home({ Login, pageProps: { session, ...pageProps } }) {
   return (
     <main>
-      <Text fontSize='6xl' color='darkblue'>PLEASE LEARN CHAKRA UI!</Text>
+      <SessionProvider session={session}>
+        <Login {...pageProps} />
+      </SessionProvider>
     </main>
-  )
+  );
 }
