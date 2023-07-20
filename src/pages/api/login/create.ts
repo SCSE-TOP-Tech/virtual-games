@@ -12,7 +12,7 @@ export default async function handle(req, res) {
         state: {
           connect: { stateID: 1 },
         },
-        Account: {
+        accounts: {
           create: {
             email: userData.email,
             password: userData.password,
@@ -26,7 +26,7 @@ export default async function handle(req, res) {
     const stateItems = await prisma.stateItem.findMany();
     const newUserItems = stateItems.map((item) => {
       return {
-        userID: newUser.userID,
+        userID: newUser.userId,
         stateItemID: item.stateID,
         collected: false,
       };

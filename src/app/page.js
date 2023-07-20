@@ -1,14 +1,17 @@
 "use client";
-import { Box, Text } from "@chakra-ui/react";
-import Login from "@/app/login/page";
-import { SessionProvider } from "next-auth/react";
+import { Text } from "@chakra-ui/react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default function Home({ Login, pageProps: { session, ...pageProps } }) {
+export default async function Home() {
+  const router = useRouter();
   return (
     <main>
-      <SessionProvider session={session}>
-        <Login {...pageProps} />
-      </SessionProvider>
+      <Text fontSize="6xl" color="darkblue">
+        Welcome to Virtual Games
+      </Text>
+      <button onClick={() => signIn()}>Sign In</button>
+      <button onClick={() => router.push("/signup")}>Sign Up</button>
     </main>
   );
 }

@@ -6,22 +6,23 @@ export default async function handle(req, res) {
     const userData = req.body;
 
     // Login account
-    const currentAccount = await prisma.account.findUnique({
+    const currentAccount = await prisma.account.findFirst({
       where: {
         email: userData.email,
-        password: userData.password
-      }
+        password: userData.password,
+      },
     });
+    console.log(currentAccount);
 
-    if(currentAccount == null){
-      console.log("Failed to login!")
-      res.status(500).json("null")
+    if (currentAccount == null) {
+      console.log("Failed to login!");
+      res.status(500).json("Failed to login!");
+    } else {
+      console.log("Successful login!");
+      res.status(200).json(currentAccount);
     }
-
-    console.log("Successful login!")
-    res.status(200).json(currentAccount);
   } catch (e) {
     console.log(e);
-    res.status(500).json(null)
+    res.status(500).json(null);
   }
 }
