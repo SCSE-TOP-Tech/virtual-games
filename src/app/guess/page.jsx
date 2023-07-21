@@ -7,7 +7,7 @@ import Incorrect from "./components/Incorrect.js";
 export default function GuessingPage() {
     const [guess, setGuess] = useState([]);
     const [name, setName] = useState("");
-    const [result ,showResult] = useState(false);
+    const [result, showResult] = useState(false);
     const [isCorrect, setCorrectValue] = useState(false);
     const [numAttempt, setNumAttempt] = useState(0);
 
@@ -26,8 +26,10 @@ export default function GuessingPage() {
     const submitGuess = () => {
         let foundCooper = false, foundPrincess = false;
         let score = 0;
-        setNumAttempt(numAttempt+1);
-        
+        setNumAttempt(numAttempt + 1);
+
+        if (guess.length == 0) return;
+
         for (let name of guess) {
             name = name.toLowerCase().trim();
             if (name == "cooper" && !foundCooper) {
@@ -60,35 +62,64 @@ export default function GuessingPage() {
     }
 
     return (
-        <Box w={["100%", "30em"]} h="100%" p={4} position="relative" bg='gray.300'>
-            <Text>
-                The heroes gathered in the Hallway as it is time to end this madness. 
-                Will they unlock this puzzle? Or will the culprits get away? The whole interstellar is counting on you to decide.
-            </Text>
-            <Text> So who are the evil masterminds?</Text>
-            <Text>Please enter one character at a time</Text>
-
-            <Box>
-                <Input placeholder='Input character name' size='md' onChange={handleChange} value={name} />
+        <Box w={["100%", "30em"]} h="100%" p='1rem' position="relative" bg='gray.300'>
+            <Box bg='gray.400' p='0.5rem' mt='1rem'>
+                <Text fontSize="1rem" fontWeight="bold" mb='1rem'>
+                    The heroes gathered in the Hallway as it is time to end this madness.
+                    Will they unlock this puzzle? Or will the culprits get away? The whole interstellar is counting on you to figure out this puzzle.
+                </Text>
             </Box>
 
-            <Button onClick={addInput}>Add character</Button>
-            
+            <Box bg='gray.400' p='0.5rem' mt='0.6rem'>
+                <Text fontSize="1.2rem" fontWeight="bold" mb='0.2rem'>
+                    So who are the evil masterminds?
+                </Text>
+                <Text mb='0.8rem' fontSize='0.9rem'>
+                    Please enter one character at a time
+                </Text>
 
-            <Box>
-                <Text>Your guess:</Text>
-                <UnorderedList>
-                    {guess.map((name) => <ListItem key={name}>{name}</ListItem>)}
-                </UnorderedList>
+                <Box>
+                    <Input
+                        placeholder="Input character name"
+                        size="md"
+                        mb='1rem'
+                        onChange={handleChange}
+                        value={name}
+                    />
+                </Box>
+                <Button mt={2} colorScheme="teal" onClick={addInput}>
+                    Add character
+                </Button>
             </Box>
 
-            <Button onClick={submitGuess}>Submit answers</Button>
-            <Box>{numAttempt}</Box>
-            {result && 
-                <Box w={["80%", "25em"]} h="60%" p={4} position="absolute" bg='green.300'
-                top='20%' left='10%'>
-                    {!isCorrect && <Incorrect handler={addAttempt}/>}
+            <Box bg='gray.400' p='0.5rem' mt='0.6rem'>
+                <Box mt='1rem'>
+                    <Text fontSize="1.2rem" fontWeight="bold" mb='0.2rem'>Your guess:</Text>
+                    <UnorderedList>
+                        {guess.map((name) => <ListItem key={name}>{name}</ListItem>)}
+                    </UnorderedList>
+                </Box>
+
+                <Button mt={4} colorScheme="teal" onClick={submitGuess}>
+                    Submit answers
+                </Button>
+            </Box>
+            {/* <Box>{numAttempt}</Box> */}
+
+            {result && (
+                <Box
+                    w={["80%", "25em"]}
+                    h="30%"
+                    p={4}
+                    position="absolute"
+                    bg={isCorrect ? "green.300" : "red.300"}
+                    top="30%"
+                    left="10%"
+                    borderRadius="md"
+                >
+                    {!isCorrect && <Incorrect handler={addAttempt} />}
                     {isCorrect && <Correct />}
-                </Box>}
+                </Box>
+            )}
         </Box>)
 }

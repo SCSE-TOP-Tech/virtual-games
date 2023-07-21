@@ -1,8 +1,9 @@
-import { Box, Text, Button } from "@chakra-ui/react";
+import { Box, Text, Button, Flex } from "@chakra-ui/react";
 
 export default function Incorrect(props) {
-    return (<Box>
-        <Text>Incorrect</Text>
-        <Button onClick={props.handler}>Try again</Button>
-    </Box>)
+    return (<Flex flexDirection='column' alignItems='center' mt='2rem'>
+        <Text fontSize="2rem" fontWeight="bold">Incorrect!</Text>
+        <Text fontSize="1rem"  mb='0.8rem'>please think again!</Text>
+        <Button w='80%' onClick={props.handler}>Try again</Button>
+    </Flex>)
 }
