@@ -6,13 +6,17 @@ import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
+import { useSession } from "next-auth/react";
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
 
+  // THIS WORKS!
+  // const { session: data } = useSession({
+  //   required: true,
+  // });
+
   useEffect(() => {
-    fetchRoom("cooper", true).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("cooper", true));
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import prisma from "../lib/prisma";
+import { prisma } from "../lib/prisma";
 import { states, rooms, characters } from "../data/data";
 import { Character, Room } from "../data/contracts";
 import { StateItem } from "../data/contracts/interfaces/stateitem";

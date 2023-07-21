@@ -11,9 +11,7 @@ export default function Kitchen() {
   const [room, setRoom] = useState(false);
 
   useEffect(() => {
-    fetchRoom("kitchen", false).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("kitchen", false));
   }, []);
 
   return (

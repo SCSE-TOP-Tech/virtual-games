@@ -1,4 +1,4 @@
-import prisma from "../../../../../lib/prisma";
+import { prisma } from "../../../../../lib/prisma";
 
 // POST /api/prisma/culpritguess
 // Required fields in body: userID, culprit, isCorrect

@@ -25,9 +25,7 @@ export default function StorageRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("storage_room", false).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("storage_room", false));
   }, []);
 
   return (

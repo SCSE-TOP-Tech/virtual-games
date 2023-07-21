@@ -18,9 +18,7 @@ export default function PrincessRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("princess_white", true).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("princess_white", true));
   }, []);
   return (
     <Suspense fallback={<h1>Loading</h1>}>

@@ -12,9 +12,7 @@ export default function DressingRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("dressing_room", false).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("dressing_room", false));
   }, []);
 
   return (

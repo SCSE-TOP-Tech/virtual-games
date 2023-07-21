@@ -12,9 +12,7 @@ export default function MaanRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("maan", true).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("maan", true));
   }, []);
 
   return (

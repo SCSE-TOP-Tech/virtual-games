@@ -1,4 +1,4 @@
-import prisma from "../../../../../lib/prisma";
+import { prisma } from "../../../../../lib/prisma";
 
 // POST /api/prisma/timer
 // Required fields in body: userID, startTime, endTime, isActive

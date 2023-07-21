@@ -12,9 +12,7 @@ export default function SeraphineRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("seraphine", true).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("seraphine", true));
   }, []);
 
   return (

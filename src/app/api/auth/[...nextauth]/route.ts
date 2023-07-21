@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import prisma from "~/lib/prisma";
+import { prisma } from "~/lib/prisma";
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
@@ -59,24 +59,9 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      const isAllowedToSignIn = true;
-      if (isAllowedToSignIn) {
-        return true;
-      } else {
-        // Return false to display a default error message
-        return false;
-        // Or you can return a URL to redirect to:
-        // return '/unauthorized'
-      }
-    },
-  },
-  secret: process.env.NextAuth_SECRET,
+  callbacks: {},
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
-  // pages: {
-  //   signIn: "/login",
-  // },
 };
 
 const handler = NextAuth(authOptions);

@@ -11,9 +11,7 @@ export default function Hallway() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("hallway", false).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("hallway", false));
   }, []);
 
   return (

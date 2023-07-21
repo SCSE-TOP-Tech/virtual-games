@@ -1,4 +1,4 @@
-import prisma from "../../../../../lib/prisma";
+import { prisma } from "../../../../../lib/prisma";
 
 // PUT /api/prisma/hints/:id
 export default async function handle(req, res) {

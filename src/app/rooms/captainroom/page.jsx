@@ -12,10 +12,9 @@ export default function CaptainRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("captain", false).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("captain", false));
   }, []);
+
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       {room && (

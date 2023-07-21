@@ -12,9 +12,7 @@ export default function RomilyRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("romily", true).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("romily", true));
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import fetchCharacter from "@/pages/api/characters/fetchCharacter";
+import fetchCharacter from "@/app/api/characters/fetchCharacter";
 
 export default function CharacterMoving({ name, height, width }) {
   return (

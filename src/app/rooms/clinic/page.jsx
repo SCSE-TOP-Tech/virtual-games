@@ -15,10 +15,9 @@ export default function Clinic() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("clinic", false).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("clinic", false));
   }, []);
+
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       {room && (

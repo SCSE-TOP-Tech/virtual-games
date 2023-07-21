@@ -6,26 +6,14 @@ import { ItemImage, SizeFormatter } from "@/app/components/ImageComp";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
-import createUser from "@/resources/prisma/login/createUser";
 
 export default function CarmenRoom() {
   const [room, setRoom] = useState(false);
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("carmen", true).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("carmen", true));
   }, []);
-
-  const submitHandler = () => {
-    const acc = {
-      username: "tesastuser",
-      password: "tsaaets",
-      email: "teasat@.com",
-    };
-    createUser(acc);
-  };
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -38,7 +26,6 @@ export default function CarmenRoom() {
             position="relative"
             width="100%"
           >
-            <button onClick={submitHandler}>hello</button>
             {/* background image */}
             <ItemImage item={room.background} />
             {/* items */}

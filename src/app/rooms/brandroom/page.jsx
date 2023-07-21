@@ -12,9 +12,7 @@ export default function BrandRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("brand", true).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("brand", true));
   }, []);
 
   return (

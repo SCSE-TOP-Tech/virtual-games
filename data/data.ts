@@ -1,4 +1,3 @@
-// To add JWT Password Authentication
 import { State, Room, Character } from "./contracts";
 
 export const characters: Character[] = [

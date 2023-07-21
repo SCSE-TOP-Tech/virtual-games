@@ -10,9 +10,7 @@ export default function ControlRoom() {
   const [room, setRoom] = useState(false);
 
   useEffect(() => {
-    fetchRoom("control_room", false).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("control_room", false));
   }, []);
 
   return (

@@ -13,9 +13,7 @@ export default function DoyleRoom() {
 
   // Initial Load
   useEffect(() => {
-    fetchRoom("doyle", true).then((data) => {
-      setRoom(data);
-    });
+    setRoom(fetchRoom("doyle", true));
   }, []);
 
   return (
