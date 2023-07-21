@@ -14,6 +14,7 @@ async function loginUser(userData: Account) {
       method: "POST",
       body: JSON.stringify({
         name: userData.username,
+        email: userData.email,
         password: userData.password,
       }),
     });

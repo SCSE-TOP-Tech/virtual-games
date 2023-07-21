@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import loginUser from "@/resources/prisma/login/loginUser";
 import createUser from "@/resources/prisma/login/createUser";
 
 export default function Login() {
@@ -34,7 +33,7 @@ export default function Login() {
       }, 3000);
     } else {
       try {
-        // TO DO: loading state when creating new user
+        // TO DO: loading state when creating new login
         const currentUser = await createUser(formik.values);
         currentUser != null ? setUser(currentUser) : alert("Invalid Login");
       } catch ({ name, message }) {

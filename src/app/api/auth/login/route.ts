@@ -1,9 +1,9 @@
 import { prisma } from "~/lib/prisma";
 
-export default async function handle(req, res) {
+export async function POST(request: Request) {
   try {
-    console.log("Successful API Call to login!");
-    const userData = req.body;
+    console.log("Successful Login API Call!");
+    const userData = await request.json();
 
     // Login account
     const currentAccount = await prisma.account.findFirst({
@@ -16,13 +16,17 @@ export default async function handle(req, res) {
 
     if (currentAccount == null) {
       console.log("Failed to login!");
-      res.status(500).json("Failed to login!");
+      return new Response("Failed to login!", {
+        status: 403,
+      });
     } else {
       console.log("Successful login!");
-      res.status(200).json(currentAccount);
+      return new Response("Successful login!", {
+        status: 200,
+      });
     }
   } catch (e) {
     console.log(e);
-    res.status(500).json(null);
+    return new Response(e);
   }
 }

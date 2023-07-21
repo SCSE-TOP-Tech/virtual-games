@@ -3,6 +3,7 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "~/lib/prisma";
+import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
@@ -25,37 +26,29 @@ export const authOptions: NextAuthOptions = {
           placeholder: "Enter your password...",
         },
       },
-      async authorize(credentials, req) {
-        // You need to provide your own logic here that takes the credentials
-        // submitted and returns either a object representing a user or value
-        // that is false/null if the credentials are invalid.
-        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-        // You can also use the `req` object to obtain additional parameters
-        // (i.e., the request IP address)
+      async authorize(credentials) {
+        console.log("Verification in progress...");
 
-        const loginDetails =
-          {
-            email: credentials?.email,
-            password: credentials?.password,
-          } ?? null;
-
-        if (loginDetails == null) {
+        // Checking null values
+        if (!credentials?.email || !credentials?.password) {
           return null;
         }
 
-        const res = await fetch("/api/login/user", {
-          method: "POST",
-          body: JSON.stringify(loginDetails),
-          headers: { "Content-Type": "application/json" },
+        // Checking account exists
+        const user = await prisma.account.findUnique({
+          where: {
+            email: credentials.email,
+          },
         });
-        const user = await res.json();
 
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user;
+        // Checking password by decryption
+        if (!user || !(await compare(credentials.password, user.password))) {
+          return null;
         }
-        // Return null if user data could not be retrieved
-        return null;
+
+        console.log("User Verified!");
+
+        return user;
       },
     }),
   ],
