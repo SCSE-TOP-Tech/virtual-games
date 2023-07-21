@@ -26,7 +26,7 @@ export default async function handle(req, res) {
     const stateItems = await prisma.stateItem.findMany();
     const newUserItems = stateItems.map((item) => {
       return {
-        userID: newUser.userId,
+        userId: newUser.id,
         stateItemID: item.stateID,
         collected: false,
       };

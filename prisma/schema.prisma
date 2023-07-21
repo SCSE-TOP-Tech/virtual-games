@@ -37,17 +37,15 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  emailVerified DateTime?
-  accounts      Account[]
-  sessions      Session[]
-
-  state   State      @relation(fields: [stateID], references: [stateID])
-  stateID Int
-  timers  Timer[] // 1-M
-  items   UserItem[] // 1-M
-  guess   Guess? // 1-1
+  id       String     @id @default(cuid())
+  name     String?
+  accounts Account[]
+  sessions Session[]
+  state    State      @relation(fields: [stateID], references: [stateID])
+  stateID  Int
+  timers   Timer[] // 1-M
+  items    UserItem[] // 1-M
+  guess    Guess? // 1-1
 }
 
 model VerificationToken {

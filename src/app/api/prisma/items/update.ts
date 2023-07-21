@@ -7,7 +7,7 @@ export default async function handle(req, res) {
 
     const selectedUserItem = await prisma.userItem.findFirst({
       where: {
-        userID: data.userID,
+        userId: data.userID,
         stateItem: {
           itemName: data.itemName,
           roomName: data.roomName,
@@ -15,9 +15,9 @@ export default async function handle(req, res) {
       },
     });
 
-    const updateUserItem = await prisma.userItem.updated({
+    const updateUserItem = await prisma.userItem.update({
       where: {
-        userItemID: selectedUserItem.userItemID,
+        userItemID: selectedUserItem?.userItemID,
       },
       data: {
         collected: true,
