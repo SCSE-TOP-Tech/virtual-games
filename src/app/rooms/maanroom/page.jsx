@@ -3,10 +3,12 @@ import styles from "./components/styles.module.css";
 import Navbar from "../../components/Navbar";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import RoomLayout from "@/app/rooms/layout";
+import Loading from "@/app/rooms/loading";
 
 export default function MaanRoom() {
   const [room, setRoom] = useState(false);
@@ -25,8 +27,8 @@ export default function MaanRoom() {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
           <Box
@@ -73,7 +75,9 @@ export default function MaanRoom() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

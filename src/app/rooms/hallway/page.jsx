@@ -2,11 +2,13 @@
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import RoomLayout from "@/app/rooms/layout";
+import Loading from "@/app/rooms/loading";
 
 export default function Hallway() {
   const [room, setRoom] = useState(false);
@@ -25,8 +27,8 @@ export default function Hallway() {
   }, []);
 
   return (
-    <Suspense fallback={<p>Loading room...</p>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
           <Box
@@ -74,7 +76,9 @@ export default function Hallway() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

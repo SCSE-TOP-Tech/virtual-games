@@ -1,12 +1,14 @@
 "use client";
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import Loading from "@/app/rooms/loading";
+import RoomLayout from "@/app/rooms/layout";
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
   const [user, setUser] = useState();
@@ -24,8 +26,8 @@ export default function CooperPage() {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" position="relative">
           <Navbar />
           <Box
@@ -174,7 +176,9 @@ export default function CooperPage() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

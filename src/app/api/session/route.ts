@@ -3,16 +3,16 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { prisma } from "~/lib/prisma";
 
-export async function GET() {
-  const session = await getServerSession(authOptions);
+export async function GET(req: Request) {
+  try {
+    const session = await getServerSession(authOptions);
 
-  if (!session?.user) {
-    return NextResponse.json({
-      authenticated: false,
-      body: "Error",
-    });
-  } else {
-    try {
+    if (!session?.user) {
+      return NextResponse.json({
+        authenticated: false,
+        body: "Error",
+      });
+    } else {
       const user = session?.user;
       const userEmail = user?.email ?? "";
 
@@ -21,30 +21,21 @@ export async function GET() {
           email: userEmail,
         },
         select: {
-          id: true,
-        },
-      });
-
-      const accountId = account?.id;
-      const userInfo = await prisma.user.findFirst({
-        where: {
-          account: {
-            id: accountId,
-          },
+          user: true,
         },
       });
 
       return NextResponse.json({
         authenticated: !!session,
         body: {
-          userInfo,
+          account,
         },
       });
-    } catch (error) {
-      return NextResponse.json({
-        authenticated: !!session,
-        body: "Error fetching user info!",
-      });
     }
+  } catch (error) {
+    return NextResponse.json({
+      authenticated: false,
+      body: "Error fetching user info!",
+    });
   }
 }

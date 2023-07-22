@@ -1,12 +1,14 @@
 "use client";
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Hint from "../../components/Hint";
 import Navbar from "../../components/Navbar";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import Loading from "@/app/rooms/loading";
+import RoomLayout from "@/app/rooms/layout";
 
 export default function RomilyRoom() {
   const [room, setRoom] = useState(false);
@@ -25,9 +27,8 @@ export default function RomilyRoom() {
   }, []);
 
   return (
-    // To add loading page
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" position="relative">
           <Navbar />
 
@@ -225,7 +226,9 @@ export default function RomilyRoom() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

@@ -1,3 +1,3 @@
 export default function Loading() {
-  return <div>The Page is loading...</div>;
+  return <div style={{ fontSize: 50 }}>The Page is loading...</div>;
 }

@@ -2,11 +2,13 @@
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import Loading from "@/app/rooms/loading";
+import RoomLayout from "@/app/rooms/layout";
 
 export default function BrandRoom() {
   const [room, setRoom] = useState(false);
@@ -25,8 +27,8 @@ export default function BrandRoom() {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <div>
           <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
             <Navbar />
@@ -81,7 +83,9 @@ export default function BrandRoom() {
             </Box>
           </Box>
         </div>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

@@ -1,12 +1,14 @@
 "use client";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { Box } from "@chakra-ui/react";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import styles from "./components/styles.module.css";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import RoomLayout from "@/app/rooms/layout";
+import Loading from "@/app/rooms/loading";
 
 export default function SeraphineRoom() {
   const [room, setRoom] = useState(false);
@@ -25,8 +27,8 @@ export default function SeraphineRoom() {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
           <Box
@@ -168,7 +170,9 @@ export default function SeraphineRoom() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

@@ -2,12 +2,14 @@
 
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Phone from "./components/Phone";
 import { ItemImage } from "@/app/components/ImageComp";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import RoomLayout from "@/app/rooms/layout";
+import Loading from "@/app/rooms/loading";
 
 export default function StorageRoom() {
   const [room, setRoom] = useState(false);
@@ -38,9 +40,8 @@ export default function StorageRoom() {
   };
 
   return (
-    // To add loading page
-    <Suspense fallback={<p> LOADING.</p>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <div>
           <Box w={["100%", "30em"]} h="100%" position="relative">
             <Navbar />
@@ -167,7 +168,9 @@ export default function StorageRoom() {
             </Box>
           </Box>
         </div>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

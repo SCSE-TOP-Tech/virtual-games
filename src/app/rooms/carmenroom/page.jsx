@@ -1,12 +1,14 @@
 "use client";
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ItemImage, SizeFormatter } from "@/app/components/ImageComp";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import RoomLayout from "@/app/rooms/layout";
+import Loading from "@/app/rooms/loading";
 
 export default async function CarmenRoom() {
   const [room, setRoom] = useState(false);
@@ -25,8 +27,8 @@ export default async function CarmenRoom() {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
           <Box
@@ -137,7 +139,9 @@ export default async function CarmenRoom() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

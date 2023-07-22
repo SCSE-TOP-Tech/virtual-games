@@ -5,11 +5,13 @@ import Image from "next/image";
 import styles from "./components/styles.module.css";
 
 import background from "../../../../public/Rooms/Clinic/clinic.png";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import Loading from "@/app/rooms/loading";
+import RoomLayout from "@/app/rooms/layout";
 
 export default function Clinic() {
   const [room, setRoom] = useState(false);
@@ -28,8 +30,8 @@ export default function Clinic() {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%">
           <Navbar />
           {/* background image */}
@@ -82,7 +84,9 @@ export default function Clinic() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

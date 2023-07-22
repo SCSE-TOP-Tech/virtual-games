@@ -2,12 +2,14 @@
 
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import Loading from "@/app/rooms/loading";
+import RoomLayout from "@/app/rooms/layout";
 
 export default function DoyleRoom() {
   const [room, setRoom] = useState(false);
@@ -26,9 +28,8 @@ export default function DoyleRoom() {
   }, []);
 
   return (
-    // To add loading page
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
 
@@ -207,7 +208,9 @@ export default function DoyleRoom() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

@@ -2,11 +2,13 @@
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import Loading from "@/app/rooms/loading";
+import RoomLayout from "@/app/rooms/layout";
 
 export default function DressingRoom() {
   const [room, setRoom] = useState(false);
@@ -25,8 +27,8 @@ export default function DressingRoom() {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
           <Box
@@ -74,7 +76,9 @@ export default function DressingRoom() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }

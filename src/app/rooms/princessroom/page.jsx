@@ -3,11 +3,13 @@ import styles from "./components/styles.module.css";
 import { Box, IconButton } from "@chakra-ui/react";
 import { MdClose } from "react-icons/md";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
-import { useEffect, useState, Suspense } from "react";
+import { useEffect, useState } from "react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import Loading from "@/app/rooms/loading";
+import RoomLayout from "@/app/rooms/layout";
 
 export default function PrincessRoom() {
   const [room, setRoom] = useState(false);
@@ -31,8 +33,8 @@ export default function PrincessRoom() {
   };
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
-      {room && (
+    <RoomLayout>
+      {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
           <Box
@@ -194,7 +196,9 @@ export default function PrincessRoom() {
             Text Component Here
           </Box>
         </Box>
+      ) : (
+        <Loading />
       )}
-    </Suspense>
+    </RoomLayout>
   );
 }
