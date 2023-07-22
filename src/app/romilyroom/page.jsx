@@ -1,6 +1,6 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Box } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
@@ -206,15 +206,18 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
+
+              <Image 
+              src='./Rooms/Romilyroom/romily-laptop.png' 
+              alt="laptop" 
+              w='8rem'
+              position='absolute'
+              top='23rem'
+              left='2rem'
+              />
             </Box>
           </Box>
-          <Box
-            position="absolute"
-            bottom="10%"
-            mt="2%"
-            w="28em"
-            background={"white"}
-          >
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>
