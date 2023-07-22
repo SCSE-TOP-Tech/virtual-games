@@ -2,7 +2,7 @@
 import Fonts from "@/app/fonts";
 import { Box } from "@chakra-ui/react";
 
-export default function DashboardLayout({ children }) {
+export default function RoomLayout({ children }) {
   return (
     <section>
       <Fonts />

@@ -10,7 +10,11 @@ export default async function Home() {
       <Text fontSize="6xl" color="darkblue">
         Welcome to Virtual Games
       </Text>
-      <button onClick={() => signIn()}>Sign In</button>
+      <button
+        onClick={() => signIn("credentials", { callbackUrl: "/rooms/hallway" })}
+      >
+        Sign In
+      </button>
       <button onClick={() => router.push("/signup")}>Sign Up</button>
     </main>
   );

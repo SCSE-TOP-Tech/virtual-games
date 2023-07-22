@@ -5,12 +5,22 @@ import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { CldImage, ItemImage } from "@/app/components/ImageComp";
 import Navbar from "../../components/Navbar";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function ControlRoom() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
+  // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("control_room", false));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("control_room", false));
+      }
+    }
+    fetchData();
   }, []);
 
   return (

@@ -7,13 +7,22 @@ import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function DoyleRoom() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
   // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("doyle", true));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("doyle", true));
+      }
+    }
+    fetchData();
   }, []);
 
   return (

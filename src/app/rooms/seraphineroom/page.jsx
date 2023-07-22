@@ -6,13 +6,22 @@ import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import styles from "./components/styles.module.css";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function SeraphineRoom() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
   // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("seraphine", true));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("seraphine", true));
+      }
+    }
+    fetchData();
   }, []);
 
   return (

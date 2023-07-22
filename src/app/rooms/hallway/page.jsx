@@ -1,21 +1,31 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Container, Text, Box } from "@chakra-ui/react";
-import { CldImage, ItemImage, SizeFormatter } from "../../components/ImageComp";
+import { Box } from "@chakra-ui/react";
+import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
+import { fetchUser } from "@/resources/prisma/fetchUser";
+
 export default function Hallway() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
   // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("hallway", false));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("hallway", false));
+      }
+    }
+    fetchData();
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading</h1>}>
+    <Suspense fallback={<p>Loading room...</p>}>
       {room && (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />

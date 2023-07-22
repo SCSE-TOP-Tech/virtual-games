@@ -6,13 +6,22 @@ import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Hint from "../../components/Hint";
 import Navbar from "../../components/Navbar";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function CaptainRoom() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
   // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("captain", false));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("captain", false));
+      }
+    }
+    fetchData();
   }, []);
 
   return (

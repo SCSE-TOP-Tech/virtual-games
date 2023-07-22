@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         state: {
           connect: { stateID: 1 },
         },
-        accounts: {
+        account: {
           create: {
             email: email,
             password: encryptedPassword,

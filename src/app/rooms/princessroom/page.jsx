@@ -7,19 +7,29 @@ import { useEffect, useState, Suspense } from "react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function PrincessRoom() {
   const [room, setRoom] = useState(false);
   const [inspect, showMap] = useState(false);
+  const [user, setUser] = useState();
+
+  // Initial Load
+  useEffect(() => {
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("princess_white", true));
+      }
+    }
+    fetchData();
+  }, []);
 
   const toggleMap = () => {
     showMap(!inspect);
   };
 
-  // Initial Load
-  useEffect(() => {
-    setRoom(fetchRoom("princess_white", true));
-  }, []);
   return (
     <Suspense fallback={<h1>Loading</h1>}>
       {room && (

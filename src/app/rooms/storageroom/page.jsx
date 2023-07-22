@@ -7,11 +7,25 @@ import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Phone from "./components/Phone";
 import { ItemImage } from "@/app/components/ImageComp";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function StorageRoom() {
   const [room, setRoom] = useState(false);
   const [isClicked, setClicked] = useState(false);
   const [isPhoneOpen, viewPhone] = useState(false);
+  const [user, setUser] = useState();
+
+  // Initial Load
+  useEffect(() => {
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("storage_room", false));
+      }
+    }
+    fetchData();
+  }, []);
 
   const handleToggle = () => {
     //removes cloth and shows tesseract
@@ -23,14 +37,9 @@ export default function StorageRoom() {
     viewPhone(!isPhoneOpen);
   };
 
-  // Initial Load
-  useEffect(() => {
-    setRoom(fetchRoom("storage_room", false));
-  }, []);
-
   return (
     // To add loading page
-    <Suspense fallback={<h1>Loading</h1>}>
+    <Suspense fallback={<p> LOADING.</p>}>
       {room && (
         <div>
           <Box w={["100%", "30em"]} h="100%" position="relative">

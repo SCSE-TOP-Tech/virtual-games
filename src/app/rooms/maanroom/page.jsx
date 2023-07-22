@@ -6,13 +6,22 @@ import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Hint from "../../components/Hint";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function MaanRoom() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
   // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("maan", true));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("maan", true));
+      }
+    }
+    fetchData();
   }, []);
 
   return (

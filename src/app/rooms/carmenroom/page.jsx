@@ -6,13 +6,22 @@ import { ItemImage, SizeFormatter } from "@/app/components/ImageComp";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
-export default function CarmenRoom() {
+export default async function CarmenRoom() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
   // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("carmen", true));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("carmen", true));
+      }
+    }
+    fetchData();
   }, []);
 
   return (

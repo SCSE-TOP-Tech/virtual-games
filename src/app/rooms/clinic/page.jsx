@@ -9,13 +9,22 @@ import { Suspense, useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function Clinic() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
   // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("clinic", false));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("clinic", false));
+      }
+    }
+    fetchData();
   }, []);
 
   return (

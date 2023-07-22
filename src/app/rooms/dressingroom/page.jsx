@@ -6,13 +6,22 @@ import { Suspense, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Hint from "../../components/Hint";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 
 export default function DressingRoom() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
   // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("dressing_room", false));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("dressing_room", false));
+      }
+    }
+    fetchData();
   }, []);
 
   return (

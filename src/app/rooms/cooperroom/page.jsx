@@ -6,17 +6,21 @@ import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
-import { useSession } from "next-auth/react";
+import { fetchUser } from "@/resources/prisma/fetchUser";
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
+  const [user, setUser] = useState();
 
-  // THIS WORKS!
-  // const { session: data } = useSession({
-  //   required: true,
-  // });
-
+  // Initial Load
   useEffect(() => {
-    setRoom(fetchRoom("cooper", true));
+    async function fetchData() {
+      const user = await fetchUser();
+      if (user) {
+        setUser(user);
+        setRoom(fetchRoom("cooper", true));
+      }
+    }
+    fetchData();
   }, []);
 
   return (
