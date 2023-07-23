@@ -1,7 +1,7 @@
 import { State } from "~/data/contracts";
 
 interface User {
-  userID: number;
+  id: number;
   name: string;
   state: State;
   stateID: number;
