@@ -1,6 +1,6 @@
 "use client";
 import { Box, Input, Button, UnorderedList, ListItem, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Correct from "./components/Correct.js";
 import Incorrect from "./components/Incorrect.js";
 
@@ -40,19 +40,16 @@ export default function GuessingPage() {
                 foundPrincess = true;
                 score += 10;
             }
-            else {
-                score -= 3;
-            }
         }
 
         if (score == 20)
             setCorrectValue(true);
 
-        if (score > 0)
-            score = score * Math.pow(0.75, (numAttempt - 1));
+        score = score * Math.pow(0.9, numAttempt);
 
         //upload score to BE
         console.log("Your score: " + score);
+        console.log("# attempts: " + numAttempt+1);
 
         showResult(true);
     }
