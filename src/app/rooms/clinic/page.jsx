@@ -4,7 +4,7 @@ import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 import styles from "./components/styles.module.css";
 
-import background from "../../../../public/Rooms/Clinic/clinic.png";
+import background from "~/public/Rooms/Clinic/clinic.png";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
