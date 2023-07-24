@@ -45,9 +45,9 @@ export default function DressingRoom() {
                 <ItemImage
                   item={room.clues.lipstick}
                   className={styles.item}
-                  width="1rem"
+                  width="3rem"
                   filter="auto"
-                  brightness="20%"
+                  brightness="40%"
                   right={SizeFormatter(
                     "-8.3em", //iphone se
                     "-9.3rem", //iphone xr
