@@ -48,17 +48,35 @@ Sync with postgreSQL database
 npx prisma db push
 ```
 
-Migration to database tables files 
+Push Prisma Schema into database
+```
+prisma db push
+```
+
+Incorporate changes from Migrations
+```
+npx prisma migrate dev 
+```
+
+Migration to database tables files.
+[View Baseline Migration Guide](https://www.prisma.io/docs/guides/migrate/developing-with-prisma-migrate/add-prisma-migrate-to-a-project#baseline-your-production-environment)
 
 ```bash
-npx prisma migrate dev --name init
-
+// REPLACE file name 
+ 
 mkdir -p prisma/migrations/0_init
 
 npx prisma migrate diff \
 --from-empty \
 --to-schema-datamodel prisma/schema.prisma \
 --script > prisma/migrations/0_init/migration.sql
+
+npx prisma migrate resolve --applied 0_init
+```
+
+Applying new migrations which comes after baseline migration
+```
+prisma migrate deploy
 ```
 
 Seeding database 

@@ -1,9 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../lib/prisma";
 import { states, rooms, characters } from "../data/data";
 import { Character, Room } from "../data/contracts";
 import { StateItem } from "../data/contracts/interfaces/stateitem";
 
-const prisma = new PrismaClient();
 async function main() {
   await prisma.state.createMany({
     data: states,
@@ -28,7 +27,7 @@ async function main() {
               stateItemID: counter++,
               stateID: item[objkey].state,
               itemName: objkey,
-              roomName: char.name,
+              roomName: room["room_id"],
             });
           }
         }
@@ -54,7 +53,7 @@ async function main() {
               stateItemID: counter++,
               stateID: item[objkey].state,
               itemName: objkey,
-              roomName: room.name,
+              roomName: room["id"],
             });
           }
         }
