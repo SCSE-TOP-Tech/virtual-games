@@ -90,14 +90,14 @@ export default function CooperPage() {
                     "5rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "3.5rem", //iphone se
-                    "5rem", //iphone xr
-                    "4rem", //iphone 12pro
-                    "4.25rem", //pixel 5
-                    "3rem", //samsung galaxy s8+
-                    "5rem", //samsung galaxy s20 ultra
-                    "7rem", //ipad air
-                    "7rem" //ipad mini
+                    "4.5rem", //iphone se
+                    "5.5rem", //iphone xr
+                    "5rem", //iphone 12pro
+                    "5.5rem", //pixel 5
+                    "4.5rem", //samsung galaxy s8+
+                    "6rem", //samsung galaxy s20 ultra
+                    "8rem", //ipad air
+                    "8rem" //ipad mini
                   )}
                 />
               </Hint>
@@ -142,24 +142,24 @@ export default function CooperPage() {
                   className={styles.item}
                   width="3.5rem" //use SizeFormatter if item should be different for different devices
                   left={SizeFormatter(
-                    "8.5rem", //iphone se
-                    "9.5rem", //iphone xr
-                    "9rem", //iphone 12pro
-                    "9.25rem", //pixel 5
-                    "8.5rem", //samsung galaxy s8+
-                    "9.25rem", //samsung galaxy s20 ultra
-                    "11rem", //ipad air
-                    "11rem" //ipad mini
+                    "9.5rem", //iphone se
+                    "10.5rem", //iphone xr
+                    "10rem", //iphone 12pro
+                    "10.25rem", //pixel 5
+                    "9.5rem", //samsung galaxy s8+
+                    "10.25rem", //samsung galaxy s20 ultra
+                    "12rem", //ipad air
+                    "12rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "2.5rem", //iphone se
-                    "4rem", //iphone xr
-                    "3.25rem", //iphone 12pro
-                    "3rem", //pixel 5
-                    "2rem", //samsung galaxy s8+
-                    "4rem", //samsung galaxy s20 ultra
-                    "6.5rem", //ipad air
-                    "6.5rem" //ipad mini
+                    "3.5rem", //iphone se
+                    "5rem", //iphone xr
+                    "4.25rem", //iphone 12pro
+                    "4rem", //pixel 5
+                    "3rem", //samsung galaxy s8+
+                    "5rem", //samsung galaxy s20 ultra
+                    "7.5rem", //ipad air
+                    "7.5rem" //ipad mini
                   )}
                 />
               </Hint>
