@@ -9,27 +9,38 @@ import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
 import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
+import updateState from "@/resources/prisma/state/updateState";
+import startTimer from "@/resources/prisma/timer/startTimer";
 
 export default function Hallway() {
   const [room, setRoom] = useState(false);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   // Initial Load
   useEffect(() => {
     async function fetchData() {
-      const user = await fetchUser();
-      if (user) {
-        setUser(user);
+      const currentUser = await fetchUser();
+      if (currentUser) {
+        setUser(currentUser);
         setRoom(fetchRoom("hallway", false));
       }
     }
     fetchData();
   }, []);
 
+  const changeState = async () => {
+    setUser(await updateState(user.userId));
+    const startTime = await startTimer(user.userId, user.stateId);
+    if (startTime !== 200) {
+      console.log("Failed to Start Timer");
+    }
+  };
+
   return (
     <RoomLayout>
       {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+          <button onClick={changeState}>test</button>
           <Navbar />
           <Box
             display="flex"

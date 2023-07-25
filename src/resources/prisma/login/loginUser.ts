@@ -7,10 +7,11 @@
  * @param {string} userData.email User Email
  */
 import { Account } from "~/data/contracts/interfaces/account";
+import { Response } from "~/data/contracts/interfaces/response";
 
 async function loginUser(userData: Account) {
   try {
-    return await fetch(`/api/login/user`, {
+    const loginResponse = await fetch(`/api/login/user`, {
       method: "POST",
       body: JSON.stringify({
         name: userData.username,
@@ -18,9 +19,14 @@ async function loginUser(userData: Account) {
         password: userData.password,
       }),
     });
+    const loginUser: Response = await loginResponse.json();
+    if (loginUser.status !== 200) {
+      return null;
+    }
+    return loginUser.body;
   } catch (error) {
     console.error(error);
-    return error.name;
+    return null;
   }
 }
 
