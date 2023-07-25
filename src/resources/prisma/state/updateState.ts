@@ -1,34 +1,20 @@
 /**
- * Next.JS POST API to Create User
- *=
+ * Next.JS PATCH API to Update State
+ *
  * @param userID
- * @param stateID
  */
 
-async function updateState(userID: number, stateID: number) {
-  try {
-    await fetch(`/api/prisma/state/update`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userID: userID,
-      }),
-    });
-    console.log("State Updated!");
+import { Response } from "~/data/contracts/interfaces/response";
 
-    // Need to DB migrate (added relationship between state & timer)
-    await fetch("/api/prisma/timer/add", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userId: userID,
-        stateId: stateID,
-      }),
-    });
-    console.log("New State Timer Added!");
-  } catch (error) {
-    console.error(error);
+async function updateState(userId: string) {
+  const updateResponse = await fetch(`/api/prisma/state/update/${userId}`, {
+    method: "PATCH",
+  });
+  const userData: Response = await updateResponse.json();
+
+  if (userData.status != 200) {
+    return null;
   }
+  return userData.body;
 }
-
 export default updateState;
