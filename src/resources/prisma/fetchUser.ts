@@ -1,6 +1,3 @@
-import { mockSession } from "next-auth/client/__tests__/helpers/mocks";
-import user = mockSession.user;
-
 export async function fetchUser() {
   try {
     const sessionPromise = await fetch("/api/session");

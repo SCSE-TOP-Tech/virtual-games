@@ -1,5 +1,3 @@
-import { State } from "~/data/contracts";
-
 interface User {
   id: number;
   name?: string;
