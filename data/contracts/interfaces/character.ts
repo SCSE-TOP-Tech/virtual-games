@@ -13,6 +13,7 @@ interface Character {
     };
   };
   room: {
+    room_id: string;
     name: string;
     background: {
       name: string;
