@@ -11,22 +11,33 @@ import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
+import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
+import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 
 export default function Hallway() {
-  const [room, setRoom] = useState(false);
+  const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
+  const [availableItems, setAvailableItems] = useState(null);
+  const [collectedItems, setCollectedItems] = useState(null);
 
   // Initial Load
   useEffect(() => {
     async function fetchData() {
       const currentUser = await fetchUser();
+
       if (currentUser) {
         setUser(currentUser);
         setRoom(fetchRoom("hallway", false));
+        if (room) {
+          setAvailableItems(await getAvailableItems(room.room_id));
+          setCollectedItems(
+            await getCollectedItems(user.stateId, room.room_id)
+          );
+        }
       }
     }
     fetchData();
-  }, []);
+  }, [room]);
 
   const changeState = async () => {
     setUser(await updateState(user.userId));

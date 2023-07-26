@@ -477,7 +477,7 @@ export const characters: Character[] = [
 export const rooms: Room[] = [
   // Hallway (Updated V1)
   {
-    id: "hallway",
+    room_id: "hallway",
     name: "Hallway",
     background: {
       name: "Hallway Background",
@@ -510,7 +510,7 @@ export const rooms: Room[] = [
 
   // Captain Character (Updated V1)
   {
-    id: "captain",
+    room_id: "captain",
     name: "Captain's Room",
     background: {
       name: "Captain Character's Background",
@@ -582,7 +582,7 @@ export const rooms: Room[] = [
 
   // Clinic (Updated V1)
   {
-    id: "clinic",
+    room_id: "clinic",
     name: "Clinic",
     background: {
       name: "Clinic Background",
@@ -606,7 +606,7 @@ export const rooms: Room[] = [
 
   // Dressing Room (Updated V1)
   {
-    id: "dressing_room",
+    room_id: "dressing_room",
     name: "Dressing Room",
     background: {
       name: "Dressing Room Background",
@@ -638,7 +638,7 @@ export const rooms: Room[] = [
 
   // Control Room (Updated V1)
   {
-    id: "control_room",
+    room_id: "control_room",
     name: "Control Room",
     background: {
       name: "Control Room Background",
@@ -662,7 +662,7 @@ export const rooms: Room[] = [
 
   // Kitchen (Updated V1)
   {
-    id: "kitchen",
+    room_id: "kitchen",
     name: "Kitchen",
     background: {
       name: "Kitchen Background",
@@ -702,7 +702,7 @@ export const rooms: Room[] = [
 
   // Storage Character (Updated V1)
   {
-    id: "storage_room",
+    room_id: "storage_room",
     name: "Storage Room",
     background: {
       name: "Storage Character Background",
