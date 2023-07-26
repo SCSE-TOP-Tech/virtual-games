@@ -1,10 +1,7 @@
-import { State } from "~/data/contracts";
-
 interface User {
-  userID: number;
-  name: string;
-  state: State;
-  stateID: number;
+  id: number;
+  name?: string;
+  stateId: number;
 }
 
 export type { User };

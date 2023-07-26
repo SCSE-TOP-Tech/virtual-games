@@ -10,7 +10,7 @@ import { Account } from "~/data/contracts/interfaces/account";
 
 async function createUser(userData: Account) {
   try {
-    await fetch(`/api/login/user`, {
+    return await fetch(`/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -21,6 +21,7 @@ async function createUser(userData: Account) {
     });
   } catch (error) {
     console.error(error);
+    return error.name;
   }
 }
 
