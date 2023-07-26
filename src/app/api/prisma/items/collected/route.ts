@@ -13,18 +13,21 @@ export async function GET(req: NextRequest) {
     if (user_query && room_query) {
       const userItemsResponse = await prisma.userItem.findMany({
         where: {
-          userId: user_query,
+          AND: [
+            {
+              userId: user_query,
+            },
+            {
+              stateItem: {
+                roomName: room_query,
+              },
+            },
+          ],
         },
         include: {
           stateItem: true,
         },
       });
-
-      // userItemsResponse.map(async (item) => {
-      //   const itemData = await item.stateItem();
-      //   return {itemName: itemData.itemName, collected: itemData.
-      // });
-      // console.log(userItemsResponse);
 
       const itemsList = userItemsResponse.map((item) => {
         return {
@@ -33,7 +36,8 @@ export async function GET(req: NextRequest) {
         };
       });
 
-      return NextResponse.json({ status: 200, body: userItemsResponse });
+      console.log(itemsList);
+      return NextResponse.json({ status: 200, body: itemsList });
     }
     return NextResponse.json({ status: 500, body: null });
   } catch (error: any) {

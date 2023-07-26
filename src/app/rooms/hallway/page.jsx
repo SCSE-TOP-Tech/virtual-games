@@ -28,11 +28,9 @@ export default function Hallway() {
       if (currentUser) {
         setUser(currentUser);
         setRoom(fetchRoom("hallway", false));
-        if (room) {
+        if (room && user) {
           setAvailableItems(await getAvailableItems(room.room_id));
-          setCollectedItems(
-            await getCollectedItems(user.stateId, room.room_id)
-          );
+          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
         }
       }
     }

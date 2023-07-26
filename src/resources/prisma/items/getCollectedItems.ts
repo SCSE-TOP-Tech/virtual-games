@@ -11,6 +11,7 @@ async function getCollectedItems(userId: string, roomName: string) {
     const collectedResponse = await fetch(
       `/api/prisma/items/collected?user=${userId}&room=${roomName}`
     );
+    console.log(collectedResponse.json());
     const collectedItems: Response = await collectedResponse.json();
 
     return collectedResponse.status != 200 ? collectedItems.body : null;
