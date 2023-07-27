@@ -25,6 +25,7 @@ export const characters: Character[] = [
       },
       clues: {
         spaceID_card: {
+          id: "spaceID_card",
           name: "Space ID Card",
           desc: "Home Station: Andromeda",
           width: 485,
@@ -33,6 +34,7 @@ export const characters: Character[] = [
           state: 4,
         },
         music_albums: {
+          id: "music_albums",
           name: "Music Albums",
           desc: "Music Albums belonging to...",
           width: 485,
@@ -41,6 +43,7 @@ export const characters: Character[] = [
           state: 3,
         },
         bloodstained_towel: {
+          id: "bloodstained_towel",
           name: "Blood-stained Towel",
           desc: "Towel stained with blood",
           width: 612,
@@ -51,6 +54,7 @@ export const characters: Character[] = [
       },
       dummy_objects: {
         rug: {
+          id: "rug",
           name: "Blood-stained Rug",
           desc: "What did he do...?",
           width: 1632,
@@ -59,6 +63,7 @@ export const characters: Character[] = [
           state: 4,
         },
         clothes: {
+          id: "clothes",
           name: "Clothes",
           desc: "Ordinary looking clothes, boring.",
           width: 637,
@@ -67,6 +72,7 @@ export const characters: Character[] = [
           state: 2,
         },
         luggage: {
+          id: "luggage",
           name: "Luggage",
           desc: "Empty luggage",
           width: 398,
@@ -101,6 +107,7 @@ export const characters: Character[] = [
       },
       clues: {
         master_key: {
+          id: "master_key",
           name: "Master Key",
           desc: "Seems like the key to the Master Character",
           width: 348,
@@ -109,6 +116,7 @@ export const characters: Character[] = [
           state: 4,
         },
         mail: {
+          id: "mail",
           name: "Invitation Letter",
           desc: "Sent from Planet Earth",
           width: 348,
@@ -119,6 +127,7 @@ export const characters: Character[] = [
       },
       dummy_objects: {
         clothespin: {
+          id: "clothespin",
           name: "Clothespin",
           desc: "Oddly familiar clothespin",
           width: 230,
@@ -153,6 +162,7 @@ export const characters: Character[] = [
       },
       clues: {
         lipstick: {
+          id: "lipstick",
           name: "Seraphine's Lipstick",
           desc: "On the dressing table, looks familiar.",
           width: 225,
@@ -163,6 +173,7 @@ export const characters: Character[] = [
       },
       dummy_objects: {
         teddybear: {
+          id: "teddybear",
           name: "Teddy Bear",
           desc: "Contrary to popular belief, man's best friend.",
           width: 360,
@@ -171,6 +182,7 @@ export const characters: Character[] = [
           state: 4,
         },
         camera: {
+          id: "camera",
           name: "Camera",
           desc: "Wow! DSLR Camera!",
           width: 500,
@@ -179,6 +191,7 @@ export const characters: Character[] = [
           state: 2,
         },
         jewelrybox: {
+          id: "jewelrybox",
           name: "Jewelry Box",
           desc: "Looks expensive! All these precious jewelry...",
           width: 825,
@@ -220,6 +233,7 @@ export const characters: Character[] = [
       clues: {},
       dummy_objects: {
         newspaper: {
+          id: "newspaper",
           name: "Newspaper",
           desc: "Pile of newspapers",
           width: 523,
@@ -228,6 +242,7 @@ export const characters: Character[] = [
           state: 4,
         },
         coffee_machine: {
+          id: "coffee_machine",
           name: "Coffee Machine",
           desc: "Fine-looking coffee machine",
           width: 341,
@@ -236,6 +251,7 @@ export const characters: Character[] = [
           state: 3,
         },
         luggage: {
+          id: "luggage",
           name: "Luggage",
           desc: "Cooper's Luggage",
           width: 551,
@@ -244,6 +260,7 @@ export const characters: Character[] = [
           state: 3,
         },
         spaceID_card: {
+          id: "spaceID_card",
           name: "Space ID Card",
           desc: "Home Station: Earth",
           width: 608,
@@ -279,6 +296,7 @@ export const characters: Character[] = [
       clues: {},
       dummy_objects: {
         basketball: {
+          id: "basketball",
           name: "Basketball",
           desc: "Galaxy Basketball",
           width: 501,
@@ -287,6 +305,7 @@ export const characters: Character[] = [
           state: 3,
         },
         clothes: {
+          id: "clothes",
           name: "Clothes",
           desc: "Pile of boring clothes",
           width: 637,
@@ -295,6 +314,7 @@ export const characters: Character[] = [
           state: 3,
         },
         towel: {
+          id: "towel",
           name: "Blood-stained Towel",
           desc: "Blood stained towel",
           width: 612,
@@ -303,6 +323,7 @@ export const characters: Character[] = [
           state: 4,
         },
         dumbbell: {
+          id: "dumbbell",
           name: "Dumbbells",
           desc: "30kg dumbbells",
           width: 428,
@@ -311,6 +332,7 @@ export const characters: Character[] = [
           state: 3,
         },
         punchingbag: {
+          id: "punchingbag",
           name: "Punching Bag",
           desc: "30kg dumbbells",
           width: 325,
@@ -346,6 +368,7 @@ export const characters: Character[] = [
       clues: {},
       dummy_objects: {
         spacesword: {
+          id: "spacesword",
           name: "Space Sword",
           desc: "Extra edgy sword, definitely capable of killing someone.",
           width: 459,
@@ -380,6 +403,7 @@ export const characters: Character[] = [
       },
       clues: {
         galaxy_phone: {
+          id: "galaxy_phone",
           name: "Galaxy Phone",
           desc:
             "Message to doctor at 930pm:\n" +
@@ -444,6 +468,7 @@ export const characters: Character[] = [
       },
       clues: {
         map: {
+          id: "map",
           name: "Map of Infinity Stones",
           desc: "Map that contains locations of infinity stones",
           width: 605,
@@ -452,6 +477,7 @@ export const characters: Character[] = [
           state: 2,
         },
         safe: {
+          id: "safe",
           name: "Empty Safe",
           desc: "Tesseract had been stolen!",
           width: 276,
@@ -462,6 +488,7 @@ export const characters: Character[] = [
       },
       dummy_objects: {
         door: {
+          id: "door",
           name: "Connecting Door",
           desc: "Connecting door to Dressing Room",
           width: 86,
@@ -487,6 +514,7 @@ export const rooms: Room[] = [
     },
     clues: {
       portrait: {
+        id: "portrait",
         name: "Portrait of Siblings",
         desc: "Interesting...",
         width: 449,
@@ -497,6 +525,7 @@ export const rooms: Room[] = [
     },
     dummy_objects: {
       spacesword: {
+        id: "spacesword",
         name: "Space Sword",
         desc: "Extra edgy sword, with extra pointy tip.",
         width: 459,
@@ -520,6 +549,7 @@ export const rooms: Room[] = [
     },
     clues: {
       music_albums: {
+        id: "music_albums",
         name: "Music Albums",
         desc: "Seraphine's album seems to be missing from this bunch.",
         width: 618,
@@ -528,6 +558,7 @@ export const rooms: Room[] = [
         state: 3,
       },
       guestbook: {
+        id: "guestbook",
         name: "Space Guest Book",
         desc: "Contains a guest signed in as 'Sibling', what could that mean?",
         width: 690,
@@ -536,6 +567,7 @@ export const rooms: Room[] = [
         state: 4,
       },
       note: {
+        id: "note",
         name: "Debt Note",
         desc: "Debt Note of Princess White owing 500,000 gold",
         width: 771,
@@ -544,6 +576,7 @@ export const rooms: Room[] = [
         state: 3,
       },
       lipstick: {
+        id: "lipstick",
         name: "Lipstick",
         desc: "Found lying next to the dead body!",
         width: 225,
@@ -552,6 +585,7 @@ export const rooms: Room[] = [
         state: 3,
       },
       blood_letter: {
+        id: "blood_letter",
         name: "Bloody Letters",
         desc: "Seems like blood writings... is that 'CW'?",
         width: 332,
@@ -560,6 +594,7 @@ export const rooms: Room[] = [
         state: 3,
       },
       broken_watch: {
+        id: "broken_watch",
         name: "Broken Digital",
         desc: "Broken digital watch stopped at 31 Dec 2022, 1 day before d-day...",
         width: 500,
@@ -568,6 +603,7 @@ export const rooms: Room[] = [
         state: 3,
       },
       spaceguns: {
+        id: "spaceguns",
         name: "Space Guns",
         desc: "Space Guns owned by each of the heroes, except Seraphine..?",
         width: 600,
@@ -594,6 +630,7 @@ export const rooms: Room[] = [
     clues: {},
     npc: {
       doctor: {
+        id: "doctor",
         name: "Doctor",
         desc: "The doctor of the ship",
         width: 493,
@@ -616,6 +653,7 @@ export const rooms: Room[] = [
     },
     clues: {
       lipstick: {
+        id: "lipstick",
         name: "Lipstick",
         desc: "Lipstick",
         width: 225,
@@ -624,6 +662,7 @@ export const rooms: Room[] = [
         state: 2,
       },
       door: {
+        id: "door",
         name: "Connecting door",
         desc: "Connecting door to Princess Room",
         width: 225,
@@ -649,6 +688,7 @@ export const rooms: Room[] = [
     clues: {},
     dummy_objects: {
       computer: {
+        id: "computer",
         name: "Space Computer",
         desc: "Shows a footage of Doyle entering Princess White's room through the dressing room.",
         width: 113,
@@ -672,6 +712,7 @@ export const rooms: Room[] = [
     },
     clues: {
       apron: {
+        id: "apron",
         name: "Blood Stained Apron",
         desc: "Apron with bloody marks, I wonder what happened...?",
         width: 390,
@@ -680,6 +721,7 @@ export const rooms: Room[] = [
         state: 5,
       },
       knife: {
+        id: "knife",
         name: "Blood Stained Knife",
         desc: "What blood could this be.., maybe I'm just thinking too much...",
         width: 612,
@@ -688,6 +730,7 @@ export const rooms: Room[] = [
         state: 5,
       },
       meat: {
+        id: "meat",
         name: "Blood Stained Meat",
         desc: "Poor cows...",
         width: 246,
@@ -712,6 +755,7 @@ export const rooms: Room[] = [
     },
     clues: {
       tesseract: {
+        id: "tesseract",
         name: "Tesseract",
         desc: "Woah! It's the Tesseract that Princess White has been looking for!",
         width: 275,
@@ -720,6 +764,7 @@ export const rooms: Room[] = [
         state: 5,
       },
       doctorphone: {
+        id: "doctorphone",
         name: "Doctor Galaxy Phone",
         desc: "This is the doctor's phone! Let's take a look.",
         width: 666,
@@ -728,6 +773,7 @@ export const rooms: Room[] = [
         state: 5,
       },
       blood_clothpin: {
+        id: "blood_clothpin",
         name: "Blood Stained Clothpin",
         desc: "Wait... this is rather familiar..?",
         width: 230,
@@ -736,6 +782,7 @@ export const rooms: Room[] = [
         state: 5,
       },
       cloth: {
+        id: "cloth",
         name: "Ordinary Cloth",
         desc: "Just an ordinary cloth, or is it?",
         width: 300,
@@ -746,6 +793,7 @@ export const rooms: Room[] = [
     },
     dummy_objects: {
       screwdriver: {
+        id: "screwdriver",
         name: "Screwdriver",
         desc: "Could be useful, I wonder what its for",
         width: 556,
@@ -754,6 +802,7 @@ export const rooms: Room[] = [
         state: 2,
       },
       mopbucket: {
+        id: "mopbucket",
         name: "Mop and Bucket",
         desc: "Its a mop and bucket, what are you expecting.",
         width: 360,
@@ -764,6 +813,7 @@ export const rooms: Room[] = [
     },
     npc: {
       dead_doctor: {
+        id: "dead_doctor",
         name: "Dead Doctor",
         desc: "Holy Crap, what happened to him!",
         width: 474,

@@ -13,6 +13,7 @@ import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
 import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
+import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 
 export default function Hallway() {
   const [room, setRoom] = useState(null);
@@ -35,7 +36,7 @@ export default function Hallway() {
       }
     }
     fetchData();
-  }, [room]);
+  }, []); // To include room if necessary (will constantly refresh)
 
   const changeState = async () => {
     setUser(await updateState(user.userId));
@@ -45,11 +46,21 @@ export default function Hallway() {
     }
   };
 
+  const updateCollected = async (name) => {
+    const updatedItem = await updateCollectedItems(
+      user.userId,
+      room.clues.portrait.id, // to replace with respective item
+      room.room_id
+    );
+
+    console.log(updatedItem);
+  };
+
   return (
     <RoomLayout>
       {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <button onClick={changeState}>test</button>
+          <button onClick={updateCollected}>test </button>
           <Navbar />
           <Box
             display="flex"

@@ -1,8 +1,5 @@
 import { prisma } from "~/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import { use } from "ast-types";
-import { mockSession } from "next-auth/client/__tests__/helpers/mocks";
-import user = mockSession.user;
 
 export async function GET(req: NextRequest) {
   try {

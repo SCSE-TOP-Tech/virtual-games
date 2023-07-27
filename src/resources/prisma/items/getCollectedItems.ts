@@ -14,7 +14,7 @@ async function getCollectedItems(userId: string, roomName: string) {
     console.log(collectedResponse.json());
     const collectedItems: Response = await collectedResponse.json();
 
-    return collectedResponse.status != 200 ? collectedItems.body : null;
+    return collectedItems.status === 200 ? collectedItems.body : null;
   } catch (error) {
     console.error(error);
   }
