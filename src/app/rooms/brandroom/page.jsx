@@ -17,14 +17,14 @@ export default function BrandRoom() {
   // Initial Load
   useEffect(() => {
     async function fetchData() {
-      const user = await fetchUser();
-      if (user) {
-        setUser(user);
+      const currentUser = await fetchUser();
+      if (currentUser) {
+        setUser(currentUser);
         setRoom(fetchRoom("brand", true));
       }
     }
     fetchData();
-  }, []);
+  }, [user, setUser]);
 
   return (
     <RoomLayout>

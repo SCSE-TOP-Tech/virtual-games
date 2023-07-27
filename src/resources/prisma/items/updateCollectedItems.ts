@@ -1,25 +1,30 @@
+import { Response } from "~/data/contracts/interfaces/response";
+
 /**
  * Next.JS PATCH API to Update Collected Room Items
  *
- * @param userID
+ * @param userId
  * @param itemName
  * @param roomName
  */
 async function updateCollectedItems(
-  userID: number,
+  userId: string,
   itemName: string,
   roomName: string
 ) {
   try {
-    return await fetch(`/api/prisma/items/update`, {
+    const updateResponse = await fetch(`/api/prisma/items/update`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        roomName: roomName,
+        userId: userId,
         itemName: itemName,
-        userID: userID,
+        roomName: roomName,
       }),
     });
+    const updatedItems: Response = await updateResponse.json();
+
+    return updatedItems.status === 200 ? updatedItems.body : null;
   } catch (error) {
     console.error(error);
   }
