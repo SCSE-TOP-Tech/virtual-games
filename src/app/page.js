@@ -15,11 +15,11 @@ export default async function Home() {
 
       document.getElementById('fadetarget1').style.opacity = 100
       
-      if (window.scrollY > window.screen.height/3) {
+      if (window.scrollY > window.screen.height/5) {
         document.getElementById('fadetarget2').style.opacity = 100
       }
 
-      if (window.scrollY > window.screen.height/2) {
+      if (window.scrollY > window.screen.height/3.5) {
         document.getElementById('fadetarget3').style.opacity = 100
       }
 
@@ -62,20 +62,20 @@ export default async function Home() {
           <Text color='white' w='60vw' px='1rem' py='0.5rem' fontSize='md'>
             In a distant corner of the universe lies the Black Eye Galaxy, ruled by the almighty King White. This kingdom holds a precious artifact known as the space stone which has incredible value and is carefully stored within the Tesseract. The responsibility of protecting this invaluable stone falls upon the Knight of Interstellar, a loyal guardian in service to King White.
           </Text>
-          <Box pr='1em' pt='1em'>
+          <Box pr='3em' pt='1em'>
             <Image
-              src='/Rooms/Storage/selfie.png'
-              width={100}
-              height={100}
+              src='/intro/knight.jpg'
+              width={200}
+              height={200}
             />
           </Box>
         </Box>
 
         <Box display='flex' justifyContent='space-between'  id='fadetarget2' opacity={0} transition='opacity 1s ease-in'>
 
-          <Box pl='1em'>
+          <Box pl='3em'>
             <Image
-              src='/Rooms/Storage/selfie.png'
+              src='/intro/princess.jpg'
               width={100}
               height={100}
             />
@@ -89,11 +89,11 @@ export default async function Home() {
           <Text color='white' w='60vw' px='1rem' py='0.5rem' fontSize='md'>
             Concerned for the safety of his daughter, King White entrusts the Knight with a crucial task. The space stone must be kept secure, yet remain in close proximity to the Princess. Thus, the Knight is commanded to place the tesseract within a safe stored in Princess White's room. In doing so, the Knight is able to protect both the Princess and the Tesseract. However, little do they know, the stage is set for an epic adventure to unfold.
           </Text>
-          <Box pr='1em'>
+          <Box pr='3em'>
             <Image
-              src='/Rooms/Storage/selfie.png'
-              width={100}
-              height={100}
+              src='/intro/stone.jpg'
+              width={300}
+              height={300}
             />
           </Box>
         </Box>
