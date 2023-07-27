@@ -13,9 +13,11 @@ export async function GET(req: Request) {
         body: "Error",
       });
     } else {
+      console.log("Fetching current session...");
       const user = session?.user;
       const userEmail = user?.email ?? "";
 
+      console.log(user);
       const account = await prisma.account.findUnique({
         where: {
           email: userEmail,
@@ -25,6 +27,9 @@ export async function GET(req: Request) {
         },
       });
 
+      if (account) {
+        console.log("Fetched account!");
+      }
       return NextResponse.json({
         authenticated: !!session,
         body: {
