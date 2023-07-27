@@ -1,4 +1,5 @@
 interface Image {
+  id: string;
   name: string;
   desc: string;
   width: number;

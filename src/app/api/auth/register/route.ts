@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     const newUserItems = stateItems.map((item) => {
       return {
         userId: newUser.id,
-        stateItemID: item.stateID,
+        stateItemID: item.stateItemID,
         collected: false,
       };
     });
