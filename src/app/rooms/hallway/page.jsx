@@ -14,6 +14,7 @@ import startTimer from "@/resources/prisma/timer/startTimer";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
 import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import endTimer from "@/resources/prisma/timer/endTimer";
 
 export default function Hallway() {
   const [room, setRoom] = useState(null);
@@ -39,6 +40,9 @@ export default function Hallway() {
   }, []); // To include room if necessary (will constantly refresh)
 
   const changeState = async () => {
+    if (user.stateId !== 1) {
+      const endTime = await endTimer(user.userId, user.stateId);
+    }
     setUser(await updateState(user.userId));
     const startTime = await startTimer(user.userId, user.stateId);
     if (startTime !== 200) {
