@@ -53,7 +53,7 @@ async function main() {
               stateItemID: counter++,
               stateID: item[objkey].state,
               itemName: objkey,
-              roomName: room["id"],
+              roomName: room["room_id"],
             });
           }
         }
