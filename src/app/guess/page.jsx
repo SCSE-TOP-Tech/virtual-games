@@ -8,6 +8,8 @@ export default function GuessingPage() {
     const [guess, setGuess] = useState([]);
     const [name, setName] = useState("");
     const [result, showResult] = useState(false);
+
+    const [isPartial, setPartial] = useState(false);
     const [isCorrect, setCorrectValue] = useState(false);
     const [numAttempt, setNumAttempt] = useState(0);
 
@@ -26,7 +28,6 @@ export default function GuessingPage() {
     const submitGuess = () => {
         let foundCooper = false, foundPrincess = false;
         let score = 0;
-        setNumAttempt(numAttempt + 1);
 
         if (guess.length == 0) return;
 
@@ -44,14 +45,17 @@ export default function GuessingPage() {
 
         if (score == 20)
             setCorrectValue(true);
-
+        else if (score > 0)
+            setPartial(true);
+            
         score = score * Math.pow(0.9, numAttempt);
 
         //upload score to BE
         console.log("Your score: " + score);
-        console.log("# attempts: " + numAttempt+1);
-
+        console.log("# attempts: " + (numAttempt+1));
+        
         showResult(true);
+        setNumAttempt(numAttempt + 1);
     }
 
     const handleChange = (event) => {
@@ -114,7 +118,7 @@ export default function GuessingPage() {
                     left="10%"
                     borderRadius="md"
                 >
-                    {!isCorrect && <Incorrect handler={addAttempt} />}
+                    {!isCorrect && <Incorrect handler={addAttempt} partial={isPartial} />}
                     {isCorrect && <Correct />}
                 </Box>
             )}
