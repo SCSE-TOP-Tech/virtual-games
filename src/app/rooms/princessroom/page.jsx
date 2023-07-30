@@ -49,7 +49,7 @@ export default function PrincessRoom() {
               <Box
                 position="absolute"
                 top="1rem"
-                right="1.5rem"
+                right="5rem"
                 width="15rem"
                 display="flex"
               >
@@ -178,14 +178,14 @@ export default function PrincessRoom() {
                     "6.8rem" //ipad mini
                   )}
                   bottom={SizeFormatter(
-                    "5.2rem",
-                    "3.75rem",
-                    "4.6rem",
-                    "4.5rem",
-                    "5.8rem",
-                    "3.8rem",
-                    "2.25rem",
-                    "2.25rem"
+                    "6.2rem",
+                    "4.75rem",
+                    "5.6rem",
+                    "5.5rem",
+                    "6.8rem",
+                    "4.8rem",
+                    "3.25rem",
+                    "3.25rem"
                   )}
                   onClick={toggleMap}
                 />
