@@ -1,6 +1,6 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Box, Image } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
@@ -215,13 +215,12 @@ export default function RomilyRoom() {
                 />
               </Hint>
 
-              <Image
-              src='./Rooms/Romilyroom/romily-laptop.png'
-              alt="laptop"
-              w='8rem'
-              position='absolute'
-              top='23rem'
-              left='2rem'
+              <ItemImage
+                item={room.clues.laptop}
+                w="8rem"
+                position="absolute"
+                top="23rem"
+                left="2rem"
               />
             </Box>
           </Box>

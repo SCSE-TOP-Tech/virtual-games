@@ -293,7 +293,17 @@ export const characters: Character[] = [
         width: 1024,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1680861949/virtual_games/rooms/romily/background_zndzxj.png",
       },
-      clues: {},
+      clues: {
+        laptop: {
+          id: "laptop",
+          name: "Romily's Laptop",
+          desc: "fill in",
+          width: 499,
+          height: 499,
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1690733527/virtual_games/rooms/romily/romily-laptop_xpqlk2.png",
+          state: 1,
+        },
+      },
       dummy_objects: {
         basketball: {
           id: "basketball",
