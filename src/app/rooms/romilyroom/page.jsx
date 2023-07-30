@@ -52,24 +52,24 @@ export default function RomilyRoom() {
                   filter="auto"
                   brightness="75%"
                   right={SizeFormatter(
-                    "6rem", //iphone se
-                    "7rem", //iphone xr
-                    "6rem", //iphone 12pro
-                    "6.5rem", //pixel 5
-                    "6rem", //samsung galaxy s8+
-                    "7rem", //samsung galaxy s20 ultra
-                    "9rem", //ipad air
-                    "9rem" //ipad mini
+                    "7rem", //iphone se
+                    "8rem", //iphone xr
+                    "7rem", //iphone 12pro
+                    "7.5rem", //pixel 5
+                    "7rem", //samsung galaxy s8+
+                    "8rem", //samsung galaxy s20 ultra
+                    "10rem", //ipad air
+                    "10rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "18rem",
-                    "20.5rem",
+                    "20rem",
+                    "22.5rem",
+                    "21rem",
+                    "21rem",
                     "19rem",
-                    "19rem",
-                    "17rem",
-                    "20.5rem",
-                    "24.5rem",
-                    "24.5rem"
+                    "22.5rem",
+                    "26.5rem",
+                    "26.5rem"
                   )}
                 />
               </Hint>
@@ -102,14 +102,14 @@ export default function RomilyRoom() {
                     "6rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "8rem", //iphone se
-                    "10.5rem", //iphone xr
-                    "9rem", //iphone 12pro
-                    "9rem", //pixel 5
-                    "7rem", //samsung galaxy s8+
-                    "10rem", //samsung galaxy s20 ultra
-                    "11rem", //ipad air
-                    "11rem" //ipad mini
+                    "9rem", //iphone se
+                    "11.5rem", //iphone xr
+                    "10rem", //iphone 12pro
+                    "10rem", //pixel 5
+                    "8rem", //samsung galaxy s8+
+                    "11rem", //samsung galaxy s20 ultra
+                    "12rem", //ipad air
+                    "12rem" //ipad mini
                   )}
                 />
               </Hint>
@@ -163,14 +163,14 @@ export default function RomilyRoom() {
                     "1rem" //ipad mini
                   )}
                   bottom={SizeFormatter(
-                    "4rem", //iphone se
-                    "2rem", //iphone xr
-                    "3rem", //iphone 12pro
-                    "3rem", //pixel 5
-                    "4.5rem", //samsung galaxy s8+
-                    "2rem", //samsung galaxy s20 ultra
-                    "3rem", //ipad mini
-                    "3rem"
+                    "2rem", //iphone se
+                    "0rem", //iphone xr
+                    "1rem", //iphone 12pro
+                    "1rem", //pixel 5
+                    "2.5rem", //samsung galaxy s8+
+                    "0rem", //samsung galaxy s20 ultra
+                    "1rem", //ipad mini
+                    "1rem"
                   )}
                 />
               </Hint>
@@ -203,14 +203,14 @@ export default function RomilyRoom() {
                     "9rem" //ipad mini
                   )}
                   bottom={SizeFormatter(
-                    "8.5rem", //iphone se
-                    "7rem", //iphone xr
-                    "8rem", //iphone 12pro
-                    "8rem", //pixel 5
-                    "9.5rem", //samsung galaxy s8+
-                    "7.5rem", //samsung galaxy s20 ultra
-                    "9.5rem", //ipad air
-                    "9.5rem" //ipad mini
+                    "7rem", //iphone se
+                    "6rem", //iphone xr
+                    "7rem", //iphone 12pro
+                    "7rem", //pixel 5
+                    "8rem", //samsung galaxy s8+
+                    "6rem", //samsung galaxy s20 ultra
+                    "8rem", //ipad air
+                    "8rem" //ipad mini
                   )}
                 />
               </Hint>
