@@ -1,9 +1,14 @@
 import { prisma } from "~/lib/prisma";
+import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    console.log("Successful Login API Call!");
-    const userData = await request.json();
+    console.log("Successful POST to Login");
+    const userData: {
+      name: string;
+      email: string;
+      password: string;
+    } = await req.json();
 
     // Login account
     const currentAccount = await prisma.account.findFirst({
@@ -14,19 +19,15 @@ export async function POST(request: Request) {
     });
     console.log(currentAccount);
 
-    if (currentAccount == null) {
-      console.log("Failed to login!");
-      return new Response("Failed to login!", {
-        status: 403,
-      });
-    } else {
-      console.log("Successful login!");
-      return new Response("Successful login!", {
-        status: 200,
-      });
-    }
-  } catch (e) {
-    console.log(e);
-    return new Response(e);
+    return NextResponse.json({ status: 200, body: currentAccount });
+  } catch (error: any) {
+    const error_response = {
+      status: 404,
+      message: error.message,
+    };
+    return NextResponse.json(JSON.stringify(error_response), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }

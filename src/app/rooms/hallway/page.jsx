@@ -9,27 +9,62 @@ import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
 import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
+import updateState from "@/resources/prisma/state/updateState";
+import startTimer from "@/resources/prisma/timer/startTimer";
+import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
+import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
+import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import endTimer from "@/resources/prisma/timer/endTimer";
 
 export default function Hallway() {
-  const [room, setRoom] = useState(false);
-  const [user, setUser] = useState();
+  const [room, setRoom] = useState(null);
+  const [user, setUser] = useState(null);
+  const [availableItems, setAvailableItems] = useState(null);
+  const [collectedItems, setCollectedItems] = useState(null);
 
   // Initial Load
   useEffect(() => {
     async function fetchData() {
-      const user = await fetchUser();
-      if (user) {
-        setUser(user);
+      const currentUser = await fetchUser();
+
+      if (currentUser) {
+        setUser(currentUser);
         setRoom(fetchRoom("hallway", false));
+        if (room && user) {
+          setAvailableItems(await getAvailableItems(room.room_id));
+          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+        }
       }
     }
     fetchData();
-  }, []);
+  }, []); // To include room if necessary (will constantly refresh)
+
+  const changeState = async () => {
+    if (user.stateId !== 1) {
+      const endTime = await endTimer(user.userId, user.stateId);
+    }
+    setUser(await updateState(user.userId));
+    const startTime = await startTimer(user.userId, user.stateId);
+    if (startTime !== 200) {
+      console.log("Failed to Start Timer");
+    }
+  };
+
+  const updateCollected = async (name) => {
+    const updatedItem = await updateCollectedItems(
+      user.userId,
+      room.clues.portrait.id, // to replace with respective item
+      room.room_id
+    );
+
+    console.log(updatedItem);
+  };
 
   return (
     <RoomLayout>
       {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+          <button onClick={updateCollected}>test </button>
           <Navbar />
           <Box
             display="flex"
