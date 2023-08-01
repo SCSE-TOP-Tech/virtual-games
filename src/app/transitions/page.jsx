@@ -5,12 +5,15 @@ import { fetchUser } from "@/resources/prisma/fetchUser";
 import { Box, Button, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/navigation";
 
 export default function Transitions() {
-  let state = 0;
+  
+  const router = useRouter()
   const [user, setUser] = useState();
   const [image, setImage] = useState("");
   const [text, setText] = useState();
+  const [transitionStage, setTransitionStage] = useState(0)
 
   useEffect(() => {
     async function fetchData() {
@@ -20,17 +23,18 @@ export default function Transitions() {
       }
     }
     fetchData();
-    setText(storyline(state).text);
-    setImage(storyline(state).image);
-  }, [state]);
+    setText(storyline(transitionStage).text);
+    setImage(storyline(transitionStage).image);
+  }, [transitionStage]);
 
-  const updateTransitionState = () => {
-    state++;
-    console.log(state);
-  };
+  const updateTransitionStage = () => {
+    setTransitionStage((prev) => prev + 1)
+    if (transitionStage >2) router.push('/rooms/hallway');
+    console.log(transitionStage)
+  }
 
-  const storyline = (state) => {
-    switch (state) {
+  const storyline = (transitionStage) => {
+    switch (transitionStage) {
       case 0:
         return {
           text:
@@ -57,7 +61,7 @@ export default function Transitions() {
             "          within a master spaceship.",
           image: <Image src="/intro/princess.jpg" width={100} height={100} />,
         };
-      case 2:
+      default:
         return {
           text:
             "Concerned for the safety of his daughter, King White entrusts the\n" +
@@ -89,7 +93,8 @@ export default function Transitions() {
         </Box>
         <Button
           display="flex"
-          rightIcon={<ChevronRightIcon onClick={updateTransitionState} />}
+          rightIcon={<ChevronRightIcon />}
+          onClick={updateTransitionStage}
         >
           Next
         </Button>

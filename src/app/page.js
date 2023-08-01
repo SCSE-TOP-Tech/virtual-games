@@ -15,7 +15,7 @@ export default async function Home() {
         justifyContent="center"
         bg={`url('https://th.bing.com/th/id/R.93220e00b3059a676fe603b32b9b4c5b?rik=Zn0Coiu3yTKjpQ&riu=http%3a%2f%2fi.makeagif.com%2fmedia%2f9-19-2015%2fbTPrOV.gif&ehk=M%2fOPDEaToM58l5kzE5samqOXQrKhRXaG%2b0%2bScFW8KrI%3d&risl=1&pid=ImgRaw&r=0')`}
         bgSize="cover"
-        height="80vh"
+        height="100vh"
         padding={0}
         margin={0}
       >
