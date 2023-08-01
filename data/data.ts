@@ -297,7 +297,7 @@ export const characters: Character[] = [
         laptop: {
           id: "laptop",
           name: "Romily's Laptop",
-          desc: "fill in",
+          desc: "Viewing Interstellar market price of Tesseract",
           width: 499,
           height: 499,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1690733527/virtual_games/rooms/romily/romily-laptop_xpqlk2.png",
