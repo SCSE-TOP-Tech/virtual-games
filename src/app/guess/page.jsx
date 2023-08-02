@@ -47,13 +47,13 @@ export default function GuessingPage() {
             setCorrectValue(true);
         else if (score > 0)
             setPartial(true);
-            
+
         score = score * Math.pow(0.9, numAttempt);
 
         //upload score to BE
         console.log("Your score: " + score);
-        console.log("# attempts: " + (numAttempt+1));
-        
+        console.log("# attempts: " + (numAttempt + 1));
+
         showResult(true);
         setNumAttempt(numAttempt + 1);
     }
@@ -63,7 +63,13 @@ export default function GuessingPage() {
     }
 
     return (
-        <Box w={["100%", "30em"]} h="100%" p='1rem' position="relative" bg='gray.300'>
+        <Box display='flex' justifyContent='center' w='100%' h={800} bg='gray.300'>
+        <Box
+            w={["100%", "30em"]}
+            h="100%"
+            p='1rem'
+            position="relative"
+        >
             <Box bg='gray.400' p='0.5rem' mt='1rem'>
                 <Text fontSize="1rem" fontWeight="bold" mb='1rem'>
                     The heroes gathered in the Hallway as it is time to end this madness.
@@ -79,7 +85,7 @@ export default function GuessingPage() {
                     Please enter one character at a time
                 </Text>
 
-                <Box>
+                <Box display='flex' justifyContent='center'>
                     <Input
                         placeholder="Input character name"
                         size="md"
@@ -122,5 +128,6 @@ export default function GuessingPage() {
                     {isCorrect && <Correct />}
                 </Box>
             )}
+        </Box>
         </Box>)
 }
