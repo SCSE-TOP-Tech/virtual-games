@@ -219,6 +219,8 @@ export default function RomilyRoom() {
                 <ItemImage
                   item={room.clues.laptop}
                   filter="auto"
+                  brightness="70%"
+                  className={styles.item}
                   width={SizeFormatter(
                     "5rem", //iphone se
                     "5.8rem", //iphone xr
@@ -229,7 +231,6 @@ export default function RomilyRoom() {
                     "7.4rem", //ipad air
                     "7.4rem" //ipad mini
                   )}
-                  brightness="70%"
                   left={SizeFormatter(
                     "2rem", //iphone se
                     "2rem", //iphone xr
