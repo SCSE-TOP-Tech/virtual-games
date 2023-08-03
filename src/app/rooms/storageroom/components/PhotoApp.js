@@ -10,7 +10,7 @@ export default function PhotoApp() {
             </Flex>
 
             <img 
-                src="rooms/Storage/selfie.png" 
+                src="Rooms/Storage/selfie.png" 
                 alt='selfie' 
                 width='90%'
                 style = {{position:'relative', top:'2%', left:'5%'}}

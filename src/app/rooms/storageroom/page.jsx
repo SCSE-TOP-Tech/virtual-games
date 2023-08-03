@@ -78,13 +78,13 @@ export default function StorageRoom() {
                     )}
                     top={SizeFormatter(
                       "10rem", //iphone se
-                      "10rem", //iphone xr
-                      "10rem", //iphone 12pro
-                      "10rem", //pixel 5
+                      "12rem", //iphone xr
+                      "11rem", //iphone 12pro
+                      "11rem", //pixel 5
                       "10rem", //samsung galaxy s8+
-                      "10rem", //samsung galaxy s20 ultra
-                      "10rem", //ipad air
-                      "10rem" //ipad mini
+                      "14rem", //samsung galaxy s20 ultra
+                      "14rem", //ipad air
+                      "14rem" //ipad mini
                     )}
                   />
                 </Hint>
@@ -100,20 +100,20 @@ export default function StorageRoom() {
                       "10rem", //iphone xr
                       "10rem", //iphone 12pro
                       "10rem", //pixel 5
-                      "10rem", //samsung galaxy s8+
+                      "9rem", //samsung galaxy s8+
                       "10rem", //samsung galaxy s20 ultra
-                      "10rem", //ipad air
-                      "10rem" //ipad mini
+                      "11rem", //ipad air
+                      "11rem" //ipad mini
                     )}
                     top={SizeFormatter(
                       "11.85rem", //iphone se
-                      "11.85", //iphone xr
-                      "11.85rem", //iphone 12pro
-                      "11.85rem", //pixel 5
-                      "11.85rem", //samsung galaxy s8+
-                      "11.85rem", //samsung galaxy s20 ultra
-                      "11.85rem", //ipad air
-                      "11.85rem" //ipad mini
+                      "13.85rem", //iphone xr
+                      "12.75rem", //iphone 12pro
+                      "12.85rem", //pixel 5
+                      "11.35rem", //samsung galaxy s8+
+                      "13.85rem", //samsung galaxy s20 ultra
+                      "17.55rem", //ipad air
+                      "17.55rem" //ipad mini
                     )}
                   />
                 </Hint>
@@ -138,13 +138,13 @@ export default function StorageRoom() {
                     )}
                     top={SizeFormatter(
                       "14.3rem", //iphone se
-                      "14.3rem", //iphone xr
-                      "14.3rem", //iphone 12pro
-                      "14.3rem", //pixel 5
-                      "14.3rem", //samsung galaxy s8+
-                      "14.3rem", //samsung galaxy s20 ultra
-                      "14.3rem", //ipad air
-                      "14.3rem" //ipad mini
+                      "16.9rem", //iphone xr
+                      "15.3rem", //iphone 12pro
+                      "15.7rem", //pixel 5
+                      "13.5rem", //samsung galaxy s8+
+                      "16.8rem", //samsung galaxy s20 ultra
+                      "21rem", //ipad air
+                      "21rem" //ipad mini
                     )}
                   />
                 </Hint>
@@ -156,26 +156,35 @@ export default function StorageRoom() {
                     className={styles.item}
                     filter="auto"
                     brightness="55%"
-                    width="4rem"
+                    width={SizeFormatter(
+                      "4rem", //iphone se
+                      "4rem", //iphone xr
+                      "4rem", //iphone 12pro
+                      "4rem", //pixel 5
+                      "4rem", //samsung galaxy s8+
+                      "4rem", //samsung galaxy s20 ultra
+                      "4.5rem", //ipad air
+                      "4.5rem" //ipad mini
+                    )}
                     left={SizeFormatter(
                       "3.5rem", //iphone se
                       "3.5rem", //iphone xr
                       "3.5rem", //iphone 12pro
                       "3.5rem", //pixel 5
-                      "3.5rem", //samsung galaxy s8+
+                      "2.7rem", //samsung galaxy s8+
                       "3.5rem", //samsung galaxy s20 ultra
                       "3.5rem", //ipad air
                       "3.5rem" //ipad mini
                     )}
                     top={SizeFormatter(
                       "7.3rem", //iphone se
-                      "7.3rem", //iphone xr
-                      "7.3rem", //iphone 12pro
-                      "7.3rem", //pixel 5
+                      "9.3rem", //iphone xr
+                      "8.3rem", //iphone 12pro
+                      "8.3rem", //pixel 5
                       "7.3rem", //samsung galaxy s8+
-                      "7.3rem", //samsung galaxy s20 ultra
-                      "7.3rem", //ipad air
-                      "7.3rem" //ipad mini
+                      "9.3rem", //samsung galaxy s20 ultra
+                      "12.8rem", //ipad air
+                      "12.8rem" //ipad mini
                     )}
                   />
                 </Hint>
@@ -190,23 +199,23 @@ export default function StorageRoom() {
                     width="1rem"
                     right={SizeFormatter(
                       "6rem", //iphone se
-                      "6rem", //iphone xr
+                      "7rem", //iphone xr
                       "6rem", //iphone 12pro
-                      "6rem", //pixel 5
-                      "6rem", //samsung galaxy s8+
-                      "6rem", //samsung galaxy s20 ultra
-                      "6rem", //ipad air
-                      "6rem" //ipad mini
+                      "6.2rem", //pixel 5
+                      "5.5rem", //samsung galaxy s8+
+                      "6.8rem", //samsung galaxy s20 ultra
+                      "8.3rem", //ipad air
+                      "8.3rem" //ipad mini
                     )}
                     top={SizeFormatter(
                       "4.1rem", //iphone se
-                      "4.1rem", //iphone xr
-                      "4.1rem", //iphone 12pro
-                      "4.1rem", //pixel 5
-                      "4.1rem", //samsung galaxy s8+
-                      "4.1rem", //samsung galaxy s20 ultra
-                      "4.1rem", //ipad air
-                      "4.1rem" //ipad mini
+                      "6.1rem", //iphone xr
+                      "5.1rem", //iphone 12pro
+                      "5.1rem", //pixel 5
+                      "3.6rem", //samsung galaxy s8+
+                      "5.8rem", //samsung galaxy s20 ultra
+                      "8.4rem", //ipad air
+                      "8.4rem" //ipad mini
                     )}
                   />
                 </Hint>
@@ -221,23 +230,23 @@ export default function StorageRoom() {
                     width="1.7rem"
                     right={SizeFormatter(
                       "3.3rem", //iphone se
-                      "3.3rem", //iphone xr
+                      "4.0rem", //iphone xr
                       "3.3rem", //iphone 12pro
-                      "3.3rem", //pixel 5
+                      "3.5rem", //pixel 5
                       "3.3rem", //samsung galaxy s8+
-                      "3.3rem", //samsung galaxy s20 ultra
-                      "3.3rem", //ipad air
-                      "3.3rem" //ipad mini
+                      "3.8rem", //samsung galaxy s20 ultra
+                      "3.9rem", //ipad air
+                      "3.9rem" //ipad mini
                     )}
                     top={SizeFormatter(
                       "7.2rem", //iphone se
-                      "7.2rem", //iphone xr
-                      "7.2rem", //iphone 12pro
-                      "7.2rem", //pixel 5
-                      "7.2rem", //samsung galaxy s8+
-                      "7.2rem", //samsung galaxy s20 ultra
-                      "7.2rem", //ipad air
-                      "7.2rem" //ipad mini
+                      "9.2rem", //iphone xr
+                      "8.2rem", //iphone 12pro
+                      "8.4rem", //pixel 5
+                      "6.2rem", //samsung galaxy s8+
+                      "9.2rem", //samsung galaxy s20 ultra
+                      "13.2rem", //ipad air
+                      "13.2rem" //ipad mini
                     )}
                     onClick={togglePhone}
                   />
@@ -258,20 +267,20 @@ export default function StorageRoom() {
                           "9.4rem", //iphone xr
                           "9.4rem", //iphone 12pro
                           "9.4rem", //pixel 5
-                          "9.4rem", //samsung galaxy s8+
+                          "8.6rem", //samsung galaxy s8+
                           "9.4rem", //samsung galaxy s20 ultra
-                          "9.4rem", //ipad air
-                          "9.4rem" //ipad mini
+                          "10.4rem", //ipad air
+                          "10.4rem" //ipad mini
                         )}
                         top={SizeFormatter(
                           "1.5rem", //iphone se
-                          "1.5rem", //iphone xr
-                          "1.5rem", //iphone 12pro
-                          "1.5rem", //pixel 5
-                          "1.5rem", //samsung galaxy s8+
-                          "1.5rem", //samsung galaxy s20 ultra
-                          "1.5rem", //ipad air
-                          "1.5rem" //ipad mini
+                          "3.5rem", //iphone xr
+                          "2.5rem", //iphone 12pro
+                          "2.5rem", //pixel 5
+                          "1rem", //samsung galaxy s8+
+                          "3.5rem", //samsung galaxy s20 ultra
+                          "6.5rem", //ipad air
+                          "6.5rem" //ipad mini
                         )}
                         onClick={handleToggle}
                       />

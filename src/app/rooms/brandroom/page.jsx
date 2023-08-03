@@ -54,28 +54,37 @@ export default function BrandRoom() {
                 <ItemImage
                   item={room.clues.galaxy_phone}
                   className={styles.item}
-                  width="1.3rem"
+                  width={SizeFormatter(
+                    "1.3rem", //iphone se
+                    "1.3rem", //iphone xr
+                    "1.4rem", //iphone 12pro
+                    "1.4rem", //pixel 5
+                    "1.4rem", //samsung galaxy s8+
+                    "1.3rem", //samsung galaxy s20 ultra
+                    "1.3rem", //ipad air
+                    "1.3rem" //ipad mini
+                  )}
                   filter='auto'
                   brightness='100%'
                   right={SizeFormatter(
                     "2.6rem", //iphone se
                     "2.9rem", //iphone xr
                     "2.8rem", //iphone 12pro
-                    "2.6rem", //pixel 5
-                    "1rem", //samsung galaxy s8+
-                    "1rem", //samsung galaxy s20 ultra
-                    "1rem", //ipad air
-                    "1rem" //ipad mini
+                    "2.8rem", //pixel 5
+                    "2.6rem", //samsung galaxy s8+
+                    "2.9rem", //samsung galaxy s20 ultra
+                    "3.3rem", //ipad air
+                    "3.3rem" //ipad mini
                   )}
                   top={SizeFormatter(
                     "13.7rem", //iphone se
                     "15.2rem", //iphone xr
-                    "15.3rem", //iphone 12pro
-                    "15.2rem", //pixel 5
-                    "1rem", //samsung galaxy s8+
-                    "1rem", //samsung galaxy s20 ultra
-                    "1rem", //ipad air
-                    "1rem" //ipad mini
+                    "14.3rem", //iphone 12pro
+                    "14.5rem", //pixel 5
+                    "13.2rem", //samsung galaxy s8+
+                    "15.2rem", //samsung galaxy s20 ultra
+                    "18.2rem", //ipad air
+                    "18.2rem" //ipad mini
                   )}
                   onClick={togglePhone}
                 />
