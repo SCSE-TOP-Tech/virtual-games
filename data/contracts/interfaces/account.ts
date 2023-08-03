@@ -1,7 +1,7 @@
 interface Account {
   email: string;
-  password: string;
   username: string;
+  password: string;
 }
 
 export type { Account };
