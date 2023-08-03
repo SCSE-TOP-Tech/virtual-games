@@ -36,7 +36,6 @@ export default function BrandRoom() {
   return (
     <RoomLayout>
       {room ? (
-        <div>
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
           <Navbar />
           <Box
@@ -55,22 +54,24 @@ export default function BrandRoom() {
                 <ItemImage
                   item={room.clues.galaxy_phone}
                   className={styles.item}
-                  width="20rem"
-                  left={SizeFormatter(
-                    "1rem", //iphone se
-                    "1rem", //iphone xr
-                    "1rem", //iphone 12pro
-                    "1rem", //pixel 5
+                  width="1.3rem"
+                  filter='auto'
+                  brightness='100%'
+                  right={SizeFormatter(
+                    "2.6rem", //iphone se
+                    "2.9rem", //iphone xr
+                    "2.8rem", //iphone 12pro
+                    "2.6rem", //pixel 5
                     "1rem", //samsung galaxy s8+
                     "1rem", //samsung galaxy s20 ultra
                     "1rem", //ipad air
                     "1rem" //ipad mini
                   )}
-                  bottom={SizeFormatter(
-                    "1rem", //iphone se
-                    "1rem", //iphone xr
-                    "1rem", //iphone 12pro
-                    "1rem", //pixel 5
+                  top={SizeFormatter(
+                    "13.7rem", //iphone se
+                    "15.2rem", //iphone xr
+                    "15.3rem", //iphone 12pro
+                    "15.2rem", //pixel 5
                     "1rem", //samsung galaxy s8+
                     "1rem", //samsung galaxy s20 ultra
                     "1rem", //ipad air
@@ -85,7 +86,6 @@ export default function BrandRoom() {
             Text Component Here
           </Box>
         </Box>
-      </div>
       ) : (
         <Loading />
       )}
