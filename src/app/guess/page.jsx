@@ -3,6 +3,7 @@ import { Box, Input, Button, UnorderedList, ListItem, Text } from "@chakra-ui/re
 import { useState, useEffect } from "react";
 import Correct from "./components/Correct.js";
 import Incorrect from "./components/Incorrect.js";
+import submitGuess from "@/app/api/prisma/guessanswer/guess.js";
 
 export default function GuessingPage() {
     const [guess, setGuess] = useState([]);
@@ -23,39 +24,6 @@ export default function GuessingPage() {
         showResult(false);
         setGuess([]);
         setName("");
-    }
-
-    const submitGuess = () => {
-        let foundCooper = false, foundPrincess = false;
-        let score = 0;
-
-        if (guess.length == 0) return;
-
-        for (let name of guess) {
-            name = name.toLowerCase().trim();
-            if (name == "cooper" && !foundCooper) {
-                foundCooper = true;
-                score += 10;
-            }
-            else if ((name == "princess" || name == "princess white") && !foundPrincess) {
-                foundPrincess = true;
-                score += 10;
-            }
-        }
-
-        if (score == 20)
-            setCorrectValue(true);
-        else if (score > 0)
-            setPartial(true);
-
-        score = score * Math.pow(0.9, numAttempt);
-
-        //upload score to BE
-        console.log("Your score: " + score);
-        console.log("# attempts: " + (numAttempt + 1));
-
-        showResult(true);
-        setNumAttempt(numAttempt + 1);
     }
 
     const handleChange = (event) => {
@@ -107,7 +75,7 @@ export default function GuessingPage() {
                     </UnorderedList>
                 </Box>
 
-                <Button mt={4} colorScheme="teal" onClick={submitGuess}>
+                <Button mt={4} colorScheme="teal" onClick={() => submitGuess(guess, numAttempt, setNumAttempt, showResult, setCorrectValue, setPartial)}>
                     Submit answers
                 </Button>
             </Box>
