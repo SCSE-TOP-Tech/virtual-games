@@ -27,7 +27,7 @@ export default function Hallway() {
     async function fetchData() {
       console.log('fetching data')
       const currentUser = await fetchUser();
-
+      console.log(currentUser);
       if (currentUser) {
         setUser(currentUser);
         setRoom(fetchRoom("hallway", false));
