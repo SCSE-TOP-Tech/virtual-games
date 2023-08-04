@@ -25,6 +25,7 @@ export default function Hallway() {
   // Initial Load
   useEffect(() => {
     async function fetchData() {
+      console.log('fetching data')
       const currentUser = await fetchUser();
 
       if (currentUser) {
