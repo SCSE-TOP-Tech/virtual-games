@@ -83,7 +83,7 @@ export default function RomilyRoom() {
                   className={styles.item}
                   width="3rem"
                   filter="auto"
-                  brightness="75%"
+                  brightness="60%"
                   right={SizeFormatter(
                     "7rem", //iphone se
                     "8rem", //iphone xr
@@ -174,7 +174,8 @@ export default function RomilyRoom() {
                     "7rem", //pixel 5
                     "5rem", //samsung galaxy s8+
                     "8rem", //samsung galaxy s20 ultra
-                    "9rem" //ipad mini
+                    "8.6rem", //ipad air
+                    "8.6rem" //ipad mini
                   )}
                 />
               </Hint>
@@ -240,26 +241,58 @@ export default function RomilyRoom() {
                     "9rem" //ipad mini
                   )}
                   bottom={SizeFormatter(
-                    "7rem", //iphone se
-                    "6rem", //iphone xr
-                    "7rem", //iphone 12pro
-                    "7rem", //pixel 5
+                    "7.5rem", //iphone se
+                    "5.9rem", //iphone xr
+                    "6.9rem", //iphone 12pro
+                    "6.8rem", //pixel 5
                     "8rem", //samsung galaxy s8+
                     "6rem", //samsung galaxy s20 ultra
-                    "8rem", //ipad air
-                    "8rem" //ipad mini
+                    "8.2rem", //ipad air
+                    "8.2rem" //ipad mini
+                  )}
+                />
+              </Hint>
+              <Hint>
+                <ItemImage
+                  item={room.clues.laptop}
+                  filter="auto"
+                  brightness="70%"
+                  className={styles.item}
+                  width={SizeFormatter(
+                    "5rem", //iphone se
+                    "5.8rem", //iphone xr
+                    "6.2rem", //iphone 12pro
+                    "6.5rem", //pixel 5
+                    "6rem", //samsung galaxy s8+
+                    "6.5rem", //samsung galaxy s20 ultra
+                    "7.4rem", //ipad air
+                    "7.4rem" //ipad mini
+                  )}
+                  left={SizeFormatter(
+                    "2rem", //iphone se
+                    "2rem", //iphone xr
+                    "2.5rem", //iphone 12pro
+                    "2.5rem", //pixel 5
+                    "2rem", //samsung galaxy s8+
+                    "1.7rem", //samsung galaxy s20 ultra
+                    "2rem", //ipad air
+                    "2rem" //ipad mini
+                  )}
+                  bottom={SizeFormatter(
+                    "4.2rem", //iphone se
+                    "2.7rem", //iphone xr
+                    "6rem", //iphone 12pro
+                    "4rem", //pixel 5
+                    "5.8rem", //samsung galaxy s8+
+                    "3.3rem", //samsung galaxy s20 ultra
+                    "4.6rem", //ipad air
+                    "4.6rem" //ipad mini
                   )}
                 />
               </Hint>
             </Box>
           </Box>
-          <Box
-            position="absolute"
-            bottom="10%"
-            mt="2%"
-            w="28em"
-            background={"white"}
-          >
+          <Box mt="2%" w="100%" background={"white"}>
             Text Component Here
           </Box>
         </Box>
