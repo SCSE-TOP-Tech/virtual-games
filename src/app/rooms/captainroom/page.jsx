@@ -9,22 +9,55 @@ import Navbar from "../../components/Navbar";
 import { fetchUser } from "@/resources/prisma/fetchUser";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
+import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
+import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
+import endTimer from "@/resources/prisma/timer/endTimer";
+import updateState from "@/resources/prisma/state/updateState";
+import startTimer from "@/resources/prisma/timer/startTimer";
+import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 
 export default function CaptainRoom() {
-  const [room, setRoom] = useState(false);
-  const [user, setUser] = useState();
+  const [room, setRoom] = useState(null);
+  const [user, setUser] = useState(null);
+  const [availableItems, setAvailableItems] = useState(null);
+  const [collectedItems, setCollectedItems] = useState(null);
 
   // Initial Load
   useEffect(() => {
     async function fetchData() {
-      const user = await fetchUser();
-      if (user) {
-        setUser(user);
+      const currentUser = await fetchUser();
+
+      if (currentUser) {
+        setUser(currentUser);
         setRoom(fetchRoom("captain", false));
+        if (room && user) {
+          setAvailableItems(await getAvailableItems(room.room_id));
+          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+        }
       }
     }
     fetchData();
-  }, []);
+  }, []); // To include room if necessary (will constantly refresh)
+
+  const changeState = async () => {
+    if (user.stateId !== 1) {
+      const endTime = await endTimer(user.userId, user.stateId);
+    }
+    setUser(await updateState(user.userId));
+    const startTime = await startTimer(user.userId, user.stateId);
+    if (startTime !== 200) {
+      console.log("Failed to Start Timer");
+    }
+  };
+
+  const updateCollected = async (name) => {
+    const updatedItem = await updateCollectedItems(
+        user.userId,
+        name,
+        room.room_id
+    );
+    console.log(updatedItem);
+  };
 
   return (
     <RoomLayout>
@@ -45,6 +78,7 @@ export default function CaptainRoom() {
             <Box position="absolute" zIndex="1">
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.clues.music_albums.id)}
                   item={room.clues.music_albums}
                   className={styles.item}
                   width="4rem"
@@ -76,6 +110,7 @@ export default function CaptainRoom() {
               {/* Lipstick */}
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.clues.lipstick.id)}
                   item={room.clues.lipstick}
                   className={styles.item}
                   width="2rem"
@@ -107,6 +142,7 @@ export default function CaptainRoom() {
               {/* Guestbook */}
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.clues.guestbook.id)}
                   item={room.clues.guestbook}
                   className={styles.item}
                   width="3rem"
@@ -138,6 +174,7 @@ export default function CaptainRoom() {
               {/* Note */}
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.clues.note.id)}
                   item={room.clues.note}
                   className={styles.item}
                   width="1.5rem"
@@ -167,6 +204,7 @@ export default function CaptainRoom() {
               {/* blood letter */}
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.clues.blood_letter.id)}
                   item={room.clues.blood_letter}
                   className={styles.item}
                   width="10rem"
@@ -196,6 +234,7 @@ export default function CaptainRoom() {
               {/* broken watch */}
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.clues.broken_watch.id)}
                   item={room.clues.broken_watch}
                   className={styles.item}
                   width="3.5rem"

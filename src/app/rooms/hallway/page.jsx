@@ -53,10 +53,9 @@ export default function Hallway() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(
       user.userId,
-      room.clues.portrait.id, // to replace with respective item
+      name,
       room.room_id
     );
-
     console.log(updatedItem);
   };
 
@@ -64,7 +63,6 @@ export default function Hallway() {
     <RoomLayout>
       {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <button onClick={updateCollected}>test </button>
           <Navbar />
           <Box
             display="flex"
@@ -77,6 +75,7 @@ export default function Hallway() {
               {/* sibling-photo */}
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.clues.portrait.id)}
                   item={room.clues.portrait}
                   className={styles.item}
                   width="0.7rem"

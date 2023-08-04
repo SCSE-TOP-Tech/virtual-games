@@ -9,22 +9,55 @@ import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
+import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
+import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
+import endTimer from "@/resources/prisma/timer/endTimer";
+import updateState from "@/resources/prisma/state/updateState";
+import startTimer from "@/resources/prisma/timer/startTimer";
+import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 
 export default function BrandRoom() {
-  const [room, setRoom] = useState(false);
-  const [user, setUser] = useState();
+  const [room, setRoom] = useState(null);
+  const [user, setUser] = useState(null);
+  const [availableItems, setAvailableItems] = useState(null);
+  const [collectedItems, setCollectedItems] = useState(null);
 
   // Initial Load
   useEffect(() => {
     async function fetchData() {
       const currentUser = await fetchUser();
+
       if (currentUser) {
         setUser(currentUser);
         setRoom(fetchRoom("brand", true));
+        if (room && user) {
+          setAvailableItems(await getAvailableItems(room.room_id));
+          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+        }
       }
     }
     fetchData();
-  }, [user, setUser]);
+  }, []); // To include room if necessary (will constantly refresh)
+
+  const changeState = async () => {
+    if (user.stateId !== 1) {
+      const endTime = await endTimer(user.userId, user.stateId);
+    }
+    setUser(await updateState(user.userId));
+    const startTime = await startTimer(user.userId, user.stateId);
+    if (startTime !== 200) {
+      console.log("Failed to Start Timer");
+    }
+  };
+
+  const updateCollected = async (name) => {
+    const updatedItem = await updateCollectedItems(
+        user.userId,
+        name,
+        room.room_id
+    );
+    console.log(updatedItem);
+  };
 
   return (
     <RoomLayout>
@@ -45,6 +78,7 @@ export default function BrandRoom() {
                 {/* galaxy phone */}
                 <Hint>
                   <ItemImage
+                    onClick={() => updateCollected(room.clues.galaxy_phone.id)}
                     item={room.clues.galaxy_phone}
                     className={styles.item}
                     width="2rem"

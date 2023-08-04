@@ -523,17 +523,7 @@ export const rooms: Room[] = [
         state: 4,
       },
     },
-    dummy_objects: {
-      spacesword: {
-        id: "spacesword",
-        name: "Space Sword",
-        desc: "Extra edgy sword, with extra pointy tip.",
-        width: 459,
-        height: 544,
-        src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1681870716/virtual_games/rooms/maan/spacesword_bxyqiw.png",
-        state: 4,
-      },
-    },
+    dummy_objects: {},
     npc: {},
   },
 
