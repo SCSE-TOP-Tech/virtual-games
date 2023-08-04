@@ -1,5 +1,6 @@
 export async function fetchUser() {
   try {
+    console.log('Try fetchUser()');
     const sessionPromise = await fetch("/api/session");
     const sessionData = await sessionPromise.json();
     const userData = sessionData.body.account.user;
@@ -10,6 +11,7 @@ export async function fetchUser() {
       return null;
     }
   } catch (e) {
+    console.log(e)
     return null;
   }
 }

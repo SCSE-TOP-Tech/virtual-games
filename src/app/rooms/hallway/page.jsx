@@ -26,7 +26,7 @@ export default function Hallway() {
   useEffect(() => {
     async function fetchData() {
       const currentUser = await fetchUser();
-
+      console.log('Current user: ', currentUser);
       if (currentUser) {
         setUser(currentUser);
         setRoom(fetchRoom("hallway", false));
