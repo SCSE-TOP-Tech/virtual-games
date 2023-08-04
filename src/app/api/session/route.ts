@@ -6,6 +6,7 @@ import { prisma } from "~/lib/prisma";
 export async function GET(req: Request) {
   try {
     const session = await getServerSession(authOptions);
+    console.log(session);
 
     if (!session?.user) {
       return NextResponse.json({
@@ -33,7 +34,6 @@ export async function GET(req: Request) {
       });
     }
   } catch (error) {
-    console.log(error);
     return NextResponse.json({
       authenticated: false,
       body: "Error fetching user info!",
