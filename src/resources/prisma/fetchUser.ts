@@ -3,7 +3,6 @@ export async function fetchUser() {
     console.log('Try fetchUser()');
     const sessionPromise = await fetch("/api/session");
     const sessionData = await sessionPromise.json();
-    console.log(sessionData);
     const userData = sessionData.body.account.user;
 
     if (sessionData.authenticated) {

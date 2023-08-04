@@ -33,6 +33,7 @@ export async function GET(req: Request) {
       });
     }
   } catch (error) {
+    console.log(error);
     return NextResponse.json({
       authenticated: false,
       body: "Error fetching user info!",
