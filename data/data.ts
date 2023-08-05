@@ -1,4 +1,5 @@
 import { State, Room, Character } from "./contracts";
+import { Transition } from "~/data/contracts/interfaces/transition";
 
 export const characters: Character[] = [
   // Doyle (Updated V1)
@@ -972,88 +973,73 @@ export const scenes = [
   },
 ];
 
-export const transitions = [
-  // Prologue
+export const transitions: Transition[] = [
+  // Intro
   {
-    id: "prologue",
-    name: "Prologue",
-    bg: "src.png",
-    narrations: [
-      {
-        id: "",
-        text: "",
-      },
-      {
-        id: "",
-        text: "",
-      },
-      {
-        id: "",
-        text: "",
-      },
-    ],
-    animations: {
-      shake: {
-        src: "src",
-        text: "...",
-      },
+    id: 0,
+    image: {
+      alt: "knight",
+      src: "/intro/knight.jpg",
+      width: 200,
+      height: 200,
     },
+    dialog:
+      "In a distant corner of the universe lies the Black Eye Galaxy, ruled\n" +
+      "          by the almighty King White. This kingdom holds a precious artifact\n" +
+      "          known as the space stone which has incredible value and is carefully\n" +
+      "          stored within the Tesseract. The responsibility of protecting this\n" +
+      "          invaluable stone falls upon the Knight of Interstellar, a loyal\n" +
+      "          guardian in service to King White.",
   },
-
-  // Start
   {
-    id: "starting",
-    name: "Starting Scene",
-    bg: "src.png",
-    narrations: [
-      {
-        id: "",
-        text: "",
-      },
-      {
-        id: "",
-        text: "",
-      },
-      {
-        id: "",
-        text: "",
-      },
-    ],
-    animations: {
-      shake: {
-        src: "src",
-        text: "...",
-      },
+    id: 1,
+    image: {
+      alt: "princess",
+      src: "/intro/princess.jpg",
+      width: 100,
+      height: 100,
     },
+    dialog:
+      "On a fine evening, Princess White, the daughter of King White, invited\n" +
+      "          seven legendary heroes to attend the annual interstellar meeting held\n" +
+      "          within a master spaceship.",
   },
-
-  // Ending
   {
-    id: "ending",
-    name: "Ending Scene",
-    bg: "src.png",
-    narrations: [
-      {
-        id: "",
-        text: "",
-      },
-      {
-        id: "",
-        text: "",
-      },
-      {
-        id: "",
-        text: "",
-      },
-    ],
-    animations: {
-      shake: {
-        src: "src",
-        text: "...",
-      },
+    id: 2,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
     },
+    dialog:
+      "Concerned for the safety of his daughter, King White entrusts the\n" +
+      "          Knight with a crucial task. The space stone must be kept secure, yet\n" +
+      "          remain in close proximity to the Princess. Thus, the Knight is\n" +
+      "          commanded to place the tesseract within a safe stored in Princess\n" +
+      "          White's room. In doing so, the Knight is able to protect both the\n" +
+      "          Princess and the Tesseract. However, little do they know, the stage is\n" +
+      "          set for an epic adventure to unfold.",
+  },
+  {
+    id: 3,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Concerned for the safety of his daughter, King White entrusts the\n" +
+      "          Knight with a crucial task. The space stone must be kept secure, yet\n" +
+      "          remain in close proximity to the Princess. Thus, the Knight is\n" +
+      "          commanded to place the tesseract within a safe stored in Princess\n" +
+      "          White's room. In doing so, the Knight is able to protect both the\n" +
+      "          Princess and the Tesseract. However, little do they know, the stage is\n" +
+      "          set for an epic adventure to unfold.",
   },
 ];
+
 export const states: State[] = [
   {
     stateID: 1,
