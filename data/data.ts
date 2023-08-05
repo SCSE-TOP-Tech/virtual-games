@@ -1035,7 +1035,7 @@ export const transitions: Transition[] = [
   {
     id: 4,
     image: {
-      alt: "stone",
+      alt: "Stolen Stone",
       src: "/intro/stone.jpg",
       width: 300,
       height: 300,
@@ -1079,21 +1079,20 @@ export const transitions: Transition[] = [
   {
     id: 8,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Maan",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/mannMoving_el5wuc.gif",
+      width: 100,
+      height: 100,
     },
-    dialog:
-      "Mann: Who else might have carried a master key?\n",
+    dialog: "Mann: Who else might have carried a master key?\n",
   },
   {
     id: 9,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Seraphine",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/seraphineMoving_axmd0i.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Seraphine: Oh, the captain! We have not seen the captain of this ship since we got here. Let’s go investigate his room.\n",
@@ -1101,10 +1100,10 @@ export const transitions: Transition[] = [
   {
     id: 10,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Doyle",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/doyleMoving_rdhhi2.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Doyle: Oh my, the captain is dead! CW? It looks like he was trying to write out the killer’s name.\n",
@@ -1112,21 +1111,20 @@ export const transitions: Transition[] = [
   {
     id: 11,
     image: {
-      alt: "stone",
+      alt: "Cooper",
       src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      width: 100,
+      height: 100,
     },
-    dialog:
-      "Cooper: This is strange, the captain’s master key is missing!\n",
+    dialog: "Cooper: This is strange, the captain’s master key is missing!\n",
   },
   {
     id: 12,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Romily",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/romillyMoving_qkypcz.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Romily: The killer could definitely be any of us. I suggest we inspect all of our rooms.\n",
@@ -1134,10 +1132,10 @@ export const transitions: Transition[] = [
   {
     id: 13,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Doyle",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/doyleMoving_rdhhi2.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Doyle: Sounds good, I’ll check for more clues in the captain's room.\n",
@@ -1145,54 +1143,50 @@ export const transitions: Transition[] = [
   {
     id: 14,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Brand",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/brandMoving_usbnrh.gif",
+      width: 100,
+      height: 100,
     },
-    dialog:
-      "Brand: We have not inspected the Hallway. I’ll go check it out.\n",
+    dialog: "Brand: We have not inspected the Hallway. I’ll go check it out.\n",
   },
   {
     id: 15,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Doctor",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756229/virtual_games/characters/actions/cooperKill_i0w3x3.gif",
+      width: 100,
+      height: 100,
     },
-    dialog:
-      "Doctor: AAAAAAAAAAHHHH! SOMEONE HELPPPPPPP!!!\n",
+    dialog: "Doctor: AAAAAAAAAAHHHH! SOMEONE HELPPPPPPP!!!\n",
   },
   {
     id: 16,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Mann",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/mannMoving_el5wuc.gif",
+      width: 100,
+      height: 100,
     },
-    dialog:
-      "Mann: Where is that scream coming from?\n",
+    dialog: "Mann: Where is that scream coming from?\n",
   },
   {
     id: 17,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Carmen",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756674/virtual_games/characters/movement/camenMoving_ij1zy2.gif",
+      width: 100,
+      height: 100,
     },
-    dialog:
-      "Carmen: The storage room! Let’s hurry!\n",
+    dialog: "Carmen: The storage room! Let’s hurry!\n",
   },
   {
     id: 18,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Seraphine",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/seraphineMoving_axmd0i.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Seraphine: The doctor is dead! Who could have killed her? It should be Brand or Doyle, or both!\n",
@@ -1200,10 +1194,10 @@ export const transitions: Transition[] = [
   {
     id: 19,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Doyle",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/doyleMoving_rdhhi2.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Doyle: I was at the captain’s room the whole time. It should be Brand!\n",
@@ -1211,10 +1205,10 @@ export const transitions: Transition[] = [
   {
     id: 20,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Brand",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/brandMoving_usbnrh.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Brand: I heard the scream from the hallway and came here immediately!\n",
@@ -1222,10 +1216,10 @@ export const transitions: Transition[] = [
   {
     id: 21,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Mann",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/mannMoving_el5wuc.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Mann: Calm down everybody! We should look for clues in the storage room instead of blindly accusing!\n",
@@ -1233,10 +1227,10 @@ export const transitions: Transition[] = [
   {
     id: 22,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Seraphine",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/seraphineMoving_axmd0i.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Seraphine: Look at this! The doctor took a selfie with the Tesseract!\n",
@@ -1244,32 +1238,30 @@ export const transitions: Transition[] = [
   {
     id: 23,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Romily",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/romillyMoving_qkypcz.gif",
+      width: 100,
+      height: 100,
     },
-    dialog:
-      "Romily: What?!! The Tesseract? So she stole it?\n",
+    dialog: "Romily: What?!! The Tesseract? So she stole it?\n",
   },
   {
     id: 24,
     image: {
-      alt: "stone",
+      alt: "Narrator",
       src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      width: 100,
+      height: 100,
     },
-    dialog:
-      "Someone must have also stolen it from her.\n",
+    dialog: "Someone must have also stolen it from her.\n",
   },
   {
     id: 25,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Brand",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/brandMoving_usbnrh.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Brand: Let’s spill out all the facts we know and figure this out.\n",

@@ -46,10 +46,7 @@ export default function Transitions() {
     if (user) {
       const updatedTransition = await updateTransition(user.id);
       if (updatedTransition) {
-        setText(updatedTransition.dialog);
-        setImage(updatedTransition.image);
-
-        switch (updatedTransition?.id) {
+        switch (updatedTransition.id) {
           // 0 - 2 Intro [1]
 
           // 3 princess room (stolen tessaract) [2]
@@ -90,6 +87,10 @@ export default function Transitions() {
           case 13:
             router.push("/guess");
             break;
+
+          default:
+            setText(updatedTransition.dialog);
+            setImage(updatedTransition.image);
         }
         setLoading(false);
       }
@@ -114,20 +115,22 @@ export default function Transitions() {
           <Loading />
         ) : (
           <div>
-            <Text
-              color="black"
-              backgroundColor="whiteAlpha.700"
-              rounded={15}
-              m={5}
-              fontWeight={700}
-              w="90vw"
-              px="1rem"
-              py="0.5rem"
-              fontSize={14}
-              textAlign="justify"
-            >
-              {text}
-            </Text>
+            {text && (
+              <Text
+                color="black"
+                backgroundColor="whiteAlpha.700"
+                rounded={15}
+                m={5}
+                fontWeight={700}
+                w="90vw"
+                px="1rem"
+                py="0.5rem"
+                fontSize={14}
+                textAlign="justify"
+              >
+                {text}
+              </Text>
+            )}
             <Box
               justifyContent="center"
               display="flex"
@@ -136,19 +139,21 @@ export default function Transitions() {
             >
               <TransitionImage />
             </Box>
-            <Box
-              display="flex"
-              textColor="white"
-              bg="black"
-              justifyContent="center"
-              m="auto"
-              py={1}
-              w="45vw"
-              fontWeight={900}
-              rounded={100}
-            >
-              {image?.alt}
-            </Box>
+            {image && (
+              <Box
+                display="flex"
+                textColor="white"
+                bg="black"
+                justifyContent="center"
+                m="auto"
+                py={1}
+                w="45vw"
+                fontWeight={900}
+                rounded={100}
+              >
+                {image?.alt}
+              </Box>
+            )}
           </div>
         )}
         <Button

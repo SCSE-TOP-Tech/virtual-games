@@ -10,7 +10,7 @@ export default function RoomLayout({ children }) {
         display="flex"
         bg="lightgreen"
         justifyContent="center"
-        w="100%"
+        w="100vw"
         h={800}
       >
         {children}
