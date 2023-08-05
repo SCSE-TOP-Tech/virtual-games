@@ -1,10 +1,8 @@
 "use client";
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("user")) || null,
-  loading: false,
-  error: null,
+  user: null,
 };
 
 export const AuthContext = createContext(INITIAL_STATE);
@@ -12,15 +10,15 @@ export const AuthContext = createContext(INITIAL_STATE);
 const AuthReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_START":
-      return { user: null, loading: true, error: null };
+      return { user: null };
     case "LOGIN_SUCCESS":
-      return { user: action.payload, loading: false, error: null };
+      return { user: action.payload };
 
     case "LOGIN_FAILURE":
-      return { user: null, loading: false, error: action.payload };
+      return { user: null };
 
     case "LOGOUT":
-      return { user: null, loading: false, error: null };
+      return { user: null };
     default:
       return state;
   }

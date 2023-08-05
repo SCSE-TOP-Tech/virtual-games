@@ -57,16 +57,12 @@ export default function Login() {
   const formik = useFormik({
     initialValues: {
       username: "",
-      email: "",
       password: "",
     },
     onSubmit: handleSubmit,
     validationSchema: yup.object({
       username: yup.string().trim().required("Name is required"),
-      email: yup
-        .string()
-        .required("Please enter your email")
-        .email("Invalid email!"),
+
       password: yup
         .string()
         .min(8, "Password must contain at least 8 characters!")
@@ -100,6 +96,8 @@ export default function Login() {
             justifyContent="center"
             fontSize="lg"
             textColor="gray.600"
+            fontFamily={"sans-serif"}
+            fontWeight="extrabold"
           >
             Welcome To Our Virtual Game
           </Heading>
@@ -108,6 +106,7 @@ export default function Login() {
               size="lg"
               backgroundColor="lightblue"
               borderRadius="2xl"
+              fontFamily="sans-serif"
             >
               <Text fontWeight={550} w="7rem" pt={1} m={2}>
                 Username
@@ -161,34 +160,14 @@ export default function Login() {
           )}
 
           <Box display="flex" borderRadius="2xl" backgroundColor="lightblue">
-            <InputGroup
-              size="lg"
-              backgroundColor="lightblue"
-              borderRadius="2xl"
+            <Text
+              w="7rem"
+              fontWeight={550}
+              pt={1}
+              px={1}
+              m={2}
+              fontFamily="sans-serif"
             >
-              <Text fontWeight={550} pt={1} m={2} w="7rem">
-                Email
-              </Text>
-              <Input
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                onFocus={() => setDisplayWarning(false)}
-                required
-                id="email"
-                type="text"
-                fontSize="sm"
-              />
-            </InputGroup>
-          </Box>
-          {displayWarning && formik.touched.email && (
-            <Text color="red" alignSelf="center" fontWeight="bold">
-              {formik.errors.email}
-            </Text>
-          )}
-
-          <Box display="flex" borderRadius="2xl" backgroundColor="lightblue">
-            <Text w="7rem" fontWeight={550} pt={1} px={1} m={2}>
               Password
             </Text>
             <InputGroup size="lg">
