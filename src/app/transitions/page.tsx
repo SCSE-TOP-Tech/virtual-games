@@ -10,7 +10,6 @@ import fetchTransition from "@/resources/prisma/transitions/fetchTransition";
 import { User } from "~/data/contracts";
 import { Transition } from "~/data/contracts/interfaces/transition";
 import updateTransition from "@/resources/prisma/transitions/updateTransition";
-import { transitions } from "~/data/data";
 
 interface image {
   alt: string;
