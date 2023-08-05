@@ -115,9 +115,9 @@ export default function PrincessRoom() {
               <Hint>
                 <ItemImage
                   onClick={async () => {
+                    router.push("/transitions");
                     await updateCollected(room.clues.safe.id);
                     await changeState(user);
-                    router.push("/transitions");
                   }}
                   item={room.clues.safe}
                   className={styles.item}

@@ -6,7 +6,13 @@ export default function TransitionLayout({ children }) {
   return (
     <section>
       <Fonts />
-      <Box display="flex" bg="black" justifyContent="center" w="100%" h={800}>
+      <Box
+        display="flex"
+        bg="transparent"
+        justifyContent="center"
+        w="100%"
+        h={800}
+      >
         {children}
       </Box>
     </section>

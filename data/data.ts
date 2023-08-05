@@ -978,7 +978,7 @@ export const transitions: Transition[] = [
   {
     id: 0,
     image: {
-      alt: "knight",
+      alt: "Introduction",
       src: "/intro/knight.jpg",
       width: 200,
       height: 200,
@@ -994,7 +994,7 @@ export const transitions: Transition[] = [
   {
     id: 1,
     image: {
-      alt: "princess",
+      alt: "Introduction",
       src: "/intro/princess.jpg",
       width: 100,
       height: 100,
@@ -1007,7 +1007,7 @@ export const transitions: Transition[] = [
   {
     id: 2,
     image: {
-      alt: "stone",
+      alt: "Introduction",
       src: "/intro/stone.jpg",
       width: 300,
       height: 300,
@@ -1024,7 +1024,7 @@ export const transitions: Transition[] = [
   {
     id: 3,
     image: {
-      alt: "stone",
+      alt: "Power Outage",
       src: "/intro/stone.jpg",
       width: 300,
       height: 300,
@@ -1046,10 +1046,10 @@ export const transitions: Transition[] = [
   {
     id: 5,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Doyle",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/doyleMoving_rdhhi2.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Doyle: Something is not right here, we should split up in groups to search the spaceship. I’ll go with Romily to investigate the Princess room.\n",
@@ -1057,10 +1057,10 @@ export const transitions: Transition[] = [
   {
     id: 6,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Carmen",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756674/virtual_games/characters/movement/camenMoving_ij1zy2.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Carmen: I remember that earlier the doctor entered Princess White’s room to give her medicine. She holds the master key to all rooms as well. I’ll go with Seraphine and Mann to the clinic to question her.\n",
@@ -1068,10 +1068,10 @@ export const transitions: Transition[] = [
   {
     id: 7,
     image: {
-      alt: "stone",
-      src: "/intro/stone.jpg",
-      width: 300,
-      height: 300,
+      alt: "Brand",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756675/virtual_games/characters/movement/brandMoving_usbnrh.gif",
+      width: 100,
+      height: 100,
     },
     dialog:
       "Brand: I’ll go with Cooper to check the control room. We can inspect the CCTV footage to see what really happened.\n",

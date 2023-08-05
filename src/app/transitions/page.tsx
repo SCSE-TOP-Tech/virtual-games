@@ -8,9 +8,9 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
 import fetchTransition from "@/resources/prisma/transitions/fetchTransition";
 import { User } from "~/data/contracts";
-import { Transition } from "~/data/contracts/interfaces/transition";
 import updateTransition from "@/resources/prisma/transitions/updateTransition";
 import TransitionLayout from "@/app/rooms/layout";
+import Loading from "@/app/transitions/loading";
 
 interface image {
   alt: string;
@@ -24,6 +24,7 @@ export default function Transitions() {
   const [user, setUser] = useState<User>();
   const [image, setImage] = useState<image>();
   const [text, setText] = useState<string>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -41,11 +42,14 @@ export default function Transitions() {
   }, []);
 
   const updateTransitionStage = async () => {
+    setLoading(true);
     if (user) {
-      const updatedTransition: Transition | undefined | null =
-        await updateTransition(user.id);
+      const updatedTransition = await updateTransition(user.id);
       if (updatedTransition) {
-        switch (updatedTransition.id) {
+        setText(updatedTransition.dialog);
+        setImage(updatedTransition.image);
+
+        switch (updatedTransition?.id) {
           // 0 - 2 Intro [1]
 
           // 3 princess room (stolen tessaract) [2]
@@ -61,34 +65,33 @@ export default function Transitions() {
             break;
 
           // 6 captain room (master key missing) *transition when all items collected [4]
-          case 6:
+          case 9:
             router.push("/rooms/captainroom");
             break;
 
           // 7 carmen room (found the key)
 
           // 8 carmen room (scream from storage room) [5]
-          case 8:
-            router.push("/rooms/carmenroom");
-            break;
-
-          // 9 storage room (dead doctor)
-          case 9:
-            router.push("/rooms/carmenroom");
-            break;
-
-          // 7 carmen room (found the key)
           case 10:
             router.push("/rooms/carmenroom");
             break;
 
-          // guess
+          // 9 storage room (dead doctor)
           case 11:
+            router.push("/rooms/carmenroom");
+            break;
+
+          // 7 carmen room (found the key)
+          case 12:
+            router.push("/rooms/carmenroom");
+            break;
+
+          // guess
+          case 13:
             router.push("/guess");
             break;
         }
-        setText(updatedTransition.dialog);
-        setImage(updatedTransition.image);
+        setLoading(false);
       }
     }
   };
@@ -106,21 +109,48 @@ export default function Transitions() {
 
   return (
     <TransitionLayout>
-      <Box transition="opacity ease-in" mt={10}>
-        <Text
-          color="black"
-          fontWeight={700}
-          w="90vw"
-          px="1rem"
-          py="0.5rem"
-          fontSize="md"
-          textAlign="justify"
-        >
-          {text}
-        </Text>
-        <Box justifyContent="center" display="flex" bg="black">
-          <TransitionImage />
-        </Box>
+      <Box transition="opacity ease-in" mt={5}>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div>
+            <Text
+              color="black"
+              backgroundColor="whiteAlpha.700"
+              rounded={15}
+              m={5}
+              fontWeight={700}
+              w="90vw"
+              px="1rem"
+              py="0.5rem"
+              fontSize={14}
+              textAlign="justify"
+            >
+              {text}
+            </Text>
+            <Box
+              justifyContent="center"
+              display="flex"
+              bg="transparent"
+              my={10}
+            >
+              <TransitionImage />
+            </Box>
+            <Box
+              display="flex"
+              textColor="white"
+              bg="black"
+              justifyContent="center"
+              m="auto"
+              py={1}
+              w="45vw"
+              fontWeight={900}
+              rounded={100}
+            >
+              {image?.alt}
+            </Box>
+          </div>
+        )}
         <Button
           display="flex"
           alignItems="center"
