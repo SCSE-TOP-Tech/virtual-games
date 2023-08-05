@@ -16,8 +16,10 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import { useRouter } from "next/navigation";
 
 export default function PrincessRoom() {
+  const router = useRouter();
   const [inspect, showMap] = useState(false);
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
@@ -34,30 +36,26 @@ export default function PrincessRoom() {
         setRoom(fetchRoom("princess_white", true));
         if (room && user) {
           setAvailableItems(await getAvailableItems(room.room_id));
-          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+          setCollectedItems(await getCollectedItems(user.id, room.room_id));
         }
       }
     }
     fetchData();
   }, []); // To include room if necessary (will constantly refresh)
 
-  const changeState = async () => {
-    if (user.stateId !== 1) {
-      const endTime = await endTimer(user.userId, user.stateId);
+  const changeState = async (user) => {
+    if (user.stateID !== 1) {
+      const endTime = await endTimer(user.id, user.stateID);
     }
-    setUser(await updateState(user.userId));
-    const startTime = await startTimer(user.userId, user.stateId);
+    setUser(await updateState(user.id));
+    const startTime = await startTimer(user.id, user.stateID);
     if (startTime !== 200) {
       console.log("Failed to Start Timer");
     }
   };
 
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(
-        user.userId,
-        name,
-        room.room_id
-    );
+    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
     console.log(updatedItem);
   };
 
@@ -116,7 +114,11 @@ export default function PrincessRoom() {
               {/* safe */}
               <Hint>
                 <ItemImage
-                  onClick={() => updateCollected(room.clues.safe.id)}
+                  onClick={async () => {
+                    await updateCollected(room.clues.safe.id);
+                    await changeState(user);
+                    router.push("/transitions");
+                  }}
                   item={room.clues.safe}
                   className={styles.item}
                   width={[
@@ -190,8 +192,8 @@ export default function PrincessRoom() {
               <Hint>
                 <ItemImage
                   onClick={() => {
-                    toggleMap()
-                    updateCollected(room.clues.map.id)
+                    toggleMap();
+                    updateCollected(room.clues.map.id);
                   }}
                   item={room.clues.map}
                   className={styles.item}

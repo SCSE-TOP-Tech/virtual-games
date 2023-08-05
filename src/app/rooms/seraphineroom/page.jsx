@@ -39,23 +39,19 @@ export default function SeraphineRoom() {
     fetchData();
   }, []); // To include room if necessary (will constantly refresh)
 
-  const changeState = async () => {
-    if (user.stateId !== 1) {
-      const endTime = await endTimer(user.userId, user.stateId);
+  const changeState = async (user) => {
+    if (user.stateID !== 1) {
+      const endTime = await endTimer(user.id, user.stateID);
     }
-    setUser(await updateState(user.userId));
-    const startTime = await startTimer(user.userId, user.stateId);
+    setUser(await updateState(user.id));
+    const startTime = await startTimer(user.id, user.stateID);
     if (startTime !== 200) {
       console.log("Failed to Start Timer");
     }
   };
 
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(
-        user.userId,
-        name,
-        room.room_id
-    );
+    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
     console.log(updatedItem);
   };
 
@@ -77,7 +73,9 @@ export default function SeraphineRoom() {
               {/* teddybear */}
               <Hint>
                 <ItemImage
-                  onClick={() => updateCollected(room.dummy_objects.teddybear.id)}
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.teddybear.id)
+                  }
                   item={room.dummy_objects.teddybear}
                   className={styles.item}
                   width="3rem"
@@ -109,7 +107,9 @@ export default function SeraphineRoom() {
               {/* Jewelry box */}
               <Hint>
                 <ItemImage
-                  onClick={() => updateCollected(room.dummy_objects.jewelrybox.id)}
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.jewelrybox.id)
+                  }
                   item={room.dummy_objects.jewelrybox}
                   className={styles.item}
                   width="4rem"

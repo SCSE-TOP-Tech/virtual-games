@@ -494,7 +494,7 @@ export const characters: Character[] = [
           width: 276,
           height: 210,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684160196/virtual_games/rooms/princesswhite/empty-safe_zzcxjz.png",
-          state: 2,
+          state: 1,
         },
       },
       dummy_objects: {
@@ -1030,13 +1030,51 @@ export const transitions: Transition[] = [
       height: 300,
     },
     dialog:
-      "Concerned for the safety of his daughter, King White entrusts the\n" +
-      "          Knight with a crucial task. The space stone must be kept secure, yet\n" +
-      "          remain in close proximity to the Princess. Thus, the Knight is\n" +
-      "          commanded to place the tesseract within a safe stored in Princess\n" +
-      "          White's room. In doing so, the Knight is able to protect both the\n" +
-      "          Princess and the Tesseract. However, little do they know, the stage is\n" +
-      "          set for an epic adventure to unfold.",
+      "Later that evening, the spaceship suddenly lost power and all rooms were locked. Afraid of an attack from an outside ship, she asked each hero to take a look at every room around the ship to look for any anomalies. All heroes found no anomalies in the rooms they searched, and the ship suddenly went back online. It was a false alarm. \n",
+  },
+  {
+    id: 4,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Late at night, the Princess gathered all the guests in panic as the knight had been killed and the tesseract had been stolen. No one had left up to that time, so she suspected it was definitely one of them. She asked the heroes to investigate. \n",
+  },
+  {
+    id: 5,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Doyle: Something is not right here, we should split up in groups to search the spaceship. I’ll go with Romily to investigate the Princess room.\n",
+  },
+  {
+    id: 6,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Carmen: I remember that earlier the doctor entered Princess White’s room to give her medicine. She holds the master key to all rooms as well. I’ll go with Seraphine and Mann to the clinic to question her.\n",
+  },
+  {
+    id: 7,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Brand: I’ll go with Cooper to check the control room. We can inspect the CCTV footage to see what really happened.\n",
   },
 ];
 

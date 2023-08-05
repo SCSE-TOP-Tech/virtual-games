@@ -42,25 +42,22 @@ export default function StorageRoom() {
     fetchData();
   }, []); // To include room if necessary (will constantly refresh)
 
-  const changeState = async () => {
-    if (user.stateId !== 1) {
-      const endTime = await endTimer(user.userId, user.stateId);
+  const changeState = async (user) => {
+    if (user.stateID !== 1) {
+      const endTime = await endTimer(user.id, user.stateID);
     }
-    setUser(await updateState(user.userId));
-    const startTime = await startTimer(user.userId, user.stateId);
+    setUser(await updateState(user.id));
+    const startTime = await startTimer(user.id, user.stateID);
     if (startTime !== 200) {
       console.log("Failed to Start Timer");
     }
   };
 
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(
-        user.userId,
-        name,
-        room.room_id
-    );
+    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
     console.log(updatedItem);
   };
+
   const handleToggle = () => {
     //removes cloth and shows tesseract
     setClicked(true);
@@ -119,7 +116,9 @@ export default function StorageRoom() {
 
                 {/* screwdriver (temp viewing) */}
                 <ItemImage
-                  onClick={() => updateCollected(room.dummy_objects.screwdriver.id)}
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.screwdriver.id)
+                  }
                   item={room.dummy_objects.screwdriver}
                   style={{
                     position: "relative",
@@ -133,7 +132,9 @@ export default function StorageRoom() {
 
                 {/* mop and bucket (temp viewing) */}
                 <ItemImage
-                  onClick={() => updateCollected(room.dummy_objects.mopbucket.id)}
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.mopbucket.id)
+                  }
                   item={room.dummy_objects.mopbucket}
                   style={{
                     position: "relative",
@@ -162,8 +163,8 @@ export default function StorageRoom() {
                 {/* doctor's galaxy phone (temp viewing) */}
                 <ItemImage
                   onClick={() => {
-                    togglePhone()
-                    updateCollected(room.clues.doctorphone.id)
+                    togglePhone();
+                    updateCollected(room.clues.doctorphone.id);
                   }}
                   item={room.clues.doctorphone}
                   style={{
@@ -181,8 +182,8 @@ export default function StorageRoom() {
                   {!isClicked && (
                     <ItemImage
                       onClick={() => {
-                        handleToggle()
-                        updateCollected(room.clues.cloth.id)
+                        handleToggle();
+                        updateCollected(room.clues.cloth.id);
                       }}
                       item={room.clues.cloth}
                       style={{

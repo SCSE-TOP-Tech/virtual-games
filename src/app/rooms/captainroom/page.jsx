@@ -15,8 +15,10 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import { useRouter } from "next/navigation";
 
 export default function CaptainRoom() {
+  const router = useRouter();
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
@@ -32,32 +34,52 @@ export default function CaptainRoom() {
         setRoom(fetchRoom("captain", false));
         if (room && user) {
           setAvailableItems(await getAvailableItems(room.room_id));
-          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+          setCollectedItems(
+            await getCollectedItems(currentUser.userId, room.room_id)
+          );
         }
       }
     }
     fetchData();
   }, []); // To include room if necessary (will constantly refresh)
 
-  const changeState = async () => {
-    if (user.stateId !== 1) {
-      const endTime = await endTimer(user.userId, user.stateId);
+  const checkVisibility = (itemName) => {
+    if (availableItems && collectedItems) {
+      const available =
+        availableItems.find((item) => item.itemName === itemName).stateID <=
+        user.stateID;
+      console.log(available);
+
+      const collected = collectedItems.find(
+        (item) => item.itemName === itemName
+      ).collected;
+      console.log(collected);
+
+      return available && !collected;
     }
-    setUser(await updateState(user.userId));
-    const startTime = await startTimer(user.userId, user.stateId);
+    return false;
+  };
+  const changeState = async (user) => {
+    if (user.stateID !== 1) {
+      const endTime = await endTimer(user.id, user.stateID);
+    }
+    setUser(await updateState(user.id));
+    const startTime = await startTimer(user.id, user.stateID);
     if (startTime !== 200) {
       console.log("Failed to Start Timer");
     }
   };
 
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(
-        user.userId,
-        name,
-        room.room_id
-    );
+    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
     console.log(updatedItem);
   };
+
+  if (availableItems) {
+    console.log(
+      availableItems.find((item) => item.itemName === "music_albums")
+    );
+  }
 
   return (
     <RoomLayout>
@@ -76,36 +98,38 @@ export default function CaptainRoom() {
             <ItemImage height="80%" item={room.background} />
             {/* items container */}
             <Box position="absolute" zIndex="1">
-              <Hint>
-                <ItemImage
-                  onClick={() => updateCollected(room.clues.music_albums.id)}
-                  item={room.clues.music_albums}
-                  className={styles.item}
-                  width="4rem"
-                  filter="auto"
-                  brightness="50%"
-                  right={SizeFormatter(
-                    "5rem", //iphone se
-                    "5rem", //iphone xr
-                    "5rem", //iphone 12pro
-                    "5rem", //pixel 5
-                    "5rem", //samsung galaxy s8+
-                    "5rem", //samsung galaxy s20 ultra
-                    "7rem", //ipad air
-                    "7rem" //ipad mini
-                  )}
-                  top={SizeFormatter(
-                    "18rem", //iphone se
-                    "18rem", //iphone xr
-                    "18rem", //iphone 12pro
-                    "18rem", //pixel 5
-                    "18rem", //samsung galaxy s8+
-                    "18rem", //samsung galaxy s20 ultra
-                    "18rem", //ipad air
-                    "18rem" //ipad mini
-                  )}
-                />
-              </Hint>
+              {checkVisibility("music_albums") && (
+                <Hint>
+                  <ItemImage
+                    onClick={() => updateCollected(room.clues.music_albums.id)}
+                    item={room.clues.music_albums}
+                    className={styles.item}
+                    width="4rem"
+                    filter="auto"
+                    brightness="50%"
+                    right={SizeFormatter(
+                      "5rem", //iphone se
+                      "5rem", //iphone xr
+                      "5rem", //iphone 12pro
+                      "5rem", //pixel 5
+                      "5rem", //samsung galaxy s8+
+                      "5rem", //samsung galaxy s20 ultra
+                      "7rem", //ipad air
+                      "7rem" //ipad mini
+                    )}
+                    top={SizeFormatter(
+                      "18rem", //iphone se
+                      "18rem", //iphone xr
+                      "18rem", //iphone 12pro
+                      "18rem", //pixel 5
+                      "18rem", //samsung galaxy s8+
+                      "18rem", //samsung galaxy s20 ultra
+                      "18rem", //ipad air
+                      "18rem" //ipad mini
+                    )}
+                  />
+                </Hint>
+              )}
 
               {/* Lipstick */}
               <Hint>

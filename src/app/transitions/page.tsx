@@ -10,6 +10,7 @@ import fetchTransition from "@/resources/prisma/transitions/fetchTransition";
 import { User } from "~/data/contracts";
 import { Transition } from "~/data/contracts/interfaces/transition";
 import updateTransition from "@/resources/prisma/transitions/updateTransition";
+import TransitionLayout from "@/app/rooms/layout";
 
 interface image {
   alt: string;
@@ -45,11 +46,45 @@ export default function Transitions() {
         await updateTransition(user.id);
       if (updatedTransition) {
         switch (updatedTransition.id) {
-          case 3:
+          // 0 - 2 Intro [1]
+
+          // 3 princess room (stolen tessaract) [2]
           case 4:
-          case 5:
+            router.push("/rooms/princessroom");
+            break;
+
+          // 4 - 7 Split groups
+
+          // 7 clinic (captain master key) [3]
+          case 8:
+            router.push("/rooms/princessroom");
+            break;
+
+          // 6 captain room (master key missing) *transition when all items collected [4]
           case 6:
-            router.push("/rooms/hallway");
+            router.push("/rooms/captainroom");
+            break;
+
+          // 7 carmen room (found the key)
+
+          // 8 carmen room (scream from storage room) [5]
+          case 8:
+            router.push("/rooms/carmenroom");
+            break;
+
+          // 9 storage room (dead doctor)
+          case 9:
+            router.push("/rooms/carmenroom");
+            break;
+
+          // 7 carmen room (found the key)
+          case 10:
+            router.push("/rooms/carmenroom");
+            break;
+
+          // guess
+          case 11:
+            router.push("/guess");
             break;
         }
         setText(updatedTransition.dialog);
@@ -70,15 +105,17 @@ export default function Transitions() {
   };
 
   return (
-    <Box
-      bgColor="black"
-      w="100%"
-      h={800}
-      justifyContent="center"
-      display="flex"
-    >
-      <Box transition="opacity ease-in">
-        <Text color="white" w="60vw" px="1rem" py="0.5rem" fontSize="md">
+    <TransitionLayout>
+      <Box transition="opacity ease-in" mt={10}>
+        <Text
+          color="black"
+          fontWeight={700}
+          w="90vw"
+          px="1rem"
+          py="0.5rem"
+          fontSize="md"
+          textAlign="justify"
+        >
           {text}
         </Text>
         <Box justifyContent="center" display="flex" bg="black">
@@ -86,12 +123,17 @@ export default function Transitions() {
         </Box>
         <Button
           display="flex"
+          alignItems="center"
+          justifyContent="center"
+          width="50%"
+          mt={10}
+          mx="auto"
           rightIcon={<ChevronRightIcon />}
           onClick={updateTransitionStage}
         >
           Next
         </Button>
       </Box>
-    </Box>
+    </TransitionLayout>
   );
 }
