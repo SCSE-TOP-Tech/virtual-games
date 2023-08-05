@@ -16,6 +16,7 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import { useRouter } from "next/navigation";
 
 export default function StorageRoom() {
   const [isClicked, setClicked] = useState(false);
@@ -24,7 +25,7 @@ export default function StorageRoom() {
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
-
+  const router = useRouter();
   // Initial Load
   useEffect(() => {
     async function fetchData() {
@@ -68,6 +69,13 @@ export default function StorageRoom() {
     viewPhone(!isPhoneOpen);
   };
 
+  const closePhone = async () => {
+    togglePhone();
+    router.push("/transitions");
+    await updateCollected(room.clues.doctorphone.id);
+    await changeState(user);
+  }
+
   return (
     <RoomLayout>
       {room ? (
@@ -82,13 +90,18 @@ export default function StorageRoom() {
               h="90%"
               width="100%"
             >
-              {isPhoneOpen && <Phone handler={togglePhone} />}
+              {isPhoneOpen && <Phone handler={closePhone} />}
 
               {/* background (temporary viewing) */}
               <ItemImage item={room.background} />
               <Box position="absolute" zIndex="1">
                 {/* dead doctor (temp viewing) */}
                 <ItemImage
+                  onClick={async () => {
+                    router.push("/transitions");
+                    await updateCollected(room.npc.dead_doctor.id);
+                    await changeState(user);
+                  }}
                   item={room.npc.dead_doctor}
                   style={{
                     position: "relative",
@@ -162,10 +175,7 @@ export default function StorageRoom() {
 
                 {/* doctor's galaxy phone (temp viewing) */}
                 <ItemImage
-                  onClick={() => {
-                    togglePhone();
-                    updateCollected(room.clues.doctorphone.id);
-                  }}
+                  onClick={togglePhone}
                   item={room.clues.doctorphone}
                   style={{
                     position: "relative",

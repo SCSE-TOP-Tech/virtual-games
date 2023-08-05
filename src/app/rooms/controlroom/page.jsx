@@ -3,7 +3,7 @@ import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
-import { CldImage, ItemImage } from "@/app/components/ImageComp";
+import { CldImage, ItemImage, SizeFormatter } from "@/app/components/ImageComp";
 import Navbar from "../../components/Navbar";
 import { fetchUser } from "@/resources/prisma/fetchUser";
 import RoomLayout from "@/app/rooms/layout";
@@ -14,12 +14,14 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import { useRouter } from "next/navigation";
 
 export default function ControlRoom() {
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
+  const router = useRouter();
 
   // Initial Load
   useEffect(() => {
@@ -71,16 +73,46 @@ export default function ControlRoom() {
             {/* items */}
             <Box position="absolute" zIndex="1">
               {/* security computer (temp viewing) */}
-              <CldImage
-                item={room.dummy_objects.computer}
-                style={{
-                  position: "relative",
-                  right: "-0.1rem",
-                  top: "14.1rem",
-                  width: "3.3rem",
-                  margin: "0",
+              <ItemImage
+                onClick={async () => {
+                  router.push("/transitions");
+                  await updateCollected(room.dummy_objects.computer.id);
+                  await changeState(user);
                 }}
+                item={room.dummy_objects.computer}
                 className={styles.item}
+                width={SizeFormatter(
+                  "3rem", //iphone se
+                  "3rem", //iphone xr
+                  "3rem", //iphone 12pro
+                  "3rem", //pixel 5
+                  "3rem", //samsung galaxy s8+
+                  "3rem", //samsung galaxy s20 ultra
+                  "3.4rem", //ipad air
+                  "3.4rem" //ipad mini
+                )}
+                filter="auto"
+                brightness="100%"
+                left={SizeFormatter(
+                  "0.13rem", //iphone se
+                  "0.13rem", //iphone xr
+                  "0.13rem", //iphone 12pro
+                  "0.13rem", //pixel 5
+                  "0.13rem", //samsung galaxy s8+
+                  "0.13rem", //samsung galaxy s20 ultra
+                  "0.13rem", //ipad air
+                  "0.13rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "11.5rem",
+                  "13rem",
+                  "12rem",
+                  "12.3rem",
+                  "11.3rem",
+                  "13rem",
+                  "15.1rem",
+                  "15.1rem"
+                )}
               />
             </Box>
           </Box>

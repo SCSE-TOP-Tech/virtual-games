@@ -15,8 +15,10 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import { useRouter } from "next/navigation";
 
 export default async function CarmenRoom() {
+  const router = useRouter();
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
@@ -103,7 +105,11 @@ export default async function CarmenRoom() {
               {/* master key */}
               <Hint>
                 <ItemImage
-                  onClick={() => updateCollected(room.clues.master_key.id)}
+                  onClick={async () => {
+                    router.push("/transitions");
+                    await updateCollected(room.clues.master_key.id);
+                    await changeState(user);
+                  }}
                   item={room.clues.master_key}
                   className={styles.item}
                   width="2rem"

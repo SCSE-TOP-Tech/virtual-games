@@ -228,7 +228,11 @@ export default function CaptainRoom() {
               {/* blood letter */}
               <Hint>
                 <ItemImage
-                  onClick={() => updateCollected(room.clues.blood_letter.id)}
+                  onClick={async () => {
+                    router.push("/transitions");
+                    await updateCollected(room.clues.blood_letter.id);
+                    await changeState(user);
+                  }}
                   item={room.clues.blood_letter}
                   className={styles.item}
                   width="10rem"
