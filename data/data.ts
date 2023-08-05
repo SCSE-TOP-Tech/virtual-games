@@ -1076,6 +1076,204 @@ export const transitions: Transition[] = [
     dialog:
       "Brand: I’ll go with Cooper to check the control room. We can inspect the CCTV footage to see what really happened.\n",
   },
+  {
+    id: 8,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Mann: Who else might have carried a master key?\n",
+  },
+  {
+    id: 9,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Seraphine: Oh, the captain! We have not seen the captain of this ship since we got here. Let’s go investigate his room.\n",
+  },
+  {
+    id: 10,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Doyle: Oh my, the captain is dead! CW? It looks like he was trying to write out the killer’s name.\n",
+  },
+  {
+    id: 11,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Cooper: This is strange, the captain’s master key is missing!\n",
+  },
+  {
+    id: 12,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Romily: The killer could definitely be any of us. I suggest we inspect all of our rooms.\n",
+  },
+  {
+    id: 13,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Doyle: Sounds good, I’ll check for more clues in the captain's room.\n",
+  },
+  {
+    id: 14,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Brand: We have not inspected the Hallway. I’ll go check it out.\n",
+  },
+  {
+    id: 15,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Doctor: AAAAAAAAAAHHHH! SOMEONE HELPPPPPPP!!!\n",
+  },
+  {
+    id: 16,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Mann: Where is that scream coming from?\n",
+  },
+  {
+    id: 17,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Carmen: The storage room! Let’s hurry!\n",
+  },
+  {
+    id: 18,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Seraphine: The doctor is dead! Who could have killed her? It should be Brand or Doyle, or both!\n",
+  },
+  {
+    id: 19,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Doyle: I was at the captain’s room the whole time. It should be Brand!\n",
+  },
+  {
+    id: 20,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Brand: I heard the scream from the hallway and came here immediately!\n",
+  },
+  {
+    id: 21,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Mann: Calm down everybody! We should look for clues in the storage room instead of blindly accusing!\n",
+  },
+  {
+    id: 22,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Seraphine: Look at this! The doctor took a selfie with the Tesseract!\n",
+  },
+  {
+    id: 23,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Romily: What?!! The Tesseract? So she stole it?\n",
+  },
+  {
+    id: 24,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Someone must have also stolen it from her.\n",
+  },
+  {
+    id: 25,
+    image: {
+      alt: "stone",
+      src: "/intro/stone.jpg",
+      width: 300,
+      height: 300,
+    },
+    dialog:
+      "Brand: Let’s spill out all the facts we know and figure this out.\n",
+  },
 ];
 
 export const states: State[] = [
