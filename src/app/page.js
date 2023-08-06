@@ -20,20 +20,10 @@ export default async function Home() {
         margin={0}
       >
         <Box>
-          <Text
-            fontSize="xl"
-            color="white"
-            align="center"
-            fontFamily="serif"
-          >
+          <Text fontSize="xl" color="white" align="center" fontFamily="serif">
             SCSE TOP 23/24 Presents
           </Text>
-          <Text
-            fontSize="5xl"
-            color="white"
-            align="center"
-            fontFamily="serif"
-          >
+          <Text fontSize="5xl" color="white" align="center" fontFamily="serif">
             Space Odessey
           </Text>
           <Box
@@ -42,7 +32,9 @@ export default async function Home() {
             alignItems="center"
             minH="40vh"
           >
-            {/* <Button colorScheme="blue" onClick={() => router.push("/signup")}>Sign Up</Button> */}
+            <Button colorScheme="blue" onClick={() => router.push("/signup")}>
+              Sign Up
+            </Button>
             <Button
               colorScheme="facebook"
               fontSize="3xl"

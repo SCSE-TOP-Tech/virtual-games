@@ -60,7 +60,7 @@ model VerificationToken {
 model Timer {
   timerID   Int      @id @default(autoincrement())
   user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique
+  userId    String
   state     State    @relation(fields: [stateID], references: [stateID])
   stateID   Int
   startTime DateTime @default(now())

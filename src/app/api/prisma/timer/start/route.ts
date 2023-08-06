@@ -13,7 +13,7 @@ export async function POST(req: Request) {
           connect: { id: data.userId },
         },
         state: {
-          connect: { stateID: data.stateId },
+          connect: { stateID: data.stateId + 1 },
         },
         endTime: new Date(0),
         timeTaken: 0.0,

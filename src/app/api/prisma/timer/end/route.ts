@@ -1,9 +1,9 @@
 import { prisma } from "~/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function PATCH(req: Request) {
   try {
-    console.log("Successful POST to End Timer");
+    console.log("Successful PATCH to End Timer");
     const data: { userId: string; stateId: number } = await req.json();
 
     // New User and Account
