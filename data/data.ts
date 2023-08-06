@@ -420,9 +420,9 @@ export const characters: Character[] = [
             "Message to doctor at 930pm:\n" +
             "Hey, I am feeling unwell but I can’t find you at your clinic.\n" +
             "Where are you?\n",
-          width: 1024,
-          height: 1024,
-          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684157088/virtual_games/rooms/brand/galaxy-phone_xvefqp.png",
+          width: 614,
+          height: 406,
+          src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1689601855/virtual_games/rooms/brand/brand-phone_aidlep.png",
           state: 5,
         },
       },

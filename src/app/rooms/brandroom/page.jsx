@@ -1,6 +1,6 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Box } from "@chakra-ui/react";
+import { Box, Img } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
@@ -15,6 +15,7 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import Phone from "./components/Phone";
 
 export default function BrandRoom() {
   const [room, setRoom] = useState(null);
@@ -22,6 +23,7 @@ export default function BrandRoom() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isPhoneOpen, viewPhone] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,6 +71,11 @@ export default function BrandRoom() {
     return false;
   };
 
+  const togglePhone = () => {
+    // opens and closes phone display
+    viewPhone(!isPhoneOpen);
+  };
+
   const changeState = async (user) => {
     if (user.stateID !== 1) {
       await endTimer(user.id, user.stateID);
@@ -89,6 +96,7 @@ export default function BrandRoom() {
     return <Loading />;
   }
 
+
   return (
     <RoomLayout>
       <Box>
@@ -101,6 +109,7 @@ export default function BrandRoom() {
             width="100%"
           >
             {/* background image */}
+            {isPhoneOpen && <Phone handler={togglePhone} />}
             <ItemImage item={room.background} />
             <Box position="absolute" zIndex="1">
               {/* temp custom image to be used */}
@@ -108,29 +117,41 @@ export default function BrandRoom() {
               {checkVisibility(room.clues.galaxy_phone.id) && (
                 <Hint>
                   <ItemImage
-                    onClick={() => updateCollected(room.clues.galaxy_phone.id)}
-                    item={room.clues.galaxy_phone}
-                    className={styles.item}
-                    width="2rem"
-                    left={SizeFormatter(
-                      "5rem", //iphone se
-                      "1rem", //iphone xr
-                      "1rem", //iphone 12pro
-                      "1rem", //pixel 5
-                      "1rem", //samsung galaxy s8+
-                      "1rem", //samsung galaxy s20 ultra
-                      "1rem", //ipad air
-                      "1rem" //ipad mini
+                    onClick={() => {
+                      togglePhone()
+                      updateCollected(room.clues.galaxy_phone.id)
+                    }}
+                    width={SizeFormatter(
+                        "1.3rem", //iphone se
+                        "1.3rem", //iphone xr
+                        "1.4rem", //iphone 12pro
+                        "1.4rem", //pixel 5
+                        "1.4rem", //samsung galaxy s8+
+                        "1.3rem", //samsung galaxy s20 ultra
+                        "1.3rem", //ipad air
+                        "1.3rem" //ipad mini
                     )}
-                    bottom={SizeFormatter(
-                      "10rem", //iphone se
-                      "1rem", //iphone xr
-                      "1rem", //iphone 12pro
-                      "1rem", //pixel 5
-                      "1rem", //samsung galaxy s8+
-                      "1rem", //samsung galaxy s20 ultra
-                      "1rem", //ipad air
-                      "1rem" //ipad mini
+                    filter='auto'
+                    brightness='100%'
+                    right={SizeFormatter(
+                        "2.6rem", //iphone se
+                        "2.9rem", //iphone xr
+                        "2.8rem", //iphone 12pro
+                        "2.8rem", //pixel 5
+                        "2.6rem", //samsung galaxy s8+
+                        "2.9rem", //samsung galaxy s20 ultra
+                        "3.3rem", //ipad air
+                        "3.3rem" //ipad mini
+                    )}
+                    top={SizeFormatter(
+                        "13.7rem", //iphone se
+                        "15.2rem", //iphone xr
+                        "14.3rem", //iphone 12pro
+                        "14.5rem", //pixel 5
+                        "13.2rem", //samsung galaxy s8+
+                        "15.2rem", //samsung galaxy s20 ultra
+                        "18.2rem", //ipad air
+                        "18.2rem" //ipad mini
                     )}
                   />
                 </Hint>
