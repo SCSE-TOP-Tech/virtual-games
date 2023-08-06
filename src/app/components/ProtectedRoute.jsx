@@ -1,13 +1,19 @@
 "use client";
 import { useContext } from "react";
-import { useRouter } from "next/navigation";
 import { AuthContext } from "../../context/AuthContext";
+import { useRouter } from "next/navigation";
+
+const isBrowser = () => typeof window != "undefined";
+const unprotectedRoutes = ["/", "/login"];
+
 const ProtectedRoute = ({ children }) => {
   const router = useRouter();
-
-  const { user } = useContext(AuthContext);
-  if (!user) router.push("/login");
-  return <>{user && children}</>;
+  console.log(router.path);
+  console.log(isBrowser);
+  const { isAuthenticated } = useContext(AuthContext);
+  const isProtectedPath = unprotectedRoutes.indexOf(router.path) === -1;
+  if (!isAuthenticated && isBrowser && isProtectedPath) router.push("/login");
+  return children;
 };
 
 export default ProtectedRoute;
