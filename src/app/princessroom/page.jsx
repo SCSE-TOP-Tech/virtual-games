@@ -57,6 +57,8 @@ export default function PrincessRoom() {
 
                 <ItemImage
                   item={room.clues.map}
+                  onClick={() => setInventory((prev) => [...prev, "map"])}
+                  
                   style={{
                     position: "relative",
                     right: "0rem",
@@ -75,6 +77,8 @@ export default function PrincessRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.safe}
+                  onClick={() => setInventory((prev) => [...prev, "safe"])}
+
                   className={styles.item}
                   width={[
                     "6.1rem",
@@ -115,6 +119,8 @@ export default function PrincessRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.door}
+                  onClick={() => setInventory((prev) => [...prev, "door"])}
+
                   className={styles.item}
                   width="1.4rem"
                   height="13rem"
@@ -146,6 +152,7 @@ export default function PrincessRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.map}
+
                   className={styles.item}
                   width={[
                     "1.6rem",

@@ -59,6 +59,8 @@ export default function MaanRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.spacesword}
+                  onClick={() => setInventory((prev) => [...prev, "spacesword"])}
+
                   className={styles.item}
                   width="2.7rem"
                   filter="auto"

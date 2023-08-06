@@ -38,6 +38,8 @@ export default function SeraphineRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.teddybear}
+                  onClick={() => setInventory((prev) => [...prev, "teddybear"])}
+
                   className={styles.item}
                   width="3rem"
                   filter="auto"
@@ -69,6 +71,8 @@ export default function SeraphineRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.jewelrybox}
+                  onClick={() => setInventory((prev) => [...prev, "jewelrybox"])}
+
                   className={styles.item}
                   width="4rem"
                   filter="auto"
@@ -100,6 +104,8 @@ export default function SeraphineRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.lipstick}
+                  onClick={() => setInventory((prev) => [...prev, "lipstick"])}
+
                   className={styles.item}
                   width="1.3rem"
                   filter="auto"
@@ -131,6 +137,8 @@ export default function SeraphineRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.camera}
+                  onClick={() => setInventory((prev) => [...prev, "camera"])}
+
                   className={styles.item}
                   width="2rem"
                   filter="auto"

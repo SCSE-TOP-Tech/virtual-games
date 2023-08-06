@@ -38,6 +38,8 @@ export default function Kitchen() {
               <Hint>
                 <ItemImage
                   item={room.clues.knife}
+                  onClick={() => setInventory((prev) => [...prev, "knife"])}
+
                   className={styles.item}
                   width="3.5rem"
                   right={SizeFormatter(
@@ -65,6 +67,8 @@ export default function Kitchen() {
               <Hint>
                 <ItemImage
                   item={room.clues.meat}
+                  onClick={() => setInventory((prev) => [...prev, "meat"])}
+
                   width="4rem"
                   className={styles.item}
                   filter="auto"
@@ -95,6 +99,8 @@ export default function Kitchen() {
               <Hint>
                 <ItemImage
                   item={room.clues.apron}
+                  onClick={() => setInventory((prev) => [...prev, "apron"])}
+                  
                   width="8rem"
                   className={styles.item}
                   left={SizeFormatter(

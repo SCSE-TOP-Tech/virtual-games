@@ -39,6 +39,7 @@ export default function BrandRoom() {
                 <Hint>
                   <ItemImage
                     item={room.clues.galaxy_phone}
+                    onClick={() => setInventory((prev) => [...prev, "galaxy_phone"])}
                     className={styles.item}
                     width="2rem"
                     left={SizeFormatter(

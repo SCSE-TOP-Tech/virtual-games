@@ -34,6 +34,8 @@ export default function DoyleRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.music_albums}
+                  onClick={() => setInventory((prev) => [...prev, "music_albums"])}
+                  
                   className={styles.item}
                   width="3.5rem"
                   right={SizeFormatter(
@@ -63,6 +65,8 @@ export default function DoyleRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.luggage}
+                  onClick={() => setInventory((prev) => [...prev, "luggage"])}
+
                   className={styles.item}
                   width="4rem"
                   filter="auto"
@@ -94,6 +98,8 @@ export default function DoyleRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.spaceID_card}
+                  onClick={() => setInventory((prev) => [...prev, "spaceID_card"])}
+
                   className={styles.item}
                   width="5rem"
                   left={SizeFormatter(
@@ -123,6 +129,8 @@ export default function DoyleRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.clothes}
+                  onClick={() => setInventory((prev) => [...prev, "clothes"])}
+
                   className={styles.item}
                   width={SizeFormatter(
                     "4rem", //iphone se
@@ -163,6 +171,8 @@ export default function DoyleRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.bloodstained_towel}
+                  onClick={() => setInventory((prev) => [...prev, "bloodstained_towel"])}
+
                   className={styles.item}
                   width="2rem"
                   filter="auto"

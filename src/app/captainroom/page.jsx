@@ -37,6 +37,7 @@ export default function CaptainRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.music_albums}
+                  onClick={() => setInventory((prev) => [...prev, "music_albums"])}
                   className={styles.item}
                   width="4rem"
                   filter="auto"
@@ -68,6 +69,8 @@ export default function CaptainRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.lipstick}
+                  onClick={() => setInventory((prev) => [...prev, "lipstick"])}
+
                   className={styles.item}
                   width="2rem"
                   filter="auto"
@@ -99,6 +102,8 @@ export default function CaptainRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.guestbook}
+                  onClick={() => setInventory((prev) => [...prev, "guestbook"])}
+
                   className={styles.item}
                   width="3rem"
                   filter="auto"
@@ -130,6 +135,8 @@ export default function CaptainRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.note}
+                  onClick={() => setInventory((prev) => [...prev, "note"])}
+                  
                   className={styles.item}
                   width="1.5rem"
                   right={SizeFormatter(
@@ -159,6 +166,8 @@ export default function CaptainRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.blood_letter}
+                  onClick={() => setInventory((prev) => [...prev, "blood_letter"])}
+
                   className={styles.item}
                   width="10rem"
                   right={SizeFormatter(
@@ -188,6 +197,8 @@ export default function CaptainRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.broken_watch}
+                  onClick={() => setInventory((prev) => [...prev, "broken_watch"])}
+
                   className={styles.item}
                   width="3.5rem"
                   left={SizeFormatter(

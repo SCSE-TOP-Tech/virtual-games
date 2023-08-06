@@ -38,6 +38,8 @@ export default function CarmenRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.mail}
+                  onClick={() => setInventory((prev) => [...prev, "mail"])}
+
                   className={styles.item}
                   width="5.9rem"
                   filter="auto"
@@ -69,6 +71,8 @@ export default function CarmenRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.master_key}
+                  onClick={() => setInventory((prev) => [...prev, "master_key"])}
+
                   className={styles.item}
                   width="2rem"
                   filter="auto"
@@ -100,6 +104,8 @@ export default function CarmenRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.clothespin}
+                  onClick={() => setInventory((prev) => [...prev, "clothespin"])}
+
                   className={styles.item}
                   width="1.5rem"
                   filter="auto"

@@ -55,6 +55,7 @@ export default function StorageRoom() {
                 {/* dead doctor (temp viewing) */}
                 <ItemImage
                   item={room.npc.dead_doctor}
+                  
                   style={{
                     position: "relative",
                     right: "4rem",
@@ -68,6 +69,8 @@ export default function StorageRoom() {
                 {/* tesseract (temp viewing) */}
                 <ItemImage
                   item={room.clues.tesseract}
+                  onClick={() => setInventory((prev) => [...prev, "tesseract"])}
+
                   style={{
                     position: "relative",
                     right: "-12.4rem",
@@ -81,6 +84,8 @@ export default function StorageRoom() {
                 {/* screwdriver (temp viewing) */}
                 <ItemImage
                   item={room.dummy_objects.screwdriver}
+                  onClick={() => setInventory((prev) => [...prev, "screwdriver"])}
+
                   style={{
                     position: "relative",
                     right: "1rem",
@@ -94,6 +99,8 @@ export default function StorageRoom() {
                 {/* mop and bucket (temp viewing) */}
                 <ItemImage
                   item={room.dummy_objects.mopbucket}
+                  onClick={() => setInventory((prev) => [...prev, "mopbucket"])}
+
                   style={{
                     position: "relative",
                     right: "-2.4rem",
@@ -107,6 +114,8 @@ export default function StorageRoom() {
                 {/* blood stained clothspin (temp viewing) */}
                 <ItemImage
                   item={room.clues.blood_clothpin}
+                  onClick={() => setInventory((prev) => [...prev, "blood_clothpin"])}
+
                   style={{
                     position: "relative",
                     right: "5.4rem",
@@ -120,6 +129,7 @@ export default function StorageRoom() {
                 {/* doctor's galaxy phone (temp viewing) */}
                 <ItemImage
                   item={room.clues.doctorphone}
+
                   style={{
                     position: "relative",
                     right: "5.4rem",
@@ -136,6 +146,7 @@ export default function StorageRoom() {
                   {!isClicked && (
                     <ItemImage
                       item={room.clues.cloth}
+
                       style={{
                         position: "relative",
                         right: "-11rem",

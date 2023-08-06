@@ -37,6 +37,8 @@ export default function DressingRoom() {
               <Hint>
                 <ItemImage
                   item={room.clues.lipstick}
+                  onClick={() => setInventory((prev) => [...prev, "lipstick"])}
+
                   className={styles.item}
                   width="1rem"
                   filter="auto"

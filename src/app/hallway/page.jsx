@@ -35,6 +35,8 @@ export default function Hallway() {
               <Hint>
                 <ItemImage
                   item={room.clues.portrait}
+                  onClick={() => setInventory((prev) => [...prev, "portrait"])}
+
                   className={styles.item}
                   width="0.7rem"
                   filter="auto"

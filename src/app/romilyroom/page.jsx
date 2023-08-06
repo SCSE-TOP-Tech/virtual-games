@@ -41,6 +41,8 @@ export default function RomilyRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.basketball}
+                  onClick={() => setInventory((prev) => [...prev, "basketball"])}
+
                   className={styles.item}
                   width="3rem"
                   filter="auto"
@@ -72,6 +74,8 @@ export default function RomilyRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.punchingbag}
+                  onClick={() => setInventory((prev) => [...prev, "punchingbag"])}
+
                   className={styles.item}
                   width={SizeFormatter(
                     "6.5rem", //iphone se
@@ -112,6 +116,8 @@ export default function RomilyRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.towel}
+                  onClick={() => setInventory((prev) => [...prev, "towel"])}
+
                   className={styles.item}
                   width="4rem"
                   filter="auto"
@@ -142,6 +148,8 @@ export default function RomilyRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.clothes}
+                  onClick={() => setInventory((prev) => [...prev, "clothes"])}
+
                   className={styles.item}
                   width="8rem"
                   filter="auto"
@@ -173,6 +181,8 @@ export default function RomilyRoom() {
               <Hint>
                 <ItemImage
                   item={room.dummy_objects.dumbbell}
+                  onClick={() => setInventory((prev) => [...prev, "dumbbell"])}
+
                   className={styles.item}
                   filter="auto"
                   brightness="70%"
