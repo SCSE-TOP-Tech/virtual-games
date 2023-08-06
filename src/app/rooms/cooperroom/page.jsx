@@ -20,27 +20,57 @@ export default function CooperPage() {
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Initial Load
   useEffect(() => {
-    async function fetchData() {
-      const currentUser = await fetchUser();
-
-      if (currentUser) {
+    const fetchData = async () => {
+      setLoading(true); // Set loading state to true before fetching
+      try {
+        // Fetch user data
+        const currentUser = await fetchUser();
         setUser(currentUser);
-        setRoom(fetchRoom("cooper", true));
-        if (room && user) {
-          setAvailableItems(await getAvailableItems(room.room_id));
-          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+
+        // Fetch room data and items data
+        const fetchedRoom = await fetchRoom("cooper", true);
+        setRoom(fetchedRoom);
+
+        if (fetchedRoom) {
+          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+          console.log("AvailableItems fetched!");
+          setCollectedItems(
+            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
+          );
+          console.log("CollectedItems fetched!");
         }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
+    };
+
+    fetchData(); // Fetch data on component mount
+  }, []);
+
+  const checkVisibility = (itemName) => {
+    if (availableItems && collectedItems) {
+      const availState = availableItems.find(
+        (item) => item.itemName === itemName
+      );
+      const avail = availState.stateID <= user.stateID;
+      const collectedState = collectedItems.find(
+        (item) => item.itemName === itemName
+      );
+      const collected = collectedState.collected;
+
+      return avail && !collected;
     }
-    fetchData();
-  }, []); // To include room if necessary (will constantly refresh)
+    return false;
+  };
 
   const changeState = async (user) => {
     if (user.stateID !== 1) {
-      const endTime = await endTimer(user.id, user.stateID);
+      await endTimer(user.id, user.stateID);
     }
     setUser(await updateState(user.id));
     const startTime = await startTimer(user.id, user.stateID);
@@ -54,24 +84,28 @@ export default function CooperPage() {
     console.log(updatedItem);
   };
 
+  if (loading || !user || !room || !availableItems || !collectedItems) {
+    return <Loading />;
+  }
+
   return (
     <RoomLayout>
-      {room ? (
-        <Box w={["100%", "30em"]} h="100%" position="relative">
-          <Navbar />
-          <Box
-            display="flex"
-            justifyContent="center"
-            position="relative"
-            width="100%"
-          >
-            {/* background image */}
-            {/* can use ItemImage for background image as well  */}
-            <ItemImage item={room.background} />
+      <Box w={["100%", "30em"]} h="100%" position="relative">
+        <Navbar />
+        <Box
+          display="flex"
+          justifyContent="center"
+          position="relative"
+          width="100%"
+        >
+          {/* background image */}
+          {/* can use ItemImage for background image as well  */}
+          <ItemImage item={room.background} />
 
-            {/* items */}
-            <Box position="absolute" zIndex="1">
-              {/* luggage  */}
+          {/* items */}
+          <Box position="absolute" zIndex="1">
+            {/* luggage  */}
+            {checkVisibility(room.dummy_objects.luggage.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.luggage.id)}
@@ -101,8 +135,10 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* newspaper  */}
+            {/* newspaper  */}
+            {checkVisibility(room.dummy_objects.newspaper.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -134,8 +170,10 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* id  */}
+            {/* id  */}
+            {checkVisibility(room.dummy_objects.spaceID_card.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -169,8 +207,10 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* coffeemachine  */}
+            {/* coffeemachine  */}
+            {checkVisibility(room.dummy_objects.coffee_machine.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -202,22 +242,20 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
-            </Box>
-          </Box>
-
-          <Box
-            position="absolute"
-            bottom="10%"
-            mt="2%"
-            w="28em"
-            background={"white"}
-          >
-            Text Component Here
+            )}
           </Box>
         </Box>
-      ) : (
-        <Loading />
-      )}
+
+        <Box
+          position="absolute"
+          bottom="10%"
+          mt="2%"
+          w="28em"
+          background={"white"}
+        >
+          Text Component Here
+        </Box>
+      </Box>
     </RoomLayout>
   );
 }

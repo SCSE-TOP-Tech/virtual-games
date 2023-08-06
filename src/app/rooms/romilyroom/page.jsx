@@ -21,27 +21,57 @@ export default function RomilyRoom() {
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Initial Load
   useEffect(() => {
-    async function fetchData() {
-      const currentUser = await fetchUser();
-
-      if (currentUser) {
+    const fetchData = async () => {
+      setLoading(true); // Set loading state to true before fetching
+      try {
+        // Fetch user data
+        const currentUser = await fetchUser();
         setUser(currentUser);
-        setRoom(fetchRoom("romily", true));
-        if (room && user) {
-          setAvailableItems(await getAvailableItems(room.room_id));
-          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+
+        // Fetch room data and items data
+        const fetchedRoom = await fetchRoom("romily", true);
+        setRoom(fetchedRoom);
+
+        if (fetchedRoom) {
+          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+          console.log("AvailableItems fetched!");
+          setCollectedItems(
+            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
+          );
+          console.log("CollectedItems fetched!");
         }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
+    };
+
+    fetchData(); // Fetch data on component mount
+  }, []);
+
+  const checkVisibility = (itemName) => {
+    if (availableItems && collectedItems) {
+      const availState = availableItems.find(
+        (item) => item.itemName === itemName
+      );
+      const avail = availState.stateID <= user.stateID;
+      const collectedState = collectedItems.find(
+        (item) => item.itemName === itemName
+      );
+      const collected = collectedState.collected;
+
+      return avail && !collected;
     }
-    fetchData();
-  }, []); // To include room if necessary (will constantly refresh)
+    return false;
+  };
 
   const changeState = async (user) => {
     if (user.stateID !== 1) {
-      const endTime = await endTimer(user.id, user.stateID);
+      await endTimer(user.id, user.stateID);
     }
     setUser(await updateState(user.id));
     const startTime = await startTimer(user.id, user.stateID);
@@ -55,24 +85,28 @@ export default function RomilyRoom() {
     console.log(updatedItem);
   };
 
+  if (loading || !user || !room || !availableItems || !collectedItems) {
+    return <Loading />;
+  }
+
   return (
     <RoomLayout>
-      {room ? (
-        <Box w={["100%", "30em"]} h="100%" position="relative">
-          <Navbar />
+      <Box w={["100%", "30em"]} h="100%" position="relative">
+        <Navbar />
 
-          <Box
-            display="flex"
-            justifyContent="center"
-            position="relative"
-            width="100%"
-          >
-            {/* background image */}
-            <ItemImage item={room.background} zIndex="0" />
+        <Box
+          display="flex"
+          justifyContent="center"
+          position="relative"
+          width="100%"
+        >
+          {/* background image */}
+          <ItemImage item={room.background} zIndex="0" />
 
-            {/* items */}
-            <Box position="absolute" zIndex="1">
-              {/* Basketball */}
+          {/* items */}
+          <Box position="absolute" zIndex="1">
+            {/* Basketball */}
+            {checkVisibility(room.dummy_objects.basketball.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -105,8 +139,10 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* Punching Bag */}
+            {/* Punching Bag */}
+            {checkVisibility(room.dummy_objects.punchingbag.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -148,8 +184,10 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* Towel */}
+            {/* Towel */}
+            {checkVisibility(room.dummy_objects.towel.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.towel.id)}
@@ -180,8 +218,10 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* Clothes */}
+            {/* Clothes */}
+            {checkVisibility(room.dummy_objects.clothes.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.clothes.id)}
@@ -212,8 +252,10 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* Dumbbell */}
+            {/* Dumbbell */}
+            {checkVisibility(room.dummy_objects.dumbbell.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -255,6 +297,9 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
+            )}
+
+            {checkVisibility(room.clues.laptop.id) && (
               <Hint>
                 <ItemImage
                   item={room.clues.laptop}
@@ -293,15 +338,13 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
-            </Box>
-          </Box>
-          <Box mt="2%" w="100%" background={"white"}>
-            Text Component Here
+            )}
           </Box>
         </Box>
-      ) : (
-        <Loading />
-      )}
+        <Box mt="2%" w="100%" background={"white"}>
+          Text Component Here
+        </Box>
+      </Box>
     </RoomLayout>
   );
 }
