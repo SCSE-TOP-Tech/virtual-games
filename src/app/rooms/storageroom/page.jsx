@@ -19,33 +19,64 @@ import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems"
 import { useRouter } from "next/navigation";
 
 export default function StorageRoom() {
+  const router = useRouter();
   const [isClicked, setClicked] = useState(false);
   const [isPhoneOpen, viewPhone] = useState(false);
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
-  const router = useRouter();
-  // Initial Load
-  useEffect(() => {
-    async function fetchData() {
-      const currentUser = await fetchUser();
+  const [loading, setLoading] = useState(true);
 
-      if (currentUser) {
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true); // Set loading state to true before fetching
+      try {
+        // Fetch user data
+        const currentUser = await fetchUser();
         setUser(currentUser);
-        setRoom(fetchRoom("storage_room", false));
-        if (room && user) {
-          setAvailableItems(await getAvailableItems(room.room_id));
-          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+
+        // Fetch room data and items data
+        const fetchedRoom = await fetchRoom("storage_room", false);
+        setRoom(fetchedRoom);
+
+        if (fetchedRoom) {
+          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+          console.log("AvailableItems fetched!");
+          setCollectedItems(
+            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
+          );
+          console.log("CollectedItems fetched!");
         }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
+    };
+
+    fetchData(); // Fetch data on component mount
+  }, []);
+
+  const checkVisibility = (itemName) => {
+    if (availableItems && collectedItems) {
+      const availState = availableItems.find(
+        (item) => item.itemName === itemName
+      );
+      const avail = availState.stateID <= user.stateID;
+      const collectedState = collectedItems.find(
+        (item) => item.itemName === itemName
+      );
+      const collected = collectedState.collected;
+
+      return avail && !collected;
     }
-    fetchData();
-  }, []); // To include room if necessary (will constantly refresh)
+    return false;
+  };
 
   const changeState = async (user) => {
     if (user.stateID !== 1) {
-      const endTime = await endTimer(user.id, user.stateID);
+      await endTimer(user.id, user.stateID);
     }
     setUser(await updateState(user.id));
     const startTime = await startTimer(user.id, user.stateID);
@@ -74,267 +105,273 @@ export default function StorageRoom() {
     router.push("/transitions");
     await updateCollected(room.clues.doctorphone.id);
     await changeState(user);
+  };
+
+  if (loading || !user || !room || !availableItems || !collectedItems) {
+    return <Loading />;
   }
 
   return (
     // To add loading page
     <RoomLayout>
-      {room ? (
-          <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-            <Navbar />
-            {/* background image */}
-            <Box
-              display="flex"
-              justifyContent="center"
-              position="relative"
-              width="100%"
-            >
-              {isPhoneOpen && <Phone handler={closePhone} />}
+      <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+        <Navbar />
+        {/* background image */}
+        <Box
+          display="flex"
+          justifyContent="center"
+          position="relative"
+          width="100%"
+        >
+          {isPhoneOpen && <Phone handler={closePhone} />}
 
-              {/* background (temporary viewing) */}
-              <ItemImage item={room.background} />
-              <Box position="absolute" zIndex="1">
-                {/* dead doctor (temp viewing) */}
+          {/* background (temporary viewing) */}
+          <ItemImage item={room.background} />
+          <Box position="absolute" zIndex="1">
+            {/* dead doctor (temp viewing) */}
+            <ItemImage
+              onClick={async () => {
+                router.push("/transitions");
+                await updateCollected(room.npc.dead_doctor.id);
+                await changeState(user);
+              }}
+              item={room.npc.dead_doctor}
+              className={styles.item}
+              filter="auto"
+              brightness="75%"
+              width="3.7rem"
+              right={SizeFormatter(
+                "1.5rem", //iphone se
+                "1.5rem", //iphone xr
+                "1.5rem", //iphone 12pro
+                "1.5rem", //pixel 5
+                "1.5rem", //samsung galaxy s8+
+                "1.5rem", //samsung galaxy s20 ultra
+                "1.5rem", //ipad air
+                "1.5rem" //ipad mini
+              )}
+              top={SizeFormatter(
+                "10rem", //iphone se
+                "12rem", //iphone xr
+                "11rem", //iphone 12pro
+                "11rem", //pixel 5
+                "10rem", //samsung galaxy s8+
+                "14rem", //samsung galaxy s20 ultra
+                "14rem", //ipad air
+                "14rem" //ipad mini
+              )}
+            />
+
+            {/* tesseract (temp viewing) */}
+            {checkVisibility(room.clues.tesseract.id) && (
+              <ItemImage
+                onClick={() => updateCollected(room.clues.tesseract.id)}
+                item={room.clues.tesseract}
+                className={styles.item}
+                width="2.2rem"
+                left={SizeFormatter(
+                  "10rem", //iphone se
+                  "10rem", //iphone xr
+                  "10rem", //iphone 12pro
+                  "10rem", //pixel 5
+                  "9rem", //samsung galaxy s8+
+                  "10rem", //samsung galaxy s20 ultra
+                  "11rem", //ipad air
+                  "11rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "11.85rem", //iphone se
+                  "13.85rem", //iphone xr
+                  "12.75rem", //iphone 12pro
+                  "12.85rem", //pixel 5
+                  "11.35rem", //samsung galaxy s8+
+                  "13.85rem", //samsung galaxy s20 ultra
+                  "17.55rem", //ipad air
+                  "17.55rem" //ipad mini
+                )}
+              />
+            )}
+
+            {/* screwdriver (temp viewing) */}
+            {checkVisibility(room.dummy_objects.screwdriver.id) && (
+              <ItemImage
+                onClick={() =>
+                  updateCollected(room.dummy_objects.screwdriver.id)
+                }
+                item={room.dummy_objects.screwdriver}
+                className={styles.item}
+                filter="auto"
+                brightness="55%"
+                width="1rem"
+                left={SizeFormatter(
+                  "4.5rem", //iphone se
+                  "4.5rem", //iphone xr
+                  "4.5rem", //iphone 12pro
+                  "4.5rem", //pixel 5
+                  "4.5rem", //samsung galaxy s8+
+                  "4.5rem", //samsung galaxy s20 ultra
+                  "4.5rem", //ipad air
+                  "4.5rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "14.3rem", //iphone se
+                  "16.9rem", //iphone xr
+                  "15.3rem", //iphone 12pro
+                  "15.7rem", //pixel 5
+                  "13.5rem", //samsung galaxy s8+
+                  "16.8rem", //samsung galaxy s20 ultra
+                  "21rem", //ipad air
+                  "21rem" //ipad mini
+                )}
+              />
+            )}
+
+            {/* mop and bucket (temp viewing) */}
+            <ItemImage
+              onClick={() => updateCollected(room.dummy_objects.mopbucket.id)}
+              item={room.dummy_objects.mopbucket}
+              className={styles.item}
+              filter="auto"
+              brightness="55%"
+              width={SizeFormatter(
+                "4rem", //iphone se
+                "4rem", //iphone xr
+                "4rem", //iphone 12pro
+                "4rem", //pixel 5
+                "4rem", //samsung galaxy s8+
+                "4rem", //samsung galaxy s20 ultra
+                "4.5rem", //ipad air
+                "4.5rem" //ipad mini
+              )}
+              left={SizeFormatter(
+                "3.5rem", //iphone se
+                "3.5rem", //iphone xr
+                "3.5rem", //iphone 12pro
+                "3.5rem", //pixel 5
+                "2.7rem", //samsung galaxy s8+
+                "3.5rem", //samsung galaxy s20 ultra
+                "3.5rem", //ipad air
+                "3.5rem" //ipad mini
+              )}
+              top={SizeFormatter(
+                "7.3rem", //iphone se
+                "9.3rem", //iphone xr
+                "8.3rem", //iphone 12pro
+                "8.3rem", //pixel 5
+                "7.3rem", //samsung galaxy s8+
+                "9.3rem", //samsung galaxy s20 ultra
+                "12.8rem", //ipad air
+                "12.8rem" //ipad mini
+              )}
+            />
+
+            {/* blood stained clothspin (temp viewing) */}
+            {checkVisibility(room.clues.blood_clothpin.id) && (
+              <ItemImage
+                onClick={() => updateCollected(room.clues.blood_clothpin.id)}
+                item={room.clues.blood_clothpin}
+                className={styles.item}
+                filter="auto"
+                brightness="45%"
+                width="1rem"
+                right={SizeFormatter(
+                  "6rem", //iphone se
+                  "7rem", //iphone xr
+                  "6rem", //iphone 12pro
+                  "6.2rem", //pixel 5
+                  "5.5rem", //samsung galaxy s8+
+                  "6.8rem", //samsung galaxy s20 ultra
+                  "8.3rem", //ipad air
+                  "8.3rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "4.1rem", //iphone se
+                  "6.1rem", //iphone xr
+                  "5.1rem", //iphone 12pro
+                  "5.1rem", //pixel 5
+                  "3.6rem", //samsung galaxy s8+
+                  "5.8rem", //samsung galaxy s20 ultra
+                  "8.4rem", //ipad air
+                  "8.4rem" //ipad mini
+                )}
+              />
+            )}
+
+            {/* doctor's galaxy phone (temp viewing) */}
+            {checkVisibility(room.clues.doctorphone.id) && (
+              <ItemImage
+                onClick={togglePhone}
+                item={room.clues.doctorphone}
+                className={styles.item}
+                filter="auto"
+                brightness="75%"
+                width="1.7rem"
+                right={SizeFormatter(
+                  "3.3rem", //iphone se
+                  "4.0rem", //iphone xr
+                  "3.3rem", //iphone 12pro
+                  "3.5rem", //pixel 5
+                  "3.3rem", //samsung galaxy s8+
+                  "3.8rem", //samsung galaxy s20 ultra
+                  "3.9rem", //ipad air
+                  "3.9rem" //ipad mini
+                )}
+                top={SizeFormatter(
+                  "7.2rem", //iphone se
+                  "9.2rem", //iphone xr
+                  "8.2rem", //iphone 12pro
+                  "8.4rem", //pixel 5
+                  "6.2rem", //samsung galaxy s8+
+                  "9.2rem", //samsung galaxy s20 ultra
+                  "13.2rem", //ipad air
+                  "13.2rem" //ipad mini
+                )}
+              />
+            )}
+
+            {/* cloth (temp viewing) */}
+            <Box>
+              {!isClicked && checkVisibility(room.clues.cloth.id) && (
                 <ItemImage
-                  onClick={async () => {
-                    router.push("/transitions");
-                    await updateCollected(room.npc.dead_doctor.id);
-                    await changeState(user);
+                  onClick={() => {
+                    handleToggle();
+                    updateCollected(room.clues.cloth.id);
                   }}
-                  item={room.npc.dead_doctor}
+                  item={room.clues.cloth}
                   className={styles.item}
                   filter="auto"
                   brightness="75%"
-                  width="3.7rem"
-                  right={SizeFormatter(
-                      "1.5rem", //iphone se
-                      "1.5rem", //iphone xr
-                      "1.5rem", //iphone 12pro
-                      "1.5rem", //pixel 5
-                      "1.5rem", //samsung galaxy s8+
-                      "1.5rem", //samsung galaxy s20 ultra
-                      "1.5rem", //ipad air
-                      "1.5rem" //ipad mini
-                  )}
-                  top={SizeFormatter(
-                      "10rem", //iphone se
-                      "12rem", //iphone xr
-                      "11rem", //iphone 12pro
-                      "11rem", //pixel 5
-                      "10rem", //samsung galaxy s8+
-                      "14rem", //samsung galaxy s20 ultra
-                      "14rem", //ipad air
-                      "14rem" //ipad mini
-                  )}
-                />
-
-                {/* tesseract (temp viewing) */}
-                <ItemImage
-                  onClick={() => updateCollected(room.clues.tesseract.id)}
-                  item={room.clues.tesseract}
-                  className={styles.item}
-                  width="2.2rem"
+                  width="3.2rem"
                   left={SizeFormatter(
-                      "10rem", //iphone se
-                      "10rem", //iphone xr
-                      "10rem", //iphone 12pro
-                      "10rem", //pixel 5
-                      "9rem", //samsung galaxy s8+
-                      "10rem", //samsung galaxy s20 ultra
-                      "11rem", //ipad air
-                      "11rem" //ipad mini
+                    "9.4rem", //iphone se
+                    "9.4rem", //iphone xr
+                    "9.4rem", //iphone 12pro
+                    "9.4rem", //pixel 5
+                    "8.6rem", //samsung galaxy s8+
+                    "9.4rem", //samsung galaxy s20 ultra
+                    "10.4rem", //ipad air
+                    "10.4rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                      "11.85rem", //iphone se
-                      "13.85rem", //iphone xr
-                      "12.75rem", //iphone 12pro
-                      "12.85rem", //pixel 5
-                      "11.35rem", //samsung galaxy s8+
-                      "13.85rem", //samsung galaxy s20 ultra
-                      "17.55rem", //ipad air
-                      "17.55rem" //ipad mini
+                    "1.5rem", //iphone se
+                    "3.5rem", //iphone xr
+                    "2.5rem", //iphone 12pro
+                    "2.5rem", //pixel 5
+                    "1rem", //samsung galaxy s8+
+                    "3.5rem", //samsung galaxy s20 ultra
+                    "6.5rem", //ipad air
+                    "6.5rem" //ipad mini
                   )}
                 />
-
-                {/* screwdriver (temp viewing) */}
-                <ItemImage
-                  onClick={() =>
-                    updateCollected(room.dummy_objects.screwdriver.id)
-                  }
-                  item={room.dummy_objects.screwdriver}
-                  className={styles.item}
-                  filter="auto"
-                  brightness="55%"
-                  width="1rem"
-                  left={SizeFormatter(
-                      "4.5rem", //iphone se
-                      "4.5rem", //iphone xr
-                      "4.5rem", //iphone 12pro
-                      "4.5rem", //pixel 5
-                      "4.5rem", //samsung galaxy s8+
-                      "4.5rem", //samsung galaxy s20 ultra
-                      "4.5rem", //ipad air
-                      "4.5rem" //ipad mini
-                  )}
-                  top={SizeFormatter(
-                      "14.3rem", //iphone se
-                      "16.9rem", //iphone xr
-                      "15.3rem", //iphone 12pro
-                      "15.7rem", //pixel 5
-                      "13.5rem", //samsung galaxy s8+
-                      "16.8rem", //samsung galaxy s20 ultra
-                      "21rem", //ipad air
-                      "21rem" //ipad mini
-                  )}
-                />
-
-                {/* mop and bucket (temp viewing) */}
-                <ItemImage
-                  onClick={() =>
-                    updateCollected(room.dummy_objects.mopbucket.id)
-                  }
-                  item={room.dummy_objects.mopbucket}
-                  className={styles.item}
-                  filter="auto"
-                  brightness="55%"
-                  width={SizeFormatter(
-                      "4rem", //iphone se
-                      "4rem", //iphone xr
-                      "4rem", //iphone 12pro
-                      "4rem", //pixel 5
-                      "4rem", //samsung galaxy s8+
-                      "4rem", //samsung galaxy s20 ultra
-                      "4.5rem", //ipad air
-                      "4.5rem" //ipad mini
-                  )}
-                  left={SizeFormatter(
-                      "3.5rem", //iphone se
-                      "3.5rem", //iphone xr
-                      "3.5rem", //iphone 12pro
-                      "3.5rem", //pixel 5
-                      "2.7rem", //samsung galaxy s8+
-                      "3.5rem", //samsung galaxy s20 ultra
-                      "3.5rem", //ipad air
-                      "3.5rem" //ipad mini
-                  )}
-                  top={SizeFormatter(
-                      "7.3rem", //iphone se
-                      "9.3rem", //iphone xr
-                      "8.3rem", //iphone 12pro
-                      "8.3rem", //pixel 5
-                      "7.3rem", //samsung galaxy s8+
-                      "9.3rem", //samsung galaxy s20 ultra
-                      "12.8rem", //ipad air
-                      "12.8rem" //ipad mini
-                  )}
-                />
-
-                {/* blood stained clothspin (temp viewing) */}
-                <ItemImage
-                  onClick={() => updateCollected(room.clues.blood_clothpin.id)}
-                  item={room.clues.blood_clothpin}
-                  className={styles.item}
-                  filter="auto"
-                  brightness="45%"
-                  width="1rem"
-                  right={SizeFormatter(
-                      "6rem", //iphone se
-                      "7rem", //iphone xr
-                      "6rem", //iphone 12pro
-                      "6.2rem", //pixel 5
-                      "5.5rem", //samsung galaxy s8+
-                      "6.8rem", //samsung galaxy s20 ultra
-                      "8.3rem", //ipad air
-                      "8.3rem" //ipad mini
-                  )}
-                  top={SizeFormatter(
-                      "4.1rem", //iphone se
-                      "6.1rem", //iphone xr
-                      "5.1rem", //iphone 12pro
-                      "5.1rem", //pixel 5
-                      "3.6rem", //samsung galaxy s8+
-                      "5.8rem", //samsung galaxy s20 ultra
-                      "8.4rem", //ipad air
-                      "8.4rem" //ipad mini
-                  )}
-                />
-
-                {/* doctor's galaxy phone (temp viewing) */}
-                <ItemImage
-                  onClick={togglePhone}
-                  item={room.clues.doctorphone}
-                  className={styles.item}
-                  filter="auto"
-                  brightness="75%"
-                  width="1.7rem"
-                  right={SizeFormatter(
-                      "3.3rem", //iphone se
-                      "4.0rem", //iphone xr
-                      "3.3rem", //iphone 12pro
-                      "3.5rem", //pixel 5
-                      "3.3rem", //samsung galaxy s8+
-                      "3.8rem", //samsung galaxy s20 ultra
-                      "3.9rem", //ipad air
-                      "3.9rem" //ipad mini
-                  )}
-                  top={SizeFormatter(
-                      "7.2rem", //iphone se
-                      "9.2rem", //iphone xr
-                      "8.2rem", //iphone 12pro
-                      "8.4rem", //pixel 5
-                      "6.2rem", //samsung galaxy s8+
-                      "9.2rem", //samsung galaxy s20 ultra
-                      "13.2rem", //ipad air
-                      "13.2rem" //ipad mini
-                  )}
-                />
-
-                {/* cloth (temp viewing) */}
-                <Box>
-                  {!isClicked && (
-                    <ItemImage
-                      onClick={() => {
-                        handleToggle();
-                        updateCollected(room.clues.cloth.id);
-                      }}
-                      item={room.clues.cloth}
-                      className={styles.item}
-                      filter="auto"
-                      brightness="75%"
-                      width="3.2rem"
-                      left={SizeFormatter(
-                          "9.4rem", //iphone se
-                          "9.4rem", //iphone xr
-                          "9.4rem", //iphone 12pro
-                          "9.4rem", //pixel 5
-                          "8.6rem", //samsung galaxy s8+
-                          "9.4rem", //samsung galaxy s20 ultra
-                          "10.4rem", //ipad air
-                          "10.4rem" //ipad mini
-                      )}
-                      top={SizeFormatter(
-                          "1.5rem", //iphone se
-                          "3.5rem", //iphone xr
-                          "2.5rem", //iphone 12pro
-                          "2.5rem", //pixel 5
-                          "1rem", //samsung galaxy s8+
-                          "3.5rem", //samsung galaxy s20 ultra
-                          "6.5rem", //ipad air
-                          "6.5rem" //ipad mini
-                      )}
-                    />
-                  )}
-                </Box>
-              </Box>
-            </Box>
-
-            <Box mt="2%" w="100%" background={"white"}>
-              Text Component Here
+              )}
             </Box>
           </Box>
-          ) : (
-          <Loading />
-      )}
-        </RoomLayout>
-      );
+        </Box>
+
+        <Box mt="2%" w="100%" background={"white"}>
+          Text Component Here
+        </Box>
+      </Box>
+    </RoomLayout>
+  );
 }
