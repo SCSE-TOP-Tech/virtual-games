@@ -32,9 +32,9 @@ export default async function Home() {
             alignItems="center"
             minH="40vh"
           >
-            {/*<Button colorScheme="blue" onClick={() => router.push("/signup")}>*/}
-            {/*  Sign Up*/}
-            {/*</Button>*/}
+            <Button colorScheme="blue" onClick={() => router.push("/signup")}>
+              Sign Up
+            </Button>
             <Button
               colorScheme="facebook"
               fontSize="3xl"
