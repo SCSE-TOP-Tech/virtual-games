@@ -18,8 +18,7 @@ import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems"
 import { useAuth } from "@/context/AuthContext";
 export default function CooperPage() {
   const [room, setRoom] = useState(null);
-  const { user } = useAuth();
-  console.log(user);
+
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);

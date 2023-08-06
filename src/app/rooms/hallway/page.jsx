@@ -2,7 +2,7 @@
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
@@ -16,17 +16,28 @@ import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Submit from "./components/Submit";
-import { useRouter } from "next/navigation";
-
+import { useRouter, redirect } from "next/navigation";
 export default function Hallway() {
   const router = useRouter();
+  const user = useRef("");
+
   const [room, setRoom] = useState(null);
-  const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    console.log(userId);
+    if (userId && userId !== user.current) {
+      console.log("Here");
+      user.current = userId;
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+    if (isAuthenticated == false) redirect("/login");
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {

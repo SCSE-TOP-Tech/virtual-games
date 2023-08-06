@@ -42,15 +42,18 @@ export default function Login() {
 
           if (data.status == 200) {
             const curUser = data.body;
-            dispatch({ type: "SUCCESS", payload: curUser });
-            router.push("/rooms/cooperroom"); //testing
+            //dispatch({ type: "SUCCESS", payload: curUser });
+
+            localStorage.setItem("userId", curUser.userId);
+
+            router.push("/rooms/hallway");
           } else if (data.status == 401) {
             setError(data.body);
-            dispatch({ type: "FAILURE", payload: data.status });
+            //dispatch({ type: "FAILURE", payload: data.status });
           } else {
             //if (data.status == 404)
             setError(data.body);
-            dispatch({ type: "FAILURE", payload: data.status });
+            //dispatch({ type: "FAILURE", payload: data.status });
           }
         } else {
           //error
