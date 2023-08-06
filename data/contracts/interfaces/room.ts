@@ -1,7 +1,7 @@
 import { Image } from "./image";
 
 interface Room {
-  id: string;
+  room_id: string;
   name: string;
   background: {
     name: string;
@@ -20,4 +20,4 @@ interface Room {
   };
 }
 
-export { Room };
+export type { Room };

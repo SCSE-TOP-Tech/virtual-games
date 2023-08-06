@@ -1,7 +1,8 @@
 interface StateItem {
   stateItemID: number;
   stateID: number;
-  itemID: number;
+  itemName: string;
+  roomName: string;
 }
 
-export { StateItem };
+export type { StateItem };

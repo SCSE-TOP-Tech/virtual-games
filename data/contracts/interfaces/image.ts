@@ -1,4 +1,5 @@
 interface Image {
+  id: string;
   name: string;
   desc: string;
   width: number;
@@ -7,4 +8,4 @@ interface Image {
   state: number;
 }
 
-export { Image };
+export type { Image };
