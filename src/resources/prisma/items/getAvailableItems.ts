@@ -3,14 +3,20 @@
  *
  * @param roomName
  */
-import { Response } from "~/data/contracts/interfaces/response";
 
-async function getAvailableItems(roomName: string) {
+interface AvailableItem {
+  itemName: string;
+  stateID: number;
+}
+
+async function getAvailableItems(
+  roomName: string
+): Promise<AvailableItem[] | null> {
   const availResponse = await fetch(
     `/api/prisma/items/available?room=${roomName}`
   );
-  const availItems: Response = await availResponse.json();
+  const availItems = await availResponse.json();
 
-  return availItems.status != 200 ? availItems.body : null;
+  return availItems.status == 200 ? availItems.body : null;
 }
 export default getAvailableItems;

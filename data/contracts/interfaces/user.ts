@@ -1,7 +1,8 @@
 interface User {
   id: number;
   name?: string;
-  stateId: number;
+  stateID: number;
+  transitionID: number;
 }
 
 export type { User };

@@ -2,12 +2,12 @@
 
 import Provider from "@/app/components/Provider";
 import { AuthContextProvider } from "../context/AuthContext";
-export default async function RootLayout({ children }) {
+export default async function RootLayout(param) {
   return (
     <html lang="en">
       <body>
         <Provider>
-          <AuthContextProvider>{children}</AuthContextProvider>
+          <AuthContextProvider>{param?.children}</AuthContextProvider>
         </Provider>
       </body>
     </html>

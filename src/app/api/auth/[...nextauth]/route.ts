@@ -52,7 +52,12 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  callbacks: {},
+  callbacks: {
+    async jwt({ token }) {
+      token.isAdmin = true;
+      return token;
+    },
+  },
   secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },

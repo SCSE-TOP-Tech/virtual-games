@@ -24,45 +24,45 @@ export default function Phone(props) {
     return (
         <Box
             position='absolute'
-            top='15%'
-            h="70%"
-            w={["71%", "20em"]}
+            h={["95%", "24.5rem"]}
+            w={["55%", "14rem"]}
+            left='22.5%'
+            top='2.5%'
             border='0.5rem solid white'
             borderRadius='2%'
             zIndex={99}
             bg='gray.400'
-
         >
             <Box position='relative' w='100%' h='100%'>
                 {isPhoto && <PhotoApp />}
                 {isCallLog && <CallApp />}
 
-                <Flex 
+                <Flex
                     justify='space-around' 
                     w='100%'
-                    h='10%' 
+                    h='16%' 
                     borderTop='1px solid white' 
                     bg='whitesmoke' 
                     m='0' 
-                    p='1' 
+                    p='1.4' 
                     position='absolute' 
                     bottom='0'
                 >
                     <IconButton
                         aria-label='Call App'
-                        fontSize='1.5rem'
+                        fontSize='1rem'
                         icon={<MdCall />}
                         onClick={toggleCallLog}
                     />
                     <IconButton
                         aria-label='Close Phone'
-                        fontSize='1.5rem'
+                        fontSize='1rem'
                         icon={<MdCropSquare />}
                         onClick={props.handler}
                     />
                     <IconButton
                         aria-label='Photos App'
-                        fontSize='1.5rem'
+                        fontSize='1rem'
                         icon={<MdCameraAlt />}
                         onClick={togglePhoto}
                     />

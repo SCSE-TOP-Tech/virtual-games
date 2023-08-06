@@ -1,25 +1,38 @@
 import { prisma } from "~/lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function PATCH(req: Request) {
   try {
-    console.log("Successful POST to End Timer");
+    console.log("Successful PATCH to End Timer");
     const data: { userId: string; stateId: number } = await req.json();
 
-    // New User and Account
-    const endTimer = await prisma.timer.update({
+    const timer = await prisma.timer.findFirst({
       where: {
         userId: data.userId,
         stateID: data.stateId,
       },
-      data: {
-        endTime: new Date(Date.now()),
+      select: {
+        timerID: true,
       },
     });
-    console.log(endTimer);
-    console.log("Successfully end timer!");
 
-    return NextResponse.json({ status: 200 });
+    if (timer) {
+      const endTimer = await prisma.timer.update({
+        where: {
+          timerID: timer.timerID,
+        },
+        data: {
+          endTime: new Date(Date.now()),
+        },
+      });
+      console.log(endTimer);
+      console.log("Successfully end timer!");
+
+      return NextResponse.json({ status: 200 });
+    }
+
+    return NextResponse.json({ status: 500 });
+    // New User and Account
   } catch (error: any) {
     const error_response = {
       status: 404,

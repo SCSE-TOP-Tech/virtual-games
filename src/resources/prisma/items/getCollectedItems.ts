@@ -4,19 +4,21 @@
  * @param roomName
  * @param userId
  */
-import { Response } from "~/data/contracts/interfaces/response";
 
-async function getCollectedItems(userId: string, roomName: string) {
-  try {
-    const collectedResponse = await fetch(
-      `/api/prisma/items/collected?user=${userId}&room=${roomName}`
-    );
-    console.log(collectedResponse.json());
-    const collectedItems: Response = await collectedResponse.json();
+interface CollectedItems {
+  itemName: string;
+  collected: boolean;
+}
 
-    return collectedItems.status === 200 ? collectedItems.body : null;
-  } catch (error) {
-    console.error(error);
-  }
+async function getCollectedItems(
+  userId: string,
+  roomName: string
+): Promise<CollectedItems[] | null> {
+  const collectedResponse = await fetch(
+    `/api/prisma/items/collected?user=${userId}&room=${roomName}`
+  );
+  const collectedItems = await collectedResponse.json();
+
+  return collectedItems.status == 200 ? collectedItems.body : null;
 }
 export default getCollectedItems;

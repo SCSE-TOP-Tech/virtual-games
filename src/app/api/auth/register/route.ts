@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   try {
     console.log("Successful API Call to register!");
 
-    const { username, email, password }: Account = await req.json();
+    const { username, password }: Account = await req.json();
     const encryptedPassword = await hash(password, 12);
 
     // New User and Account
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         },
         account: {
           create: {
-            email: email,
+            username: username,
             password: encryptedPassword,
           },
         },

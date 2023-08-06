@@ -9,42 +9,106 @@ import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
+import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
+import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
+import endTimer from "@/resources/prisma/timer/endTimer";
+import updateState from "@/resources/prisma/state/updateState";
+import startTimer from "@/resources/prisma/timer/startTimer";
+import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 export default function CooperPage() {
-  const [room, setRoom] = useState(false);
-  const [user, setUser] = useState();
+  const [room, setRoom] = useState(null);
+  const [user, setUser] = useState(null);
+  const [availableItems, setAvailableItems] = useState(null);
+  const [collectedItems, setCollectedItems] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Initial Load
   useEffect(() => {
-    async function fetchData() {
-      const user = await fetchUser();
-      if (user) {
-        setUser(user);
-        setRoom(fetchRoom("cooper", true));
+    const fetchData = async () => {
+      setLoading(true); // Set loading state to true before fetching
+      try {
+        // Fetch user data
+        const currentUser = await fetchUser();
+        setUser(currentUser);
+
+        // Fetch room data and items data
+        const fetchedRoom = await fetchRoom("cooper", true);
+        setRoom(fetchedRoom);
+
+        if (fetchedRoom) {
+          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+          console.log("AvailableItems fetched!");
+          setCollectedItems(
+            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
+          );
+          console.log("CollectedItems fetched!");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
-    }
-    fetchData();
+    };
+
+    fetchData(); // Fetch data on component mount
   }, []);
+
+  const checkVisibility = (itemName) => {
+    if (availableItems && collectedItems) {
+      const availState = availableItems.find(
+        (item) => item.itemName === itemName
+      );
+      const avail = availState.stateID <= user.stateID;
+      const collectedState = collectedItems.find(
+        (item) => item.itemName === itemName
+      );
+      const collected = collectedState.collected;
+
+      return avail && !collected;
+    }
+    return false;
+  };
+
+  const changeState = async (user) => {
+    if (user.stateID !== 1) {
+      await endTimer(user.id, user.stateID);
+    }
+    setUser(await updateState(user.id));
+    const startTime = await startTimer(user.id, user.stateID);
+    if (startTime !== 200) {
+      console.log("Failed to Start Timer");
+    }
+  };
+
+  const updateCollected = async (name) => {
+    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
+    console.log(updatedItem);
+  };
+
+  if (loading || !user || !room || !availableItems || !collectedItems) {
+    return <Loading />;
+  }
 
   return (
     <RoomLayout>
-      {room ? (
-        <Box w={["100%", "30em"]} h="100%" position="relative">
-          <Navbar />
-          <Box
-            display="flex"
-            justifyContent="center"
-            position="relative"
-            width="100%"
-          >
-            {/* background image */}
-            {/* can use ItemImage for background image as well  */}
-            <ItemImage item={room.background} />
+      <Box w={["100%", "30em"]} h="100%" position="relative">
+        <Navbar />
+        <Box
+          display="flex"
+          justifyContent="center"
+          position="relative"
+          width="100%"
+        >
+          {/* background image */}
+          {/* can use ItemImage for background image as well  */}
+          <ItemImage item={room.background} />
 
-            {/* items */}
-            <Box position="absolute" zIndex="1">
-              {/* luggage  */}
+          {/* items */}
+          <Box position="absolute" zIndex="1">
+            {/* luggage  */}
+            {checkVisibility(room.dummy_objects.luggage.id) && (
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.dummy_objects.luggage.id)}
                   item={room.dummy_objects.luggage}
                   //chakra props
                   className={styles.item}
@@ -71,10 +135,15 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* newspaper  */}
+            {/* newspaper  */}
+            {checkVisibility(room.dummy_objects.newspaper.id) && (
               <Hint>
                 <ItemImage
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.newspaper.id)
+                  }
                   item={room.dummy_objects.newspaper}
                   //chakra props
                   className={styles.item}
@@ -101,10 +170,15 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* id  */}
+            {/* id  */}
+            {checkVisibility(room.dummy_objects.spaceID_card.id) && (
               <Hint>
                 <ItemImage
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.spaceID_card.id)
+                  }
                   item={room.dummy_objects.spaceID_card}
                   //chakra props
                   filter="auto"
@@ -133,10 +207,15 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* coffeemachine  */}
+            {/* coffeemachine  */}
+            {checkVisibility(room.dummy_objects.coffee_machine.id) && (
               <Hint>
                 <ItemImage
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.coffee_machine.id)
+                  }
                   item={room.dummy_objects.coffee_machine}
                   //chakra props
                   className={styles.item}
@@ -163,22 +242,20 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
-            </Box>
-          </Box>
-
-          <Box
-            position="absolute"
-            bottom="10%"
-            mt="2%"
-            w="28em"
-            background={"white"}
-          >
-            Text Component Here
+            )}
           </Box>
         </Box>
-      ) : (
-        <Loading />
-      )}
+
+        <Box
+          position="absolute"
+          bottom="10%"
+          mt="2%"
+          w="28em"
+          background={"white"}
+        >
+          Text Component Here
+        </Box>
+      </Box>
     </RoomLayout>
   );
 }
