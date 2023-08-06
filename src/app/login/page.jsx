@@ -16,11 +16,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../../context/AuthContext";
 export default function Login() {
-  const { isAuthenticated, dispatch } = useAuth();
+  const { user, isAuthenticated, dispatch } = useAuth();
   const router = useRouter();
   const [error, setError] = useState("");
   const [displayWarning, setDisplayWarning] = useState(false);
   const [hidden, setHidden] = useState(true);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formik.errors.username || formik.errors.password) {
@@ -31,25 +32,25 @@ export default function Login() {
     } else {
       try {
         //api call
-        console.log(formik.values);
+
         const res = await fetch("/api/auth/login", {
           method: "POST",
           body: JSON.stringify(formik.values),
         });
         if (res.ok) {
           const data = await res.json();
-          if (data.status == 200) {
-            const user = data.body;
-            console.log("Correct");
 
-            //todo dispatch context
+          if (data.status == 200) {
+            const curUser = data.body;
+            dispatch({ type: "SUCCESS", payload: curUser });
+            router.push("/rooms/cooperroom"); //testing
           } else if (data.status == 401) {
             setError(data.body);
-            console.log("wrong password");
+            dispatch({ type: "FAILURE", payload: data.status });
           } else {
             //if (data.status == 404)
             setError(data.body);
-            console.log("user not exist");
+            dispatch({ type: "FAILURE", payload: data.status });
           }
         } else {
           //error
@@ -58,14 +59,6 @@ export default function Login() {
       } catch ({ name, message }) {
         console.log(`${name} : ${message}`);
         setError(message);
-      } finally {
-        if (error !== "") {
-          setTimeout(() => {
-            setError("");
-          }, 3000);
-        } else if (error === "" && isAuthenticated) {
-          router.push("/hallway");
-        }
       }
     }
   };

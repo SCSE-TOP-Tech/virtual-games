@@ -11,10 +11,10 @@ export const useAuth = () => useContext(AuthContext);
 
 const AuthReducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN_SUCCESS":
+    case "SUCCESS":
       return { user: action.payload, isAuthenticated: true };
 
-    case "LOGIN_FAILURE":
+    case "FAILURE":
       return { user: null, isAuthenticated: false };
 
     case "LOGOUT":
