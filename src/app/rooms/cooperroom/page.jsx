@@ -9,21 +9,50 @@ import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
+import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
+import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
+import endTimer from "@/resources/prisma/timer/endTimer";
+import updateState from "@/resources/prisma/state/updateState";
+import startTimer from "@/resources/prisma/timer/startTimer";
+import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 export default function CooperPage() {
-  const [room, setRoom] = useState(false);
-  const [user, setUser] = useState();
+  const [room, setRoom] = useState(null);
+  const [user, setUser] = useState(null);
+  const [availableItems, setAvailableItems] = useState(null);
+  const [collectedItems, setCollectedItems] = useState(null);
 
   // Initial Load
   useEffect(() => {
     async function fetchData() {
-      const user = await fetchUser();
-      if (user) {
-        setUser(user);
+      const currentUser = await fetchUser();
+
+      if (currentUser) {
+        setUser(currentUser);
         setRoom(fetchRoom("cooper", true));
+        if (room && user) {
+          setAvailableItems(await getAvailableItems(room.room_id));
+          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+        }
       }
     }
     fetchData();
-  }, []);
+  }, []); // To include room if necessary (will constantly refresh)
+
+  const changeState = async (user) => {
+    if (user.stateID !== 1) {
+      const endTime = await endTimer(user.id, user.stateID);
+    }
+    setUser(await updateState(user.id));
+    const startTime = await startTimer(user.id, user.stateID);
+    if (startTime !== 200) {
+      console.log("Failed to Start Timer");
+    }
+  };
+
+  const updateCollected = async (name) => {
+    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
+    console.log(updatedItem);
+  };
 
   return (
     <RoomLayout>
@@ -45,6 +74,7 @@ export default function CooperPage() {
               {/* luggage  */}
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.dummy_objects.luggage.id)}
                   item={room.dummy_objects.luggage}
                   //chakra props
                   className={styles.item}
@@ -75,6 +105,9 @@ export default function CooperPage() {
               {/* newspaper  */}
               <Hint>
                 <ItemImage
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.newspaper.id)
+                  }
                   item={room.dummy_objects.newspaper}
                   //chakra props
                   className={styles.item}
@@ -105,6 +138,9 @@ export default function CooperPage() {
               {/* id  */}
               <Hint>
                 <ItemImage
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.spaceID_card.id)
+                  }
                   item={room.dummy_objects.spaceID_card}
                   //chakra props
                   filter="auto"
@@ -137,6 +173,9 @@ export default function CooperPage() {
               {/* coffeemachine  */}
               <Hint>
                 <ItemImage
+                  onClick={() =>
+                    updateCollected(room.dummy_objects.coffee_machine.id)
+                  }
                   item={room.dummy_objects.coffee_machine}
                   //chakra props
                   className={styles.item}

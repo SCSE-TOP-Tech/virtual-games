@@ -9,7 +9,7 @@ import { Response } from "~/data/contracts/interfaces/response";
 
 async function endTimer(userId: string, stateId: number) {
   const timerResponse = await fetch("/api/prisma/timer/end", {
-    method: "POST",
+    method: "PATCH",
     body: JSON.stringify({ userId: userId, stateId: stateId }),
   });
   const timerData: Response = await timerResponse.json();
