@@ -15,6 +15,7 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import Inventory from "@/app/components/Inventory";
 
 export default function Kitchen() {
   const [room, setRoom] = useState(null);
@@ -22,6 +23,7 @@ export default function Kitchen() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,8 +83,8 @@ export default function Kitchen() {
   };
 
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
-    console.log(updatedItem);
+    await updateCollectedItems(user.id, name, room.room_id);
+    setInventory((prev) => [...prev, name]);
   };
 
   if (loading || !user || !room || !availableItems || !collectedItems) {
@@ -201,16 +203,7 @@ export default function Kitchen() {
             )}
           </Box>
         </Box>
-
-        <Box
-          position="absolute"
-          bottom="10%"
-          mt="2%"
-          w="28em"
-          background={"white"}
-        >
-          Text Component Here
-        </Box>
+        <Inventory items={inventory} room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

@@ -16,7 +16,7 @@ import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import { useRouter } from "next/navigation";
-import Inventory from "../components/Inventory";
+import Inventory from "@/app/components/Inventory";
 
 export default function CaptainRoom() {
   const router = useRouter();
@@ -24,7 +24,7 @@ export default function CaptainRoom() {
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
-  const [inventory, setInventory] = useState([])
+  const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -113,7 +113,6 @@ export default function CaptainRoom() {
                 <ItemImage
                   onClick={() => updateCollected(room.clues.music_albums.id)}
                   item={room.clues.music_albums}
-                  onClick={() => setInventory((prev) => [...prev, "music_albums"])}
                   className={styles.item}
                   width="4rem"
                   filter="auto"
@@ -148,8 +147,6 @@ export default function CaptainRoom() {
                 <ItemImage
                   onClick={() => updateCollected(room.clues.lipstick.id)}
                   item={room.clues.lipstick}
-                  onClick={() => setInventory((prev) => [...prev, "lipstick"])}
-
                   className={styles.item}
                   width="2rem"
                   filter="auto"
@@ -184,8 +181,6 @@ export default function CaptainRoom() {
                 <ItemImage
                   onClick={() => updateCollected(room.clues.guestbook.id)}
                   item={room.clues.guestbook}
-                  onClick={() => setInventory((prev) => [...prev, "guestbook"])}
-
                   className={styles.item}
                   width="3rem"
                   filter="auto"
@@ -220,8 +215,6 @@ export default function CaptainRoom() {
                 <ItemImage
                   onClick={() => updateCollected(room.clues.note.id)}
                   item={room.clues.note}
-                  onClick={() => setInventory((prev) => [...prev, "note"])}
-
                   className={styles.item}
                   width="1.5rem"
                   right={SizeFormatter(
@@ -258,8 +251,6 @@ export default function CaptainRoom() {
                     await changeState(user);
                   }}
                   item={room.clues.blood_letter}
-                  onClick={() => setInventory((prev) => [...prev, "blood_letter"])}
-
                   className={styles.item}
                   width="10rem"
                   right={SizeFormatter(
@@ -292,8 +283,6 @@ export default function CaptainRoom() {
                 <ItemImage
                   onClick={() => updateCollected(room.clues.broken_watch.id)}
                   item={room.clues.broken_watch}
-                  onClick={() => setInventory((prev) => [...prev, "broken_watch"])}
-
                   className={styles.item}
                   width="3.5rem"
                   left={SizeFormatter(
