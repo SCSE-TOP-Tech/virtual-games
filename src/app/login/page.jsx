@@ -14,18 +14,15 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import createUser from "@/resources/prisma/login/createUser";
-
+import { useAuth } from "../../context/AuthContext";
 export default function Login() {
+  const { isAuthenticated, dispatch } = useAuth();
   const router = useRouter();
   const [error, setError] = useState("");
   const [displayWarning, setDisplayWarning] = useState(false);
   const [hidden, setHidden] = useState(true);
-  const [user, setUser] = useState(null);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (formik.errors.username || formik.errors.password) {
       setDisplayWarning(true);
       setTimeout(() => {
@@ -33,18 +30,40 @@ export default function Login() {
       }, 3000);
     } else {
       try {
-        // TO DO: loading state when creating new login
+        //api call
+        console.log(formik.values);
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          body: JSON.stringify(formik.values),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.status == 200) {
+            const user = data.body;
+            console.log("Correct");
+
+            //todo dispatch context
+          } else if (data.status == 401) {
+            setError(data.body);
+            console.log("wrong password");
+          } else {
+            //if (data.status == 404)
+            setError(data.body);
+            console.log("user not exist");
+          }
+        } else {
+          //error
+          throw new Error(res.name, res.statusText);
+        }
       } catch ({ name, message }) {
         console.log(`${name} : ${message}`);
-        alert("Not Logged in!");
-        setError(message); // TO FIX NOT WORKING!
+        setError(message);
       } finally {
         if (error !== "") {
           setTimeout(() => {
             setError("");
           }, 3000);
-        } else if (user !== null) {
-          //route to relevant page. eg cooper room
+        } else if (error === "" && isAuthenticated) {
           router.push("/hallway");
         }
       }

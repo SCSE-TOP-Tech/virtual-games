@@ -2,7 +2,7 @@ import { prisma } from "~/lib/prisma";
 import { NextResponse } from "next/server";
 import { hash } from "bcryptjs";
 import { Account } from "~/data/contracts/interfaces/account";
-
+//to be deprecated
 export async function POST(req: Request) {
   try {
     console.log("Successful API Call to register!");
