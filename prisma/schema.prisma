@@ -1,103 +1,75 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider          = "postgresql"
-  url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+  url               = env("POSTGRES_PRISMA_URL")
+  directUrl         = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Account {
-  id            String  @id @default(cuid())
-  email         String  @unique
-  password      String
-  refresh_token String? @db.Text
-  access_token  String? @db.Text
-  expires_at    Int?
-  token_type    String?
-  scope         String?
-  id_token      String? @db.Text
-  session_state String?
-
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String @unique
-}
-
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  password String
+  id       String @id @default(cuid())
+  userId   String @unique
+  username String @unique
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id           String     @id @default(cuid())
   name         String?
-  transitionID Int?       @default(0)
-  sessions     Session[]
-  account      Account?
-  state        State      @relation(fields: [stateID], references: [stateID])
   stateID      Int
-  timers       Timer[] // 1-M
-  items        UserItem[] // 1-M
-  guess        Guess? // 1-1
-}
-
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
+  id           String     @id @default(cuid())
+  transitionID Int?       @default(0)
+  account      Account?
+  guess        Guess?
+  timers       Timer[]
+  state        State      @relation(fields: [stateID], references: [stateID])
+  items        UserItem[]
 }
 
 model Timer {
   timerID   Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-  state     State    @relation(fields: [stateID], references: [stateID])
-  stateID   Int
   startTime DateTime @default(now())
   endTime   DateTime
   timeTaken Float
+  stateID   Int
+  userId    String
+  state     State    @relation(fields: [stateID], references: [stateID])
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Guess {
   guessID Int    @id @default(autoincrement())
-  user    User   @relation(fields: [userId], references: [id])
-  userId  String @unique
   score   Float
+  userId  String @unique
+  user    User   @relation(fields: [userId], references: [id])
 }
 
 model UserItem {
   userItemID  Int       @id @default(autoincrement())
-  user        User      @relation(fields: [userId], references: [id])
-  userId      String
-  stateItem   StateItem @relation(fields: [stateItemID], references: [stateItemID])
   stateItemID Int
   collected   Boolean
+  userId      String
+  stateItem   StateItem @relation(fields: [stateItemID], references: [stateItemID])
+  user        User      @relation(fields: [userId], references: [id])
 }
 
 model State {
   stateID     Int         @id
   name        String
   currentTime DateTime
-  users       User[]
   stateItems  StateItem[]
   timer       Timer[]
+  users       User[]
 }
 
 model StateItem {
   stateItemID Int        @id @default(autoincrement())
-  state       State      @relation(fields: [stateID], references: [stateID])
   stateID     Int
-  useritem    UserItem[]
   itemName    String
   roomName    String
+  state       State      @relation(fields: [stateID], references: [stateID])
+  useritem    UserItem[]
 }
