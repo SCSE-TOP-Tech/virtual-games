@@ -1,12 +1,12 @@
 "use client";
-import fetchRoom from "@/resources/cloudinary/fetchRoom";
-import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
-import Hint from "../../components/Hint";
 import { fetchUser } from "@/resources/prisma/fetchUser";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import Navbar from "../../components/Navbar";
+import styles from "./components/styles.module.css";
+import Hint from "../../components/Hint";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";

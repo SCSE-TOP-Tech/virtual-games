@@ -4,24 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="Added calculateScore.ts">
+    <list default="true" id="307973d8-6b1d-4468-a75c-f97b5f92f18f" name="Changes" comment="updated inventory for all rooms">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/brandroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/brandroom/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/captainroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/captainroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/rooms/carmenroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/carmenroom/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/clinic/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/clinic/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/rooms/controlroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/controlroom/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/cooperroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/cooperroom/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/doyleroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/doyleroom/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/dressingroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/dressingroom/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/hallway/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/hallway/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/kitchen/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/kitchen/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/maanroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/maanroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/rooms/princessroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/princessroom/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/romilyroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/romilyroom/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/rooms/seraphineroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/seraphineroom/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/rooms/storageroom/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rooms/storageroom/page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688746295006</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updated inventory for all rooms">
+      <option name="closed" value="true" />
+      <created>1691331010210</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1691331010210</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +158,7 @@
     <MESSAGE value="Successfully created seeder for states" />
     <MESSAGE value="Added baseURL for absolute pathing" />
     <MESSAGE value="Refactored StorageRoom, added baseURL for absolute pathing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored StorageRoom, added baseURL for absolute pathing." />
+    <MESSAGE value="updated inventory for all rooms" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated inventory for all rooms" />
   </component>
 </project>

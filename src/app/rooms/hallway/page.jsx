@@ -1,12 +1,13 @@
 "use client";
-import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { useEffect, useState } from "react";
+import { fetchUser } from "@/resources/prisma/fetchUser";
+import { useRouter } from "next/navigation";
+import styles from "./components/styles.module.css";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
-import { fetchUser } from "@/resources/prisma/fetchUser";
 import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
 import updateState from "@/resources/prisma/state/updateState";
@@ -16,7 +17,6 @@ import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Submit from "./components/Submit";
-import { useRouter } from "next/navigation";
 import Inventory from "@/app/components/Inventory";
 
 export default function Hallway() {
