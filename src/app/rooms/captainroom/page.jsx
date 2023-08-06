@@ -23,45 +23,57 @@ export default function CaptainRoom() {
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Initial Load
   useEffect(() => {
-    async function fetchData() {
-      const currentUser = await fetchUser();
-
-      if (currentUser) {
+    const fetchData = async () => {
+      setLoading(true); // Set loading state to true before fetching
+      try {
+        // Fetch user data
+        const currentUser = await fetchUser();
         setUser(currentUser);
-        setRoom(fetchRoom("captain", false));
-        if (room && user) {
-          setAvailableItems(await getAvailableItems(room.room_id));
+
+        // Fetch room data and items data
+        const fetchedRoom = await fetchRoom("captain", false);
+        setRoom(fetchedRoom);
+
+        if (fetchedRoom) {
+          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+          console.log("AvailableItems fetched!");
           setCollectedItems(
-            await getCollectedItems(currentUser.userId, room.room_id)
+            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
           );
+          console.log("CollectedItems fetched!");
         }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
-    }
-    fetchData();
-  }, []); // To include room if necessary (will constantly refresh)
+    };
+
+    fetchData(); // Fetch data on component mount
+  }, []);
 
   const checkVisibility = (itemName) => {
     if (availableItems && collectedItems) {
-      const available =
-        availableItems.find((item) => item.itemName === itemName).stateID <=
-        user.stateID;
-      console.log(available);
-
-      const collected = collectedItems.find(
+      const availState = availableItems.find(
         (item) => item.itemName === itemName
-      ).collected;
-      console.log(collected);
+      );
+      const avail = availState.stateID <= user.stateID;
+      const collectedState = collectedItems.find(
+        (item) => item.itemName === itemName
+      );
+      const collected = collectedState.collected;
 
-      return available && !collected;
+      return avail && !collected;
     }
     return false;
   };
+
   const changeState = async (user) => {
     if (user.stateID !== 1) {
-      const endTime = await endTimer(user.id, user.stateID);
+      await endTimer(user.id, user.stateID);
     }
     setUser(await updateState(user.id));
     const startTime = await startTimer(user.id, user.stateID);
@@ -71,67 +83,64 @@ export default function CaptainRoom() {
   };
 
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
-    console.log(updatedItem);
+    await updateCollectedItems(user.id, name, room.room_id);
   };
 
-  if (availableItems) {
-    console.log(
-      availableItems.find((item) => item.itemName === "music_albums")
-    );
+  if (loading || !user || !room || !availableItems || !collectedItems) {
+    return <Loading />;
   }
 
   return (
     <RoomLayout>
-      {room ? (
-        <Box w={["100%", "30em"]} h="100%" position="relative">
-          <Navbar />
-          {/* container for background image and items*/}
-          <Box
-            display="flex"
-            justifyContent="center"
-            zIndex="0"
-            h="90%"
-            width="100%"
-          >
-            {/* background image */}
-            <ItemImage height="80%" item={room.background} />
-            {/* items container */}
-            <Box position="absolute" zIndex="1">
-              {checkVisibility("music_albums") && (
-                <Hint>
-                  <ItemImage
-                    onClick={() => updateCollected(room.clues.music_albums.id)}
-                    item={room.clues.music_albums}
-                    className={styles.item}
-                    width="4rem"
-                    filter="auto"
-                    brightness="50%"
-                    right={SizeFormatter(
-                      "5rem", //iphone se
-                      "5rem", //iphone xr
-                      "5rem", //iphone 12pro
-                      "5rem", //pixel 5
-                      "5rem", //samsung galaxy s8+
-                      "5rem", //samsung galaxy s20 ultra
-                      "7rem", //ipad air
-                      "7rem" //ipad mini
-                    )}
-                    top={SizeFormatter(
-                      "18rem", //iphone se
-                      "18rem", //iphone xr
-                      "18rem", //iphone 12pro
-                      "18rem", //pixel 5
-                      "18rem", //samsung galaxy s8+
-                      "18rem", //samsung galaxy s20 ultra
-                      "18rem", //ipad air
-                      "18rem" //ipad mini
-                    )}
-                  />
-                </Hint>
-              )}
+      <Box w={["100%", "30em"]} h="100%" position="relative">
+        <Navbar />
+        {/* container for background image and items*/}
+        <Box
+          display="flex"
+          justifyContent="center"
+          zIndex="0"
+          h="90%"
+          width="100%"
+        >
+          {/* background image */}
+          <ItemImage height="80%" item={room.background} />
+          {/* items container */}
+          <Box position="absolute" zIndex="1">
+            {checkVisibility(room.clues.music_albums.id) && (
+              <Hint>
+                <ItemImage
+                  onClick={() => updateCollected(room.clues.music_albums.id)}
+                  item={room.clues.music_albums}
+                  className={styles.item}
+                  width="4rem"
+                  filter="auto"
+                  brightness="50%"
+                  right={SizeFormatter(
+                    "5rem", //iphone se
+                    "5rem", //iphone xr
+                    "5rem", //iphone 12pro
+                    "5rem", //pixel 5
+                    "5rem", //samsung galaxy s8+
+                    "5rem", //samsung galaxy s20 ultra
+                    "7rem", //ipad air
+                    "7rem" //ipad mini
+                  )}
+                  top={SizeFormatter(
+                    "18rem", //iphone se
+                    "18rem", //iphone xr
+                    "18rem", //iphone 12pro
+                    "18rem", //pixel 5
+                    "18rem", //samsung galaxy s8+
+                    "18rem", //samsung galaxy s20 ultra
+                    "18rem", //ipad air
+                    "18rem" //ipad mini
+                  )}
+                />
+              </Hint>
+            )}
 
-              {/* Lipstick */}
+            {/* Lipstick */}
+            {checkVisibility(room.clues.lipstick.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.lipstick.id)}
@@ -162,8 +171,10 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* Guestbook */}
+            {/* Guestbook */}
+            {checkVisibility(room.clues.guestbook.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.guestbook.id)}
@@ -194,8 +205,10 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* Note */}
+            {/* Note */}
+            {checkVisibility(room.clues.note.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.note.id)}
@@ -224,8 +237,10 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* blood letter */}
+            {/* blood letter */}
+            {checkVisibility(room.clues.blood_letter.id) && (
               <Hint>
                 <ItemImage
                   onClick={async () => {
@@ -258,8 +273,10 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
+            )}
 
-              {/* broken watch */}
+            {/* broken watch */}
+            {checkVisibility(room.clues.broken_watch.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.broken_watch.id)}
@@ -288,21 +305,19 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
-            </Box>
-          </Box>
-          <Box
-            position="absolute"
-            bottom="10%"
-            mt="2%"
-            w="28em"
-            background={"white"}
-          >
-            Text Component Here
+            )}
           </Box>
         </Box>
-      ) : (
-        <Loading />
-      )}
+        <Box
+          position="absolute"
+          bottom="10%"
+          mt="2%"
+          w="28em"
+          background={"white"}
+        >
+          Text Component Here
+        </Box>
+      </Box>
     </RoomLayout>
   );
 }

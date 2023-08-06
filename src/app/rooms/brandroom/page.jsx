@@ -21,27 +21,57 @@ export default function BrandRoom() {
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Initial Load
   useEffect(() => {
-    async function fetchData() {
-      const currentUser = await fetchUser();
-
-      if (currentUser) {
+    const fetchData = async () => {
+      setLoading(true); // Set loading state to true before fetching
+      try {
+        // Fetch user data
+        const currentUser = await fetchUser();
         setUser(currentUser);
-        setRoom(fetchRoom("brand", true));
-        if (room && user) {
-          setAvailableItems(await getAvailableItems(room.room_id));
-          setCollectedItems(await getCollectedItems(user.userId, room.room_id));
+
+        // Fetch room data and items data
+        const fetchedRoom = await fetchRoom("brand", true);
+        setRoom(fetchedRoom);
+
+        if (fetchedRoom) {
+          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+          console.log("AvailableItems fetched!");
+          setCollectedItems(
+            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
+          );
+          console.log("CollectedItems fetched!");
         }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
+    };
+
+    fetchData(); // Fetch data on component mount
+  }, []);
+
+  const checkVisibility = (itemName) => {
+    if (availableItems && collectedItems) {
+      const availState = availableItems.find(
+        (item) => item.itemName === itemName
+      );
+      const avail = availState.stateID <= user.stateID;
+      const collectedState = collectedItems.find(
+        (item) => item.itemName === itemName
+      );
+      const collected = collectedState.collected;
+
+      return avail && !collected;
     }
-    fetchData();
-  }, []); // To include room if necessary (will constantly refresh)
+    return false;
+  };
 
   const changeState = async (user) => {
     if (user.stateID !== 1) {
-      const endTime = await endTimer(user.id, user.stateID);
+      await endTimer(user.id, user.stateID);
     }
     setUser(await updateState(user.id));
     const startTime = await startTimer(user.id, user.stateID);
@@ -55,23 +85,27 @@ export default function BrandRoom() {
     console.log(updatedItem);
   };
 
+  if (loading || !user || !room || !availableItems || !collectedItems) {
+    return <Loading />;
+  }
+
   return (
     <RoomLayout>
-      {room ? (
-        <div>
-          <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-            <Navbar />
-            <Box
-              display="flex"
-              justifyContent="center"
-              position="relative"
-              width="100%"
-            >
-              {/* background image */}
-              <ItemImage item={room.background} />
-              <Box position="absolute" zIndex="1">
-                {/* temp custom image to be used */}
-                {/* galaxy phone */}
+      <Box>
+        <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
+          <Navbar />
+          <Box
+            display="flex"
+            justifyContent="center"
+            position="relative"
+            width="100%"
+          >
+            {/* background image */}
+            <ItemImage item={room.background} />
+            <Box position="absolute" zIndex="1">
+              {/* temp custom image to be used */}
+              {/* galaxy phone */}
+              {checkVisibility(room.clues.galaxy_phone.id) && (
                 <Hint>
                   <ItemImage
                     onClick={() => updateCollected(room.clues.galaxy_phone.id)}
@@ -100,22 +134,20 @@ export default function BrandRoom() {
                     )}
                   />
                 </Hint>
-              </Box>
-            </Box>
-            <Box
-              position="absolute"
-              bottom="10%"
-              mt="2%"
-              w="28em"
-              background={"white"}
-            >
-              Text Component Here
+              )}
             </Box>
           </Box>
-        </div>
-      ) : (
-        <Loading />
-      )}
+          <Box
+            position="absolute"
+            bottom="10%"
+            mt="2%"
+            w="28em"
+            background={"white"}
+          >
+            Text Component Here
+          </Box>
+        </Box>
+      </Box>
     </RoomLayout>
   );
 }
