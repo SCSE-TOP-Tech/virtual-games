@@ -1,20 +1,22 @@
 import { prisma } from "~/lib/prisma";
 import { NextResponse } from "next/server";
 
+type User = {
+  username: string;
+  password: string;
+};
 export async function POST(req: Request) {
   try {
-    console.log("Successful POST to Login");
-    const userData: {
-      name: string;
-      email: string;
+    const user: {
+      username: string;
       password: string;
     } = await req.json();
 
     // Login account
     const currentAccount = await prisma.account.findFirst({
       where: {
-        email: userData.email,
-        password: userData.password,
+        email: user.username, //to change to username when username attribute is added
+        password: user.password,
       },
     });
     console.log(currentAccount);

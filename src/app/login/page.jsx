@@ -34,9 +34,6 @@ export default function Login() {
     } else {
       try {
         // TO DO: loading state when creating new login
-        const newUser = await createUser(formik.values);
-        // TO DO: stored login state, to persist throughout gameplay
-        newUser != null ? setUser(newUser) : alert("Invalid Login");
       } catch ({ name, message }) {
         console.log(`${name} : ${message}`);
         alert("Not Logged in!");
@@ -48,7 +45,7 @@ export default function Login() {
           }, 3000);
         } else if (user !== null) {
           //route to relevant page. eg cooper room
-          router.push("/cooperroom");
+          router.push("/hallway");
         }
       }
     }
