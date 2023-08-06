@@ -15,8 +15,11 @@ import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
 import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
+import Submit from "./components/Submit"
+import { useRouter } from "next/navigation";
 
 export default function Hallway() {
+  const router = useRouter();
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
@@ -55,6 +58,12 @@ export default function Hallway() {
     console.log(updatedItem);
   };
 
+  const [isClicked, setClicked] = useState(true);
+
+  const toggleSubmission = () => {
+    setClicked(!isClicked);
+  }
+
   return (
     <RoomLayout>
       {room ? (
@@ -66,6 +75,12 @@ export default function Hallway() {
             position="relative"
             width="100%"
           >
+            {isClicked &&
+              <Submit
+                clickHandler={toggleSubmission}
+                toggleSubmission={() => router.push("/transitions")}
+              />
+            }
             <ItemImage item={room.background} />
             <Box position="absolute" zIndex="1">
               {/* sibling-photo */}
@@ -99,8 +114,22 @@ export default function Hallway() {
                   )}
                 />
               </Hint>
+              <img
+                src="/Rooms/Hallway/princess-white.png"
+                alt='submit ansawers'
+                width='43rem'
+                className={styles.item}
+                style={{
+                  position: "relative",
+                  top: "13rem"
+                }}
+                onClick={toggleSubmission}
+              />
             </Box>
+
+
           </Box>
+
 
           <Box mt="2%" w="100%" background="white">
             Text Component Here
