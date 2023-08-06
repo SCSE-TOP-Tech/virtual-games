@@ -3,12 +3,14 @@ import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import Inventory from "../components/Inventory";
 import Navbar from "../components/Navbar";
 import { ItemImage, SizeFormatter } from "@/app/components/ImageComp";
 import Hint from "../components/Hint";
 
 export default function Kitchen() {
   const [room, setRoom] = useState(false);
+  const [inventory, setInventory] = useState([])
 
   useEffect(() => {
     fetchRoom("kitchen", false).then((data) => {
@@ -120,15 +122,7 @@ export default function Kitchen() {
             </Box>
           </Box>
 
-          <Box
-            position="absolute"
-            bottom="10%"
-            mt="2%"
-            w="28em"
-            background={"white"}
-          >
-            Text Component Here
-          </Box>
+          <Inventory items={inventory} room={room} styles={styles.item} />
         </Box>
       )}
     </Suspense>

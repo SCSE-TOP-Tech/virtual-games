@@ -3,6 +3,7 @@ import styles from "./components/styles.module.css";
 import { Box, IconButton } from "@chakra-ui/react";
 import { MdClose } from "react-icons/md";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import Inventory from "../components/Inventory";
 import { useEffect, useState, Suspense } from "react";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import Navbar from "../components/Navbar";
@@ -10,6 +11,7 @@ import Hint from "../components/Hint";
 
 export default function PrincessRoom() {
   const [room, setRoom] = useState(false);
+  const [inventory, setInventory] = useState([])
   const [inspect, showMap] = useState(false);
 
   const toggleMap = () => {
@@ -182,9 +184,7 @@ export default function PrincessRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box mt="2%" w="100%" background={"white"}>
-            Text Component Here
-          </Box>
+          <Inventory items={inventory} room={room} styles={styles.item} />
         </Box>
       )}
     </Suspense>

@@ -4,11 +4,13 @@ import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import Inventory from "../components/Inventory";
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
 
 export default function BrandRoom() {
   const [room, setRoom] = useState(false);
+  const [inventory, setInventory] = useState([])
 
   // Initial Load
   useEffect(() => {
@@ -63,15 +65,7 @@ export default function BrandRoom() {
                 </Hint>
               </Box>
             </Box>
-            <Box
-              position="absolute"
-              bottom="10%"
-              mt="2%"
-              w="28em"
-              background={"white"}
-            >
-              Text Component Here
-            </Box>
+            <Inventory items={inventory} room={room} styles={styles.item} />
           </Box>
         </div>
       )}

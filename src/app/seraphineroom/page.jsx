@@ -1,5 +1,6 @@
 "use client";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import Inventory from "../components/Inventory";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
@@ -9,6 +10,7 @@ import Hint from "../components/Hint";
 
 export default function SeraphineRoom() {
   const [room, setRoom] = useState(false);
+  const [inventory, setInventory] = useState([])
 
   // Initial Load
   useEffect(() => {
@@ -157,9 +159,7 @@ export default function SeraphineRoom() {
               </Hint>
             </Box>
           </Box>
-          <Box mt="2%" w="100%" background={"white"}>
-            Text Component Here
-          </Box>
+          <Inventory items={inventory} room={room} styles={styles.item} />
         </Box>
       )}
     </Suspense>
