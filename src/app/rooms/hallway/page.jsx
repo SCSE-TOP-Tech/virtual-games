@@ -15,8 +15,11 @@ import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
 import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
+import Submit from "./components/Submit"
+import { useRouter } from "next/navigation";
 
 export default function Hallway() {
+  const router = useRouter();
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
@@ -26,7 +29,7 @@ export default function Hallway() {
   useEffect(() => {
     async function fetchData() {
       const currentUser = await fetchUser();
-
+      console.log("Current user: ", currentUser);
       if (currentUser) {
         setUser(currentUser);
         setRoom(fetchRoom("hallway", false));
@@ -39,32 +42,32 @@ export default function Hallway() {
     fetchData();
   }, []); // To include room if necessary (will constantly refresh)
 
-  const changeState = async () => {
-    if (user.stateId !== 1) {
-      const endTime = await endTimer(user.userId, user.stateId);
+  const changeState = async (user) => {
+    if (user.stateID !== 1) {
+      const endTime = await endTimer(user.id, user.stateID);
     }
-    setUser(await updateState(user.userId));
-    const startTime = await startTimer(user.userId, user.stateId);
+    setUser(await updateState(user.id));
+    const startTime = await startTimer(user.id, user.stateID);
     if (startTime !== 200) {
       console.log("Failed to Start Timer");
     }
   };
 
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(
-      user.userId,
-      room.clues.portrait.id, // to replace with respective item
-      room.room_id
-    );
-
+    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
     console.log(updatedItem);
   };
+
+  const [isClicked, setClicked] = useState(true);
+
+  const toggleSubmission = () => {
+    setClicked(!isClicked);
+  }
 
   return (
     <RoomLayout>
       {room ? (
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <button onClick={updateCollected}>test </button>
           <Navbar />
           <Box
             display="flex"
@@ -72,11 +75,18 @@ export default function Hallway() {
             position="relative"
             width="100%"
           >
+            {isClicked &&
+              <Submit
+                clickHandler={toggleSubmission}
+                toggleSubmission={() => router.push("/transitions")}
+              />
+            }
             <ItemImage item={room.background} />
             <Box position="absolute" zIndex="1">
               {/* sibling-photo */}
               <Hint>
                 <ItemImage
+                  onClick={() => updateCollected(room.clues.portrait.id)}
                   item={room.clues.portrait}
                   className={styles.item}
                   width="0.7rem"
@@ -104,8 +114,22 @@ export default function Hallway() {
                   )}
                 />
               </Hint>
+              <img
+                src="/Rooms/Hallway/princess-white.png"
+                alt='submit ansawers'
+                width='43rem'
+                className={styles.item}
+                style={{
+                  position: "relative",
+                  top: "13rem"
+                }}
+                onClick={toggleSubmission}
+              />
             </Box>
+
+
           </Box>
+
 
           <Box mt="2%" w="100%" background="white">
             Text Component Here

@@ -2,15 +2,15 @@
 import Fonts from "@/app/fonts";
 import { Box } from "@chakra-ui/react";
 
-export default function RoomLayout({ children }) {
+export default function TransitionLayout({ children }) {
   return (
     <section>
       <Fonts />
       <Box
         display="flex"
-        bg="lightgreen"
+        bg="transparent"
         justifyContent="center"
-        w="100vw"
+        w="100%"
         h={800}
       >
         {children}
