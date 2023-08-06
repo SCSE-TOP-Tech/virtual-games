@@ -1,13 +1,6 @@
 "use client";
-import {
-  Box,
-  Input,
-  Button,
-  UnorderedList,
-  ListItem,
-  Text,
-} from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { Box, Input, Button, UnorderedList, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import Correct from "./components/Correct.js";
 import Incorrect from "./components/Incorrect.js";
 import submitGuess from "@/app/api/prisma/guessanswer/guess.js";
@@ -21,8 +14,10 @@ export default function GuessingPage() {
   const [isCorrect, setCorrectValue] = useState(false);
   const [numAttempt, setNumAttempt] = useState(0);
 
+  const userId = localStorage.getItem("user");
+
   const addInput = () => {
-    if (name == "") return;
+    if (name === "") return;
     setGuess([...guess, name]);
     setName("");
   };
@@ -121,6 +116,7 @@ export default function GuessingPage() {
             colorScheme="teal"
             onClick={() =>
               submitGuess(
+                userId,
                 guess,
                 numAttempt,
                 setNumAttempt,

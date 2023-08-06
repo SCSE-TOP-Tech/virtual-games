@@ -16,6 +16,6 @@ async function updateGuess(userId: string, score: number) {
 
   const updatedGuess = await updateGuessResponse.json();
 
-  return updatedGuess.status == 200 ? updatedGuess.body : null;
+  return updatedGuess.status;
 }
 export default updateGuess;
