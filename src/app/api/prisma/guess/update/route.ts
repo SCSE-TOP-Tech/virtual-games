@@ -14,16 +14,15 @@ export async function POST(req: Request) {
             id: data.userId,
           },
         },
-        userId: data.userId,
         score: data.score,
       },
     });
     console.log("Successfully updated guess!");
 
-    return NextResponse.json({ status: 200 });
+    return NextResponse.json({ status: 200, body: updateGuess });
   } catch (error: any) {
     const error_response = {
-      status: 404,
+      status: 500,
       message: error.message,
     };
     return NextResponse.json(JSON.stringify(error_response), {
