@@ -4,11 +4,13 @@ import { Box, Flex, Center, Text } from "@chakra-ui/react";
 import { useEffect, useState, Suspense } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../components/ImageComp";
+import Inventory from "../components/Inventory";
 import Navbar from "../components/Navbar";
 import Hint from "../components/Hint";
+import Phone from "../components/Phone"
 export default function CooperPage() {
   const [room, setRoom] = useState(false);
-  const [inventory, setInventory] = useState(['coffee_machine'])
+  const [inventory, setInventory] = useState([])
 
   useEffect(() => {
     fetchRoom("cooper", true).then((data) => {
@@ -39,7 +41,7 @@ export default function CooperPage() {
                   item={room.dummy_objects.luggage}
                   onClick={() => setInventory((prev) => [...prev, "luggage"])}
                   //chakra props
-                  className={styles.item + " " + (inventory.includes("luggage") ? styles.fade : "") }
+                  className={styles.item + " " + (inventory.includes("luggage") ? styles.fade : "")}
                   width="6.5rem"
                   right={SizeFormatter(
                     "1rem", //iphone se
@@ -103,7 +105,7 @@ export default function CooperPage() {
                   //chakra props
                   filter="auto"
                   brightness="75%"
-                  className={styles.item + " " + (inventory.includes("spaceID_card") ? styles.fade : "") }
+                  className={styles.item + " " + (inventory.includes("spaceID_card") ? styles.fade : "")}
                   width="5.5rem"
                   right={SizeFormatter(
                     "4rem", //iphone se
@@ -134,7 +136,7 @@ export default function CooperPage() {
                   item={room.dummy_objects.coffee_machine}
                   onClick={() => setInventory((prev) => [...prev, "coffee_machine"])}
                   //chakra props
-                  className={styles.item + " " + (inventory.includes("coffee_machine") ? styles.fade : "") }
+                  className={styles.item + " " + (inventory.includes("coffee_machine") ? styles.fade : "")}
                   width="3.5rem" //use SizeFormatter if item should be different for different devices
                   left={SizeFormatter(
                     "8.5rem", //iphone se
@@ -161,49 +163,8 @@ export default function CooperPage() {
             </Box>
           </Box>
 
-          <Text
-            fontSize={SizeFormatter(
-              "1rem", //iphone se
-              "1rem", //iphone xr
-              "1rem", //iphone 12pro
-              "1rem", //pixel 5
-              "1rem", //samsung galaxy s8+
-              "1rem", //samsung galaxy s20 ultra
-              "1.5rem", //ipad air
-              "1.5rem" //ipad mini
-            )}
-            fontFamily="monospace"
-            py="1%"
-            fontWeight={700}
-            bgColor="white"
-            textAlign="center"
-          >
-            Your inventory:
-          </Text>
-          <Flex flexWrap="wrap" bgColor="gray.400">
-            {inventory.map((item) =>
-
-              <Center m="1%" p="1%" border="solid" borderWidth="1px" borderRadius="5%">
-                <ItemImage
-                  item={room.dummy_objects[item]}
-                  //chakra props
-                  className={styles.item}
-
-                  width={SizeFormatter(
-                    "2rem", //iphone se
-                    "2.5rem", //iphone xr
-                    "3rem", //iphone 12pro
-                    "3rem", //pixel 5
-                    "5rem", //samsung galaxy s8+
-                    "5rem", //samsung galaxy s20 ultra
-                    "5rem", //ipad air
-                    "5rem" //ipad mini
-                  )}
-                />
-              </Center>
-            )}
-
-          </Flex>
+          <Inventory items={inventory} room={room} styles={styles.item} />
+          
 
           {/* <Box
             position="absolute"
