@@ -5,7 +5,7 @@ import { prisma } from "~/lib/prisma";
 //"clkzn1klg0005uck94owj514c"
 export async function POST(req: NextRequest) {
   const userId = await req.json();
-  console.log(userId);
+  console.log("User ID: ", userId);
   const requiredID = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -19,6 +19,8 @@ export async function POST(req: NextRequest) {
   if (!requiredID) {
     return NextResponse.json({ status: 404, body: "User does not exist" });
   }
+  console.log("Successful POST request for user info");
+  console.log(requiredID);
   return NextResponse.json({
     status: 200,
     body: requiredID,

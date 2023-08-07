@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import Loading from "@/app/rooms/loading";
@@ -24,6 +25,7 @@ export default function BrandRoom() {
   const userRef = useRef("");
 
   const [room, setRoom] = useState(null);
+  const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -40,6 +42,8 @@ export default function BrandRoom() {
         setRoom(fetchedRoom);
 
         if (fetchedRoom) {
+          setUser(await fetchUserInfo(userRef.current));
+          
           setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
           console.log("AvailableItems fetched!");
           setCollectedItems(
@@ -54,11 +58,9 @@ export default function BrandRoom() {
       }
     };
 
-    if (userRef.current)
-      fetchData(); //Fetch data on component mount
-    else
-      router.push('/login');
-  }, []);
+    if (userRef.current) fetchData(); //Fetch data on component mount
+    else router.push('/login');
+  }, [router]);
 
   const checkVisibility = (itemName) => {
     if (availableItems && collectedItems) {
@@ -67,13 +69,11 @@ export default function BrandRoom() {
       );
       const avail = availState.stateID <= user.stateID;
 
-      /**************** Need attention ****************/
-
       const collectedState = collectedItems.find(
         (item) => item.itemName === itemName
       );
-      const collected = false;
-      // const collected = collectedState.collected;
+
+      const collected = collectedState.collected;
 
       return avail && !collected;
     }

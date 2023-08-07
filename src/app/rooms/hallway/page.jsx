@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import RoomLayout from "@/app/rooms/layout";
@@ -25,15 +26,13 @@ export default function Hallway() {
   const userRef = useRef("");
 
   const [room, setRoom] = useState(null);
+  const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const [stateId, setStateId] = useState(null);
-  const [transitionId, setTransitionId] = useState(null);
   useEffect(() => {
     userRef.current = checkUser();
-    console.log(`Inside hallway ${userRef.current}`);
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
@@ -42,6 +41,8 @@ export default function Hallway() {
         setRoom(fetchedRoom);
 
         if (fetchedRoom) {
+          setUser(await fetchUserInfo(userRef.current));
+          
           setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
           console.log("AvailableItems fetched!");
           setCollectedItems(
@@ -58,33 +59,7 @@ export default function Hallway() {
 
     if (userRef.current) fetchData(); //Fetch data on component mount
     else router.push("/login");
-    fetchID();
   }, [router]);
-
-  const fetchID = async () => {
-    try {
-      const res = await fetch("/api/fetch/user", {
-        method: "POST",
-        body: JSON.stringify(userRef.current),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        console.log(data);
-        if (data.status == 200) {
-          const { transitionID, stateID } = data.body;
-          setTransitionId(transitionID);
-          setStateId(stateID);
-        } else {
-          throw new Error(data.status);
-        }
-      } else {
-        //error
-        throw new Error(res.name, res.statusText);
-      }
-    } catch ({ name, message }) {
-      console.log(`${name} : ${message}`);
-    }
-  };
 
   const checkVisibility = async (itemName) => {
     if (availableItems && collectedItems) {
@@ -92,15 +67,13 @@ export default function Hallway() {
         (item) => item.itemName === itemName
       );
 
-      const avail = availState.stateID <= stateId;
-
-      /**************** Need attention ****************/
+      const avail = availState.stateID <= user.stateID;
 
       const collectedState = collectedItems.find(
         (item) => item.itemName === itemName
       );
-      const collected = false;
-      // const collected = collectedState.collected;
+
+      const collected = collectedState.collected;
 
       return avail && !collected;
     }
