@@ -1,6 +1,6 @@
 import { prisma } from "~/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import bcrypt from "bcrypt";
+import { compare } from "bcryptjs";
 
 type User = {
   username: string;
@@ -18,8 +18,7 @@ export async function POST(req: NextRequest) {
     if (!currentAccount) {
       return NextResponse.json({ status: 404, body: "User does not exist" });
     }
-    const isAuthenticated = await bcrypt
-      .compare(user.password, currentAccount.password)
+    const isAuthenticated = await compare(user.password, currentAccount.password)
       .then((result: boolean) => result);
     if (isAuthenticated) {
       return NextResponse.json({
