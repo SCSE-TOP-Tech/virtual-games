@@ -33,7 +33,7 @@ export default function Hallway() {
   const [transitionId, setTransitionId] = useState(null);
   useEffect(() => {
     userRef.current = checkUser();
-    console.log(`Inside hallway ${useRef.current}`);
+    console.log(`Inside hallway ${userRef.current}`);
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {

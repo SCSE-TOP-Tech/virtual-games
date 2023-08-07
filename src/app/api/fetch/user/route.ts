@@ -4,7 +4,7 @@ import { prisma } from "~/lib/prisma";
 // user id for manual testing
 //"clkzn1klg0005uck94owj514c"
 export async function POST(req: NextRequest) {
-  const { userId } = await req.json();
+  const userId = await req.json();
   console.log(userId);
   const requiredID = await prisma.user.findUnique({
     where: {
