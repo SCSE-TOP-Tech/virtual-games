@@ -19,7 +19,9 @@ import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems"
 
 export default function CaptainRoom() {
   const router = useRouter();
-  const user = useRef("");
+
+  // userRef stores the user ID that has been login.
+  const userRef = useRef("");
 
   const [room, setRoom] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
@@ -27,7 +29,7 @@ export default function CaptainRoom() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    user.current = checkUser();
+    userRef.current = checkUser();
 
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
@@ -40,7 +42,7 @@ export default function CaptainRoom() {
           setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
           console.log("AvailableItems fetched!");
           setCollectedItems(
-            await getCollectedItems(user.current, fetchedRoom.room_id)
+            await getCollectedItems(userRef.current, fetchedRoom.room_id)
           );
           console.log("CollectedItems fetched!");
         }
@@ -51,7 +53,7 @@ export default function CaptainRoom() {
       }
     };
 
-    if (user.current)
+    if (userRef.current)
       fetchData(); //Fetch data on component mount
     else
       router.push('/login');

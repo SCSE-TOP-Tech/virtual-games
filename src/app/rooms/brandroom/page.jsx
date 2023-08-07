@@ -19,7 +19,9 @@ import Phone from "./components/Phone";
 
 export default function BrandRoom() {
   const router = useRouter();
-  const user = useRef("");
+
+  // userRef stores the user ID that has been login.
+  const userRef = useRef("");
 
   const [room, setRoom] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
@@ -28,7 +30,7 @@ export default function BrandRoom() {
   const [isPhoneOpen, viewPhone] = useState(false);
 
   useEffect(() => {
-    user.current = checkUser();
+    userRef.current = checkUser();
 
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
@@ -41,7 +43,7 @@ export default function BrandRoom() {
           setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
           console.log("AvailableItems fetched!");
           setCollectedItems(
-            await getCollectedItems(user.current, fetchedRoom.room_id)
+            await getCollectedItems(userRef.current, fetchedRoom.room_id)
           );
           console.log("CollectedItems fetched!");
         }
@@ -52,7 +54,7 @@ export default function BrandRoom() {
       }
     };
 
-    if (user.current)
+    if (userRef.current)
       fetchData(); //Fetch data on component mount
     else
       router.push('/login');
@@ -103,7 +105,7 @@ export default function BrandRoom() {
     console.log(updatedItem);
   };
 
-  if (loading || !user.current || !room || !availableItems || !collectedItems) {
+  if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
     return <Loading />;
   }
 
