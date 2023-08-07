@@ -11,7 +11,6 @@ import { useState, useEffect } from "react";
 import Correct from "./components/Correct.js";
 import Incorrect from "./components/Incorrect.js";
 import submitGuess from "@/app/api/prisma/guessanswer/guess.js";
-import { useAuth } from "../../context/AuthContext.jsx";
 import { redirect } from "next/navigation";
 
 export default function GuessingPage() {

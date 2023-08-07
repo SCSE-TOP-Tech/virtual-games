@@ -29,9 +29,11 @@ export default function Hallway() {
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const [stateId, setStateId] = useState(null);
+  const [transitionId, setTransitionId] = useState(null);
   useEffect(() => {
     userRef.current = checkUser();
-
+    console.log(`Inside hallway ${useRef.current}`);
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
@@ -54,18 +56,43 @@ export default function Hallway() {
       }
     };
 
-    if (userRef.current)
-      fetchData(); //Fetch data on component mount
-    else
-      router.push('/login');
-  }, []);
+    if (userRef.current) fetchData(); //Fetch data on component mount
+    else router.push("/login");
+    fetchID();
+  }, [router]);
 
-  const checkVisibility = (itemName) => {
+  const fetchID = async () => {
+    try {
+      const res = await fetch("/api/fetch/user", {
+        method: "POST",
+        body: JSON.stringify(userRef.current),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        if (data.status == 200) {
+          const { transitionID, stateID } = data.body;
+          setTransitionId(transitionID);
+          setStateId(stateID);
+        } else {
+          throw new Error(data.status);
+        }
+      } else {
+        //error
+        throw new Error(res.name, res.statusText);
+      }
+    } catch ({ name, message }) {
+      console.log(`${name} : ${message}`);
+    }
+  };
+
+  const checkVisibility = async (itemName) => {
     if (availableItems && collectedItems) {
       const availState = availableItems.find(
         (item) => item.itemName === itemName
       );
-      const avail = availState.stateID <= user.stateID;
+
+      const avail = availState.stateID <= stateId;
 
       /**************** Need attention ****************/
 
@@ -94,7 +121,7 @@ export default function Hallway() {
   };
 
   /**************** Need attention ****************/
-  
+
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
     console.log(updatedItem);
@@ -106,7 +133,13 @@ export default function Hallway() {
     setClicked(!isClicked);
   };
 
-  if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
+  if (
+    loading ||
+    !userRef.current ||
+    !room ||
+    !availableItems ||
+    !collectedItems
+  ) {
     return <Loading />;
   }
 

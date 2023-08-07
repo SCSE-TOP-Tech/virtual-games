@@ -3,9 +3,9 @@
  * @returns User ID
  */
 const checkUser = () => {
-    console.log("User ID: ", localStorage.getItem("userId"));
+  console.log("User ID: ", localStorage.getItem("userId"));
 
-    return localStorage.getItem("userId");
-}
+  return localStorage.getItem("userId");
+};
 
 export default checkUser;
