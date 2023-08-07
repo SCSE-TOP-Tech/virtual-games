@@ -42,7 +42,6 @@ export default function Login() {
             //dispatch({ type: "SUCCESS", payload: curUser });
             console.log('Login successful');
 
-            localStorage.setItem("id", curUser.id);
             localStorage.setItem("userId", curUser.userId);
             localStorage.setItem("user", curUser.username);
 

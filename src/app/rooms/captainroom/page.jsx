@@ -27,8 +27,7 @@ export default function CaptainRoom() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { userId, id } = checkUser();
-    user.current = userId;
+    user.current = checkUser();
 
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
@@ -41,7 +40,7 @@ export default function CaptainRoom() {
           setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
           console.log("AvailableItems fetched!");
           setCollectedItems(
-            await getCollectedItems(id, fetchedRoom.room_id)
+            await getCollectedItems(user.current, fetchedRoom.room_id)
           );
           console.log("CollectedItems fetched!");
         }
