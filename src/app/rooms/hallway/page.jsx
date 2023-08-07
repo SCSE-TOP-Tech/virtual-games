@@ -3,6 +3,7 @@ import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { useEffect, useState, useRef } from "react";
+import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
@@ -27,10 +28,8 @@ export default function Hallway() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    user.current = localStorage.getItem("userId");
-    const id = localStorage.getItem("id");
-    console.log("User ID: ", user.current);
-    console.log("ID: ", id);
+    const { userId, id } = checkUser();
+    user.current = userId;
 
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
@@ -53,12 +52,10 @@ export default function Hallway() {
         setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
     };
-    if (user.current){
-      console.log("User login successful");
+    if (user.current)
       fetchData(); //Fetch data on component mount
-    }
     else
-      router.push('/login')
+      router.push('/login');
   }, []);
 
   const checkVisibility = (itemName) => {

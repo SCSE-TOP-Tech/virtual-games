@@ -28,7 +28,8 @@ export default function Login() {
     } else {
       try {
         //api call
-
+        console.log('Login verification begins');
+        
         const res = await fetch("/api/auth/login", {
           method: "POST",
           body: JSON.stringify(formik.values),
@@ -39,22 +40,22 @@ export default function Login() {
           if (data.status == 200) {
             const curUser = data.body;
             //dispatch({ type: "SUCCESS", payload: curUser });
+            console.log('Login successful');
 
             localStorage.setItem("id", curUser.id);
             localStorage.setItem("userId", curUser.userId);
             localStorage.setItem("user", curUser.username);
 
             router.push("/rooms/hallway");
-          } else if (data.status == 401) {
-            setError(data.body);
-            //dispatch({ type: "FAILURE", payload: data.status });
           } else {
-            //if (data.status == 404)
+            //if (data.status == 401 || data.status == 404)
+            localStorage.clear();
             setError(data.body);
             //dispatch({ type: "FAILURE", payload: data.status });
           }
         } else {
           //error
+          localStorage.clear();
           throw new Error(res.name, res.statusText);
         }
       } catch ({ name, message }) {
