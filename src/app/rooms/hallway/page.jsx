@@ -3,6 +3,7 @@ import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
@@ -16,7 +17,6 @@ import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Submit from "./components/Submit";
-import { useRouter } from "next/navigation";
 
 export default function Hallway() {
   const router = useRouter();
@@ -52,6 +52,7 @@ export default function Hallway() {
         setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
     };
+
     if (user.current)
       fetchData(); //Fetch data on component mount
     else
@@ -64,6 +65,9 @@ export default function Hallway() {
         (item) => item.itemName === itemName
       );
       const avail = availState.stateID <= user.stateID;
+
+      /**************** Need attention ****************/
+
       const collectedState = collectedItems.find(
         (item) => item.itemName === itemName
       );
@@ -74,6 +78,8 @@ export default function Hallway() {
     }
     return false;
   };
+
+  /**************** Need attention ****************/
 
   const changeState = async (user) => {
     if (user.stateID !== 1) {
@@ -86,6 +92,8 @@ export default function Hallway() {
     }
   };
 
+  /**************** Need attention ****************/
+  
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
     console.log(updatedItem);

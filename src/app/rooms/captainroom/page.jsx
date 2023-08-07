@@ -1,12 +1,13 @@
 "use client";
 import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/navigation";
+import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Hint from "../../components/Hint";
 import Navbar from "../../components/Navbar";
-import { fetchUser } from "@/resources/prisma/fetchUser";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
@@ -15,24 +16,23 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
-import { useRouter } from "next/navigation";
 
 export default function CaptainRoom() {
   const router = useRouter();
+  const user = useRef("");
+
   const [room, setRoom] = useState(null);
-  const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const { userId, id } = checkUser();
+    user.current = userId;
+
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch user data
-        const currentUser = await fetchUser();
-        setUser(currentUser);
-
         // Fetch room data and items data
         const fetchedRoom = await fetchRoom("captain", false);
         setRoom(fetchedRoom);
@@ -41,7 +41,7 @@ export default function CaptainRoom() {
           setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
           console.log("AvailableItems fetched!");
           setCollectedItems(
-            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
+            await getCollectedItems(id, fetchedRoom.room_id)
           );
           console.log("CollectedItems fetched!");
         }
@@ -52,7 +52,10 @@ export default function CaptainRoom() {
       }
     };
 
-    fetchData(); // Fetch data on component mount
+    if (user.current)
+      fetchData(); //Fetch data on component mount
+    else
+      router.push('/login');
   }, []);
 
   const checkVisibility = (itemName) => {
@@ -60,16 +63,22 @@ export default function CaptainRoom() {
       const availState = availableItems.find(
         (item) => item.itemName === itemName
       );
+
+      /**************** Need attention ****************/
+
       const avail = availState.stateID <= user.stateID;
       const collectedState = collectedItems.find(
         (item) => item.itemName === itemName
       );
-      const collected = collectedState.collected;
+      const collected = false;
+      // const collected = collectedState.collected;
 
       return avail && !collected;
     }
     return false;
   };
+
+  /**************** Need attention ****************/
 
   const changeState = async (user) => {
     if (user.stateID !== 1) {
@@ -82,6 +91,8 @@ export default function CaptainRoom() {
     }
   };
 
+  /**************** Need attention ****************/
+  
   const updateCollected = async (name) => {
     await updateCollectedItems(user.id, name, room.room_id);
   };
