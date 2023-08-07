@@ -6,7 +6,6 @@ import { useEffect, useState, useRef } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
-import { fetchUser } from "@/resources/prisma/fetchUser";
 import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
 import updateState from "@/resources/prisma/state/updateState";
@@ -16,7 +15,8 @@ import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Submit from "./components/Submit";
-import { useRouter, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+
 export default function Hallway() {
   const router = useRouter();
   const user = useRef("");
@@ -25,26 +25,16 @@ export default function Hallway() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    console.log(userId);
-    if (userId && userId !== user.current) {
-      console.log("Here");
-      user.current = userId;
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-    if (isAuthenticated == false) redirect("/login");
+    user.current = localStorage.getItem("userId");
+    const id = localStorage.getItem("id");
+    console.log("User ID: ", user.current);
+    console.log("ID: ", id);
+
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch user data
-        const currentUser = await fetchUser();
-        setUser(currentUser);
-
         // Fetch room data and items data
         const fetchedRoom = await fetchRoom("hallway", false);
         setRoom(fetchedRoom);
@@ -53,7 +43,7 @@ export default function Hallway() {
           setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
           console.log("AvailableItems fetched!");
           setCollectedItems(
-            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
+            await getCollectedItems(id, fetchedRoom.room_id)
           );
           console.log("CollectedItems fetched!");
         }
@@ -63,8 +53,12 @@ export default function Hallway() {
         setLoading(false); // Set loading state to false after fetching (whether successful or not)
       }
     };
-
-    fetchData(); // Fetch data on component mount
+    if (user.current){
+      console.log("User login successful");
+      fetchData(); //Fetch data on component mount
+    }
+    else
+      router.push('/login')
   }, []);
 
   const checkVisibility = (itemName) => {
@@ -76,7 +70,8 @@ export default function Hallway() {
       const collectedState = collectedItems.find(
         (item) => item.itemName === itemName
       );
-      const collected = collectedState.collected;
+      const collected = false;
+      // const collected = collectedState.collected;
 
       return avail && !collected;
     }
@@ -105,7 +100,7 @@ export default function Hallway() {
     setClicked(!isClicked);
   };
 
-  if (loading || !user || !room || !availableItems || !collectedItems) {
+  if (loading || !user.current || !room || !availableItems || !collectedItems) {
     return <Loading />;
   }
 

@@ -1,7 +1,4 @@
 "use client";
-
-import * as yup from "yup";
-
 import { useFormik } from "formik";
 import {
   Box,
@@ -14,9 +11,8 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "../../context/AuthContext";
+
 export default function Login() {
-  const { user, isAuthenticated, dispatch } = useAuth();
   const router = useRouter();
   const [error, setError] = useState("");
   const [displayWarning, setDisplayWarning] = useState(false);
@@ -44,7 +40,9 @@ export default function Login() {
             const curUser = data.body;
             //dispatch({ type: "SUCCESS", payload: curUser });
 
+            localStorage.setItem("id", curUser.id);
             localStorage.setItem("userId", curUser.userId);
+            localStorage.setItem("user", curUser.username);
 
             router.push("/rooms/hallway");
           } else if (data.status == 401) {
@@ -72,18 +70,6 @@ export default function Login() {
       password: "",
     },
     onSubmit: handleSubmit,
-    validationSchema: yup.object({
-      username: yup.string().trim().required("Name is required"),
-
-      password: yup
-        .string()
-        .min(8, "Password must contain at least 8 characters!")
-        .max(50, "Password must contain at most 50 characters!!")
-        .matches(
-          /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,50}$/,
-          "Password must be a mix of uppercase/lowercase letters, numbers and special characters"
-        ),
-    }),
   });
 
   return (
