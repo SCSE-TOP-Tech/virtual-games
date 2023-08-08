@@ -30,25 +30,28 @@ export default function Hallway() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isClicked, setClicked] = useState(false);
 
   useEffect(() => {
     userRef.current = checkUser();
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch room data and items data
-        const fetchedRoom = await fetchRoom("hallway", false);
-        setRoom(fetchedRoom);
+        if (!isClicked) {
+          // Fetch room data and items data
+          const fetchedRoom = await fetchRoom("hallway", false);
+          setRoom(fetchedRoom);
 
-        if (fetchedRoom) {
-          setUser(await fetchUserInfo(userRef.current));
-          
-          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-          console.log("AvailableItems fetched!");
-          setCollectedItems(
-            await getCollectedItems(userRef.current, fetchedRoom.room_id)
-          );
-          console.log("CollectedItems fetched!");
+          if (fetchedRoom) {
+            setUser(await fetchUserInfo(userRef.current));
+
+            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+            console.log("AvailableItems fetched!");
+            setCollectedItems(
+              await getCollectedItems(userRef.current, fetchedRoom.room_id)
+            );
+            console.log("CollectedItems fetched!");
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -61,7 +64,7 @@ export default function Hallway() {
     else router.push("/login");
   }, [router]);
 
-  const checkVisibility = async (itemName) => {
+  const checkVisibility = (itemName) => {
     if (availableItems && collectedItems) {
       const availState = availableItems.find(
         (item) => item.itemName === itemName
@@ -96,22 +99,22 @@ export default function Hallway() {
     console.log(updatedItem);
   };
 
-  
+
   if (
     loading ||
     !userRef.current ||
     !room ||
     !availableItems ||
     !collectedItems
-    ) {
-      return <Loading />;
-    }
-    
-    const [isClicked, setClicked] = useState(false);
-  
-    const toggleSubmission = () => {
-      setClicked(!isClicked);
-    };
+  ) {
+    return <Loading />;
+  }
+
+
+  const toggleSubmission = () => {
+    setClicked(!isClicked);
+    console.log("test")
+  };
 
   return (
     <RoomLayout>

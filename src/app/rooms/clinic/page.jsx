@@ -62,14 +62,14 @@ export default function Clinic() {
     else router.push("/login");
   }, [router]);
 
-  const checkVisibility = async (itemName) => {
+  const checkVisibility = (itemName) => {
     if (availableItems && collectedItems) {
+      console.log(availableItems)
       const availState = availableItems.find(
         (item) => item.itemName === itemName
-      );
-
+        );
+        
       const avail = availState.stateID <= user.stateID;
-
       const collectedState = collectedItems.find(
         (item) => item.itemName === itemName
       );

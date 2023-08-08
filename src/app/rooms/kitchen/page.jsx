@@ -60,7 +60,7 @@ export default function Kitchen() {
     else router.push("/login");
   }, [router]);
 
-  const checkVisibility = async (itemName) => {
+  const checkVisibility = (itemName) => {
     if (availableItems && collectedItems) {
       const availState = availableItems.find(
         (item) => item.itemName === itemName

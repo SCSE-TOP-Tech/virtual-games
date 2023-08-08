@@ -80,12 +80,7 @@ export default function BrandRoom() {
     }
     return false;
   };
-
-  const togglePhone = () => {
-    // opens and closes phone display
-    viewPhone(!isPhoneOpen);
-  };
-
+  
   const changeState = async (user) => {
     if (user.stateID !== 1) {
       await endTimer(userRef.current, user.stateID);
@@ -101,12 +96,16 @@ export default function BrandRoom() {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
   };
-
+  
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
     return <Loading />;
   }
-
-
+  
+  const togglePhone = () => {
+    // opens and closes phone display
+    viewPhone(!isPhoneOpen);
+  };
+  
   return (
     <RoomLayout>
       <Box>

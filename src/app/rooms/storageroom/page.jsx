@@ -64,7 +64,7 @@ export default function StorageRoom() {
     else router.push("/login");
   }, [router]);
 
-  const checkVisibility = async (itemName) => {
+  const checkVisibility = (itemName) => {
     if (availableItems && collectedItems) {
       const availState = availableItems.find(
         (item) => item.itemName === itemName
@@ -323,7 +323,8 @@ export default function StorageRoom() {
             )}
 
             {/* doctor's galaxy phone (temp viewing) */}
-            {checkVisibility(room.clues.doctorphone.id) && (
+            {/* checkVisibility(room.clues.doctorphone.id) */}
+            {true && (
               <ItemImage
                 onClick={togglePhone}
                 item={room.clues.doctorphone}
