@@ -85,23 +85,19 @@ export default function BrandRoom() {
     viewPhone(!isPhoneOpen);
   };
 
-  /**************** Need attention ****************/
-
   const changeState = async (user) => {
     if (user.stateID !== 1) {
-      await endTimer(user.id, user.stateID);
+      await endTimer(userRef.current, user.stateID);
     }
-    setUser(await updateState(user.id));
-    const startTime = await startTimer(user.id, user.stateID);
+    setUser(await updateState(userRef.current));
+    const startTime = await startTimer(userRef.current, user.stateID);
     if (startTime !== 200) {
       console.log("Failed to Start Timer");
     }
   };
-
-  /**************** Need attention ****************/
   
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
+    const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
   };
 
