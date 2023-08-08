@@ -39,22 +39,20 @@ export default function Hallway() {
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        if (!isClicked) {
+        if (!isClicked && !fetchRef.current) {
           // Fetch room data and items data
-          if(!fetchRef.current){
-            fetchRef.current = true;
-            const fetchedRoom = await fetchRoom("hallway", false);
-            if(fetchedRoom){
-              setRoom(fetchedRoom);
-              setUser(await fetchUserInfo(userRef.current));
+          fetchRef.current = true;
+          const fetchedRoom = await fetchRoom("hallway", false);
+          if(fetchedRoom){
+            setRoom(fetchedRoom);
+            setUser(await fetchUserInfo(userRef.current));
       
-              setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-              console.log("AvailableItems fetched!");
-              setCollectedItems(
-                await getCollectedItems(userRef.current, fetchedRoom.room_id)
-              );
-              console.log("CollectedItems fetched!");
-            }
+            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+            console.log("AvailableItems fetched!");
+            setCollectedItems(
+              await getCollectedItems(userRef.current, fetchedRoom.room_id)
+            );
+            console.log("CollectedItems fetched!");
           }
         }
       } catch (error) {
