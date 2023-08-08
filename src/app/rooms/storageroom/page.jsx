@@ -34,7 +34,6 @@ export default function StorageRoom() {
 
   const [isClicked, setClicked] = useState(false);
   const [isPhoneOpen, viewPhone] = useState(false);
-  // const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -102,9 +101,8 @@ export default function StorageRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
-    setInventory((prev) => [...prev, name]);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
-
 
   if (
     loading ||
@@ -255,8 +253,8 @@ export default function StorageRoom() {
             )}
 
             {/* mop and bucket (temp viewing) */}
-            <Hint>
-              <ItemImage
+            {checkVisibility(room.clues.blood_clothpin.id) && <Hint>
+                <ItemImage
                 onClick={() => updateCollected(room.dummy_objects.mopbucket.id)}
                 item={room.dummy_objects.mopbucket}
                 className={styles.item}
@@ -294,6 +292,7 @@ export default function StorageRoom() {
                 )}
               />
             </Hint>
+            }
             {/* blood stained clothspin (temp viewing) */}
             {checkVisibility(room.clues.blood_clothpin.id) && (
               <Hint>
