@@ -1,4 +1,5 @@
 "use client";
+import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { useEffect, useState, useRef } from "react";
@@ -130,6 +131,7 @@ export default function BrandRoom() {
                       togglePhone()
                       updateCollected(room.clues.galaxy_phone.id)
                     }}
+                    className={styles.item}
                     width={SizeFormatter(
                         "1.3rem", //iphone se
                         "1.3rem", //iphone xr

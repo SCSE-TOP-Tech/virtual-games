@@ -96,21 +96,22 @@ export default function Hallway() {
     console.log(updatedItem);
   };
 
-  const [isClicked, setClicked] = useState(true);
-
-  const toggleSubmission = () => {
-    setClicked(!isClicked);
-  };
-
+  
   if (
     loading ||
     !userRef.current ||
     !room ||
     !availableItems ||
     !collectedItems
-  ) {
-    return <Loading />;
-  }
+    ) {
+      return <Loading />;
+    }
+    
+    const [isClicked, setClicked] = useState(false);
+  
+    const toggleSubmission = () => {
+      setClicked(!isClicked);
+    };
 
   return (
     <RoomLayout>
