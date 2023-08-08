@@ -17,6 +17,7 @@ import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
 import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
+import Inventory from "@/app/components/Inventory";
 
 export default function CarmenRoom() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function CarmenRoom() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -93,6 +95,7 @@ export default function CarmenRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setInventory((prev) => [...prev, name]);
   };
 
   if (loading || !user || !room || !availableItems || !collectedItems) {
@@ -102,7 +105,7 @@ export default function CarmenRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar />
+        <Navbar Phone={false}/>
         <Box
           display="flex"
           justifyContent="center"
@@ -222,9 +225,7 @@ export default function CarmenRoom() {
             )}
           </Box>
         </Box>
-        <Box mt="2%" w="100%" background={"white"}>
-          Text Component Here
-        </Box>
+        <Inventory items={inventory} room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

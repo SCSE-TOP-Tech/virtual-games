@@ -1,13 +1,11 @@
 "use client";
 import styles from "./components/styles.module.css";
-import { Box } from "@chakra-ui/react";
-import { ItemImage, SizeFormatter } from "../../components/ImageComp";
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/navigation";
-import checkUser from "@/app/components/CheckUser";
+import background from "~/public/Rooms/Clinic/clinic.png";
+import { useEffect, useState } from "react";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
-import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
+import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Navbar from "../../components/Navbar";
+import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
 import updateState from "@/resources/prisma/state/updateState";
@@ -16,9 +14,10 @@ import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
 import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
-
-import background from "~/public/Rooms/Clinic/clinic.png";
-import Image from "next/image";
+import updateState from "@/resources/prisma/state/updateState";
+import startTimer from "@/resources/prisma/timer/startTimer";
+import { useRouter } from "next/navigation";
+import Inventory from "@/app/components/Inventory";
 
 export default function Clinic() {
   const router = useRouter();
@@ -31,6 +30,7 @@ export default function Clinic() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -111,7 +111,7 @@ export default function Clinic() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%">
-        <Navbar />
+        <Navbar Phone={false}/>
         {/* background image */}
         <Box
           display="flex"
@@ -158,15 +158,7 @@ export default function Clinic() {
               />)}
           </Box>
         </Box>
-        <Box
-          position="absolute"
-          bottom="10%"
-          mt="2%"
-          w="28em"
-          background={"white"}
-        >
-          Text Component Here
-        </Box>
+        <Inventory items={inventory} room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

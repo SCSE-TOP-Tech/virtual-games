@@ -1,5 +1,4 @@
 "use client";
-import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -7,6 +6,9 @@ import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
+import { useRouter } from "next/navigation";
+import styles from "./components/styles.module.css";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Hint from "../../components/Hint";
 import Navbar from "../../components/Navbar";
 import Loading from "@/app/rooms/loading";
@@ -17,6 +19,7 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import Inventory from "@/app/components/Inventory";
 
 export default function CaptainRoom() {
   const router = useRouter();
@@ -28,6 +31,7 @@ export default function CaptainRoom() {
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
+  const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -91,7 +95,9 @@ export default function CaptainRoom() {
   };
   
   const updateCollected = async (name) => {
-    await updateCollectedItems(userRef.current, name, room.room_id);
+    const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
+    console.log(updatedItem);
+    setInventory((prev) => [...prev, name]);
   };
 
   if (loading || !user || !room || !availableItems || !collectedItems) {
@@ -101,7 +107,7 @@ export default function CaptainRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" position="relative">
-        <Navbar />
+        <Navbar Phone={false}/>
         {/* container for background image and items*/}
         <Box
           display="flex"
@@ -316,15 +322,7 @@ export default function CaptainRoom() {
             )}
           </Box>
         </Box>
-        <Box
-          position="absolute"
-          bottom="10%"
-          mt="2%"
-          w="28em"
-          background={"white"}
-        >
-          Text Component Here
-        </Box>
+        <Inventory items={inventory} room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

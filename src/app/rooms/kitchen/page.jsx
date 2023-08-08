@@ -1,5 +1,4 @@
 "use client";
-import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "@/app/components/ImageComp";
 import { useEffect, useState, useRef } from "react";
@@ -9,6 +8,8 @@ import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
+import { fetchUser } from "@/resources/prisma/fetchUser";
+import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
 import updateState from "@/resources/prisma/state/updateState";
@@ -17,6 +18,7 @@ import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
 import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
+import Inventory from "@/app/components/Inventory";
 
 export default function Kitchen() {
   const router = useRouter();
@@ -29,6 +31,7 @@ export default function Kitchen() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -93,6 +96,7 @@ export default function Kitchen() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setInventory((prev) => [...prev, name]);
   };
 
   
@@ -109,7 +113,7 @@ export default function Kitchen() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" position="relative">
-        <Navbar />
+        <Navbar Phone={false}/>
         <Box
           display="flex"
           justifyContent="center"
@@ -218,16 +222,7 @@ export default function Kitchen() {
             )}
           </Box>
         </Box>
-
-        <Box
-          position="absolute"
-          bottom="10%"
-          mt="2%"
-          w="28em"
-          background={"white"}
-        >
-          Text Component Here
-        </Box>
+        <Inventory items={inventory} room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

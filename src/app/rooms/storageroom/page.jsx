@@ -18,6 +18,7 @@ import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Phone from "./components/Phone";
+import Inventory from "@/app/components/Inventory";
 
 export default function StorageRoom() {
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function StorageRoom() {
 
   const [isClicked, setClicked] = useState(false);
   const [isPhoneOpen, viewPhone] = useState(false);
+  // const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -97,6 +99,7 @@ export default function StorageRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setInventory((prev) => [...prev, name]);
   };
 
 
@@ -131,7 +134,7 @@ export default function StorageRoom() {
     // To add loading page
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar />
+        <Navbar Phone={true}/>
         {/* background image */}
         <Box
           display="flex"
@@ -323,8 +326,7 @@ export default function StorageRoom() {
             )}
 
             {/* doctor's galaxy phone (temp viewing) */}
-            {/* checkVisibility(room.clues.doctorphone.id) */}
-            {true && (
+            {checkVisibility(room.clues.doctorphone.id) && (
               <ItemImage
                 onClick={togglePhone}
                 item={room.clues.doctorphone}
@@ -393,10 +395,11 @@ export default function StorageRoom() {
             </Box>
           </Box>
         </Box>
-
-        <Box mt="2%" w="100%" background={"white"}>
-          Text Component Here
-        </Box>
+        <Inventory 
+        items={
+          collectedItems.filter((i) => i.collected === true)
+        } 
+        room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

@@ -18,6 +18,8 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import { useRouter } from "next/navigation";
+import Inventory from "@/app/components/Inventory";
 
 export default function PrincessRoom() {
   const router = useRouter();
@@ -31,7 +33,8 @@ export default function PrincessRoom() {
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
   const [inspect, showMap] = useState(false);
-  
+    const [inventory, setInventory] = useState([]);
+
   useEffect(() => {
     userRef.current = checkUser();
 
@@ -95,6 +98,7 @@ export default function PrincessRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setInventory((prev) => [...prev, name]);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
@@ -108,7 +112,7 @@ export default function PrincessRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar />
+        <Navbar Phone={false}/>
         <Box
           display="flex"
           justifyContent="center"
@@ -280,9 +284,7 @@ export default function PrincessRoom() {
             )}
           </Box>
         </Box>
-        <Box mt="2%" w="100%" background={"white"}>
-          Text Component Here
-        </Box>
+        <Inventory items={inventory} room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

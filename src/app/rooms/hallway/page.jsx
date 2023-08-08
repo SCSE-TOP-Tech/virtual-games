@@ -18,10 +18,11 @@ import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Submit from "./components/Submit";
+import Inventory from "@/app/components/Inventory";
 
 export default function Hallway() {
   const router = useRouter();
-
+  const fetchRef = useRef(false);
   // userRef stores the user ID that has been login.
   const userRef = useRef("");
 
@@ -31,6 +32,7 @@ export default function Hallway() {
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isClicked, setClicked] = useState(false);
+  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -39,18 +41,20 @@ export default function Hallway() {
       try {
         if (!isClicked) {
           // Fetch room data and items data
-          const fetchedRoom = await fetchRoom("hallway", false);
-          setRoom(fetchedRoom);
-
-          if (fetchedRoom) {
-            setUser(await fetchUserInfo(userRef.current));
-
-            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-            console.log("AvailableItems fetched!");
-            setCollectedItems(
-              await getCollectedItems(userRef.current, fetchedRoom.room_id)
-            );
-            console.log("CollectedItems fetched!");
+          if(!fetchRef.current){
+            fetchRef.current = true;
+            const fetchedRoom = await fetchRoom("hallway", false);
+            if(fetchedRoom){
+              setRoom(fetchedRoom);
+              setUser(await fetchUserInfo(userRef.current));
+      
+              setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+              console.log("AvailableItems fetched!");
+              setCollectedItems(
+                await getCollectedItems(userRef.current, fetchedRoom.room_id)
+              );
+              console.log("CollectedItems fetched!");
+            }
           }
         }
       } catch (error) {
@@ -97,6 +101,7 @@ export default function Hallway() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setInventory((prev) => [...prev, name]);
   };
 
 
@@ -119,7 +124,7 @@ export default function Hallway() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar />
+        <Navbar Phone={false}/>
         <Box
           display="flex"
           justifyContent="center"
@@ -181,10 +186,7 @@ export default function Hallway() {
             />
           </Box>
         </Box>
-
-        <Box mt="2%" w="100%" background="white">
-          Text Component Here
-        </Box>
+        <Inventory items={inventory} room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

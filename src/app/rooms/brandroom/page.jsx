@@ -18,6 +18,7 @@ import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import Phone from "./components/Phone";
+import Inventory from "@/app/components/Inventory";
 
 export default function BrandRoom() {
   const router = useRouter();
@@ -31,6 +32,7 @@ export default function BrandRoom() {
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isPhoneOpen, viewPhone] = useState(false);
+  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -95,6 +97,7 @@ export default function BrandRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setInventory((prev) => [...prev, name]);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
@@ -110,7 +113,7 @@ export default function BrandRoom() {
     <RoomLayout>
       <Box>
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <Navbar />
+          <Navbar Phone={true}/>
           <Box
             display="flex"
             justifyContent="center"
@@ -127,56 +130,48 @@ export default function BrandRoom() {
                 <Hint>
                   <ItemImage
                     onClick={() => {
-                      togglePhone()
-                      updateCollected(room.clues.galaxy_phone.id)
+                      togglePhone();
+                      updateCollected(room.clues.galaxy_phone.id);
                     }}
                     className={styles.item}
                     width={SizeFormatter(
-                        "1.3rem", //iphone se
-                        "1.3rem", //iphone xr
-                        "1.4rem", //iphone 12pro
-                        "1.4rem", //pixel 5
-                        "1.4rem", //samsung galaxy s8+
-                        "1.3rem", //samsung galaxy s20 ultra
-                        "1.3rem", //ipad air
-                        "1.3rem" //ipad mini
+                      "1.3rem", //iphone se
+                      "1.3rem", //iphone xr
+                      "1.4rem", //iphone 12pro
+                      "1.4rem", //pixel 5
+                      "1.4rem", //samsung galaxy s8+
+                      "1.3rem", //samsung galaxy s20 ultra
+                      "1.3rem", //ipad air
+                      "1.3rem" //ipad mini
                     )}
-                    filter='auto'
-                    brightness='100%'
+                    filter="auto"
+                    brightness="100%"
                     right={SizeFormatter(
-                        "2.6rem", //iphone se
-                        "2.9rem", //iphone xr
-                        "2.8rem", //iphone 12pro
-                        "2.8rem", //pixel 5
-                        "2.6rem", //samsung galaxy s8+
-                        "2.9rem", //samsung galaxy s20 ultra
-                        "3.3rem", //ipad air
-                        "3.3rem" //ipad mini
+                      "2.6rem", //iphone se
+                      "2.9rem", //iphone xr
+                      "2.8rem", //iphone 12pro
+                      "2.8rem", //pixel 5
+                      "2.6rem", //samsung galaxy s8+
+                      "2.9rem", //samsung galaxy s20 ultra
+                      "3.3rem", //ipad air
+                      "3.3rem" //ipad mini
                     )}
                     top={SizeFormatter(
-                        "13.7rem", //iphone se
-                        "15.2rem", //iphone xr
-                        "14.3rem", //iphone 12pro
-                        "14.5rem", //pixel 5
-                        "13.2rem", //samsung galaxy s8+
-                        "15.2rem", //samsung galaxy s20 ultra
-                        "18.2rem", //ipad air
-                        "18.2rem" //ipad mini
+                      "13.7rem", //iphone se
+                      "15.2rem", //iphone xr
+                      "14.3rem", //iphone 12pro
+                      "14.5rem", //pixel 5
+                      "13.2rem", //samsung galaxy s8+
+                      "15.2rem", //samsung galaxy s20 ultra
+                      "18.2rem", //ipad air
+                      "18.2rem" //ipad mini
                     )}
                   />
                 </Hint>
               )}
             </Box>
           </Box>
-          <Box
-            position="absolute"
-            bottom="10%"
-            mt="2%"
-            w="28em"
-            background={"white"}
-          >
-            Text Component Here
-          </Box>
+          <Inventory items={inventory} room={room} styles={styles.item} />
         </Box>
       </Box>
     </RoomLayout>
