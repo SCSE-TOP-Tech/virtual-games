@@ -153,6 +153,7 @@ export default function StorageRoom() {
           <ItemImage item={room.background} />
           <Box position="absolute" zIndex="1">
             {/* dead doctor (temp viewing) */}
+            {checkVisibility(room.clues.tesseract.id) && 
             <Hint>
               <ItemImage
                 onClick={async () => {
@@ -186,7 +187,8 @@ export default function StorageRoom() {
                   "14rem" //ipad mini
                 )}
               />
-            </Hint>
+            </Hint> 
+            }
             {/* tesseract (temp viewing) */}
             {checkVisibility(room.clues.tesseract.id) && (
               <Hint>
