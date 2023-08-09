@@ -33,7 +33,7 @@ export default function PrincessRoom() {
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
   const [inspect, showMap] = useState(false);
-
+  
   useEffect(() => {
     userRef.current = checkUser();
 

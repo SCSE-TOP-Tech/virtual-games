@@ -1112,7 +1112,7 @@ export const transitions: Transition[] = [
     id: 11,
     image: {
       alt: "Cooper",
-      src: "/intro/stone.jpg",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756669/virtual_games/characters/movement/cooperMoving_bd2mcd.gif",
       width: 100,
       height: 100,
     },
@@ -1248,12 +1248,12 @@ export const transitions: Transition[] = [
   {
     id: 24,
     image: {
-      alt: "Narrator",
-      src: "/intro/stone.jpg",
+      alt: "Maan",
+      src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1686756676/virtual_games/characters/movement/mannMoving_el5wuc.gif",
       width: 100,
       height: 100,
     },
-    dialog: "Someone must have also stolen it from her.\n",
+    dialog: "Mann: Someone must have also stolen it from her.\n",
   },
   {
     id: 25,

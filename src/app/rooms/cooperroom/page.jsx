@@ -8,7 +8,6 @@ import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import Hint from "../../components/Hint";
 import Navbar from "../../components/Navbar";
-import Hint from "../../components/Hint";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
@@ -30,6 +29,7 @@ export default function CooperPage() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     userRef.current = checkUser();

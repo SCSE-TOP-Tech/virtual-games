@@ -257,7 +257,8 @@ export default function StorageRoom() {
             )}
 
             {/* mop and bucket (temp viewing) */}
-            {checkVisibility(room.clues.blood_clothpin.id) && <Hint>
+            {checkVisibility(room.dummy_objects.mopbucket.id) && 
+            <Hint>
                 <ItemImage
                 onClick={() => updateCollected(room.dummy_objects.mopbucket.id)}
                 item={room.dummy_objects.mopbucket}
@@ -332,7 +333,8 @@ export default function StorageRoom() {
             )}
 
             {/* doctor's galaxy phone (temp viewing) */}
-            {checkVisibility(room.clues.doctorphone.id) && (
+            {/* checkVisibility(room.clues.doctorphone.id) */}
+            {true && (
               <ItemImage
                 onClick={togglePhone}
                 item={room.clues.doctorphone}

@@ -7,7 +7,7 @@
 import { Response } from "~/data/contracts/interfaces/response";
 import fetchTransition from "@/resources/prisma/transitions/fetchTransition";
 
-async function updateTransition(userId: number) {
+async function updateTransition(userId: string) {
   const updateResponse = await fetch(`/api/transitions/update`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
