@@ -35,23 +35,37 @@ export default function Transitions() {
         const currentUser = await fetchUserInfo(userRef.current);
 
         setUser(currentUser);
-        console.log(currentUser)
+        switch (currentUser.transitionID) {
+          case 5:
+          case 8:
+          case 10:
+          case 15:
+          case 18:
+          case 22:
+          case 26:
+            router.push("/rooms/hallway");
+            break;
+        }
+
         const trans = await fetchTransition(currentUser.transitionID);
         if (trans) {
           setText(trans.dialog);
           setImage(trans.image);
         }
       }
-
       fetchData();
-    } else router.push("/login");
+    } 
+
+    else router.push("/login");
   }, [router]);
 
   const updateTransitionStage = async () => {
     setLoading(true);
     if (user) {
       const updatedTransition = await updateTransition(userRef.current);
+      
       if (updatedTransition) {
+        console.log(updatedTransition.id);
         switch (updatedTransition.id) {
 
           // 0 - 2 Intro [1]
@@ -88,6 +102,7 @@ export default function Transitions() {
 
           // 22 - 25 Confrontation (part 2) - doctor's phone [6]
           case 26:
+            
             router.push("/rooms/hallway");
             break;
 
