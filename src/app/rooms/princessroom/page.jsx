@@ -94,7 +94,6 @@ export default function PrincessRoom() {
 
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {

@@ -113,7 +113,6 @@ export default function Hallway() {
 
   const toggleSubmission = () => {
     setClicked(!isClicked);
-    console.log("test")
   };
 
   return (
