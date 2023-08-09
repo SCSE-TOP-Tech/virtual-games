@@ -18,10 +18,11 @@ import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Phone from "./components/Phone";
+import Inventory from "@/app/components/Inventory";
 
 export default function StorageRoom() {
   const router = useRouter();
-
+  const fetchRef = useRef(false);
   // userRef stores the user ID that has been login.
   const userRef = useRef("");
 
@@ -39,19 +40,22 @@ export default function StorageRoom() {
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch room data and items data
-        const fetchedRoom = await fetchRoom("storage_room", false);
-        setRoom(fetchedRoom);
+        if(!fetchRef.current){
+          // Fetch room data and items data
+          fetchRef.current = true;
+          const fetchedRoom = await fetchRoom("storage_room", false);
 
-        if (fetchedRoom) {
-          setUser(await fetchUserInfo(userRef.current));
+          if (fetchedRoom) {
+            setRoom(fetchedRoom);
+            setUser(await fetchUserInfo(userRef.current));
 
-          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-          console.log("AvailableItems fetched!");
-          setCollectedItems(
-            await getCollectedItems(userRef.current, fetchedRoom.room_id)
-          );
-          console.log("CollectedItems fetched!");
+            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+            console.log("AvailableItems fetched!");
+            setCollectedItems(
+              await getCollectedItems(userRef.current, fetchedRoom.room_id)
+            );
+            console.log("CollectedItems fetched!");
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -65,22 +69,26 @@ export default function StorageRoom() {
   }, [router]);
 
   const checkVisibility = (itemName) => {
-    if (availableItems && collectedItems) {
-      const availState = availableItems.find(
-        (item) => item.itemName === itemName
-      );
+    try{
+      if (availableItems && collectedItems) {
+        const availState = availableItems.find(
+          (item) => item.itemName === itemName
+          );
+          
+        const avail = availState.stateID <= user.stateID;
+        const collectedState = collectedItems.find(
+          (item) => item.itemName === itemName
+        );
 
-      const avail = availState.stateID <= user.stateID;
+        const collected = collectedState.collected;
 
-      const collectedState = collectedItems.find(
-        (item) => item.itemName === itemName
-      );
-
-      const collected = collectedState.collected;
-
-      return avail && !collected;
+        return avail && !collected;
+      }
+      return false;
+    } catch (error) {
+      console.log(itemName, "not exists in the current state");
+      return false;
     }
-    return false;
   };
 
   const changeState = async (user) => {
@@ -97,8 +105,8 @@ export default function StorageRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
-
 
   if (
     loading ||
@@ -131,7 +139,7 @@ export default function StorageRoom() {
     // To add loading page
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar />
+        <Navbar Phone={true}/>
         {/* background image */}
         <Box
           display="flex"
@@ -145,6 +153,7 @@ export default function StorageRoom() {
           <ItemImage item={room.background} />
           <Box position="absolute" zIndex="1">
             {/* dead doctor (temp viewing) */}
+            {checkVisibility(room.clues.tesseract.id) && 
             <Hint>
               <ItemImage
                 onClick={async () => {
@@ -178,7 +187,8 @@ export default function StorageRoom() {
                   "14rem" //ipad mini
                 )}
               />
-            </Hint>
+            </Hint> 
+            }
             {/* tesseract (temp viewing) */}
             {checkVisibility(room.clues.tesseract.id) && (
               <Hint>
@@ -249,8 +259,9 @@ export default function StorageRoom() {
             )}
 
             {/* mop and bucket (temp viewing) */}
+            {checkVisibility(room.dummy_objects.mopbucket.id) && 
             <Hint>
-              <ItemImage
+                <ItemImage
                 onClick={() => updateCollected(room.dummy_objects.mopbucket.id)}
                 item={room.dummy_objects.mopbucket}
                 className={styles.item}
@@ -288,6 +299,7 @@ export default function StorageRoom() {
                 )}
               />
             </Hint>
+            }
             {/* blood stained clothspin (temp viewing) */}
             {checkVisibility(room.clues.blood_clothpin.id) && (
               <Hint>
@@ -393,10 +405,11 @@ export default function StorageRoom() {
             </Box>
           </Box>
         </Box>
-
-        <Box mt="2%" w="100%" background={"white"}>
-          Text Component Here
-        </Box>
+        <Inventory 
+        items={
+          collectedItems.filter((i) => i.collected === true)
+        } 
+        room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

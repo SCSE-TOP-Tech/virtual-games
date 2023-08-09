@@ -1,5 +1,4 @@
 "use client";
-import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { useEffect, useState, useRef } from "react";
@@ -17,10 +16,11 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import Inventory from "@/app/components/Inventory";
 
 export default function RomilyRoom() {
   const router = useRouter();
-
+  const fetchRef = useRef(false);
   // userRef stores the user ID that has been login.
   const userRef = useRef("");
 
@@ -36,19 +36,22 @@ export default function RomilyRoom() {
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch room data and items data
-        const fetchedRoom = await fetchRoom("romily", true);
-        setRoom(fetchedRoom);
+        if(!fetchRef.current){
+          // Fetch room data and items data
+          fetchRef.current = true;
+          const fetchedRoom = await fetchRoom("romily", true);
 
-        if (fetchedRoom) {
-          setUser(await fetchUserInfo(userRef.current));
-          
-          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-          console.log("AvailableItems fetched!");
-          setCollectedItems(
-            await getCollectedItems(userRef.current, fetchedRoom.room_id)
-          );
-          console.log("CollectedItems fetched!");
+          if (fetchedRoom) {
+            setRoom(fetchedRoom);
+            setUser(await fetchUserInfo(userRef.current));
+            
+            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+            console.log("AvailableItems fetched!");
+            setCollectedItems(
+              await getCollectedItems(userRef.current, fetchedRoom.room_id)
+            );
+            console.log("CollectedItems fetched!");
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -62,21 +65,26 @@ export default function RomilyRoom() {
   }, [router]);
 
   const checkVisibility = (itemName) => {
-    if (availableItems && collectedItems) {
-      const availState = availableItems.find(
-        (item) => item.itemName === itemName
-      );
-      const avail = availState.stateID <= user.stateID;
+    try{
+      if (availableItems && collectedItems) {
+        const availState = availableItems.find(
+          (item) => item.itemName === itemName
+          );
+          
+        const avail = availState.stateID <= user.stateID;
+        const collectedState = collectedItems.find(
+          (item) => item.itemName === itemName
+        );
 
-      const collectedState = collectedItems.find(
-        (item) => item.itemName === itemName
-      );
+        const collected = collectedState.collected;
 
-      const collected = collectedState.collected;
-
-      return avail && !collected;
+        return avail && !collected;
+      }
+      return false;
+    } catch (error) {
+      console.log(itemName, "not exists in the current state");
+      return false;
     }
-    return false;
   };
 
   const changeState = async (user) => {
@@ -93,6 +101,7 @@ export default function RomilyRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
@@ -102,7 +111,7 @@ export default function RomilyRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" position="relative">
-        <Navbar />
+        <Navbar Phone={false}/>
 
         <Box
           display="flex"
@@ -351,9 +360,11 @@ export default function RomilyRoom() {
             )}
           </Box>
         </Box>
-        <Box mt="2%" w="100%" background={"white"}>
-          Text Component Here
-        </Box>
+        <Inventory 
+        items={
+          collectedItems.filter((i) => i.collected === true)
+        } 
+        room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

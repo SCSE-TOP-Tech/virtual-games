@@ -18,13 +18,14 @@ import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import Phone from "./components/Phone";
+import Inventory from "@/app/components/Inventory";
 
 export default function BrandRoom() {
   const router = useRouter();
 
   // userRef stores the user ID that has been login.
   const userRef = useRef("");
-
+  const fetchRef = useRef(false);
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
@@ -38,19 +39,22 @@ export default function BrandRoom() {
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch room data and items data
-        const fetchedRoom = await fetchRoom("brand", true);
-        setRoom(fetchedRoom);
+        if(!fetchRef.current){
+          // Fetch room data and items data
+          fetchRef.current = true;
+          const fetchedRoom = await fetchRoom("brand", true);
 
-        if (fetchedRoom) {
-          setUser(await fetchUserInfo(userRef.current));
-          
-          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-          console.log("AvailableItems fetched!");
-          setCollectedItems(
-            await getCollectedItems(userRef.current, fetchedRoom.room_id)
-          );
-          console.log("CollectedItems fetched!");
+          if (fetchedRoom) {
+            setRoom(fetchedRoom);
+            setUser(await fetchUserInfo(userRef.current));
+            
+            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+            console.log("AvailableItems fetched!");
+            setCollectedItems(
+              await getCollectedItems(userRef.current, fetchedRoom.room_id)
+            );
+            console.log("CollectedItems fetched!");
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -64,21 +68,26 @@ export default function BrandRoom() {
   }, [router]);
 
   const checkVisibility = (itemName) => {
-    if (availableItems && collectedItems) {
-      const availState = availableItems.find(
-        (item) => item.itemName === itemName
-      );
-      const avail = availState.stateID <= user.stateID;
+    try{
+      if (availableItems && collectedItems) {
+        const availState = availableItems.find(
+          (item) => item.itemName === itemName
+          );
+          
+        const avail = availState.stateID <= user.stateID;
+        const collectedState = collectedItems.find(
+          (item) => item.itemName === itemName
+        );
 
-      const collectedState = collectedItems.find(
-        (item) => item.itemName === itemName
-      );
+        const collected = collectedState.collected;
 
-      const collected = collectedState.collected;
-
-      return avail && !collected;
+        return avail && !collected;
+      }
+      return false;
+    } catch (error) {
+      console.log(itemName, "not exists in the current state");
+      return false;
     }
-    return false;
   };
   
   const changeState = async (user) => {
@@ -95,6 +104,7 @@ export default function BrandRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
@@ -110,7 +120,7 @@ export default function BrandRoom() {
     <RoomLayout>
       <Box>
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <Navbar />
+          <Navbar Phone={true}/>
           <Box
             display="flex"
             justifyContent="center"
@@ -127,56 +137,52 @@ export default function BrandRoom() {
                 <Hint>
                   <ItemImage
                     onClick={() => {
-                      togglePhone()
-                      updateCollected(room.clues.galaxy_phone.id)
+                      togglePhone();
+                      updateCollected(room.clues.galaxy_phone.id);
                     }}
                     className={styles.item}
                     width={SizeFormatter(
-                        "1.3rem", //iphone se
-                        "1.3rem", //iphone xr
-                        "1.4rem", //iphone 12pro
-                        "1.4rem", //pixel 5
-                        "1.4rem", //samsung galaxy s8+
-                        "1.3rem", //samsung galaxy s20 ultra
-                        "1.3rem", //ipad air
-                        "1.3rem" //ipad mini
+                      "1.3rem", //iphone se
+                      "1.3rem", //iphone xr
+                      "1.4rem", //iphone 12pro
+                      "1.4rem", //pixel 5
+                      "1.4rem", //samsung galaxy s8+
+                      "1.3rem", //samsung galaxy s20 ultra
+                      "1.3rem", //ipad air
+                      "1.3rem" //ipad mini
                     )}
-                    filter='auto'
-                    brightness='100%'
+                    filter="auto"
+                    brightness="100%"
                     right={SizeFormatter(
-                        "2.6rem", //iphone se
-                        "2.9rem", //iphone xr
-                        "2.8rem", //iphone 12pro
-                        "2.8rem", //pixel 5
-                        "2.6rem", //samsung galaxy s8+
-                        "2.9rem", //samsung galaxy s20 ultra
-                        "3.3rem", //ipad air
-                        "3.3rem" //ipad mini
+                      "2.6rem", //iphone se
+                      "2.9rem", //iphone xr
+                      "2.8rem", //iphone 12pro
+                      "2.8rem", //pixel 5
+                      "2.6rem", //samsung galaxy s8+
+                      "2.9rem", //samsung galaxy s20 ultra
+                      "3.3rem", //ipad air
+                      "3.3rem" //ipad mini
                     )}
                     top={SizeFormatter(
-                        "13.7rem", //iphone se
-                        "15.2rem", //iphone xr
-                        "14.3rem", //iphone 12pro
-                        "14.5rem", //pixel 5
-                        "13.2rem", //samsung galaxy s8+
-                        "15.2rem", //samsung galaxy s20 ultra
-                        "18.2rem", //ipad air
-                        "18.2rem" //ipad mini
+                      "13.7rem", //iphone se
+                      "15.2rem", //iphone xr
+                      "14.3rem", //iphone 12pro
+                      "14.5rem", //pixel 5
+                      "13.2rem", //samsung galaxy s8+
+                      "15.2rem", //samsung galaxy s20 ultra
+                      "18.2rem", //ipad air
+                      "18.2rem" //ipad mini
                     )}
                   />
                 </Hint>
               )}
             </Box>
           </Box>
-          <Box
-            position="absolute"
-            bottom="10%"
-            mt="2%"
-            w="28em"
-            background={"white"}
-          >
-            Text Component Here
-          </Box>
+          <Inventory 
+          items={
+            collectedItems.filter((i) => i.collected === true)
+          } 
+          room={room} styles={styles.item} />
         </Box>
       </Box>
     </RoomLayout>

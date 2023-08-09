@@ -18,10 +18,11 @@ import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Submit from "./components/Submit";
+import Inventory from "@/app/components/Inventory";
 
 export default function Hallway() {
   const router = useRouter();
-
+  const fetchRef = useRef(false);
   // userRef stores the user ID that has been login.
   const userRef = useRef("");
 
@@ -37,14 +38,14 @@ export default function Hallway() {
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        if (!isClicked) {
+        if (!isClicked && !fetchRef.current) {
           // Fetch room data and items data
+          fetchRef.current = true;
           const fetchedRoom = await fetchRoom("hallway", false);
-          setRoom(fetchedRoom);
-
-          if (fetchedRoom) {
+          if(fetchedRoom){
+            setRoom(fetchedRoom);
             setUser(await fetchUserInfo(userRef.current));
-
+      
             setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
             console.log("AvailableItems fetched!");
             setCollectedItems(
@@ -65,22 +66,26 @@ export default function Hallway() {
   }, [router]);
 
   const checkVisibility = (itemName) => {
-    if (availableItems && collectedItems) {
-      const availState = availableItems.find(
-        (item) => item.itemName === itemName
-      );
+    try{
+      if (availableItems && collectedItems) {
+        const availState = availableItems.find(
+          (item) => item.itemName === itemName
+          );
+          
+        const avail = availState.stateID <= user.stateID;
+        const collectedState = collectedItems.find(
+          (item) => item.itemName === itemName
+        );
 
-      const avail = availState.stateID <= user.stateID;
+        const collected = collectedState.collected;
 
-      const collectedState = collectedItems.find(
-        (item) => item.itemName === itemName
-      );
-
-      const collected = collectedState.collected;
-
-      return avail && !collected;
+        return avail && !collected;
+      }
+      return false;
+    } catch (error) {
+      console.log(itemName, "not exists in the current state");
+      return false;
     }
-    return false;
   };
 
   const changeState = async (user) => {
@@ -97,6 +102,7 @@ export default function Hallway() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
 
@@ -118,7 +124,7 @@ export default function Hallway() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar />
+        <Navbar Phone={false}/>
         <Box
           display="flex"
           justifyContent="center"
@@ -180,10 +186,11 @@ export default function Hallway() {
             />
           </Box>
         </Box>
-
-        <Box mt="2%" w="100%" background="white">
-          Text Component Here
-        </Box>
+        <Inventory 
+        items={
+          collectedItems.filter((i) => i.collected === true)
+        } 
+        room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );
