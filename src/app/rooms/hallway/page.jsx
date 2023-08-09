@@ -32,7 +32,6 @@ export default function Hallway() {
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isClicked, setClicked] = useState(false);
-  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -67,22 +66,26 @@ export default function Hallway() {
   }, [router]);
 
   const checkVisibility = (itemName) => {
-    if (availableItems && collectedItems) {
-      const availState = availableItems.find(
-        (item) => item.itemName === itemName
-      );
+    try{
+      if (availableItems && collectedItems) {
+        const availState = availableItems.find(
+          (item) => item.itemName === itemName
+          );
+          
+        const avail = availState.stateID <= user.stateID;
+        const collectedState = collectedItems.find(
+          (item) => item.itemName === itemName
+        );
 
-      const avail = availState.stateID <= user.stateID;
+        const collected = collectedState.collected;
 
-      const collectedState = collectedItems.find(
-        (item) => item.itemName === itemName
-      );
-
-      const collected = collectedState.collected;
-
-      return avail && !collected;
+        return avail && !collected;
+      }
+      return false;
+    } catch (error) {
+      console.log(itemName, "not exists in the current state");
+      return false;
     }
-    return false;
   };
 
   const changeState = async (user) => {
@@ -184,7 +187,11 @@ export default function Hallway() {
             />
           </Box>
         </Box>
-        <Inventory items={inventory} room={room} styles={styles.item} />
+        <Inventory 
+        items={
+          collectedItems.filter((i) => i.collected === true)
+        } 
+        room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );

@@ -45,7 +45,7 @@ export default function Login() {
             localStorage.setItem("userId", curUser.userId);
             localStorage.setItem("user", curUser.username);
 
-            router.push("/rooms/hallway");
+            router.push("/rooms/seraphineroom");
           } else {
             //if (data.status == 401 || data.status == 404)
             localStorage.clear();
