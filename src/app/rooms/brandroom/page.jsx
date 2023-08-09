@@ -103,7 +103,7 @@ export default function BrandRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
-    setInventory((prev) => [...prev, name]);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
