@@ -1,9 +1,12 @@
 "use client";
 import styles from "./components/styles.module.css";
-import background from "~/public/Rooms/Clinic/clinic.png";
-import { useEffect, useState } from "react";
-import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import { Box } from "@chakra-ui/react";
+import { useEffect, useState, useRef } from "react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
+import { useRouter } from "next/navigation";
+import checkUser from "@/app/components/CheckUser";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
@@ -16,12 +19,11 @@ import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems"
 import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
-import { useRouter } from "next/navigation";
 import Inventory from "@/app/components/Inventory";
 
 export default function Clinic() {
   const router = useRouter();
-
+  const fetchRef = useRef(false);
   // userRef stores the user ID that has been login.
   const userRef = useRef("");
 
@@ -30,26 +32,28 @@ export default function Clinic() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch room data and items data
-        const fetchedRoom = await fetchRoom("clinic", false);
-        setRoom(fetchedRoom);
+        if(!fetchRef.current){
+          // Fetch room data and items data
+          fetchRef.current = true;
+          const fetchedRoom = await fetchRoom("clinic", false);
 
-        if (fetchedRoom) {
-          setUser(await fetchUserInfo(userRef.current));
+          if (fetchedRoom) {
+            setRoom(fetchedRoom);
+            setUser(await fetchUserInfo(userRef.current));
 
-          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-          console.log("AvailableItems fetched!");
-          setCollectedItems(
-            await getCollectedItems(userRef.current, fetchedRoom.room_id)
-          );
-          console.log("CollectedItems fetched!");
+            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+            console.log("AvailableItems fetched!");
+            setCollectedItems(
+              await getCollectedItems(userRef.current, fetchedRoom.room_id)
+            );
+            console.log("CollectedItems fetched!");
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -63,22 +67,26 @@ export default function Clinic() {
   }, [router]);
 
   const checkVisibility = (itemName) => {
-    if (availableItems && collectedItems) {
-      console.log(availableItems)
-      const availState = availableItems.find(
-        (item) => item.itemName === itemName
+    try{
+      if (availableItems && collectedItems) {
+        const availState = availableItems.find(
+          (item) => item.itemName === itemName
+          );
+          
+        const avail = availState.stateID <= user.stateID;
+        const collectedState = collectedItems.find(
+          (item) => item.itemName === itemName
         );
-        
-      const avail = availState.stateID <= user.stateID;
-      const collectedState = collectedItems.find(
-        (item) => item.itemName === itemName
-      );
 
-      const collected = collectedState.collected;
+        const collected = collectedState.collected;
 
-      return avail && !collected;
+        return avail && !collected;
+      }
+      return false;
+    } catch (error) {
+      console.log(itemName, "not exists in the current state");
+      return false;
     }
-    return false;
   };
 
   const changeState = async (user) => {
@@ -95,6 +103,7 @@ export default function Clinic() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
 
@@ -112,16 +121,21 @@ export default function Clinic() {
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%">
         <Navbar Phone={false}/>
-        {/* background image */}
         <Box
           display="flex"
           justifyContent="center"
           zIndex="0"
-          h="90%"
           width="100%"
         >
-          {/* to export background to cloud  */}
-          <Image src={background} alt="background" />
+
+          {/* to export background to cloud
+          background image */}
+          <ItemImage item={{
+            name: "Clinic Background",
+            height: 1024,
+            width: 1024,
+            src: "/Rooms/Clinic/clinic.png",
+          }} />
 
           <Box position="absolute" zIndex="1">
             {/* doctor */}
@@ -158,7 +172,11 @@ export default function Clinic() {
               />)}
           </Box>
         </Box>
-        <Inventory items={inventory} room={room} styles={styles.item} />
+        <Inventory 
+        items={
+          collectedItems.filter((i) => i.collected === true)
+        } 
+        room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );
