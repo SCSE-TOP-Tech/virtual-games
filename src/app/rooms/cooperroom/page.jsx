@@ -21,7 +21,7 @@ import Inventory from "@/app/components/Inventory";
 
 export default function CooperPage() {
   const router = useRouter();
-
+  const fetchRef = useRef(false);
   // userRef stores the user ID that has been login.
   const userRef = useRef("");
 
@@ -30,7 +30,6 @@ export default function CooperPage() {
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
     userRef.current = checkUser();
@@ -38,19 +37,22 @@ export default function CooperPage() {
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch room data and items data
-        const fetchedRoom = await fetchRoom("cooper", true);
-        setRoom(fetchedRoom);
+        if(!fetchRef.current){
+          // Fetch room data and items data
+          fetchRef.current = true;
+          const fetchedRoom = await fetchRoom("cooper", true);
 
-        if (fetchedRoom) {
-          setUser(await fetchUserInfo(userRef.current));
+          if (fetchedRoom) {
+            setRoom(fetchedRoom);
+            setUser(await fetchUserInfo(userRef.current));
 
-          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-          console.log("AvailableItems fetched!");
-          setCollectedItems(
-            await getCollectedItems(userRef.current, fetchedRoom.room_id)
-          );
-          console.log("CollectedItems fetched!");
+            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+            console.log("AvailableItems fetched!");
+            setCollectedItems(
+              await getCollectedItems(userRef.current, fetchedRoom.room_id)
+            );
+            console.log("CollectedItems fetched!");
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -64,21 +66,26 @@ export default function CooperPage() {
   }, [router]);
 
   const checkVisibility = (itemName) => {
-    if (availableItems && collectedItems) {
-      const availState = availableItems.find(
-        (item) => item.itemName === itemName
-      );
+    try{
+      if (availableItems && collectedItems) {
+        const availState = availableItems.find(
+          (item) => item.itemName === itemName
+          );
+          
+        const avail = availState.stateID <= user.stateID;
+        const collectedState = collectedItems.find(
+          (item) => item.itemName === itemName
+        );
 
-      const avail = availState.stateID <= user.stateID;
-      const collectedState = collectedItems.find(
-        (item) => item.itemName === itemName
-      );
+        const collected = collectedState.collected;
 
-      const collected = collectedState.collected;
-
-      return avail && !collected;
+        return avail && !collected;
+      }
+      return false;
+    } catch (error) {
+      console.log(itemName, "not exists in the current state");
+      return false;
     }
-    return false;
   };
 
   const changeState = async (user) => {
@@ -95,7 +102,7 @@ export default function CooperPage() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
     console.log(updatedItem);
-    setInventory((prev) => [...prev, name]);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
   if (loading || !user || !room || !availableItems || !collectedItems) {
@@ -259,7 +266,11 @@ export default function CooperPage() {
             )}
           </Box>
         </Box>
-        <Inventory items={inventory} room={room} styles={styles.item} />
+        <Inventory 
+        items={
+          collectedItems.filter((i) => i.collected === true)
+        } 
+        room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );
