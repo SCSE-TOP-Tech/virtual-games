@@ -17,10 +17,11 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
+import Inventory from "@/app/components/Inventory";
 
 export default function DoyleRoom() {
   const router = useRouter();
-
+  const fetchRef = useRef(false);
   // userRef stores the user ID that has been login.
   const userRef = useRef("");
 
@@ -36,19 +37,22 @@ export default function DoyleRoom() {
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch room data and items data
-        const fetchedRoom = await fetchRoom("doyle", true);
-        setRoom(fetchedRoom);
+        if(!fetchRef.current){
+          // Fetch room data and items data
+          fetchRef.current = true;
+          const fetchedRoom = await fetchRoom("doyle", true);
 
-        if (fetchedRoom) {
-          setUser(await fetchUserInfo(userRef.current));
-          
-          setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
-          console.log("AvailableItems fetched!");
-          setCollectedItems(
-            await getCollectedItems(userRef.current, fetchedRoom.room_id)
-          );
-          console.log("CollectedItems fetched!");
+          if (fetchedRoom) {
+            setRoom(fetchedRoom);
+            setUser(await fetchUserInfo(userRef.current));
+            
+            setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
+            console.log("AvailableItems fetched!");
+            setCollectedItems(
+              await getCollectedItems(userRef.current, fetchedRoom.room_id)
+            );
+            console.log("CollectedItems fetched!");
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -93,6 +97,7 @@ export default function DoyleRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
+    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
@@ -102,7 +107,7 @@ export default function DoyleRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar />
+        <Navbar Phone={false}/>
 
         <Box display="flex" justifyContent="center" width="100%">
           <ItemImage item={room.background} />
@@ -285,16 +290,11 @@ export default function DoyleRoom() {
             )}
           </Box>
         </Box>
-
-        <Box
-          position="absolute"
-          bottom="10%"
-          mt="2%"
-          w="28em"
-          background={"white"}
-        >
-          Text Component Here
-        </Box>
+        <Inventory 
+        items={
+          collectedItems.filter((i) => i.collected === true)
+        } 
+        room={room} styles={styles.item} />
       </Box>
     </RoomLayout>
   );
