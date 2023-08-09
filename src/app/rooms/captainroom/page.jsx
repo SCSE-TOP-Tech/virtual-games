@@ -120,7 +120,6 @@ export default function CaptainRoom() {
           display="flex"
           justifyContent="center"
           zIndex="0"
-          h="90%"
           width="100%"
         >
           {/* background image */}
