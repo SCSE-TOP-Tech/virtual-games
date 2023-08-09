@@ -1,32 +1,40 @@
 import { prisma } from "~/lib/prisma";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { compare } from "bcryptjs";
 
-export async function POST(req: Request) {
+type User = {
+  username: string;
+  password: string;
+};
+
+export async function POST(req: NextRequest) {
   try {
-    console.log("Successful POST to Login");
-    const userData: {
-      name: string;
-      email: string;
-      password: string;
-    } = await req.json();
-
-    // Login account
+    const user: User = await req.json();
     const currentAccount = await prisma.account.findFirst({
       where: {
-        email: userData.email,
-        password: userData.password,
+        username: user.username,
       },
     });
-    console.log(currentAccount);
-
-    return NextResponse.json({ status: 200, body: currentAccount });
+    if (!currentAccount) {
+      return NextResponse.json({ status: 404, body: "User does not exist" });
+    }
+    const isAuthenticated = await compare(user.password, currentAccount.password)
+      .then((result: boolean) => result);
+    if (isAuthenticated) {
+      return NextResponse.json({
+        status: 200,
+        body: currentAccount,
+        headers: { "Content-Type": "application/json" },
+      });
+    } else {
+      return NextResponse.json({
+        status: 401,
+        body: "Invalid password!",
+      });
+    }
   } catch (error: any) {
-    const error_response = {
-      status: 404,
-      message: error.message,
-    };
-    return NextResponse.json(JSON.stringify(error_response), {
-      status: 500,
+    return NextResponse.json(JSON.stringify(error.message), {
+      status: error.code || "404",
       headers: { "Content-Type": "application/json" },
     });
   }

@@ -2,12 +2,14 @@
 import styles from "./components/styles.module.css";
 import { Box, IconButton } from "@chakra-ui/react";
 import { MdClose } from "react-icons/md";
-import fetchRoom from "@/resources/cloudinary/fetchRoom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
+import { useRouter } from "next/navigation";
+import checkUser from "@/app/components/CheckUser";
+import fetchRoom from "@/resources/cloudinary/fetchRoom";
+import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
-import { fetchUser } from "@/resources/prisma/fetchUser";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
@@ -16,34 +18,37 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
-import { useRouter } from "next/navigation";
 
 export default function PrincessRoom() {
   const router = useRouter();
-  const [inspect, showMap] = useState(false);
+
+  // userRef stores the user ID that has been login.
+  const userRef = useRef("");
+
   const [room, setRoom] = useState(null);
   const [user, setUser] = useState(null);
   const [availableItems, setAvailableItems] = useState(null);
   const [collectedItems, setCollectedItems] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [inspect, showMap] = useState(false);
+  
   useEffect(() => {
+    userRef.current = checkUser();
+
     const fetchData = async () => {
       setLoading(true); // Set loading state to true before fetching
       try {
-        // Fetch user data
-        const currentUser = await fetchUser();
-        setUser(currentUser);
-
         // Fetch room data and items data
         const fetchedRoom = await fetchRoom("princess_white", true);
         setRoom(fetchedRoom);
 
         if (fetchedRoom) {
+          setUser(await fetchUserInfo(userRef.current));
+          
           setAvailableItems(await getAvailableItems(fetchedRoom.room_id));
           console.log("AvailableItems fetched!");
           setCollectedItems(
-            await getCollectedItems(currentUser.id, fetchedRoom.room_id)
+            await getCollectedItems(userRef.current, fetchedRoom.room_id)
           );
           console.log("CollectedItems fetched!");
         }
@@ -54,8 +59,9 @@ export default function PrincessRoom() {
       }
     };
 
-    fetchData(); // Fetch data on component mount
-  }, []);
+    if (userRef.current) fetchData(); //Fetch data on component mount
+    else router.push('/login');
+  }, [router]);
 
   const checkVisibility = (itemName) => {
     if (availableItems && collectedItems) {
@@ -63,9 +69,11 @@ export default function PrincessRoom() {
         (item) => item.itemName === itemName
       );
       const avail = availState.stateID <= user.stateID;
+
       const collectedState = collectedItems.find(
         (item) => item.itemName === itemName
       );
+
       const collected = collectedState.collected;
 
       return avail && !collected;
@@ -75,27 +83,26 @@ export default function PrincessRoom() {
 
   const changeState = async (user) => {
     if (user.stateID !== 1) {
-      await endTimer(user.id, user.stateID);
+      await endTimer(userRef.current, user.stateID);
     }
-    setUser(await updateState(user.id));
-    const startTime = await startTimer(user.id, user.stateID);
+    setUser(await updateState(userRef.current));
+    const startTime = await startTimer(userRef.current, user.stateID);
     if (startTime !== 200) {
       console.log("Failed to Start Timer");
     }
   };
 
   const updateCollected = async (name) => {
-    const updatedItem = await updateCollectedItems(user.id, name, room.room_id);
-    console.log(updatedItem);
+    const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
   };
+  
+  if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
+    return <Loading />;
+  }
 
   const toggleMap = () => {
     showMap(!inspect);
   };
-
-  if (loading || !user || !room || !availableItems || !collectedItems) {
-    return <Loading />;
-  }
 
   return (
     <RoomLayout>

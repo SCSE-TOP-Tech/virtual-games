@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { fetchUser } from "@/resources/prisma/fetchUser";
+import { useEffect, useState, useRef } from "react";
+import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import { Box, Button, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/navigation";
 import fetchTransition from "@/resources/prisma/transitions/fetchTransition";
 import { User } from "~/data/contracts";
 import updateTransition from "@/resources/prisma/transitions/updateTransition";
 import TransitionLayout from "@/app/rooms/layout";
 import Loading from "@/app/transitions/loading";
+import checkUser from "@/app/components/CheckUser";
 
 interface image {
   alt: string;
@@ -20,6 +20,8 @@ interface image {
 }
 
 export default function Transitions() {
+  const userRef = useRef<string>("");
+
   const router = useRouter();
   const [user, setUser] = useState<User>();
   const [image, setImage] = useState<image>();
@@ -27,65 +29,66 @@ export default function Transitions() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function fetchData() {
-      const currentUser = await fetchUser();
-      if (currentUser) {
+    userRef.current = checkUser();
+    if (userRef.current) {
+      const fetchData = async () => {
+        const currentUser = await fetchUserInfo(userRef.current);
+
         setUser(currentUser);
+        console.log(currentUser)
         const trans = await fetchTransition(currentUser.transitionID);
         if (trans) {
           setText(trans.dialog);
           setImage(trans.image);
         }
       }
-    }
-    fetchData();
-  }, []);
+
+      fetchData();
+    } else router.push("/login");
+  }, [router]);
 
   const updateTransitionStage = async () => {
     setLoading(true);
     if (user) {
-      const updatedTransition = await updateTransition(user.id);
+      const updatedTransition = await updateTransition(userRef.current);
       if (updatedTransition) {
         switch (updatedTransition.id) {
+
           // 0 - 2 Intro [1]
 
-          // 3 princess room (stolen tessaract) [2]
-          case 4:
+          // 3 - 4 Stolen tesseract [1]
+          case 5:
             router.push("/rooms/princessroom");
             break;
 
-          // 4 - 7 Split groups
-
-          // 7 clinic (captain master key) [3]
+          // 5 - 7 Investigation begins [2]
           case 8:
             router.push("/rooms/princessroom");
             break;
 
-          // 6 captain room (master key missing) *transition when all items collected [4]
-          case 9:
+          // 8 - 9 Investigating Captain’s room [3]
+          case 10:
             router.push("/rooms/captainroom");
             break;
 
-          // 7 carmen room (found the key)
+          // 10 - 14 Suspicions [4]
+          case 15:
+            router.push("/rooms/captainroom");
+            break;
 
-          // 8 carmen room (scream from storage room) [5]
-          case 10:
+          // 15 - 17 Dead doctor [5]
+          case 18:
             router.push("/rooms/carmenroom");
             break;
 
-          // 9 storage room (dead doctor)
-          case 11:
-            router.push("/rooms/carmenroom");
+          // 18 - 21 Confrontation (part 1) - Dead doctor [6]
+          case 22:
+            router.push("/rooms/storageroom");
             break;
 
-          // 7 carmen room (found the key)
-          case 12:
-            router.push("/rooms/carmenroom");
-            break;
-
-          // guess
-          case 13:
-            router.push("/guess");
+          // 22 - 25 Confrontation (part 2) - doctor's phone [6]
+          case 26:
+            router.push("/rooms/hallway");
             break;
 
           default:
@@ -108,66 +111,65 @@ export default function Transitions() {
     );
   };
 
+  if (loading) return <Loading />;
+
   return (
     <TransitionLayout>
       <Box transition="opacity ease-in" mt={5}>
-        {loading ? (
-          <Loading />
-        ) : (
-          <div>
-            {text && (
-              <Text
-                color="black"
-                backgroundColor="whiteAlpha.700"
-                rounded={15}
-                m={5}
-                fontWeight={700}
-                w="90vw"
-                px="1rem"
-                py="0.5rem"
-                fontSize={14}
-                textAlign="justify"
-              >
-                {text}
-              </Text>
-            )}
-            <Box
-              justifyContent="center"
-              display="flex"
-              bg="transparent"
-              my={10}
+
+        <div>
+          {text &&
+            <Text
+              color="black"
+              backgroundColor="whiteAlpha.700"
+              rounded={15}
+              m={5}
+              fontWeight={700}
+              w="90vw"
+              px="1rem"
+              py="0.5rem"
+              fontSize={14}
+              textAlign="justify"
             >
-              <TransitionImage />
+              {text}
+            </Text>
+          }
+          <Box
+            justifyContent="center"
+            display="flex"
+            bg="transparent"
+            my={10}
+          >
+            <TransitionImage />
+          </Box>
+          {image && (
+            <Box
+              display="flex"
+              textColor="white"
+              bg="black"
+              justifyContent="center"
+              m="auto"
+              py={1}
+              w="45vw"
+              fontWeight={900}
+              rounded={100}
+            >
+              {image?.alt}
             </Box>
-            {image && (
-              <Box
-                display="flex"
-                textColor="white"
-                bg="black"
-                justifyContent="center"
-                m="auto"
-                py={1}
-                w="45vw"
-                fontWeight={900}
-                rounded={100}
-              >
-                {image?.alt}
-              </Box>
-            )}
-          </div>
-        )}
-        <Button
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          width="50%"
-          mt={10}
-          mx="auto"
-          rightIcon={<ChevronRightIcon />}
-          onClick={updateTransitionStage}
-        >
-          Next
-        </Button>
+          )}
+          {text && <Button
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            width="50%"
+            mt={10}
+            mx="auto"
+            onClick={updateTransitionStage}
+          >
+            Next
+          </Button>}
+        </div>
+
       </Box>
     </TransitionLayout>
   );

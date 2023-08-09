@@ -1,4 +1,5 @@
 "use client";
+
 import Provider from "@/app/components/Provider";
 
 export default async function RootLayout(param) {

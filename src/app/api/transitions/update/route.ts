@@ -7,7 +7,7 @@ export async function PATCH(req: Request) {
   try {
     console.log("Successful PATCH to update transition");
     const userId: string = (await req.json()).userId;
-
+    console.log(userId);
     const transitionID = await prisma.user.update({
       where: {
         id: userId,

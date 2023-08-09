@@ -5,10 +5,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
   colors: {},
-  fonts: {
-    heading: "Raleway",
-    body: "Raleway",
-  },
+  fonts: {},
   fontSizes: {},
   breakpoints: {
     iphone_se: "375px",

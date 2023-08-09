@@ -1,7 +1,4 @@
 "use client";
-
-import * as yup from "yup";
-
 import { useFormik } from "formik";
 import {
   Box,
@@ -14,18 +11,15 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import createUser from "@/resources/prisma/login/createUser";
 
 export default function Login() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [displayWarning, setDisplayWarning] = useState(false);
   const [hidden, setHidden] = useState(true);
-  const [user, setUser] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (formik.errors.username || formik.errors.password) {
       setDisplayWarning(true);
       setTimeout(() => {
@@ -33,23 +27,39 @@ export default function Login() {
       }, 3000);
     } else {
       try {
-        // TO DO: loading state when creating new login
-        const newUser = await createUser(formik.values);
-        // TO DO: stored login state, to persist throughout gameplay
-        newUser != null ? setUser(newUser) : alert("Invalid Login");
+        //api call
+        console.log('Login verification begins');
+        
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          body: JSON.stringify(formik.values),
+        });
+        if (res.ok) {
+          const data = await res.json();
+
+          if (data.status == 200) {
+            const curUser = data.body;
+            //dispatch({ type: "SUCCESS", payload: curUser });
+            console.log('Login successful');
+
+            localStorage.setItem("userId", curUser.userId);
+            localStorage.setItem("user", curUser.username);
+
+            router.push("/transitions");
+          } else {
+            //if (data.status == 401 || data.status == 404)
+            localStorage.clear();
+            setError(data.body);
+            //dispatch({ type: "FAILURE", payload: data.status });
+          }
+        } else {
+          //error
+          localStorage.clear();
+          throw new Error(res.name, res.statusText);
+        }
       } catch ({ name, message }) {
         console.log(`${name} : ${message}`);
-        alert("Not Logged in!");
-        setError(message); // TO FIX NOT WORKING!
-      } finally {
-        if (error !== "") {
-          setTimeout(() => {
-            setError("");
-          }, 3000);
-        } else if (user !== null) {
-          //route to relevant page. eg cooper room
-          router.push("/cooperroom");
-        }
+        setError(message);
       }
     }
   };
@@ -57,25 +67,9 @@ export default function Login() {
   const formik = useFormik({
     initialValues: {
       username: "",
-      email: "",
       password: "",
     },
     onSubmit: handleSubmit,
-    validationSchema: yup.object({
-      username: yup.string().trim().required("Name is required"),
-      email: yup
-        .string()
-        .required("Please enter your email")
-        .email("Invalid email!"),
-      password: yup
-        .string()
-        .min(8, "Password must contain at least 8 characters!")
-        .max(50, "Password must contain at most 50 characters!!")
-        .matches(
-          /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,50}$/,
-          "Password must be a mix of uppercase/lowercase letters, numbers and special characters"
-        ),
-    }),
   });
 
   return (
@@ -100,6 +94,8 @@ export default function Login() {
             justifyContent="center"
             fontSize="lg"
             textColor="gray.600"
+            fontFamily={"sans-serif"}
+            fontWeight="extrabold"
           >
             Welcome To Our Virtual Game
           </Heading>
@@ -108,6 +104,7 @@ export default function Login() {
               size="lg"
               backgroundColor="lightblue"
               borderRadius="2xl"
+              fontFamily="sans-serif"
             >
               <Text fontWeight={550} w="7rem" pt={1} m={2}>
                 Username
@@ -161,34 +158,14 @@ export default function Login() {
           )}
 
           <Box display="flex" borderRadius="2xl" backgroundColor="lightblue">
-            <InputGroup
-              size="lg"
-              backgroundColor="lightblue"
-              borderRadius="2xl"
+            <Text
+              w="7rem"
+              fontWeight={550}
+              pt={1}
+              px={1}
+              m={2}
+              fontFamily="sans-serif"
             >
-              <Text fontWeight={550} pt={1} m={2} w="7rem">
-                Email
-              </Text>
-              <Input
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                onFocus={() => setDisplayWarning(false)}
-                required
-                id="email"
-                type="text"
-                fontSize="sm"
-              />
-            </InputGroup>
-          </Box>
-          {displayWarning && formik.touched.email && (
-            <Text color="red" alignSelf="center" fontWeight="bold">
-              {formik.errors.email}
-            </Text>
-          )}
-
-          <Box display="flex" borderRadius="2xl" backgroundColor="lightblue">
-            <Text w="7rem" fontWeight={550} pt={1} px={1} m={2}>
               Password
             </Text>
             <InputGroup size="lg">
