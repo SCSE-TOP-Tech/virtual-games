@@ -41,6 +41,7 @@ export default function BrandRoom() {
       try {
         if(!fetchRef.current){
           // Fetch room data and items data
+          fetchRef.current = true;
           const fetchedRoom = await fetchRoom("brand", true);
 
           if (fetchedRoom) {
