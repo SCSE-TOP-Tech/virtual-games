@@ -131,12 +131,7 @@ export default function Clinic() {
 
           {/* to export background to cloud
           background image */}
-          <ItemImage item={{
-            name: "Clinic Background",
-            height: 1024,
-            width: 1024,
-            src: "/Rooms/Clinic/clinic.png",
-          }} />
+          <ItemImage item={room.background} />
 
           <Box position="absolute" zIndex="1">
             {/* doctor */}
@@ -145,30 +140,30 @@ export default function Clinic() {
                 onClick={async () => {
                   router.push("/transitions");
                   await updateCollected(room.npc.doctor.id);
-                  await changeState(user);
+                  await changeState(user); 
                 }}
                 item={room.npc.doctor}
                 className={checkVisibility(room.npc.doctor.id) ? `${styles.item}` : `${styles.hidden}`}
-                width="20rem"
+                width="8rem"
                 left={SizeFormatter(
-                  "5rem", //iphone se
-                  "5rem", //iphone xr
-                  "5rem", //iphone 12pro
-                  "5rem", //pixel 5
-                  "5rem", //samsung galaxy s8+
-                  "5rem", //samsung galaxy s20 ultra
-                  "5rem", //ipad air
-                  "5rem" //ipad mini
+                  "3rem", //iphone se
+                  "3rem", //iphone xr
+                  "3rem", //iphone 12pro
+                  "3rem", //pixel 5
+                  "3rem", //samsung galaxy s8+
+                  "3rem", //samsung galaxy s20 ultra
+                  "3rem", //ipad air
+                  "3rem" //ipad mini
                 )}
                 top={SizeFormatter(
-                  "20rem", //iphone se
-                  "20rem", //iphone xr
-                  "20rem", //iphone 12pro
-                  "20rem", //pixel 5
-                  "20rem", //samsung galaxy s8+
-                  "20rem", //samsung galaxy s20 ultra
-                  "20rem", //ipad air
-                  "20rem" //ipad mini
+                  "13rem", //iphone se
+                  "13rem", //iphone xr
+                  "13rem", //iphone 12pro
+                  "13rem", //pixel 5
+                  "13rem", //samsung galaxy s8+
+                  "13rem", //samsung galaxy s20 ultra
+                  "13rem", //ipad air
+                  "13rem" //ipad mini
                 )}
               />
             </Hint>

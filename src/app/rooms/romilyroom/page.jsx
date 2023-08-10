@@ -1,4 +1,5 @@
 "use client";
+import styles from "./components/styles.module.css";
 import { Box } from "@chakra-ui/react";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import { useEffect, useState, useRef } from "react";
