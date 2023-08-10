@@ -123,12 +123,11 @@ export default function CarmenRoom() {
           {/* items */}
           <Box position="absolute" zIndex="1">
             {/* mail */}
-            {checkVisibility(room.clues.mail.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.mail.id)}
                   item={room.clues.mail}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.mail.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="5.9rem"
                   filter="auto"
                   brightness="76%"
@@ -154,10 +153,8 @@ export default function CarmenRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* master key */}
-            {checkVisibility(room.clues.master_key.id) && (
               <Hint>
                 <ItemImage
                   onClick={async () => {
@@ -166,7 +163,7 @@ export default function CarmenRoom() {
                     await changeState(user);
                   }}
                   item={room.clues.master_key}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.master_key.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="2rem"
                   filter="auto"
                   brightness="76%"
@@ -192,17 +189,15 @@ export default function CarmenRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* clothspin */}
-            {checkVisibility(room.dummy_objects.clothespin.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.dummy_objects.clothespin.id)
                   }
                   item={room.dummy_objects.clothespin}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects_clothespin.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="1.5rem"
                   filter="auto"
                   brightness="20%"
@@ -228,7 +223,7 @@ export default function CarmenRoom() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

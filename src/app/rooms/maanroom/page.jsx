@@ -122,14 +122,13 @@ export default function MaanRoom() {
           <ItemImage item={room.background} />
           <Box position="absolute" zIndex="1">
             {/* spacesword  */}
-            {checkVisibility(room.dummy_objects.spacesword.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.dummy_objects.spacesword.id)
                   }
                   item={room.dummy_objects.spacesword}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.spacesword.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="2.7rem"
                   filter="auto"
                   brightness="75%"
@@ -155,7 +154,7 @@ export default function MaanRoom() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

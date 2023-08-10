@@ -130,7 +130,6 @@ export default function ControlRoom() {
           {/* items */}
           <Box position="absolute" zIndex="1">
             {/* security computer (temp viewing) */}
-            {checkVisibility(room.dummy_objects.computer.id) && (
               <ItemImage
                 onClick={async () => {
                   router.push("/transitions");
@@ -138,7 +137,7 @@ export default function ControlRoom() {
                   await changeState(user);
                 }}
                 item={room.dummy_objects.computer}
-                className={styles.item}
+                className={checkVisibility(room.dummy_objects.computer.id) ? `${styles.item}` : `${styles.hidden}`}
                 width={SizeFormatter(
                   "3rem", //iphone se
                   "3rem", //iphone xr
@@ -172,7 +171,7 @@ export default function ControlRoom() {
                   "15.1rem"
                 )}
               />
-            )}
+
           </Box>
         </Box>
         <Inventory 

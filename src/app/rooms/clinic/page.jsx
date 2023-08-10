@@ -139,7 +139,6 @@ export default function Clinic() {
 
           <Box position="absolute" zIndex="1">
             {/* doctor */}
-            {checkVisibility(room.npc.doctor.id) && (
               <ItemImage
                 onClick={async () => {
                   router.push("/transitions");
@@ -147,7 +146,7 @@ export default function Clinic() {
                   await changeState(user);
                 }}
                 item={room.npc.doctor}
-                className={styles.item}
+                className={checkVisibility(room.npc.doctor.id) ? `${styles.item}` : `${styles.hidden}`}
                 width="20rem"
                 left={SizeFormatter(
                   "5rem", //iphone se
@@ -169,7 +168,7 @@ export default function Clinic() {
                   "20rem", //ipad air
                   "20rem" //ipad mini
                 )}
-              />)}
+              />
           </Box>
         </Box>
         <Inventory 

@@ -140,12 +140,12 @@ export default function Hallway() {
           <ItemImage item={room.background} />
           <Box position="absolute" zIndex="1">
             {/* sibling-photo */}
-            {checkVisibility(room.clues.portrait.id) && (
+            
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.portrait.id)}
                   item={room.clues.portrait}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.portrait.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="0.7rem"
                   filter="auto"
                   brightness="60%"
@@ -171,13 +171,13 @@ export default function Hallway() {
                   )}
                 />
               </Hint>
-            )}
+            )
 
             <img
               src="/Rooms/Hallway/princess-white.png"
               alt="submit answers"
               width="43rem"
-              className={styles.item}
+              className={true ? `${styles.item}` : `${styles.hidden}`}
               style={{
                 position: "relative",
                 top: "13rem",

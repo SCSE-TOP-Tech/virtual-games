@@ -164,7 +164,6 @@ export default function PrincessRoom() {
 
           <Box position="absolute" zIndex="1">
             {/* safe */}
-            {checkVisibility(room.clues.safe.id) && (
               <Hint>
                 <ItemImage
                   onClick={async () => {
@@ -173,7 +172,7 @@ export default function PrincessRoom() {
                     await changeState(user);
                   }}
                   item={room.clues.safe}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.safe.id) ? `${styles.item}` : `${styles.hidden}`}
                   width={[
                     "6.1rem",
                     "6.1rem",
@@ -208,15 +207,13 @@ export default function PrincessRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* door */}
-            {checkVisibility(room.dummy_objects.door.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.door.id)}
                   item={room.dummy_objects.door}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.door.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="1.4rem"
                   height="13rem"
                   filter="auto"
@@ -243,9 +240,8 @@ export default function PrincessRoom() {
                   )}
                 />
               </Hint>
-            )}
+
             {/* map */}
-            {checkVisibility(room.clues.map.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => {
@@ -253,7 +249,7 @@ export default function PrincessRoom() {
                     updateCollected(room.clues.map.id);
                   }}
                   item={room.clues.map}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.map.id) ? `${styles.item}` : `${styles.hidden}`}
                   width={[
                     "1.6rem",
                     "1.6rem",
@@ -288,7 +284,7 @@ export default function PrincessRoom() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

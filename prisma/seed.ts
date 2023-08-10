@@ -2,8 +2,28 @@ import { prisma } from "../lib/prisma";
 import { states, rooms, characters } from "../data/data";
 import { Character, Room } from "../data/contracts";
 import { StateItem } from "../data/contracts/interfaces/stateitem";
+import { UserItem } from "../data/contracts/interfaces/useritem";
+import { hash } from "bcryptjs";
 
 async function main() {
+  const password = "";
+  const username = "";
+  const name = "";
+  let passwordHash = "";
+  
+  await hash(password, 10, 
+    async (err, hash) => {
+      console.log("Hash:", hash);
+      passwordHash = hash;
+      await prisma.user.create({
+        data: {
+          name: name,
+          stateID: 1
+      }})
+    }
+  );
+  console.log("Added User");
+
   await prisma.state.createMany({
     data: states,
   });
@@ -68,6 +88,46 @@ async function main() {
     data: stateItems,
   });
   console.log("Added StateItem data");
+  
+  const user: any = await prisma.user.findFirst({
+    where: {
+      name: name
+    },
+    select: {
+      id: true
+    }
+  })
+  console.log("User ID:", user.id);
+
+  let userItems: UserItem[] = [];
+  for(let i = 0; i < stateItems.length; i++){
+    userItems.push({
+      userId: user.id,
+      stateItemID: i,
+      collected: false
+    })
+  }
+  await prisma.userItem.createMany({
+    data: userItems,
+  });
+  console.log("Added UserItem data");
+
+  await prisma.account.create({
+    data: {
+      userId: user.id,
+      username: username,
+      password: passwordHash
+    }
+  })
+  console.log("Added Account data");
+
+  await prisma.guess.create({
+    data: {
+      userId: user.id,
+      completed: false,
+    }
+  })
+  console.log("Added Guess data");
 }
 main()
   .then(async () => {

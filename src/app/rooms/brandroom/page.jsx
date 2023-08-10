@@ -133,14 +133,13 @@ export default function BrandRoom() {
             <Box position="absolute" zIndex="1">
               {/* temp custom image to be used */}
               {/* galaxy phone */}
-              {checkVisibility(room.clues.galaxy_phone.id) && (
                 <Hint>
                   <ItemImage
                     onClick={() => {
                       togglePhone();
                       updateCollected(room.clues.galaxy_phone.id);
                     }}
-                    className={styles.item}
+                    className={checkVisibility(room.clues.galaxy_phone.id) ? `${styles.item}` : `${styles.hidden}`}
                     width={SizeFormatter(
                       "1.3rem", //iphone se
                       "1.3rem", //iphone xr
@@ -175,7 +174,7 @@ export default function BrandRoom() {
                     )}
                   />
                 </Hint>
-              )}
+
             </Box>
           </Box>
           <Inventory 

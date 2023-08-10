@@ -1,5 +1,5 @@
 interface User {
-  id: number;
+  id: string;
   name?: string;
   stateID: number;
   transitionID: number;

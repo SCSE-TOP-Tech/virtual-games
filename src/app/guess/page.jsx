@@ -4,25 +4,37 @@ import {
   Input,
   Button,
   UnorderedList,
-  ListItem,
   Text,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import Correct from "./components/Correct.js";
-import Incorrect from "./components/Incorrect.js";
-import submitGuess from "@/app/api/prisma/guessanswer/guess.js";
-import { redirect } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import Correct from "./components/Correct";
+import Incorrect from "./components/Incorrect";
+import submitGuess from "@/app/api/prisma/guessanswer/guess";
+import checkUser from "@/app/components/CheckUser";
+import Loading from "@/app/transitions/loading";
 
 export default function GuessingPage() {
-  // const { isAuthenticated } = useAuth();
-  // if (!isAuthenticated) redirect("/login");
-  const [guess, setGuess] = useState([]);
-  const [name, setName] = useState("");
-  const [result, showResult] = useState(false);
+  const userRef = useRef("");
 
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(true);
+  const [guess, setGuess] = useState([]);
+  const [result, showResult] = useState(false);
+  const [name, setName] = useState("");
   const [isPartial, setPartial] = useState(false);
   const [isCorrect, setCorrectValue] = useState(false);
-  const [numAttempt, setNumAttempt] = useState(0);
+
+  useEffect(() => {
+    if(!userRef.current)
+      userRef.current = checkUser();
+    if(userRef.current){
+      if(loading)
+        setLoading(false);
+    }
+    else router.push("/login");
+  })
 
   const addInput = () => {
     if (name == "") return;
@@ -40,6 +52,7 @@ export default function GuessingPage() {
     setName(event.target.value);
   };
 
+  if(loading) return <Loading />
   return (
     <Box display="flex" justifyContent="center" w="100%" h={800} bg="gray.800">
       <Box
@@ -124,9 +137,8 @@ export default function GuessingPage() {
             colorScheme="teal"
             onClick={() =>
               submitGuess(
+                userRef.current,
                 guess,
-                numAttempt,
-                setNumAttempt,
                 showResult,
                 setCorrectValue,
                 setPartial

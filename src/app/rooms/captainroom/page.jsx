@@ -126,12 +126,11 @@ export default function CaptainRoom() {
           <ItemImage height="80%" item={room.background} />
           {/* items container */}
           <Box position="absolute" zIndex="1">
-            {checkVisibility(room.clues.music_albums.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.music_albums.id)}
                   item={room.clues.music_albums}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.music_albums.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="4rem"
                   filter="auto"
                   brightness="50%"
@@ -157,15 +156,13 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Lipstick */}
-            {checkVisibility(room.clues.lipstick.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.lipstick.id)}
                   item={room.clues.lipstick}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.lipstick.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="2rem"
                   filter="auto"
                   brightness="70%"
@@ -191,15 +188,13 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Guestbook */}
-            {checkVisibility(room.clues.guestbook.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.guestbook.id)}
                   item={room.clues.guestbook}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.guestbook.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3rem"
                   filter="auto"
                   brightness="80%"
@@ -225,15 +220,13 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Note */}
-            {checkVisibility(room.clues.note.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.note.id)}
                   item={room.clues.note}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.note.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="1.5rem"
                   right={SizeFormatter(
                     "4rem", //iphone se
@@ -257,10 +250,8 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* blood letter */}
-            {checkVisibility(room.clues.blood_letter.id) && (
               <Hint>
                 <ItemImage
                   onClick={async () => {
@@ -269,7 +260,7 @@ export default function CaptainRoom() {
                     await changeState(user);
                   }}
                   item={room.clues.blood_letter}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.blood_letter.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="10rem"
                   right={SizeFormatter(
                     "0rem", //iphone se
@@ -293,15 +284,13 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* broken watch */}
-            {checkVisibility(room.clues.broken_watch.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.broken_watch.id)}
                   item={room.clues.broken_watch}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.broken_watch.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3.5rem"
                   left={SizeFormatter(
                     "6.5rem", //iphone se
@@ -325,7 +314,7 @@ export default function CaptainRoom() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

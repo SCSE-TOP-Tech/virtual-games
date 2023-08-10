@@ -126,13 +126,12 @@ export default function CooperPage() {
           {/* items */}
           <Box position="absolute" zIndex="1">
             {/* luggage  */}
-            {checkVisibility(room.dummy_objects.luggage.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.luggage.id)}
                   item={room.dummy_objects.luggage}
                   //chakra props
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.luggage.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="6.5rem"
                   right={SizeFormatter(
                     "1rem", //iphone se
@@ -156,10 +155,8 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* newspaper  */}
-            {checkVisibility(room.dummy_objects.newspaper.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -167,7 +164,7 @@ export default function CooperPage() {
                   }
                   item={room.dummy_objects.newspaper}
                   //chakra props
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.newspaper.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3.5rem"
                   right={SizeFormatter(
                     "3rem", //iphone se
@@ -191,10 +188,8 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* id  */}
-            {checkVisibility(room.dummy_objects.spaceID_card.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -204,7 +199,7 @@ export default function CooperPage() {
                   //chakra props
                   filter="auto"
                   brightness="75%"
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.spaceID_card.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="5.5rem"
                   right={SizeFormatter(
                     "4rem", //iphone se
@@ -228,10 +223,8 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* coffeemachine  */}
-            {checkVisibility(room.dummy_objects.coffee_machine.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
@@ -239,7 +232,7 @@ export default function CooperPage() {
                   }
                   item={room.dummy_objects.coffee_machine}
                   //chakra props
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.coffee_machine.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3.5rem" //use SizeFormatter if item should be different for different devices
                   left={SizeFormatter(
                     "9.5rem", //iphone se
@@ -263,7 +256,7 @@ export default function CooperPage() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

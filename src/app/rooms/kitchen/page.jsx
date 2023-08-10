@@ -130,12 +130,11 @@ export default function Kitchen() {
           {/* items */}
           <Box position="absolute" zIndex="1">
             {/* blood stained knife (temp viewing) */}
-            {checkVisibility(room.clues.knife.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.knife.id)}
                   item={room.clues.knife}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.knife.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3.5rem"
                   right={SizeFormatter(
                     "1rem", //iphone se
@@ -159,15 +158,13 @@ export default function Kitchen() {
                   )}
                 />
               </Hint>
-            )}
 
-            {checkVisibility(room.clues.meat.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.meat.id)}
                   item={room.clues.meat}
                   width="4rem"
-                  className={styles.item}
+                  className={checkVisibility(room.clues.meat.id) ? `${styles.item}` : `${styles.hidden}`}
                   filter="auto"
                   brightness="70%"
                   left={SizeFormatter(
@@ -192,15 +189,13 @@ export default function Kitchen() {
                   )}
                 />
               </Hint>
-            )}
 
-            {checkVisibility(room.clues.apron.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.apron.id)}
                   item={room.clues.apron}
                   width="8rem"
-                  className={styles.item}
+                  className={checkVisibility(room.clues.apron.id) ? `${styles.item}` : `${styles.hidden}`}
                   left={SizeFormatter(
                     "2rem", //iphone se
                     "2rem", //iphone xr
@@ -223,7 +218,7 @@ export default function Kitchen() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

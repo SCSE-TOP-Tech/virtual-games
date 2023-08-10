@@ -125,14 +125,13 @@ export default function RomilyRoom() {
           {/* items */}
           <Box position="absolute" zIndex="1">
             {/* Basketball */}
-            {checkVisibility(room.dummy_objects.basketball.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.dummy_objects.basketball.id)
                   }
                   item={room.dummy_objects.basketball}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.basketball.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3rem"
                   filter="auto"
                   brightness="60%"
@@ -158,17 +157,15 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Punching Bag */}
-            {checkVisibility(room.dummy_objects.punchingbag.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.dummy_objects.punchingbag.id)
                   }
                   item={room.dummy_objects.punchingbag}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.punchingbag.id) ? `${styles.item}` : `${styles.hidden}`}
                   width={SizeFormatter(
                     "6.5rem", //iphone se
                     "6.5rem", //iphone xr
@@ -203,15 +200,13 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Towel */}
-            {checkVisibility(room.dummy_objects.towel.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.towel.id)}
                   item={room.dummy_objects.towel}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.towel.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="4rem"
                   filter="auto"
                   brightness="80%"
@@ -237,15 +232,13 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Clothes */}
-            {checkVisibility(room.dummy_objects.clothes.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.clothes.id)}
                   item={room.dummy_objects.clothes}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.clothes.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="8rem"
                   filter="auto"
                   brightness="80%"
@@ -271,17 +264,15 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Dumbbell */}
-            {checkVisibility(room.dummy_objects.dumbbell.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.dummy_objects.dumbbell.id)
                   }
                   item={room.dummy_objects.dumbbell}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.dumbbell.id) ? `${styles.item}` : `${styles.hidden}`}
                   filter="auto"
                   brightness="70%"
                   width={SizeFormatter(
@@ -316,15 +307,13 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
-            )}
 
-            {checkVisibility(room.clues.laptop.id) && (
               <Hint>
                 <ItemImage
                   item={room.clues.laptop}
                   filter="auto"
                   brightness="70%"
-                  className={styles.item}
+                  className={checkVisibility(room.clues.laptop.id) ? `${styles.item}` : `${styles.hidden}`}
                   width={SizeFormatter(
                     "5rem", //iphone se
                     "5.8rem", //iphone xr
@@ -357,7 +346,7 @@ export default function RomilyRoom() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

@@ -113,12 +113,11 @@ export default function DoyleRoom() {
           <ItemImage item={room.background} />
           <Box position="absolute" zIndex="1">
             {/* album */}
-            {checkVisibility(room.clues.music_albums.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.music_albums.id)}
                   item={room.clues.music_albums}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.music_albums.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3.5rem"
                   right={SizeFormatter(
                     "4.5rem", //iphone se
@@ -142,15 +141,13 @@ export default function DoyleRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/*luggage */}
-            {checkVisibility(room.dummy_objects.luggage.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.luggage.id)}
                   item={room.dummy_objects.luggage}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.luggage.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="4rem"
                   filter="auto"
                   brightness="70%"
@@ -176,15 +173,13 @@ export default function DoyleRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* id card */}
-            {checkVisibility(room.clues.spaceID_card.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.spaceID_card.id)}
                   item={room.clues.spaceID_card}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.spaceID_card.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="5rem"
                   left={SizeFormatter(
                     "3rem", //iphone se
@@ -208,15 +203,13 @@ export default function DoyleRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* clothes */}
-            {checkVisibility(room.dummy_objects.clothes.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.clothes.id)}
                   item={room.dummy_objects.clothes}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.clothes.id) ? `${styles.item}` : `${styles.hidden}`}
                   width={SizeFormatter(
                     "4rem", //iphone se
                     "4rem", //iphone xr
@@ -251,17 +244,15 @@ export default function DoyleRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* bloodstained small towel  */}
-            {checkVisibility(room.clues.bloodstained_towel.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.clues.bloodstained_towel.id)
                   }
                   item={room.clues.bloodstained_towel}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.bloodstained_towel.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="2rem"
                   filter="auto"
                   brightness="75%"
@@ -287,7 +278,7 @@ export default function DoyleRoom() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

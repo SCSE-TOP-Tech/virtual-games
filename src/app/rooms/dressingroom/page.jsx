@@ -128,12 +128,11 @@ export default function DressingRoom() {
 
           <Box position="absolute" zIndex="1">
             {/* lipstick*/}
-            {checkVisibility(room.clues.lipstick.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.lipstick.id)}
                   item={room.clues.lipstick}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.lipstick.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3rem"
                   filter="auto"
                   brightness="40%"
@@ -159,7 +158,7 @@ export default function DressingRoom() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 
