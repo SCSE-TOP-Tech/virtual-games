@@ -253,7 +253,7 @@ export default function StorageRoom() {
               </Hint>
 
             {/* mop and bucket (temp viewing) */}
-            <Hint>
+              <Hint>
                 <ItemImage
                 onClick={() => updateCollected(room.dummy_objects.mopbucket.id)}
                 item={room.dummy_objects.mopbucket}

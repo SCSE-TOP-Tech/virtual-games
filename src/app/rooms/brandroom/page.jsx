@@ -133,7 +133,6 @@ export default function BrandRoom() {
             <Box position="absolute" zIndex="1">
               {/* temp custom image to be used */}
               {/* galaxy phone */}
-                <Hint>
                   <ItemImage
                     onClick={() => {
                       togglePhone();
@@ -173,7 +172,6 @@ export default function BrandRoom() {
                       "18.2rem" //ipad mini
                     )}
                   />
-                </Hint>
 
             </Box>
           </Box>

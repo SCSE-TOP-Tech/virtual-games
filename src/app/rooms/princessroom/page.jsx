@@ -146,6 +146,7 @@ export default function PrincessRoom() {
                 marginRight="0.5rem"
               />
 
+            <Hint>
               <ItemImage
                 onClick={() => updateCollected(room.clues.map.id)}
                 item={room.clues.map}
@@ -159,6 +160,7 @@ export default function PrincessRoom() {
                 }}
                 className={styles.item}
               />
+            </Hint>
             </Box>
           )}
 

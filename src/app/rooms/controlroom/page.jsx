@@ -130,6 +130,7 @@ export default function ControlRoom() {
           {/* items */}
           <Box position="absolute" zIndex="1">
             {/* security computer (temp viewing) */}
+            <Hint>
               <ItemImage
                 onClick={async () => {
                   router.push("/transitions");
@@ -171,7 +172,7 @@ export default function ControlRoom() {
                   "15.1rem"
                 )}
               />
-
+            </Hint>
           </Box>
         </Box>
         <Inventory 

@@ -8,6 +8,7 @@ import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
+import Hint from "../../components/Hint";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
@@ -139,6 +140,7 @@ export default function Clinic() {
 
           <Box position="absolute" zIndex="1">
             {/* doctor */}
+            <Hint>
               <ItemImage
                 onClick={async () => {
                   router.push("/transitions");
@@ -169,6 +171,7 @@ export default function Clinic() {
                   "20rem" //ipad mini
                 )}
               />
+            </Hint>
           </Box>
         </Box>
         <Inventory 
