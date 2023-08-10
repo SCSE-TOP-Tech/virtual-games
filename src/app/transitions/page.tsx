@@ -165,7 +165,7 @@ export default function Transitions() {
               justifyContent="center"
               m="auto"
               py={1}
-              w="45vw"
+              w="20rem"
               fontWeight={900}
               rounded={100}
             >
@@ -176,7 +176,7 @@ export default function Transitions() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            width="50%"
+            width="8rem"
             mt={10}
             mx="auto"
             onClick={updateTransitionStage}
