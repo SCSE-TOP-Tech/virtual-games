@@ -3,9 +3,12 @@
  * @returns User ID
  */
 const checkUser = () => {
-  console.log("User ID: ", localStorage.getItem("userId"));
+  const userId = localStorage.getItem("userId")
+  console.log("User ID: ", userId);
 
-  return localStorage.getItem("userId");
+  if(userId)
+    return userId;
+  return ""
 };
 
 export default checkUser;
