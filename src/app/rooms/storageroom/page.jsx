@@ -19,6 +19,7 @@ import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems"
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Phone from "./components/Phone";
 import Inventory from "@/app/components/Inventory";
+import InventoryWithPhone from "@/app/components/InventoryWithPhone";
 
 export default function StorageRoom() {
   const router = useRouter();
@@ -108,6 +109,11 @@ export default function StorageRoom() {
     setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
+  const updateCollectedPhone = async (name) => {
+    const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
+    console.log(updatedItem);
+  };
+
   if (
     loading ||
     !userRef.current ||
@@ -131,8 +137,6 @@ export default function StorageRoom() {
   const closePhone = async () => {
     togglePhone();
     router.push("/transitions");
-    await updateCollected(room.clues.doctorphone.id);
-    await changeState(user);
   };
 
   return (
@@ -257,7 +261,7 @@ export default function StorageRoom() {
                 <ItemImage
                 onClick={() => updateCollected(room.dummy_objects.mopbucket.id)}
                 item={room.dummy_objects.mopbucket}
-                className={checkVisibility(room.dummy_objects_mopbucket.id) ? `${styles.item}` : `${styles.hidden}`}
+                className={checkVisibility(room.dummy_objects.mopbucket.id) ? `${styles.item}` : `${styles.hidden}`}
                 filter="auto"
                 brightness="55%"
                 width={SizeFormatter(
@@ -327,7 +331,12 @@ export default function StorageRoom() {
 
             {/* doctor's galaxy phone (temp viewing) */}
               <ItemImage
-                onClick={togglePhone}
+                onClick={async () => {
+                  togglePhone();
+                  updateCollectedPhone(room.clues.doctorphone.id);
+                  await changeState(user);
+                }
+                }
                 item={room.clues.doctorphone}
                 className={checkVisibility(room.clues.doctorphone.id) ? `${styles.item}` : `${styles.hidden}`}
                 filter="auto"
@@ -393,11 +402,18 @@ export default function StorageRoom() {
             </Box>
           </Box>
         </Box>
+        {collectedItems.filter((i) => i.itemName === "doctorphone") ? 
+          <InventoryWithPhone
+          items={
+            collectedItems.filter((i) => i.collected === true)
+          } 
+          room={room} styles={styles.item} togglePhone={togglePhone}/>
+          :
         <Inventory 
         items={
           collectedItems.filter((i) => i.collected === true)
         } 
-        room={room} styles={styles.item} />
+        room={room} styles={styles.item} />}
       </Box>
     </RoomLayout>
   );

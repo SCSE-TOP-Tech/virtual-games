@@ -8,7 +8,6 @@ import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
-import Hint from "../../components/Hint";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
@@ -19,6 +18,7 @@ import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import Phone from "./components/Phone";
 import Inventory from "@/app/components/Inventory";
+import InventoryWithPhone from "@/app/components/InventoryWithPhone";
 
 export default function BrandRoom() {
   const router = useRouter();
@@ -104,7 +104,7 @@ export default function BrandRoom() {
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
     console.log(updatedItem);
-    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
+    // setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
@@ -138,6 +138,7 @@ export default function BrandRoom() {
                       togglePhone();
                       updateCollected(room.clues.galaxy_phone.id);
                     }}
+                    item={room.clues.galaxy_phone}
                     className={checkVisibility(room.clues.galaxy_phone.id) ? `${styles.item}` : `${styles.hidden}`}
                     width={SizeFormatter(
                       "1.3rem", //iphone se
@@ -175,11 +176,18 @@ export default function BrandRoom() {
 
             </Box>
           </Box>
+          {collectedItems.filter((i) => i.itemName === "galaxy_phone") ? 
+          <InventoryWithPhone
+          items={
+            collectedItems.filter((i) => i.collected === true)
+          } 
+          room={room} styles={styles.item} togglePhone={togglePhone}/>
+          :
           <Inventory 
           items={
             collectedItems.filter((i) => i.collected === true)
           } 
-          room={room} styles={styles.item} />
+          room={room} styles={styles.item} />}
         </Box>
       </Box>
     </RoomLayout>
