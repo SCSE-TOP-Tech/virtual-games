@@ -35,6 +35,7 @@ export default function Transitions() {
         const currentUser = await fetchUserInfo(userRef.current);
 
         setUser(currentUser);
+        /*
         switch (currentUser.transitionID) {
           case 5:
           case 8:
@@ -46,6 +47,7 @@ export default function Transitions() {
             router.push("/rooms/hallway");
             break;
         }
+        */
 
         const trans = await fetchTransition(currentUser.transitionID);
         if (trans) {

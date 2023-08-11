@@ -197,7 +197,7 @@ export default function CarmenRoom() {
                     updateCollected(room.dummy_objects.clothespin.id)
                   }
                   item={room.dummy_objects.clothespin}
-                  className={checkVisibility(room.dummy_objects_clothespin.id) ? `${styles.item}` : `${styles.hidden}`}
+                  className={checkVisibility(room.dummy_objects.clothespin.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="1.5rem"
                   filter="auto"
                   brightness="20%"
