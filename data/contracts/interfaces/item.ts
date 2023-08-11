@@ -4,4 +4,4 @@ interface Item {
   category: string;
 }
 
-export { Item };
+export type { Item };
