@@ -7,7 +7,6 @@ import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import { ItemImage, SizeFormatter } from "../../components/ImageComp";
 import styles from "./components/styles.module.css";
-import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import Hint from "../../components/Hint";
 import Navbar from "../../components/Navbar";
 import Loading from "@/app/rooms/loading";

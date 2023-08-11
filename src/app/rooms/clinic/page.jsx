@@ -17,8 +17,6 @@ import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
 import getCollectedItems from "@/resources/prisma/items/getCollectedItems";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import endTimer from "@/resources/prisma/timer/endTimer";
-import updateState from "@/resources/prisma/state/updateState";
-import startTimer from "@/resources/prisma/timer/startTimer";
 import Inventory from "@/app/components/Inventory";
 
 export default function Clinic() {
