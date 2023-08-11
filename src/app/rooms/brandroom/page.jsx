@@ -100,11 +100,10 @@ export default function BrandRoom() {
       console.log("Failed to Start Timer");
     }
   };
-  
-  const updateCollected = async (name) => {
+
+  const updateCollectedPhone = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
-    // setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
+    // console.log(updatedItem);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
@@ -136,7 +135,7 @@ export default function BrandRoom() {
                   <ItemImage
                     onClick={() => {
                       togglePhone();
-                      updateCollected(room.clues.galaxy_phone.id);
+                      updateCollectedPhone(room.clues.galaxy_phone.id);
                     }}
                     item={room.clues.galaxy_phone}
                     className={checkVisibility(room.clues.galaxy_phone.id) ? `${styles.item}` : `${styles.hidden}`}

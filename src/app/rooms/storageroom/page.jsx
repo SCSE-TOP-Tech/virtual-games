@@ -111,7 +111,7 @@ export default function StorageRoom() {
 
   const updateCollectedPhone = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
+    // console.log(updatedItem);
   };
 
   if (
@@ -140,7 +140,6 @@ export default function StorageRoom() {
   };
 
   return (
-    // To add loading page
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
         <Navbar Phone={true}/>
