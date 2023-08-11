@@ -8,7 +8,6 @@ import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
-import Hint from "../../components/Hint";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";
@@ -19,6 +18,7 @@ import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
 import Phone from "./components/Phone";
 import Inventory from "@/app/components/Inventory";
+import InventoryWithPhone from "@/app/components/InventoryWithPhone";
 
 export default function BrandRoom() {
   const router = useRouter();
@@ -100,11 +100,10 @@ export default function BrandRoom() {
       console.log("Failed to Start Timer");
     }
   };
-  
-  const updateCollected = async (name) => {
+
+  const updateCollectedPhone = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
-    setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
+    // console.log(updatedItem);
   };
   
   if (loading || !userRef.current || !room || !availableItems || !collectedItems) {
@@ -120,7 +119,7 @@ export default function BrandRoom() {
     <RoomLayout>
       <Box>
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <Navbar Phone={true}/>
+          <Navbar/>
           <Box
             display="flex"
             justifyContent="center"
@@ -133,14 +132,13 @@ export default function BrandRoom() {
             <Box position="absolute" zIndex="1">
               {/* temp custom image to be used */}
               {/* galaxy phone */}
-              {checkVisibility(room.clues.galaxy_phone.id) && (
-                <Hint>
                   <ItemImage
                     onClick={() => {
                       togglePhone();
-                      updateCollected(room.clues.galaxy_phone.id);
+                      updateCollectedPhone(room.clues.galaxy_phone.id);
                     }}
-                    className={styles.item}
+                    item={room.clues.galaxy_phone}
+                    className={checkVisibility(room.clues.galaxy_phone.id) ? `${styles.item}` : `${styles.hidden}`}
                     width={SizeFormatter(
                       "1.3rem", //iphone se
                       "1.3rem", //iphone xr
@@ -174,15 +172,21 @@ export default function BrandRoom() {
                       "18.2rem" //ipad mini
                     )}
                   />
-                </Hint>
-              )}
+
             </Box>
           </Box>
+          {collectedItems.filter((i) => i.itemName === "galaxy_phone") ? 
+          <InventoryWithPhone
+          items={
+            collectedItems.filter((i) => i.collected === true)
+          } 
+          room={room} styles={styles.item} togglePhone={togglePhone}/>
+          :
           <Inventory 
           items={
             collectedItems.filter((i) => i.collected === true)
           } 
-          room={room} styles={styles.item} />
+          room={room} styles={styles.item} />}
         </Box>
       </Box>
     </RoomLayout>

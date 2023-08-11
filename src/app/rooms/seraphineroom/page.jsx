@@ -101,7 +101,7 @@ export default function SeraphineRoom() {
 
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
+    //console.log(updatedItem);
     setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
   
@@ -112,7 +112,7 @@ export default function SeraphineRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar Phone={false}/>
+        <Navbar />
         <Box
           display="flex"
           justifyContent="center"
@@ -124,14 +124,12 @@ export default function SeraphineRoom() {
           {/* items container */}
           <Box position="absolute" zIndex="1">
             {/* teddybear */}
-            {checkVisibility(room.dummy_objects.teddybear.id) && (
               <Hint>
                 <ItemImage
-                  onClick={() =>
-                    updateCollected(room.dummy_objects.teddybear.id)
+                  onClick={() => updateCollected(room.dummy_objects.teddybear.id)
                   }
                   item={room.dummy_objects.teddybear}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.teddybear.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3rem"
                   filter="auto"
                   brightness="75%"
@@ -157,17 +155,15 @@ export default function SeraphineRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Jewelry box */}
-            {checkVisibility(room.dummy_objects.jewelrybox.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.dummy_objects.jewelrybox.id)
                   }
                   item={room.dummy_objects.jewelrybox}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.jewelrybox.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="4rem"
                   filter="auto"
                   brightness="75%"
@@ -193,15 +189,13 @@ export default function SeraphineRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* Lipstick */}
-            {checkVisibility(room.clues.lipstick.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.lipstick.id)}
                   item={room.clues.lipstick}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.lipstick.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="1.3rem"
                   filter="auto"
                   brightness="30%"
@@ -227,15 +221,13 @@ export default function SeraphineRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* camera */}
-            {checkVisibility(room.dummy_objects.camera.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.dummy_objects.camera.id)}
                   item={room.dummy_objects.camera}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.camera.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="2rem"
                   filter="auto"
                   brightness="60%"
@@ -261,7 +253,6 @@ export default function SeraphineRoom() {
                   )}
                 />
               </Hint>
-            )}
           </Box>
         </Box>
         <Inventory 

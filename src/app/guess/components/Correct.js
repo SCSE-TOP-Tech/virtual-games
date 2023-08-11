@@ -1,10 +1,14 @@
-import { Box, Text, Flex, Button } from "@chakra-ui/react";
+import { Text, Flex, Button } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 export default function Correct() {
+    const router = useRouter();
 
     const finishGame = () => {
         //finish the game
-        console.log('final state completed');
+        console.log('Game completed');
+        localStorage.clear();
+        router.push("/");
     }
 
     return (<Flex flexDirection='column' alignItems='center' mt='2rem'>

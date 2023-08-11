@@ -19,6 +19,7 @@ import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems"
 import endTimer from "@/resources/prisma/timer/endTimer";
 import Phone from "./components/Phone";
 import Inventory from "@/app/components/Inventory";
+import InventoryWithPhone from "@/app/components/InventoryWithPhone";
 
 export default function StorageRoom() {
   const router = useRouter();
@@ -104,8 +105,13 @@ export default function StorageRoom() {
 
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
+    //console.log(updatedItem);
     setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
+  };
+
+  const updateCollectedPhone = async (name) => {
+    const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
+    // console.log(updatedItem);
   };
 
   if (
@@ -131,15 +137,12 @@ export default function StorageRoom() {
   const closePhone = async () => {
     togglePhone();
     router.push("/transitions");
-    await updateCollected(room.clues.doctorphone.id);
-    await changeState(user);
   };
 
   return (
-    // To add loading page
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar Phone={true}/>
+        <Navbar />
         {/* background image */}
         <Box
           display="flex"
@@ -153,7 +156,6 @@ export default function StorageRoom() {
           <ItemImage item={room.background} />
           <Box position="absolute" zIndex="1">
             {/* dead doctor (temp viewing) */}
-            {checkVisibility(room.clues.tesseract.id) && 
             <Hint>
               <ItemImage
                 onClick={async () => {
@@ -162,7 +164,7 @@ export default function StorageRoom() {
                   await changeState(user);
                 }}
                 item={room.npc.dead_doctor}
-                className={styles.item}
+                className={checkVisibility(room.npc.dead_doctor.id) ? `${styles.item}` : `${styles.hidden}`}
                 filter="auto"
                 brightness="75%"
                 width="3.7rem"
@@ -188,14 +190,13 @@ export default function StorageRoom() {
                 )}
               />
             </Hint> 
-            }
+  
             {/* tesseract (temp viewing) */}
-            {checkVisibility(room.clues.tesseract.id) && (
               <Hint>
                 <ItemImage
                 onClick={() => updateCollected(room.clues.tesseract.id)}
                 item={room.clues.tesseract}
-                className={styles.item}
+                className={checkVisibility(room.clues.tesseract.id) ? `${styles.item}` : `${styles.hidden}`}
                 width="2.2rem"
                 left={SizeFormatter(
                   "10rem", //iphone se
@@ -219,18 +220,15 @@ export default function StorageRoom() {
                 )}
               />
               </Hint>
-              
-            )}
 
             {/* screwdriver (temp viewing) */}
-            {checkVisibility(room.dummy_objects.screwdriver.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.dummy_objects.screwdriver.id)
                   }
                   item={room.dummy_objects.screwdriver}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.screwdriver.id) ? `${styles.item}` : `${styles.hidden}`}
                   filter="auto"
                   brightness="55%"
                   width="1rem"
@@ -256,15 +254,13 @@ export default function StorageRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* mop and bucket (temp viewing) */}
-            {checkVisibility(room.dummy_objects.mopbucket.id) && 
-            <Hint>
+              <Hint>
                 <ItemImage
                 onClick={() => updateCollected(room.dummy_objects.mopbucket.id)}
                 item={room.dummy_objects.mopbucket}
-                className={styles.item}
+                className={checkVisibility(room.dummy_objects.mopbucket.id) ? `${styles.item}` : `${styles.hidden}`}
                 filter="auto"
                 brightness="55%"
                 width={SizeFormatter(
@@ -299,14 +295,13 @@ export default function StorageRoom() {
                 )}
               />
             </Hint>
-            }
+
             {/* blood stained clothspin (temp viewing) */}
-            {checkVisibility(room.clues.blood_clothpin.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.blood_clothpin.id)}
                   item={room.clues.blood_clothpin}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.blood_clothpin.id) ? `${styles.item}` : `${styles.hidden}`}
                   filter="auto"
                   brightness="45%"
                   width="1rem"
@@ -332,15 +327,17 @@ export default function StorageRoom() {
                   )}
                 />
               </Hint>
-            )}
 
             {/* doctor's galaxy phone (temp viewing) */}
-            {/* checkVisibility(room.clues.doctorphone.id) */}
-            {true && (
               <ItemImage
-                onClick={togglePhone}
+                onClick={async () => {
+                  togglePhone();
+                  updateCollectedPhone(room.clues.doctorphone.id);
+                  await changeState(user);
+                }
+                }
                 item={room.clues.doctorphone}
-                className={styles.item}
+                className={checkVisibility(room.clues.doctorphone.id) ? `${styles.item}` : `${styles.hidden}`}
                 filter="auto"
                 brightness="75%"
                 width="1.7rem"
@@ -365,18 +362,17 @@ export default function StorageRoom() {
                   "13.2rem" //ipad mini
                 )}
               />
-            )}
 
             {/* cloth (temp viewing) */}
             <Box>
-              {!isClicked && checkVisibility(room.clues.cloth.id) && (
+              {!isClicked &&
                 <ItemImage
                   onClick={() => {
                     handleToggle();
                     updateCollected(room.clues.cloth.id);
                   }}
                   item={room.clues.cloth}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.cloth.id) ? `${styles.item}` : `${styles.hidden}`}
                   filter="auto"
                   brightness="75%"
                   width="3.2rem"
@@ -401,15 +397,22 @@ export default function StorageRoom() {
                     "6.5rem" //ipad mini
                   )}
                 />
-              )}
+              }
             </Box>
           </Box>
         </Box>
+        {collectedItems.filter((i) => i.itemName === "doctorphone") ? 
+          <InventoryWithPhone
+          items={
+            collectedItems.filter((i) => i.collected === true)
+          } 
+          room={room} styles={styles.item} togglePhone={togglePhone}/>
+          :
         <Inventory 
         items={
           collectedItems.filter((i) => i.collected === true)
         } 
-        room={room} styles={styles.item} />
+        room={room} styles={styles.item} />}
       </Box>
     </RoomLayout>
   );

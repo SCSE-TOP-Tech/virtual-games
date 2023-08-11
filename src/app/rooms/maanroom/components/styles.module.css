@@ -4,3 +4,7 @@
   transition-timing-function: ease-in-out;
   filter: brightness(1.5);
 }
+
+.hidden{
+  visibility: hidden;
+}

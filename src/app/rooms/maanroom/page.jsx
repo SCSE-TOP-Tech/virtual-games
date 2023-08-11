@@ -101,7 +101,7 @@ export default function MaanRoom() {
 
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
+    //console.log(updatedItem);
     setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
@@ -112,7 +112,7 @@ export default function MaanRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar Phone={false}/>
+        <Navbar />
         <Box
           display="flex"
           justifyContent="center"
@@ -122,14 +122,13 @@ export default function MaanRoom() {
           <ItemImage item={room.background} />
           <Box position="absolute" zIndex="1">
             {/* spacesword  */}
-            {checkVisibility(room.dummy_objects.spacesword.id) && (
               <Hint>
                 <ItemImage
                   onClick={() =>
                     updateCollected(room.dummy_objects.spacesword.id)
                   }
                   item={room.dummy_objects.spacesword}
-                  className={styles.item}
+                  className={checkVisibility(room.dummy_objects.spacesword.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="2.7rem"
                   filter="auto"
                   brightness="75%"
@@ -155,7 +154,7 @@ export default function MaanRoom() {
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

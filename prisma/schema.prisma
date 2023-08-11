@@ -44,10 +44,12 @@ model Timer {
 }
 
 model Guess {
-  guessID Int    @id @default(autoincrement())
-  user    User   @relation(fields: [userId], references: [id])
-  userId  String @unique
-  score   Float
+  guessID      Int     @id @default(autoincrement())
+  user         User    @relation(fields: [userId], references: [id])
+  userId       String  @unique
+  numAttempts  Int?    @default(0)
+  score        Float?  @default(0)
+  completed    Boolean
 }
 
 model UserItem {

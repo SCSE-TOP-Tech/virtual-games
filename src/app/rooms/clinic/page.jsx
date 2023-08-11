@@ -8,6 +8,7 @@ import checkUser from "@/app/components/CheckUser";
 import fetchRoom from "@/resources/cloudinary/fetchRoom";
 import fetchUserInfo from "@/resources/prisma/fetchUserInfo";
 import Navbar from "../../components/Navbar";
+import Hint from "../../components/Hint";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
 import Loading from "@/app/rooms/loading";
@@ -102,7 +103,7 @@ export default function Clinic() {
 
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
+    //console.log(updatedItem);
     setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
@@ -120,7 +121,7 @@ export default function Clinic() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%">
-        <Navbar Phone={false}/>
+        <Navbar />
         <Box
           display="flex"
           justifyContent="center"
@@ -130,46 +131,42 @@ export default function Clinic() {
 
           {/* to export background to cloud
           background image */}
-          <ItemImage item={{
-            name: "Clinic Background",
-            height: 1024,
-            width: 1024,
-            src: "/Rooms/Clinic/clinic.png",
-          }} />
+          <ItemImage item={room.background} />
 
           <Box position="absolute" zIndex="1">
             {/* doctor */}
-            {checkVisibility(room.npc.doctor.id) && (
+            <Hint>
               <ItemImage
                 onClick={async () => {
                   router.push("/transitions");
                   await updateCollected(room.npc.doctor.id);
-                  await changeState(user);
+                  await changeState(user); 
                 }}
                 item={room.npc.doctor}
-                className={styles.item}
-                width="20rem"
+                className={checkVisibility(room.npc.doctor.id) ? `${styles.item}` : `${styles.hidden}`}
+                width="8rem"
                 left={SizeFormatter(
-                  "5rem", //iphone se
-                  "5rem", //iphone xr
-                  "5rem", //iphone 12pro
-                  "5rem", //pixel 5
-                  "5rem", //samsung galaxy s8+
-                  "5rem", //samsung galaxy s20 ultra
-                  "5rem", //ipad air
-                  "5rem" //ipad mini
+                  "3rem", //iphone se
+                  "3rem", //iphone xr
+                  "3rem", //iphone 12pro
+                  "3rem", //pixel 5
+                  "3rem", //samsung galaxy s8+
+                  "3rem", //samsung galaxy s20 ultra
+                  "3rem", //ipad air
+                  "3rem" //ipad mini
                 )}
                 top={SizeFormatter(
-                  "20rem", //iphone se
-                  "20rem", //iphone xr
-                  "20rem", //iphone 12pro
-                  "20rem", //pixel 5
-                  "20rem", //samsung galaxy s8+
-                  "20rem", //samsung galaxy s20 ultra
-                  "20rem", //ipad air
-                  "20rem" //ipad mini
+                  "13rem", //iphone se
+                  "13rem", //iphone xr
+                  "13rem", //iphone 12pro
+                  "13rem", //pixel 5
+                  "13rem", //samsung galaxy s8+
+                  "13rem", //samsung galaxy s20 ultra
+                  "13rem", //ipad air
+                  "13rem" //ipad mini
                 )}
-              />)}
+              />
+            </Hint>
           </Box>
         </Box>
         <Inventory 

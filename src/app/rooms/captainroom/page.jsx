@@ -68,6 +68,7 @@ export default function CaptainRoom() {
   }, []);
 
   const checkVisibility = (itemName) => {
+    return true
     try{
       if (availableItems && collectedItems) {
         const availState = availableItems.find(
@@ -103,7 +104,7 @@ export default function CaptainRoom() {
   
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
+    //console.log(updatedItem);
     setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
@@ -114,7 +115,7 @@ export default function CaptainRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" position="relative">
-        <Navbar Phone={false}/>
+        <Navbar />
         {/* container for background image and items*/}
         <Box
           display="flex"
@@ -126,12 +127,11 @@ export default function CaptainRoom() {
           <ItemImage height="80%" item={room.background} />
           {/* items container */}
           <Box position="absolute" zIndex="1">
-            {checkVisibility(room.clues.music_albums.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.music_albums.id)}
                   item={room.clues.music_albums}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.music_albums.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="4rem"
                   filter="auto"
                   brightness="50%"
@@ -146,26 +146,24 @@ export default function CaptainRoom() {
                     "7rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "18rem", //iphone se
-                    "18rem", //iphone xr
-                    "18rem", //iphone 12pro
-                    "18rem", //pixel 5
-                    "18rem", //samsung galaxy s8+
-                    "18rem", //samsung galaxy s20 ultra
-                    "18rem", //ipad air
-                    "18rem" //ipad mini
+                    "15rem", //iphone se
+                    "15rem", //iphone xr
+                    "15rem", //iphone 12pro
+                    "15rem", //pixel 5
+                    "15rem", //samsung galaxy s8+
+                    "15rem", //samsung galaxy s20 ultra
+                    "15rem", //ipad air
+                    "15rem" //ipad mini
                   )}
                 />
               </Hint>
-            )}
 
             {/* Lipstick */}
-            {checkVisibility(room.clues.lipstick.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.lipstick.id)}
                   item={room.clues.lipstick}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.lipstick.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="2rem"
                   filter="auto"
                   brightness="70%"
@@ -180,26 +178,24 @@ export default function CaptainRoom() {
                     "1rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "30rem", //iphone se
-                    "30rem", //iphone xr
-                    "30rem", //iphone 12pro
-                    "30rem", //pixel 5
-                    "30rem", //samsung galaxy s8+
-                    "30rem", //samsung galaxy s20 ultra
-                    "30rem", //ipad air
-                    "30rem" //ipad mini
+                    "18.5rem", //iphone se
+                    "18.5rem", //iphone xr
+                    "18.5rem", //iphone 12pro
+                    "18.5rem", //pixel 5
+                    "18.5rem", //samsung galaxy s8+
+                    "18.5rem", //samsung galaxy s20 ultra
+                    "18.5rem", //ipad air
+                    "18.5rem" //ipad mini
                   )}
                 />
               </Hint>
-            )}
 
             {/* Guestbook */}
-            {checkVisibility(room.clues.guestbook.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.guestbook.id)}
                   item={room.clues.guestbook}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.guestbook.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3rem"
                   filter="auto"
                   brightness="80%"
@@ -214,26 +210,24 @@ export default function CaptainRoom() {
                     "13rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "19rem", //iphone se
-                    "19rem", //iphone xr
-                    "19rem", //iphone 12pro
-                    "19rem", //pixel 5
-                    "19rem", //samsung galaxy s8+
-                    "19rem", //samsung galaxy s20 ultra
-                    "19rem", //ipad air
-                    "19rem" //ipad mini
+                    "11rem", //iphone se
+                    "11rem", //iphone xr
+                    "11rem", //iphone 12pro
+                    "11rem", //pixel 5
+                    "11rem", //samsung galaxy s8+
+                    "11rem", //samsung galaxy s20 ultra
+                    "11rem", //ipad air
+                    "11rem" //ipad mini
                   )}
                 />
               </Hint>
-            )}
 
             {/* Note */}
-            {checkVisibility(room.clues.note.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.note.id)}
                   item={room.clues.note}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.note.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="1.5rem"
                   right={SizeFormatter(
                     "4rem", //iphone se
@@ -246,21 +240,19 @@ export default function CaptainRoom() {
                     "6rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "16rem", //iphone se
-                    "16rem", //iphone xr
-                    "16rem", //iphone 12pro
-                    "16rem", //pixel 5
-                    "16rem", //samsung galaxy s8+
-                    "16rem", //samsung galaxy s20 ultra
-                    "16rem", //ipad air
-                    "16rem" //ipad mini
+                    "13rem", //iphone se
+                    "13rem", //iphone xr
+                    "13rem", //iphone 12pro
+                    "13rem", //pixel 5
+                    "13rem", //samsung galaxy s8+
+                    "13rem", //samsung galaxy s20 ultra
+                    "13rem", //ipad air
+                    "13rem" //ipad mini
                   )}
                 />
               </Hint>
-            )}
 
             {/* blood letter */}
-            {checkVisibility(room.clues.blood_letter.id) && (
               <Hint>
                 <ItemImage
                   onClick={async () => {
@@ -269,7 +261,7 @@ export default function CaptainRoom() {
                     await changeState(user);
                   }}
                   item={room.clues.blood_letter}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.blood_letter.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="10rem"
                   right={SizeFormatter(
                     "0rem", //iphone se
@@ -282,26 +274,24 @@ export default function CaptainRoom() {
                     "0rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "4rem", //iphone se
-                    "4rem", //iphone xr
-                    "4rem", //iphone 12pro
-                    "4rem", //pixel 5
-                    "4rem", //samsung galaxy s8+
-                    "4rem", //samsung galaxy s20 ultra
-                    "4rem", //ipad air
-                    "4rem" //ipad mini
+                    "1.1rem", //iphone se
+                    "1.1rem", //iphone xr
+                    "1.1rem", //iphone 12pro
+                    "1.1rem", //pixel 5
+                    "1.1rem", //samsung galaxy s8+
+                    "1.1rem", //samsung galaxy s20 ultra
+                    "1.1rem", //ipad air
+                    "1.1rem" //ipad mini
                   )}
                 />
               </Hint>
-            )}
 
             {/* broken watch */}
-            {checkVisibility(room.clues.broken_watch.id) && (
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.broken_watch.id)}
                   item={room.clues.broken_watch}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.broken_watch.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="3.5rem"
                   left={SizeFormatter(
                     "6.5rem", //iphone se
@@ -314,18 +304,18 @@ export default function CaptainRoom() {
                     "7rem" //ipad mini
                   )}
                   top={SizeFormatter(
-                    "13.5rem", //iphone se
-                    "13.5rem", //iphone xr
-                    "13.5rem", //iphone 12pro
-                    "13.5rem", //pixel 5
-                    "13.5rem", //samsung galaxy s8+
-                    "13.5rem", //samsung galaxy s20 ultra
-                    "13.5rem", //ipad air
-                    "13.5rem" //ipad mini
+                    "7rem", //iphone se
+                    "7rem", //iphone xr
+                    "7rem", //iphone 12pro
+                    "7rem", //pixel 5
+                    "7rem", //samsung galaxy s8+
+                    "7rem", //samsung galaxy s20 ultra
+                    "7rem", //ipad air
+                    "7rem" //ipad mini
                   )}
                 />
               </Hint>
-            )}
+
           </Box>
         </Box>
         <Inventory 

@@ -1,5 +1,5 @@
 interface Account {
-  email: string;
+  userId: string;
   username: string;
   password: string;
 }

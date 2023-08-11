@@ -101,7 +101,7 @@ export default function Hallway() {
 
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
+    //console.log(updatedItem);
     setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
@@ -124,7 +124,7 @@ export default function Hallway() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar Phone={false}/>
+        <Navbar />
         <Box
           display="flex"
           justifyContent="center"
@@ -140,12 +140,12 @@ export default function Hallway() {
           <ItemImage item={room.background} />
           <Box position="absolute" zIndex="1">
             {/* sibling-photo */}
-            {checkVisibility(room.clues.portrait.id) && (
+            
               <Hint>
                 <ItemImage
                   onClick={() => updateCollected(room.clues.portrait.id)}
                   item={room.clues.portrait}
-                  className={styles.item}
+                  className={checkVisibility(room.clues.portrait.id) ? `${styles.item}` : `${styles.hidden}`}
                   width="0.7rem"
                   filter="auto"
                   brightness="60%"
@@ -171,19 +171,20 @@ export default function Hallway() {
                   )}
                 />
               </Hint>
-            )}
 
+            {user.stateID === 7 &&
             <img
               src="/Rooms/Hallway/princess-white.png"
               alt="submit answers"
               width="43rem"
-              className={styles.item}
+              className={true ? `${styles.item}` : `${styles.hidden}`}
               style={{
                 position: "relative",
                 top: "13rem",
               }}
               onClick={toggleSubmission}
             />
+            }
           </Box>
         </Box>
         <Inventory 

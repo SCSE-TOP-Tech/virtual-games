@@ -100,7 +100,7 @@ export default function ControlRoom() {
 
   const updateCollected = async (name) => {
     const updatedItem = await updateCollectedItems(userRef.current, name, room.room_id);
-    console.log(updatedItem);
+    //console.log(updatedItem);
     setCollectedItems((prev) => [...prev, {'itemName':name, 'collected':true}]);
   };
 
@@ -117,7 +117,7 @@ export default function ControlRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" position="relative">
-        <Navbar Phone={false}/>
+        <Navbar />
         <Box
           display="flex"
           justifyContent="center"
@@ -130,7 +130,7 @@ export default function ControlRoom() {
           {/* items */}
           <Box position="absolute" zIndex="1">
             {/* security computer (temp viewing) */}
-            {checkVisibility(room.dummy_objects.computer.id) && (
+            <Hint>
               <ItemImage
                 onClick={async () => {
                   router.push("/transitions");
@@ -138,7 +138,7 @@ export default function ControlRoom() {
                   await changeState(user);
                 }}
                 item={room.dummy_objects.computer}
-                className={styles.item}
+                className={checkVisibility(room.dummy_objects.computer.id) ? `${styles.item}` : `${styles.hidden}`}
                 width={SizeFormatter(
                   "3rem", //iphone se
                   "3rem", //iphone xr
@@ -172,7 +172,7 @@ export default function ControlRoom() {
                   "15.1rem"
                 )}
               />
-            )}
+            </Hint>
           </Box>
         </Box>
         <Inventory 

@@ -302,7 +302,7 @@ export const characters: Character[] = [
           width: 499,
           height: 499,
           src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1690733527/virtual_games/rooms/romily/romily-laptop_xpqlk2.png",
-          state: 1,
+          state: 3,
         },
       },
       dummy_objects: {
@@ -535,7 +535,7 @@ export const rooms: Room[] = [
       },
     },
     dummy_objects: {},
-    npc: {},
+    npc: {}
   },
 
   // Captain Character (Updated V1)
@@ -625,7 +625,7 @@ export const rooms: Room[] = [
       name: "Clinic Background",
       height: 1024,
       width: 1024,
-      src: "",
+      src: "/Rooms/Clinic/clinic.png",
     },
     dummy_objects: {},
     clues: {},
@@ -634,8 +634,8 @@ export const rooms: Room[] = [
         id: "doctor",
         name: "Doctor",
         desc: "The doctor of the ship",
-        width: 493,
-        height: 506,
+        width: 200,
+        height: 350,
         src: "https://res.cloudinary.com/dbkuv7xiw/image/upload/v1684159430/virtual_games/rooms/clinic/doctor_gtqzu6.png",
         state: 2,
       },
