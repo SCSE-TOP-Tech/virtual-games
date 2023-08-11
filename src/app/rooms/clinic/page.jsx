@@ -121,7 +121,7 @@ export default function Clinic() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%">
-        <Navbar Phone={false}/>
+        <Navbar />
         <Box
           display="flex"
           justifyContent="center"

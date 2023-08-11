@@ -142,7 +142,7 @@ export default function StorageRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar Phone={true}/>
+        <Navbar />
         {/* background image */}
         <Box
           display="flex"

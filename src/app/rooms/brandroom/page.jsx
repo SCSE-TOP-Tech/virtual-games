@@ -119,7 +119,7 @@ export default function BrandRoom() {
     <RoomLayout>
       <Box>
         <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-          <Navbar Phone={true}/>
+          <Navbar/>
           <Box
             display="flex"
             justifyContent="center"

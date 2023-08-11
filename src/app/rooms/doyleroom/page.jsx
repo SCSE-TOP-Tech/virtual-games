@@ -107,7 +107,7 @@ export default function DoyleRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" p={4} position="relative">
-        <Navbar Phone={false}/>
+        <Navbar />
 
         <Box display="flex" justifyContent="center" width="100%">
           <ItemImage item={room.background} />

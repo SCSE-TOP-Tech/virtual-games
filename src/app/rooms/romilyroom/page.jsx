@@ -112,7 +112,7 @@ export default function RomilyRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" position="relative">
-        <Navbar Phone={false}/>
+        <Navbar />
 
         <Box
           display="flex"

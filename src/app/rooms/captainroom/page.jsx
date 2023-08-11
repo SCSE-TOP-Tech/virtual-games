@@ -114,7 +114,7 @@ export default function CaptainRoom() {
   return (
     <RoomLayout>
       <Box w={["100%", "30em"]} h="100%" position="relative">
-        <Navbar Phone={false}/>
+        <Navbar />
         {/* container for background image and items*/}
         <Box
           display="flex"
