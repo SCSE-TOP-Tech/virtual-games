@@ -171,8 +171,8 @@ export default function Hallway() {
                   )}
                 />
               </Hint>
-            )
 
+            {user.stateID === 7 &&
             <img
               src="/Rooms/Hallway/princess-white.png"
               alt="submit answers"
@@ -184,6 +184,7 @@ export default function Hallway() {
               }}
               onClick={toggleSubmission}
             />
+            }
           </Box>
         </Box>
         <Inventory 
