@@ -11,7 +11,6 @@ import Navbar from "../../components/Navbar";
 import Hint from "../../components/Hint";
 import Loading from "@/app/rooms/loading";
 import RoomLayout from "@/app/rooms/layout";
-import Loading from "@/app/rooms/loading";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import getAvailableItems from "@/resources/prisma/items/getAvailableItems";

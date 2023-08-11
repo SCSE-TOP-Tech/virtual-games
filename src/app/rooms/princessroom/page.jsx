@@ -18,7 +18,6 @@ import endTimer from "@/resources/prisma/timer/endTimer";
 import updateState from "@/resources/prisma/state/updateState";
 import startTimer from "@/resources/prisma/timer/startTimer";
 import updateCollectedItems from "@/resources/prisma/items/updateCollectedItems";
-import { useRouter } from "next/navigation";
 import Inventory from "@/app/components/Inventory";
 
 export default function PrincessRoom() {
